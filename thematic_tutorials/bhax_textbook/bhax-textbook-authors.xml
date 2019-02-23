@@ -25,5 +25,24 @@
                 <link xlink:href="https://arato.inf.unideb.hu/batfai.norbert/">https://arato.inf.unideb.hu/batfai.norbert/</link>
             </otheraddr>
         </address>
-    </author>    
+    </author>
+	<author>
+        <personname>
+            <surname>Tóth</surname>
+            <firstname>Attila</firstname>        
+        </personname>    
+        <affiliation>
+            <jobtitle>Hallgató</jobtitle>
+            <orgname>Debreceni Egyetem</orgname>
+            <orgdiv>Informatikai kar</orgdiv>
+            <address>
+                <email>atoth1571@gmail.com</email>
+            </address>
+        </affiliation>
+        <address>
+            <city>Tarpa</city>
+            <postcode>4931</postcode>
+            <country>Magyarország</country>
+            <email>atoth1571@gmail.com</email>
+        </address>    
 </authorgroup>
