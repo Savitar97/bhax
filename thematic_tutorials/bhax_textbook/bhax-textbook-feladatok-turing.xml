@@ -15,11 +15,42 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/vegtelen">https://github.com/Savitar97/Prog1/tree/master/vegtelen</link>                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+         Végtelen ciklust a legkönnyebben 3 féle képpen tudunk írni(ezek a standard formák):
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        int main(){
+        while(1);//végtelen ciklus while-al
+        for(;;);//végtelen ciklus for-al
+        do{}
+        while(1);//végtelen ciklus do while segítségével
+        return 0;
+        }       ]]>
+        </programlisting>
+        <para>
+            Ha simán írunk egy végtelen ciklust az egy szálat fog kihasználni 100%-on, mindaddig amíg nem párhuzamosítjuk, ezt a:
+        </para>
+        <programlisting language="c"><![CDATA[
+        #pragma omp parallel]]>
+        </programlisting> 
+        <para>
+            segítségével érjük el.Ekkor a program már minden szálat képes kihasználni 100%-on. Ha azt akarjuk, hogy 0%-ot használjon a processzorból akkor azt a:
+         </para>
+         <programlisting language="c"><![CDATA[
+        sleep();]]>
+        </programlisting> 
+        <para>
+        használatával tudjuk elérni, amely lehetővé teszi, hogy a meghívott szálat egy meghatározott ideig "sleepeltesse". Az időt a () között adhatjuk meg másodpercben, ha 0-t adunk meg, akkor végtelen időre sleepeltethetünk. A sleep függvényt az:    
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <unistd.h>]]>
+        </programlisting>
+        <para>
+          könyvtár tartalmazza. Tehát a használatához megkell hívnunk.
+</para>        
     </section>        
         
     <section>
