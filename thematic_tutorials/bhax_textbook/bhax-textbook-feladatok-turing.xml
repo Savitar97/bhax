@@ -31,7 +31,7 @@
         }       ]]>
         </programlisting>
         <para>
-            Ha simán írunk egy végtelen ciklust az egy szálat fog kihasználni 100%-on, mindaddig amíg nem párhuzamosítjuk, ezt a:
+            A végtelen ciklus következhet hibából, de van úgy, hogy szándékosan használunk végtelen ciklusokat például a programok menüjénél, de a program futása is egy végtelen ciklus, amelyet az X gombra kattintás szakít meg.Ha simán írunk egy végtelen ciklust az egy szálat fog kihasználni 100%-on, mindaddig amíg nem párhuzamosítjuk, ezt a:
         </para>
         <programlisting language="c"><![CDATA[
         #pragma omp parallel]]>
@@ -149,10 +149,21 @@ false]]></screen>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/08/28/10_begin_goto_20_avagy_elindulunk">https://bhaxor.blog.hu/2018/08/28/10_begin_goto_20_avagy_elindulunk</link>
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog1/blob/master/valtcser/valtcser.c">https://github.com/Savitar97/Prog1/blob/master/valtcser/valtcser.c</link> 
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Két változó értékének felcserélése többféle módon is történhet a legalapvetőbb a segédváltozó használata.Ekkor a 2 változóhoz behozunk egy ideiglenes segédváltozót, amiben valamelyik változó értékét letároljuk, majd az első változó értékét egyenlővé tesszük a másodikkal, majd a második értékét egyenlővé tesszük az ideiglenesben letárolt első változó értékével. Ez itt látható:
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        int main(){
+        int elso=5,masodik=3,temp;
+            temp=elso;
+            elso=masodik;
+            masodik=temp;
+        }       ]]></programlisting>
+        <para>
+        De ezen a módszeren kívül, lehetséges összeadás-kivonással,szorzás-osztással,vagy logikai kizáró vagy művelet segítségével felcserélni két változó értékét.    
         </para>
     </section>                     
 
