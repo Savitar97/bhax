@@ -178,11 +178,47 @@ false]]></screen>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/08/28/labdapattogas">https://bhaxor.blog.hu/2018/08/28/labdapattogas</link>
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog1/tree/master/labda">https://github.com/Savitar97/Prog1/tree/master/labda</link>
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+         Labdapattogtatás if-el: c-ben megadtam egy maximális méretet a pályának ez az x és y változó. A labda kezdetleges koordinátáit a labdax és labday-ban tárolom. Ezen kívül kell még 2 változó, amely a labda mozgásáért felelős ez a tempx és tempy. Magát a labdát karakterként a labda változóban tárolom.
         </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        int main(){
+        char labda='o';
+	int x=80,y=15,labdax=1,labday=1,tempx=1,tempy=1;
+        }       ]]></programlisting>
+        <para>
+        A labdapattogtatást a for(;;) végtelen ciklus és egy rajzol eljárás folytonos meghívása szolgálja. A labda mozgását a koordináták temp-el való növelése szolgálja. Az if-ek segítségével érem el, hogy ha a labda eléri a pálya szélét, akkor a temp előjele változzon, így az érték csökkeni kezd, majd csökkenés után ha újra eléri a pálya szélét a -1-szeres szorzással újra pozitívba vált. A késleltetett kiírást az usleep éri el, az értéket microsec-be kell megadni és az unistd.h könyvtár tartalmazza ezt a függvényt.  
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        int main(){
+        for(;;)
+	{
+		labdax+=tempx;
+		labday+=tempy;
+		if(x-1<=labdax)
+		{
+			tempx*=-1;
+		}
+		else if(y-1<=labday)
+		{
+			tempy*=-1;
+		}
+		else if(labdax<0)
+		{
+			tempx*=-1;
+		}
+		else if(labday<0)
+		{
+			tempy*=-1;
+		}
+		rajzol(labdax,labday,labda);
+		usleep(100000);
+	}
+        }       ]]></programlisting>
     </section>                     
 
     <section>
