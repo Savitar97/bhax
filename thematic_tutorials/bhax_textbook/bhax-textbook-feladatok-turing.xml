@@ -194,6 +194,7 @@ false]]></screen>
         </para>
         <programlisting language="c"><![CDATA[
         #include <stdio.h>
+        #include <unistd.h>
         int main(){
         for(;;)
 	{
@@ -219,6 +220,21 @@ false]]></screen>
 		usleep(100000);
 	}
         }       ]]></programlisting>
+        <para>
+        If nélkül azt, hogy a labda vissza pattanjon a maradékos osztás végzi el és az abszolút érték.
+        </para>
+        <screen><![CDATA[
+        x=abs(szelesseg-lepteto%(2*szelesseg));
+        y=abs(tmagassag-lepteto%(2*tmagassag));
+        lepteto++;
+        ]]>
+        </screen>
+        <para>
+        És persze szükséges mellette egy változó aminek az értékét folyamatosan növeljük és a pálya méretének 2x esével osztjuk el maradékosan, majd kivonjuk a pálya méretéből és ez határozza meg a labda koordinátáját.Tehát mondjuk egy 50 es pálya méretnél 50-1%100=49 ... így csökken egészen 0-ig majd mikor a léptető eléri az 51 et 50-51=-1 el, de ennek az abszolút értéke 1 tehát újra növekedni fog.
+        </para>
+        <para>
+        Tapasztalat:C-ben van egy kis hiba mivel, amikor eléri a pálya tetejét a labda nem egyből pattan vissza, ez csak if-nél jelentkezik. If nélkül a két abszolút értékes függvénnyel nem jelentkezik ez a hiba.
+        </para>
     </section>                     
 
     <section>
