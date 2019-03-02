@@ -37,7 +37,13 @@
         #pragma omp parallel]]>
         </programlisting> 
         <para>
-            segítségével érjük el.Ekkor a program már minden szálat képes kihasználni 100%-on. Ha azt akarjuk, hogy 0%-ot használjon a processzorból akkor azt a:
+            segítségével érjük el.Ekkor a program már minden szálat képes kihasználni 100%-on. Fordítani pedig a következőképpen tudjuk:
+        </para>
+        <para>
+            <command>gcc vegtelen3.c -o vegtelen3 -fopenmp</command>
+        </para>
+        <para>  
+            Ha azt akarjuk, hogy 0%-ot használjon a processzorból akkor azt a:
          </para>
          <programlisting language="c"><![CDATA[
         sleep();]]>
@@ -285,11 +291,88 @@ false]]></screen>
             Megoldás videó: <link xlink:href=""></link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/pagerank/pagerank.c">https://github.com/Savitar97/Prog1/blob/master/pagerank/pagerank.c</link>
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            A pagerank algoritmust a google találta ki azért, hogy megkönnyítsék a weben való keresést. Maga a pagerank egy számba sűríti a weblap értékét. A lényege, hogy minél több oldal mutat a weblapunkra annál értékesebb. Ez azért van mert, úgy gondolták a google alapítói, hogy a weboldal készítői, azért linkelnek be oldalakat mert hasznosnak találják.
+        </para>
+        <para>
+            Ez felfogható úgy is, mint egy választás. És minden oldal képes szavazni és az, hogy valaki a mi linkünket használja olyan mintha ránk voksolna és akinek több a szavazata az van előrébb a rangsorban.
+        </para>
+        <para>
+            Első lépésként megadjuk a kapcsolati gráfot. Tehát, hogy melyik oldal melyik oldalra mutat. Ezt egy mátrixban tároljuk le, mivel 4 honlappal dolgozunk, ezért egy 4x4 es mátrix lesz:
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        #include <unistd.h>
+        int main(){
+        double L[4][4] = {
+{0.0, 0.0, 1.0 / 3.0, 0.0},
+{1.0, 1.0 / 2.0, 1.0 / 3.0, 1.0},
+{0.0, 1.0 / 2.0, 0.0, 0.0},
+{0.0, 0.0, 1.0 / 3.0, 0.0}
+};
+	}
+        }       ]]></programlisting>
+        <para>Azért double mivel a pagerank nem feltétlenül csak egész szám lehet.</para>
+        <para>Ezután létrehozunk még 2 db egydimenziós tömböt. Az egyikben a végleges pagerankot tároljuk míg a másikban az ideiglenest. Az ideiglenes vektorban minden oldal pagerankját 1/4-re állítjuk mivel 4 oldal van.</para>
+        <para>Majd indítunk egy végleges ciklust,amely addig fut, amíg a pagerank kisebb nem lesz, mint a dumping factort az az a csillapító értéket, most ez 0.00001-ben lett meghatározva</para>
+        <para>A végtelen ciklus elején áttöltjük az ideiglenes pagerankból az értékeket a végleges pagerank tömbünkbe.</para>
+        <para>Majd indítunk egy egybeágyazott for ciklust, amely a letárolt kapcsolati gráfos tömb(a szétosztott szavazatokat tárolja) sorait megszorozza a jelenlegi pagerankkal és a sorok összegét, mármint egyessével egy értékbe tömöríti és azt betölti az ideiglenes pagerankba és ez addig folytatódik, amíg kinem lép a végtelen ciklusból.</para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        #include <unistd.h>
+        int main(){
+        while(1)
+{
+	for(i=0;i<4;i++)
+		{
+			PR[i] = PRv[i];
+		}
+	for (i=0;i<4;i++)
+		{
+			double temp=0;
+			for (j=0;j<4;j++)
+				temp+=L[i][j]*PR[j];
+			PRv[i]=temp;
+		}
+
+	if ( tavolsag(PR,PRv, 4) < 0.00001)
+		break;
+}
+	}
+        }       ]]></programlisting>
+        <para>A távolság függvény paraméterként megkapja a végleges pagerankot és az ideiglenest és, hogy hány db oldal van. Majd kivonja a pagerank i-edik eleméből az ideiglenes pagerank i-edik elemének értékét és ezek abszolút értékét összeadja a tav nevű változóban, amely a függvény visszatérési értéke lesz.</para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        #include <unistd.h>
+        
+        double tavolsag(double pagerank[],double pagerank_temp[],int db)
+{
+	double tav = 0.0;
+	int i;
+	for(i=0;i<db;i++)
+		{
+			tav +=fabs(pagerank[i] - pagerank_temp[i]);
+		}
+	return tav;
+}
+       ]]></programlisting>
+       <para>Érdekesség ha az egyik oldal nem mutat semmire.Tehát ha az utolsó oszlopot mondjuk teljesen ki 0-ázzuk akkor a pagerank is kinullázódna ha 2 tizedes jegyik néznénk az értéket.</para>
+       <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/nulla.png" scale="50" />
+                </imageobject>
+        </mediaobject>
+        <para>A helyes megoldás:</para>
+           <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/elso.png" scale="50" />
+                </imageobject>
+            </mediaobject>
     </section>
 
     <section xml:id="Brun">
