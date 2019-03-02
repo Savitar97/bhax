@@ -230,7 +230,7 @@ false]]></screen>
         ]]>
         </screen>
         <para>
-        És persze szükséges mellette egy változó aminek az értékét folyamatosan növeljük és a pálya méretének 2x esével osztjuk el maradékosan, majd kivonjuk a pálya méretéből és ez határozza meg a labda koordinátáját.Tehát mondjuk egy 50 es pálya méretnél 50-1%100=49 ... így csökken egészen 0-ig majd mikor a léptető eléri az 51 et 50-51=-1 el, de ennek az abszolút értéke 1 tehát újra növekedni fog.
+        És persze szükséges mellette egy változó aminek az értékét folyamatosan növeljük és a pálya méretének 2x esével osztjuk el maradékosan, majd kivonjuk a pálya méretéből és ez határozza meg a labda koordinátáját.Tehát mondjuk egy 50 es pálya méretnél 50-1%100=49 ... így csökken egészen 0-ig majd mikor a léptető eléri az 51 et 50-51=-1 el, de ennek az abszolút értéke 1, tehát újra növekedni fog.
         </para>
         <para>
         Tapasztalat:C-ben van egy kis hiba mivel, amikor eléri a pálya tetejét a labda nem egyből pattan vissza, ez csak if-nél jelentkezik. If nélkül a két abszolút értékes függvénnyel nem jelentkezik ez a hiba.
@@ -247,10 +247,31 @@ false]]></screen>
             Megoldás videó: <link xlink:href=""></link>
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/szohossz/bitshift.cpp">https://github.com/Savitar97/Prog1/blob/master/szohossz/bitshift.cpp</link>
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat... 
+        </para>
+        <para>
+            A szóhossz megnézéséhez a bitenkénti léptetés operátort használjuk:
+        <screen>
+        <![CDATA[while (szam <<=1){
+			cout<<szam<<'\n';
+			counter++;		
+        }]]>
+        </screen>
+        Ez annyit jelent hogy az egyest egyre jobban balra toljuk és jobbról 0-ákkal pótoljuk.
+        </para>
+        <para>
+          Ez azt eredményezi, hogy 2-nek hatványait kapjuk és amikor eléri az int maximális méretét utána 0-t kap eredményül, mivel a bitsorozat teljesen ki 0-ázódik.Tehát a 32. lépésre, nem lesz olyan bit, amin képesek leszünk ábrázolni az 1 est.   
+        </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/bitshift.png" scale="50" />
+                </imageobject>
+        </mediaobject>
+        <para>
+            Igazából 32 bites a szóhossz csak az elsőt nem számolja szóval 31+1.
         </para>
     </section>                     
 
