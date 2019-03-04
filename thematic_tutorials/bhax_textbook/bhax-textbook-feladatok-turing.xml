@@ -309,7 +309,7 @@ false]]></screen>
         #include <stdio.h>
         #include <unistd.h>
         int main(){
-        double L[4][4] = {
+        double graf[4][4] = {
 {0.0, 0.0, 1.0 / 3.0, 0.0},
 {1.0, 1.0 / 2.0, 1.0 / 3.0, 1.0},
 {0.0, 1.0 / 2.0, 0.0, 0.0},
@@ -325,22 +325,24 @@ false]]></screen>
         <programlisting language="c"><![CDATA[
         #include <stdio.h>
         #include <unistd.h>
+        #define dumping_factor 0.0001
+            
         int main(){
         while(1)
 {
 	for(i=0;i<4;i++)
 		{
-			PR[i] = PRv[i];
+			PR[i] = PRt[i];
 		}
 	for (i=0;i<4;i++)
 		{
 			double temp=0;
 			for (j=0;j<4;j++)
-				temp+=L[i][j]*PR[j];
-			PRv[i]=temp;
+				temp+=graf[i][j]*PR[j];
+			PRt[i]=temp;
 		}
 
-	if ( tavolsag(PR,PRv, 4) < 0.00001)
+	if ( tavolsag(PR,PRt, 4) < dumping_factor)
 		break;
 }
 	}
