@@ -169,7 +169,7 @@ false]]></screen>
             masodik=temp;
         }       ]]></programlisting>
         <para>
-        De ezen a módszeren kívül, lehetséges összeadás-kivonással,szorzás-osztással,vagy logikai kizáró vagy művelet segítségével felcserélni két változó értékét.    
+            De ezen a módszeren kívül, lehetséges összeadás-kivonással,szorzás-osztással,vagy logikai kizáró vagy művelet segítségével felcserélni két változó értékét.    
         </para>
     </section>                     
 
@@ -196,7 +196,7 @@ false]]></screen>
 	int x=80,y=15,labdax=1,labday=1,tempx=1,tempy=1;
         }       ]]></programlisting>
         <para>
-        A labdapattogtatást a for(;;) végtelen ciklus és egy rajzol eljárás folytonos meghívása szolgálja. A labda mozgását a koordináták temp-el való növelése szolgálja. Az if-ek segítségével érem el, hogy ha a labda eléri a pálya szélét, akkor a temp előjele változzon, így az érték csökkeni kezd, majd csökkenés után ha újra eléri a pálya szélét a -1-szeres szorzással újra pozitívba vált. A késleltetett kiírást az usleep éri el, az értéket microsec-be kell megadni és az unistd.h könyvtár tartalmazza ezt a függvényt.  
+            A labdapattogtatást a for(;;) végtelen ciklus és egy rajzol eljárás folytonos meghívása szolgálja. A labda mozgását a koordináták temp-el való növelése szolgálja. Az if-ek segítségével érem el, hogy ha a labda eléri a pálya szélét, akkor a temp előjele változzon, így az érték csökkeni kezd, majd csökkenés után ha újra eléri a pálya szélét a -1-szeres szorzással újra pozitívba vált. A késleltetett kiírást az usleep éri el, az értéket microsec-be kell megadni és az unistd.h könyvtár tartalmazza ezt a függvényt.  
         </para>
         <programlisting language="c"><![CDATA[
         #include <stdio.h>
@@ -227,19 +227,19 @@ false]]></screen>
 	}
         }       ]]></programlisting>
         <para>
-        If nélkül azt, hogy a labda vissza pattanjon a maradékos osztás végzi el és az abszolút érték.
+            If nélkül azt, hogy a labda vissza pattanjon a maradékos osztás végzi el és az abszolút érték.
         </para>
-        <screen><![CDATA[
-        x=abs(szelesseg-lepteto%(2*szelesseg));
-        y=abs(tmagassag-lepteto%(2*tmagassag));
-        lepteto++;
-        ]]>
+            <screen><![CDATA[
+                    x=abs(szelesseg-lepteto%(2*szelesseg));
+                    y=abs(tmagassag-lepteto%(2*tmagassag));
+                    lepteto++;
+                    ]]>
         </screen>
         <para>
-        És persze szükséges mellette egy változó aminek az értékét folyamatosan növeljük és a pálya méretének 2x esével osztjuk el maradékosan, majd kivonjuk a pálya méretéből és ez határozza meg a labda koordinátáját.Tehát mondjuk egy 50 es pálya méretnél 50-1%100=49 ... így csökken egészen 0-ig majd mikor a léptető eléri az 51 et 50-51=-1 el, de ennek az abszolút értéke 1, tehát újra növekedni fog.
+            És persze szükséges mellette egy változó aminek az értékét folyamatosan növeljük és a pálya méretének 2x esével osztjuk el maradékosan, majd kivonjuk a pálya méretéből és ez határozza meg a labda koordinátáját.Tehát mondjuk egy 50 es pálya méretnél 50-1%100=49 ... így csökken egészen 0-ig majd mikor a léptető eléri az 51 et 50-51=-1 el, de ennek az abszolút értéke 1, tehát újra növekedni fog.
         </para>
         <para>
-        Tapasztalat:C-ben van egy kis hiba mivel, amikor eléri a pálya tetejét a labda nem egyből pattan vissza, ez csak if-nél jelentkezik. If nélkül a két abszolút értékes függvénnyel nem jelentkezik ez a hiba.
+            Tapasztalat:C-ben van egy kis hiba mivel, amikor eléri a pálya tetejét a labda nem egyből pattan vissza, ez csak if-nél jelentkezik. If nélkül a két abszolút értékes függvénnyel nem jelentkezik ez a hiba.
         </para>
     </section>                     
 
@@ -266,7 +266,7 @@ false]]></screen>
 			counter++;		
         }]]>
         </screen>
-        Ez annyit jelent hogy az egyest egyre jobban balra toljuk és jobbról 0-ákkal pótoljuk.
+            Ez annyit jelent hogy az egyest egyre jobban balra toljuk és jobbról 0-ákkal pótoljuk.
         </para>
         <para>
           Ez azt eredményezi, hogy 2-nek hatványait kapjuk és amikor eléri az int maximális méretét utána 0-t kap eredményül, mivel a bitsorozat teljesen ki 0-ázódik.Tehát a 32. lépésre, nem lesz olyan bit, amin képesek leszünk ábrázolni az 1 est.   
@@ -310,18 +310,18 @@ false]]></screen>
         #include <unistd.h>
         int main(){
         double graf[4][4] = {
-{0.0, 0.0, 1.0 / 3.0, 0.0},
-{1.0, 1.0 / 2.0, 1.0 / 3.0, 1.0},
-{0.0, 1.0 / 2.0, 0.0, 0.0},
-{0.0, 0.0, 1.0 / 3.0, 0.0}
-};
+                                {0.0, 0.0, 1.0 / 3.0, 0.0},
+                                {1.0, 1.0 / 2.0, 1.0 / 3.0, 1.0},
+                                {0.0, 1.0 / 2.0, 0.0, 0.0},
+                                {0.0, 0.0, 1.0 / 3.0, 0.0}
+                            };
 	}
         }       ]]></programlisting>
         <para>Azért double mivel a pagerank nem feltétlenül csak egész szám lehet.</para>
         <para>Ezután létrehozunk még 2 db egydimenziós tömböt. Az egyikben a végleges pagerankot tároljuk míg a másikban az ideiglenest. Az ideiglenes vektorban minden oldal pagerankját 1/4-re állítjuk mivel 4 oldal van.</para>
         <para>Majd indítunk egy végleges ciklust,amely addig fut, amíg a pagerank kisebb nem lesz, mint a dumping factort az az a csillapító értéket, most ez 0.00001-ben lett meghatározva</para>
         <para>A végtelen ciklus elején áttöltjük az ideiglenes pagerankból az értékeket a végleges pagerank tömbünkbe.</para>
-        <para>Majd indítunk egy egybeágyazott for ciklust, amely a letárolt kapcsolati gráfos tömb(a szétosztott szavazatokat tárolja) sorait megszorozza a jelenlegi pagerankkal és a sorok összegét, mármint egyessével egy értékbe tömöríti és azt betölti az ideiglenes pagerankba és ez addig folytatódik, amíg kinem lép a végtelen ciklusból.</para>
+        <para>Ezt követően indítunk egy egybeágyazott for ciklust, amely a letárolt kapcsolati gráfos tömb(a szétosztott szavazatokat tárolja) sorait megszorozza a jelenlegi pagerankkal és a sorok összegét, mármint egyessével egy értékbe tömöríti és azt betölti az ideiglenes pagerankba és ez addig folytatódik, amíg kinem lép a végtelen ciklusból.</para>
         <programlisting language="c"><![CDATA[
         #include <stdio.h>
         #include <unistd.h>
@@ -329,12 +329,12 @@ false]]></screen>
             
         int main(){
         while(1)
-{
-	for(i=0;i<4;i++)
+            {
+                for(i=0;i<4;i++)
 		{
 			PR[i] = PRt[i];
 		}
-	for (i=0;i<4;i++)
+                for (i=0;i<4;i++)
 		{
 			double temp=0;
 			for (j=0;j<4;j++)
@@ -342,9 +342,9 @@ false]]></screen>
 			PRt[i]=temp;
 		}
 
-	if ( tavolsag(PR,PRt, 4) < dumping_factor)
+                if ( dif(PR,PRt, 4) < dumping_factor)
 		break;
-}
+            }
 	}
         }       ]]></programlisting>
         <para>A távolság függvény paraméterként megkapja a végleges pagerankot és az ideiglenest és, hogy hány db oldal van. Majd kivonja a pagerank i-edik eleméből az ideiglenes pagerank i-edik elemének értékét és ezek abszolút értékét összeadja a tav nevű változóban, amely a függvény visszatérési értéke lesz.</para>
@@ -352,15 +352,15 @@ false]]></screen>
         #include <stdio.h>
         #include <unistd.h>
         
-        double tavolsag(double pagerank[],double pagerank_temp[],int db)
+        double dif(double pagerank[],double pagerank_temp[],int db)
 {
-	double tav = 0.0;
+	double  dif= 0.0;
 	int i;
 	for(i=0;i<db;i++)
 		{
-			tav +=fabs(pagerank[i] - pagerank_temp[i]);
+			dif +=fabs(pagerank[i] - pagerank_temp[i]);
 		}
-	return tav;
+	return dif;
 }
        ]]></programlisting>
        <para>Érdekesség ha az egyik oldal nem mutat semmire.Tehát ha az utolsó oszlopot mondjuk teljesen ki 0-ázzuk akkor a pagerank is kinullázódna ha 2 tizedes jegyik néznénk az értéket.</para>
@@ -387,6 +387,31 @@ false]]></screen>
         </para>
         <para>
             Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/Primek_R">https://gitlab.com/nbatfai/bhax/blob/master/attention_raising/Primek_R</link>
+        </para>
+        <para>
+            Prímnek nevezzük azokat a számokat, amelyek csak 1-el és önmagukkal oszthatók.Ikerprímek azok a prímszámok, amelyek különbsége 2.
+        </para>
+        <para>
+            A program egy megadott x értékig kikeresi a prímeket. Majd megnézi a köztük lévő diferenciát (diff),ahol ez a diferencia 2, annak az indexét egy tömbben(idx) tárolja(de csak az ikerprímpár első tagjának indexét, ezért kell a t2primes-nál a +2).
+        </para>
+        <programlisting language="R"><![CDATA[
+         primes = primes(x)
+        diff = primes[2:length(primes)]-primes[1:length(primes)-1]
+        idx = which(diff==2)
+        t1primes = primes[idx]
+        t2primes = primes[idx]+2
+
+       ]]></programlisting>
+        <para>
+            Majd az rt1plust2-ben összeadjuk ezeknek a reciprokát végül a függvényünk visszatérési értéke az rt1plust2-nek az összege.
+        </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Rplot.png" scale="100" />
+                </imageobject>
+        </mediaobject>
+        <para>
+            A képen látható, hogy a párosprímek reciprokának összege egyre jobban tart a 2 felé,tehát egy véges értékhez konvergál, amely a Brun konstans azaz a Brun tétel teljesül.
         </para>
     </section>
     
