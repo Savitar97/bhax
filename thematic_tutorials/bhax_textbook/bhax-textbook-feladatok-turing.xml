@@ -446,6 +446,33 @@ false]]></screen>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            A Monty Hall probléma lényegében 3 ajtó közül kell kiválasztanunk a nyerteset viszont ha nem találjuk el akkor újra kezdhetjük.
+        </para>
+        <para>
+            Annak a valószínűsége, hogy egyből a jó ajtót találjuk el 1/3 és az, hogy rosszat 2/3. Viszont a választás után a 3 ajtó közül a műsorvezető kinyit egyet, amelyik mögött nem a nyeremény van.(A játékvezető tudja melyik ajtó mögött van a nyeremény) Majd ezután megkérdi a játékost, hogy szeretne -e változtatni a választásán. Elvileg az ajtó nyitása után a nyerési arányunk redukálódik 1/2-re, hogy nyerünk és 1/2-re, hogy vesztünk. A nagy kérdés itt az, hogy megéri -e váltanunk.Ez a program pont ezt szimulálja.
+        </para>
+        <para>
+            A kísérletek száma változóban definiáljuk, hogy hányszor fusson le a kísérlet.Azaz a minták száma.
+        </para>
+        <para>
+            A kiserlet és a jatekos tömbök, amelyeket 1 és 3 közé eső számokkal tölt fel a sample. A műsorvezető egy vektor amelyet ugyan olyan méretűre deklarálunk mint a kísérletek száma.
+        </para>
+        <para>
+            Egy for ciklussal bejárjuk a tömböt és ha a játékos eltalálja, hogy melyik ajtó mögött van akkor a mibol tömbbe a másik két ajtó lehetősége kerül.Ha nem találja el akkor csak egyetlen érték az az ajtó ami mögött nincs semmi,de nem választotta a játékos.
+        </para>
+        <para>
+            Ezután a műsorvezető úgymond kinyit egy ajtót tehát választ egyet a mibol tömbből.
+        </para>
+        <para>
+            Majd lefut egy feltétel, amely megmutatja hányszor nyerne a játékos ha nem változtat.Tehát a tömbbe azok az indexek kerülnek amikor a jatekos és a kiserlet megegyezik.
+        </para>
+        <para>
+            Létrehozunk egy új vektort amiben megváltoztatjuk a választást úgy, hogy kivételként adjuk a műsorvezető által kinyitott ajtót és a játékost által választottat.
+        </para>
+        <para>
+            Végül lefuttatunk egy ugyan ilyen feltételes vizsgálatot, hogy mi lett volna ha mindig változtatunk. És itt is ugyan úgy letároljuk egy tömbbe, hogy mely indexeknél nyert a játékos. És kiiratjuk a statisztikát, amely megmutatja, hogyan járnánk jobban ha mindig változtatnánk vagy ha tartózkodnánk az először választott ajtóhoz.
+        </para>
     </section>
 
 </chapter>                
