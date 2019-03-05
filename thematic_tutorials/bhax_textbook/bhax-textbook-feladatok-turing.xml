@@ -473,6 +473,11 @@ false]]></screen>
         <para>
             Végül lefuttatunk egy ugyan ilyen feltételes vizsgálatot, hogy mi lett volna ha mindig változtatunk. És itt is ugyan úgy letároljuk egy tömbbe, hogy mely indexeknél nyert a játékos. És kiiratjuk a statisztikát, amely megmutatja, hogyan járnánk jobban ha mindig változtatnánk vagy ha tartózkodnánk az először választott ajtóhoz.
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/monty.png" scale="100" />
+                </imageobject>
+        </mediaobject>
     </section>
 
 </chapter>                
