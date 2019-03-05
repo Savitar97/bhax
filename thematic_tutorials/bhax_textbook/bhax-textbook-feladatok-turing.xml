@@ -171,6 +171,23 @@ false]]></screen>
         <para>
             De ezen a módszeren kívül, lehetséges összeadás-kivonással,szorzás-osztással,vagy logikai kizáró vagy művelet segítségével felcserélni két változó értékét.    
         </para>
+        <para>
+            Legyen két változónk a és b. Összeadással az a-ba összeadjuk a-t és b-t. Majd az a-ból kivonjuk a b-t és ezt letároljuk b-be.Ekkor b értéke egyenlő lesz az a változó kezdeti értékével,majd az a-ból kivonjuk a b változót ekkor a értéke egyenlő lesz b kezdeti értékével, tehát felcserélődtek az értékek.Szorzás-osztással, ugyan így működik.
+        </para>
+        <para>
+            Két változó értékét logikai operátorral a kizáró vaggyal is megcserélhetjük.
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        int main(){
+        int elso=5,masodik=3;
+            elso=elso^masodik;
+            masodik=elso^masodik;
+            elso=elso^masodik;
+        }       ]]></programlisting>
+        <para>
+        A kizáróvagy(xor) lényege, hogy csak akkor igaz ha az egyik igaz.Ez binárisan azt jelenti,hogy akkor 1 es ha ugyan azon a biten lévő érték az egyik változónál 1 es a másikban 0 ás.Az elso változó binárisan 0101 a masodik 0011 kizáró vagyot végre hajtva az elso értéke 0110 lesz, aminek az értéke 6. Majd újra kizáró vagyot végrehajtva a masodik értéke 0101 lesz, ami 5 tehát megkapta az elso ertékét. Ezután még egyszer kizáróvagy-ot használunk ekkor az elso értéke 0011 lesz, ami 10 es számrendszerbe 3. Tehát a két változó értéke felcserélődött.   
+        </para>
     </section>                     
 
     <section>
