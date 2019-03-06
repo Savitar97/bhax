@@ -143,6 +143,12 @@ false]]></screen>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            Ha a T100 as függvény létezne és megkapná a P-t paraméternek akkor igazat ad vissza. De ha a T100 asnak a T100 ast adjuk meg tehát rekurzívan hívjuk meg a T100 ast akkor azt írná ki, hogy a T100 asban nincs végtelen ciklus, pedig a bemenő argumentuma egy végtelen ciklus.
+        </para>
+        <para>
+            Tanulság nem lehet jelenleg olyan programot írni, amely normálisan eldönti egy másik programról, hogy kifog -e fagyni avagy sem.
+        </para>
     </section>        
                 
     <section>
@@ -473,9 +479,12 @@ false]]></screen>
         <para>
             Végül lefuttatunk egy ugyan ilyen feltételes vizsgálatot, hogy mi lett volna ha mindig változtatunk. És itt is ugyan úgy letároljuk egy tömbbe, hogy mely indexeknél nyert a játékos. És kiiratjuk a statisztikát, amely megmutatja, hogyan járnánk jobban ha mindig változtatnánk vagy ha tartózkodnánk az először választott ajtóhoz.
         </para>
+        <para>
+            Egy példa a program futására:
+        </para>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/monty.png" scale="100" />
+                    <imagedata fileref="img/monty.png" scale="75" />
                 </imageobject>
         </mediaobject>
     </section>
