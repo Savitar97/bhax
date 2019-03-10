@@ -102,6 +102,7 @@
         <para>
             Azért fordulhat le mivel a restrict még nem kulcsszó c89-ben,viszont c99-ben már igen. A restrict megadja, hogy mely pointerek férhetnek hozzá az adott memória területhez,ezeket a pointereket nem lehet módosítani.
         </para>
+        
     </section>                     
 
     <section>
@@ -237,7 +238,7 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
             4. létezik olyan y, hogy bármely x esetén ha y kisebb mint x akkor x nem prím.
         </para>
         <para>
-            Az első állítás azt mondja ki, hogy a prímszámok száma végtelen. Míg a második azt jelenti, hogy végtelen sok ikerprím létezik.Itt az SSy a successor function vagy másnéven a rákövetkező függvény,tehát  <emphasis role="strong">S(S(y))=(y+1)+1)</emphasis>.
+            Az első állítás azt mondja ki, hogy a prímszámok száma végtelen. Míg a második azt jelenti, hogy végtelen sok ikerprím létezik.Itt az SSy a successor function vagy másnéven a rákövetkező függvény,tehát  <emphasis role="red">S(S(y))=(y+1)+1)</emphasis>.
         </para>
         <para>
             A 3. állítás ennek az ellenkezőjét fejezi ki, tehát azt, hogy a prímszámok száma véges. A negyedik állítás ezzel ekvivalens, mivel azt mondja ki, hogy létik olyan y amitől nincs nagyobb prímszám.
@@ -332,7 +333,7 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
             Tanulságok, tapasztalatok, magyarázat...
         </para>
         <para>
-            Az int a létrehoz egy változót, amely int típúsú az az egész, a néven.
+            Az int a létrehoz egy változót, amely int típúsú az az egész, a néven. Egy változónak van neve,típúsa,hatásköre,memória címe ahol tárolódik,értéke.
         </para>
         <para>
             int *b létrehoz egy mutatót, amely a-nak a memória címére hivatkozik.
@@ -367,6 +368,26 @@ int main()
                     <imagedata fileref="img/deklaracio.png" scale="75" />
                 </imageobject>
         </mediaobject>
+    <programlisting><![CDATA[int c[5];]]></programlisting>
+    <para>
+        A c deklarál egy 5 elemű tömböt.
+    </para>
+    <programlisting><![CDATA[int (&tr)[5] = c;]]></programlisting> 
+    <para>
+        A tr tömb rekurzívan hivatkozik a c tömbre.
+    </para>
+    <programlisting><![CDATA[int *d[5];]]></programlisting> 
+    <para>
+        Létrehoz egy 5 elemű mutató tömböt.
+    </para>
+    <programlisting><![CDATA[int *h ();]]></programlisting> 
+    <para>
+        Olyan függvény ami egy egészre mutatót ad vissza.s
+    </para>
+    <programlisting><![CDATA[int *(*l) ();]]></programlisting> 
+    <para>
+        Egy egészre mutató mutatót ad vissza a függvényt.
+    </para>
     </section>                     
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         

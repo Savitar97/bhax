@@ -423,11 +423,19 @@ false]]></screen>
         idx = which(diff==2)
         t1primes = primes[idx]
         t2primes = primes[idx]+2
-
        ]]></programlisting>
         <para>
             Majd az rt1plust2-ben összeadjuk ezeknek a reciprokát végül a függvényünk visszatérési értéke az rt1plust2-nek az összege.
         </para>
+        <para>
+            A seq függvény hasonló a for ciklushoz seq(from, to, by= ), from,hogy mettől to, hogy meddig és a by, hogy milyen lépésszámmal. Ez határozza meg az x tengely beosztását.
+        </para>
+        <para>
+            A sapply függvény az x ekhez rendeli egyessével az stp függvényben kapott értékeket.
+        </para>
+        <para>
+            Végül a plot kirajzolja a függvényt.
+         </para>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/Rplot.png" scale="100" />
@@ -435,6 +443,9 @@ false]]></screen>
         </mediaobject>
         <para>
             A képen látható, hogy a párosprímek reciprokának összege egyre jobban tart a 2 felé,tehát egy véges értékhez konvergál, amely a Brun konstans azaz a Brun tétel teljesül.
+        </para>
+        <para>
+            De ezzel még mindig nem tudjuk eldönteni, hogy végtelen vagy véges számú prímszám van mert úgysem lépik át ezt a határt csak megközelítik.
         </para>
     </section>
     

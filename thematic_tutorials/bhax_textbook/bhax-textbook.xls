@@ -12,5 +12,12 @@
 <xsl:param name="latex.class.options">12pt</xsl:param>
 <xsl:param name="doc.collab.show">2</xsl:param>
 <xsl:param name="highlight.source" select="1"/>
-      
+ <xsl:template match="emphasis[@role='red']">
+  <xsl:param name="content">
+  </xsl:param>
+  <xsl:text>{\color{red}</xsl:text>
+  <xsl:call-template  name="inline.boldseq"/>
+  <xsl:copy-of select="$content"/>
+  <xsl:text>}</xsl:text>
+</xsl:template>
 </xsl:stylesheet>
