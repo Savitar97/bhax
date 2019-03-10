@@ -327,7 +327,7 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/deklaracio/harom_nyolc.cpp"> https://github.com/Savitar97/Prog1/blob/master/deklaracio/harom_nyolc.cpp</link>
+            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/deklaracio"> https://github.com/Savitar97/Prog1/tree/master/deklaracio</link>
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
@@ -382,7 +382,7 @@ int main()
     </para>
     <programlisting><![CDATA[int *h ();]]></programlisting> 
     <para>
-        Olyan függvény ami egy egészre mutatót ad vissza.s
+        Olyan függvény ami egy egészre mutatót ad vissza.
     </para>
     <programlisting><![CDATA[int *(*l) ();]]></programlisting> 
     <para>

@@ -415,7 +415,7 @@ false]]></screen>
             Prímnek nevezzük azokat a számokat, amelyek csak 1-el és önmagukkal oszthatók.Ikerprímek azok a prímszámok, amelyek különbsége 2.
         </para>
         <para>
-            A program egy megadott x értékig kikeresi a prímeket. Majd megnézi a köztük lévő diferenciát (diff),ahol ez a diferencia 2, annak az indexét egy tömbben(idx) tárolja(de csak az ikerprímpár első tagjának indexét, ezért kell a t2primes-nál a +2).
+            A program egy megadott x értékig kikeresi a prímeket. Majd megnézi a köztük lévő diferenciát (diff),ahol ez a diferencia 2, annak az indexét egy tömbben(idx) tárolja(de csak az ikerprímpár első tagjának indexét, ezért kell a t2primes-nál a +2) tehát a prímek közül kiszűri, hogy melyek ikerprímek.
         </para>
         <programlisting language="R"><![CDATA[
          primes = primes(x)
@@ -428,10 +428,10 @@ false]]></screen>
             Majd az rt1plust2-ben összeadjuk ezeknek a reciprokát végül a függvényünk visszatérési értéke az rt1plust2-nek az összege.
         </para>
         <para>
-            A seq függvény hasonló a for ciklushoz seq(from, to, by= ), from,hogy mettől to, hogy meddig és a by, hogy milyen lépésszámmal. Ez határozza meg az x tengely beosztását.
+            A seq függvény hasonló a for ciklushoz seq(from, to, by= ), from,hogy mettől(13) to, hogy meddig(1000000) és a by, hogy milyen lépésszámmal(10000). Ez határozza meg az x tengely beosztását.
         </para>
         <para>
-            A sapply függvény az x ekhez rendeli egyessével az stp függvényben kapott értékeket.
+            A sapply függvény az x ekhez rendeli egyessével az stp függvényben kapott értékeket y-ként.
         </para>
         <para>
             Végül a plot kirajzolja a függvényt.
@@ -495,7 +495,7 @@ false]]></screen>
         </para>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/monty.png" scale="75" />
+                    <imagedata fileref="img/monty.png" scale="50" />
                 </imageobject>
         </mediaobject>
     </section>
