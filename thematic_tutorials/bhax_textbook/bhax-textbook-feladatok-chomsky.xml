@@ -48,10 +48,59 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/hivatkozas/hivatkozas.c">https://github.com/Savitar97/Prog1/blob/master/hivatkozas/hivatkozas.c</link> 
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A c89-ben még nem lehet egysoros kommenteket írni (<command>//</command>) és szintén nem lehet a for ciklus fejében változót deklarálni, amit a c99 már enged. A különböző változatoknál a fordítást a <command>-std</command> kapcsolóval érjük el ez, így néz ki a gyakorlatban:
+        </para>
+        <para>
+            <command>gcc -o hivatkozas -std=c89 hivatkozas.c</command>
+        </para>
+        <para>
+            <command>gcc -o hivatkozas -std=c99 hivatkozas.c</command>
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+        int main(){
+        int i;
+        for(i=0;i<10;i++)
+        /*Ez így lefog futni c89-ben is.
+          Viszont
+          for(int i=0;i<10;i++)
+          ez nem.
+        */
+        return 0;
+        }       ]]>
+        </programlisting>
+        <para>
+            A következő hibaüzenetet kapjuk:
+        </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/error.png" scale="50" />
+                </imageobject>
+        </mediaobject>
+        <para>
+            Emellett van olyan ami a c89-ben működik, de c99 ben nem. Ilyen a következő kódcsipet:
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+
+
+        int main()
+        {
+	
+        int restrict=1;
+        if (restrict) printf("restricted");
+        return 0;
+        }
+              ]]>
+        </programlisting>
+        <para>
+            Azért fordulhat le mivel a restrict még nem kulcsszó c89-ben,viszont c99-ben már igen. A restrict megadja, hogy mely pointerek férhetnek hozzá az adott memória területhez,ezeket a pointereket nem lehet módosítani.
         </para>
     </section>                     
 
@@ -181,6 +230,18 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            1. Bármely x-hez létezik olyan y, hogy az y nagyobb mint x és y prím.
+            2. Bármely x-hez létezik olyan y, hogy y nagyobb mint x és y prím és y+2 is prím.
+            3. Létezik olyan y, hogy bármely x esetén ha x prím akkor az x kisebb mint y.
+            4. létezik olyan y, hogy bármely x esetén ha y kisebb mint x akkor x nem prím.
+        </para>
+        <para>
+            Az első állítás azt mondja ki, hogy a prímszámok száma végtelen. Míg a második azt jelenti, hogy végtelen sok ikerprím létezik.Itt az SSy a successor function vagy másnéven a rákövetkező függvény,tehát  <emphasis role="strong">S(S(y))=(y+1)+1)</emphasis>.
+        </para>
+        <para>
+            A 3. állítás ennek az ellenkezőjét fejezi ki, tehát azt, hogy a prímszámok száma véges. A negyedik állítás ezzel ekvivalens, mivel azt mondja ki, hogy létik olyan y amitől nincs nagyobb prímszám.
+        </para>
     </section>                                                                                                                                                                            
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
     <section>
@@ -265,11 +326,47 @@ $(\exists y \forall x (y<x) \supset \neg (x \text{ prím}))$
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/deklaracio/harom_nyolc.cpp"> https://github.com/Savitar97/Prog1/blob/master/deklaracio/harom_nyolc.cpp</link>
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            Az int a létrehoz egy változót, amely int típúsú az az egész, a néven.
+        </para>
+        <para>
+            int *b létrehoz egy mutatót, amely a-nak a memória címére hivatkozik.
+        </para>
+        <para>
+            Az r rekurzívan hivatkozik a értékére. Vagyis ugyan arra a memória területre hivatkozik mint az a. Tehát ha r értékét változtatjuk akkor a-nak az értéke is változik. Szemléltetésként a következő kód szolgál:
+        </para>
+        <programlisting language="c"><![CDATA[
+        #include <stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	int a=5;
+	int &r=a;
+	int *d=&a;
+	int *b=&r;
+	cout<<a<<'\n'<<r<<'\n'<<d<<'\n'<<b<<'\n';
+	r=r+2;
+	cout<<a<<'\n'<<r<<'\n'<<d<<'\n'<<b<<'\n';
+	return 0;
+}
+              ]]>
+        </programlisting>
+     <para>
+         Futtatva következő eredményt kapjuk:
+     </para>
+      <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/deklaracio.png" scale="75" />
+                </imageobject>
+        </mediaobject>
     </section>                     
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
