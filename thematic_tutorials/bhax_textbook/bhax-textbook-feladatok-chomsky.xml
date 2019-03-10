@@ -19,6 +19,12 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            Decimálisból unárisba, úgy váltunk, hogy annyi 1 est írunk le,amennyi a szám értéke vagy másképp fogalmazva amilyen messze van a 0-tól.Pl.:n=90 esetén 90 db 1 est kell leírnunk.
+        </para>
+        <para>
+            Tehát itt pozitív számokat tudunk ábrázolni. A megvalósítás 2 féle lehet vagy indítunk egy for ciklust 0-tól és minden egyes lépésnél egy stringbe összefűzzük az egyeseket. Vagy pedig a számtól indítunk egy ciklust 0-ig és ugyan ezt tesszük. 
+        </para>
     </section>        
         
     <section>
@@ -53,6 +59,23 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            A C utasítások a C nyelv kulcsszavai.
+            A C nyelv tartalmazza a többsoros utasítás blokkokat,iterációkat (for,while,do-while),vezérlő szerkezeteket(if,switch),operátorok(++,--,!=,stb),deklarációk.
+        </para>
+        <para>
+            Backus normal form egy általánosított leírása a programozási nyelveknek.Nyelv független.
+        </para>
+        <programlisting><![CDATA[
+            A backus leírás röviden:
+        <szimbólum> ::= <kifejezés a szimbólumra>
+            van egy szimbólum aztán a ::= után van egy formai leírása 
+        <egész szám> ::= <előjel><szam>
+        <előjel> ::= [-|+]
+        <szam> ::= <szamjegy>{<szamjegy>}
+        <szamjegy> ::= 0|1|2|3|4|5|6|7|8|9
+       ]]>
+        </programlisting>
         <para>
             A c89-ben még nem lehet egysoros kommenteket írni (<command>//</command>) és szintén nem lehet a for ciklus fejében változót deklarálni, amit a c99 már enged. A különböző változatoknál a fordítást a <command>-std</command> kapcsolóval érjük el ez, így néz ki a gyakorlatban:
         </para>
@@ -113,13 +136,43 @@
             a feladat lényege, hogy lexert használjunk, azaz óriások vállán álljunk és ne kispályázzunk!
         </para>
         <para>
-            Megoldás videó: 
+            Megoldás videó: <link xlink:href="https://youtu.be/9KnMqrkj_kU">https://youtu.be/9KnMqrkj_kU</link>
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/real">https://github.com/Savitar97/Prog1/tree/master/real</link>
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            A lexernél az egyes részeket %%-jelek választják el. Az első résznél jön a könyvtár hivatkozás és a deklarációk és az első rész végén definiálunk(ilyen itt a digit amiben a számokat definiáljuk) a definícióknál lehet megadni a karakter csoportokat, amelyeket keresni akarunk a beolvasott szövegből.
+        </para>
+        <para>
+            A következőben jöhetnek a formázási szabályok itt mondhatjuk meg, hogy mi történjen ha megtalálja az adott karakter sorozatot vagy karaktert a lexer.Itt már használhatjuk a definíciókat.
+        </para>
+        <para>
+            Az első kapcsos zárójelben megadtuk, hogy számot keresünk, ezután a csillag azt jelenti,hogy bármennyiszer előfordulhat 0 vagy akárhány.Majd egy pontnak kell követni azután a + miatt jönnie kell egy számnak legalább vagy többnek. A kérdőjel viszont azt jelzi, hogy nem muszáj pontnak következnie és utána számnak ez azért kell mivel az egész számok is beletartoznak a valós számokhoz.
+        </para>
+        <para>
+            Majd azt adjuk meg ha találunk ilyen karaktersorozatot akkor a countert növeljük-1 el. És írjuk ki ezt a karakter sorozatot -között az atof függvény pedig ezt a karaktersorozatot valós számmá konvertálja.
+        </para>
+        <para>
+            A programot a következő képpen kell fordítanunk:
+        </para>
+        <para>
+        <command>lex -o real.c real.l</command>
+        </para>
+        <para>
+            Ilyenkor a lexer megírja a c programot, majd a létrehozott .c fájlt gcc-vel fordítjuk.
+        </para>
+        <para>
+        <command>gcc -o real real.c -lfl</command>
+        </para>
+        <para>
+            Az utolsó részben jön a program main része itt meghívjuk a yylex() függvényt és kiirassuk,hogy hány db valós számot találtunk.
+        </para>
+        <para>
+            A programot a <keycap>Ctrl+D</keycap>-vel tudjuk leállítani.
         </para>
     </section>                     
 
@@ -137,6 +190,7 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        
     </section>                     
 
 
