@@ -248,7 +248,7 @@
             </listitem>
         </orderedlist>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog1/tree/master/3.6 ">https://github.com/Savitar97/Prog1/tree/master/3.6 </link> 
         </para>
 
         <para>
@@ -258,6 +258,70 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <programlisting><![CDATA[for(i=0; i<5; ++i)]]></programlisting>
+        <para>
+            Egy for ciklus, amely 0-tól meg 5-ig.A ++i jelentése pre-increment,ez azt jelenti, hogy a művelet lefutása előtt megnöveli a változó értékét egyel.
+        </para>
+        <programlisting><![CDATA[for(i=0; i<5; i++)]]></programlisting>
+        <para>
+            For ciklus amely 0-tól megy 5-ig. Az i++ az post-increment,vagyis előbb hajtódik végre a művelet és csak utána növeli az i értékét 1 el.
+        </para>
+         <programlisting><![CDATA[for(i=0; i<5; tomb[i] = i++)]]></programlisting>
+         <para>Splint error:</para>
+         <programlisting><![CDATA[forforth.c: (in function main)
+forforth.c:7:24: Expression has undefined behavior (left operand uses i,
+                    modified by right operand): tomb[i] = i++
+  Code has unspecified behavior. Order of evaluation of function parameters or
+  subexpressions is not defined, so if a value is used and modified in
+  different places not separated by a sequence point constraining evaluation
+  order, then the result of the expression is unspecified. (Use -evalorder to
+  inhibit warning)
+
+Finished checking --- 1 code warning]]></programlisting>
+         <para>
+             A tömbnek az elemét egyenlővé teszi az i-nek az értékével kivéve az első elemét.
+         </para>
+          <programlisting><![CDATA[for(i=0; i<n && (*d++ = *s++); ++i)]]></programlisting>
+          <para>Elindít egy for ciklust, amely addig fut amíg az i kisebb mint n,ezen kívül d és s egy tömb mutatója és azokat a tömb elemeket,amelyekre a d mutat kicseréli azokra, amelyekre az s mutat.</para>
+         <programlisting><![CDATA[printf("%d %d", f(a, ++a), f(++a, a));]]></programlisting>
+         <para>splint által elkapott error:</para>
+         <programlisting><![CDATA[forsix.c: (in function main)
+forsix.c:10:24: Argument 2 modifies a, used by argument 1 (order of evaluation
+                   of actual parameters is undefined): f(a, ++a)
+  Code has unspecified behavior. Order of evaluation of function parameters or
+  subexpressions is not defined, so if a value is used and modified in
+  different places not separated by a sequence point constraining evaluation
+  order, then the result of the expression is unspecified. (Use -evalorder to
+  inhibit warning)
+forsix.c:10:32: Argument 1 modifies a, used by argument 2 (order of evaluation
+                   of actual parameters is undefined): f(++a, a)
+forsix.c:10:19: Argument 2 modifies a, used by argument 3 (order of evaluation
+    of actual parameters is undefined): printf("%d %d\n", f(a, ++a), f(++a, a))
+forsix.c:10:30: Argument 3 modifies a, used by argument 2 (order of evaluation
+    of actual parameters is undefined): printf("%d %d\n", f(a, ++a), f(++a, a))
+forsix.c:2:5: Function exported but not used outside forsix: f
+  A declaration is exported, but not used outside this module. Declaration can
+  use static qualifier. (Use -exportlocal to inhibit warning)
+   forsix.c:5:1: Definition of f
+
+Finished checking --- 5 code warnings
+]]></programlisting>
+         <para>
+             Az első függvénynél az a értéke 2 vel nő, míg a 2. nál 1 el.
+         </para>
+         <programlisting><![CDATA[printf("%d %d", f(a), a);]]></programlisting>
+         <para>Splint:</para>
+         <programlisting><![CDATA[forseven.c:2:5: Function exported but not used outside forseven: f
+  A declaration is exported, but not used outside this module. Declaration can
+  use static qualifier. (Use -exportlocal to inhibit warning)
+   forseven.c:5:1: Definition of f
+]]></programlisting>
+<para>Kiirja a függvénnyel módosított a és az a értékét.</para>
+<programlisting><![CDATA[printf("%d %d", f(&a), a);]]></programlisting>
+<para>Splint error:</para>
+   <programlisting><![CDATA[foreight.c:6:2: Parse Error. (For help on parse errors, see splint -help
+               parseerrors.)]]></programlisting>
+   <para>Konvertálási hiba a pointer értékeket %d helyett a %p-vel kell kiiratni printf-el.Tehát egy memória címet egészként akart kiiratni.</para>
 
     </section>                     
 
