@@ -212,7 +212,7 @@
               Az utolsó részben a mainben találjuk az srandomot, amely a randomot hívja ehhez a <emphasis role="red">time.h</emphasis> szükséges.A random generálásához az időt használja és hozzáadja a getpidet, amely az <function>unistd.h</function> könyvtárban van,ez azért szükséges, hogy jobban generáljon random számokat,vagyis nagyobb legyen a számok randomitása.Majd végül meghívjuk a yylex() függvényt.
           </para>
           <para>
-              A program futása során a lexer cseréli a beírt karakter sorozatot és ez 1337 5P34CH.Ati szerint ez fancy remélem neked is bátfai!XD
+              A program futása során a lexer cseréli a beírt karakter sorozatot és ez 1337 5P34CH.
           </para>
     </section>                     
 
