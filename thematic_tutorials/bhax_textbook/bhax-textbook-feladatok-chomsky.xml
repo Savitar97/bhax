@@ -281,6 +281,30 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <programlisting><![CDATA[signal.c:2: Include file <unistd.h> matches the name of a POSIX library, but
+    the POSIX library is not being used.  Consider using +posixlib or
+    +posixstrictlib to select the POSIX library, or -warnposix to suppress this
+    message.
+  Header name matches a POSIX header, but the POSIX library is not selected.
+  (Use -warnposixheaders to inhibit warning)
+signal.c: (in function jelkezelo)
+signal.c:5:20: Parameter a not used
+  A function parameter is not used in the body of the function. If the argument
+  is needed for type compatibility or future plans, use /*@unused@*/ in the
+  argument declaration. (Use -paramuse to inhibit warning)
+signal.c: (in function main)
+signal.c:16:4: Return value (type [function (int) returns void]) ignored:
+                  signal(SIGINT, S...
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalother to inhibit warning)
+signal.c:5:6: Function exported but not used outside signal: jelkezelo
+  A declaration is exported, but not used outside this module. Declaration can
+  use static qualifier. (Use -exportlocal to inhibit warning)
+   signal.c:8:1: Definition of jelkezelo
+]]></programlisting>
+        <para>
+            A signalis program ignorálja(SIG_IGN) vagy másképp elkapja a signalokat ilyen például a <keycap>Ctrl+C</keycap>.De nem minden signalt tud ignorálni. A SIGINT itt magát a signalt jelzi a 2 es signal neve SIGINT. A program a signal kezelést átadja a jelkezelésnek, tehát innentől nem a signal hajtódik végre hanem a jelkezelő.
+        </para>
         <programlisting><![CDATA[for(i=0; i<5; ++i)]]></programlisting>
         <para>
             Egy for ciklus, amely 0-tól meg 5-ig.A ++i jelentése pre-increment,ez azt jelenti, hogy a művelet lefutása előtt megnöveli a változó értékét egyel.
