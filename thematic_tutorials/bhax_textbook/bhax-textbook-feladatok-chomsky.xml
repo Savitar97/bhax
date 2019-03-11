@@ -185,12 +185,35 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog1/tree/master/leet">https://github.com/Savitar97/Prog1/tree/master/leet</link> 
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
-        
+        <para>
+            Elsőként definiáljuk a lexer struktúra méretét. Ezt a define LEXERSIZE adja meg vagyis a sorok számát ez 36.
+        </para>
+        <para>
+            Ezután létrehozunk egy struktúrát. Amiben definiálunk egy karakter változót és egy 4 elemű mutató tömböt.Ha több variációt akarunk behelyettesítésre,akkor növeljük ennek a számát.
+         </para>
+         <para>
+             Ezután létrehozzuk a struktúra fő részét itt az első elem karakter típúsú, amelyet majd vizsgálunk, a 2. elem egy 4 elemű tömb, amelyben a karakter helyettesítési lehetőségeit tároljuk. 
+          </para>
+          <para>
+              Ez volt az első része a lexernek ahol definiálunk és könyvtárakat hívunk meg.Most a defíníciókat kihagyjuk.
+          </para>
+          <para>
+              Következőnek az utasítás része jön a lexernek.Itt behozunk egy változót, amely azt jelzi, hogy megtalálta -e a karaktert a struktúrában ha nem akkor visszaadja majd a lent lévő if magát a karaktert. Majd indítunk egy fort,amely átnézi a struktúrát keresve a beolvasott karaktert, amelyet kisbetűre alakítunk,hogy ne kelljen külön kezelni a kis és nagy betűket.
+          </para>
+          <para>
+              Ha megtaláltuk a karaktert akkor egy random számot generálunk, amely segít, hogy véletlenszerűen válasszunk a 4 opció közül, amelyet a 4 if segítségével érünk el és visszaadjuk, hogy megtaláltuk a karaktert <function>found</function>.
+          </para>
+          <para>
+              Az utolsó részben a mainben találjuk az srandomot, amely a randomot hívja ehhez a <emphasis role="red">time.h</emphasis> szükséges.A random generálásához az időt használja és hozzáadja a getpidet, amely az <function>unistd.h</function> könyvtárban van,ez azért szükséges, hogy jobban generáljon random számokat,vagyis nagyobb legyen a számok randomitása.Majd végül meghívjuk a yylex() függvényt.
+          </para>
+          <para>
+              A program futása során a lexer cseréli a beírt karakter sorozatot és ez 1337 5P34CH.Ati szerint ez fancy remélem neked is bátfai!XD
+          </para>
     </section>                     
 
 
@@ -500,12 +523,36 @@ int main()
     </para>
     <programlisting><![CDATA[int *h ();]]></programlisting> 
     <para>
-        Olyan függvény ami egy egészre mutatót ad vissza.
+        Olyan függvény ami egy egészre mutató mutatót ad vissza.
     </para>
     <programlisting><![CDATA[int *(*l) ();]]></programlisting> 
     <para>
-        Egy egészre mutató mutatót ad vissza a függvényt.
+        Egy egészre mutató mutatóra mutatót ad vissza a függvényt.
     </para>
+    <programlisting><![CDATA[int (*v (int c)) (int a, int b)]]></programlisting>
+    <para>függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre</para>
+     <programlisting><![CDATA[int (*(*z) (int)) (int, int);]]></programlisting>
+      <para>függvénymutató egy egészet visszaadó és két egészet kapó függvényre mutató mutatót visszaadó, egészet kapó függvényre</para>
+      <programlisting><![CDATA[
+int (*sumormul (int c)) (int a, int b)
+{
+    if (c)
+        return mul;
+    else
+        return sum;
+
+}
+int
+main ()
+{
+ int (*f) (int, int);
+int (*(*g) (int)) (int, int);
+g = sumormul;
+f = *g (0);
+return 0;
+}]]></programlisting>
+<para>Itt az f egy olyan pointer ami egy int típúsú függvényre mutat.Tehát egyszerűen meghívhatunk függvényeket vele, ha egyenlővé tesszük egy 2 egészet kapó függvénnyel.Itt például a szummal ami 2 egészet kap. int sum(int a,int b)</para>
+<para>Az f-nek megadjuk a g pointert.Viszont a g már a sumormulra mutat.Tehát egy olyan füvvényre, ami egy egész számot kér és egy két egész számot kapó függvényre hivatkozik.Ha a g-nek 0 át adunk akkor a sum, ha ettől eltérő értéket akkor a mul fog végrehajtódni.Amit így már az f(int,int)-el tudunk hivatkozni és attól függ,hogy melyik függvényre mutat, hogy a g-nek az értéke alapján a g melyik függvényre mutat.</para>
     </section>                     
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
