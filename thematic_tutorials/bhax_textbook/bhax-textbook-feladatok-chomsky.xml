@@ -49,7 +49,9 @@
         <para>
             A környezetfüggő grammatika olyan szabályok összessége,amely segítségével a nyelvben minden jelsorozatot képesek vagyunk előállítani.
         </para>
-        <para>
+        <itemizedlist>
+            <listitem>
+                <para>
             A grammatika forrása a fólia:
             A, B, C „változók”
             a, b, c „konstansok”
@@ -58,48 +60,114 @@
             S→ aC
             aC(C→ bc)
             abc
-            
+                </para>
+            </listitem>
+            <listitem>
+                <para>
             S→ aAB
+                </para>
+            </listitem>
+            <listitem>
+                <para>
             aAB(A→ aAB)
-            aaABB(A→ aAB)
-            aaaABBB(A→ aAB)
-            aaaaABBBB(A→ aC)
-            aaaaaCBBBB(CB→ bCc)
-            aaaaabCcBBB(cB→ Bc)
-            aaaaabCBcBB(CB→ bCc)
-            aaaaabbCccBB(cB→ Bc)x2
-            aaaaabbCBccB(CB→ bCc)
-            aaaaabbbCcccB(cB→ Bc)x3
-            aaaaabbbCBccc(CB→ bCc)
-            aaaaabbbbCcccc(C→ bc)
-            aaaaabbbbbccccc
+                </para>
+            </listitem> 
+            <listitem>
+                <para>aaABB(A→ aAB)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaABBB(A→ aAB)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaABBBB(A→ aC)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaaCBBBB(CB→ bCc)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabCcBBB(cB→ Bc)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabCBcBB(CB→ bCc)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabbCccBB(cB→ Bc)x2</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabbCBccB(CB→ bCc)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabbbCcccB(cB→ Bc)x3</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabbbCBccc(CB→ bCc)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabbbbCcccc(C→ bc)</para>                        
+            </listitem>
+            <listitem>
+                <para>aaaaabbbbbccccc</para>                        
+            </listitem>                   
+            <listitem>
+                <para>Ez a grammatika biztosan ezt a nyelvet generálja.</para>                        
+            </listitem>            
             
-            Ez a grammatika biztosan ezt a nyelvet generálja.
-        </para>
-        <para>
-            S, X, Y „változók”
+        </itemizedlist>
+       <itemizedlist> 
+        <listitem>
+                <para>S, X, Y „változók”
             a, b, c „konstansok”
             S → abc, S → aXbc, Xb → bX, Xc → Ybcc, bY → Yb, aY -> aaX, aY → aa
             S-ből indulunk ki
-            A grammatika forrása a fólia.
-            S(S→aXbc)
-            aXbc(Xb→bX)
-            abXc(Xc→Ybcc)
-            abYbcc(bY→Yb)
-            aYbbcc(aY→aaX)
-            aaXbbcc(Xb→xB)2*
-            aabbXcc(Xc→Ybcc)
-            aabbYbccc(bY→Yb)
-            aaYbbbccc(aY→aaX)
-            aaaXbbbccc(Xb→bX)3*
-            aaabbbXccc(Xc→Ybcc)
-            aaabbbYbcccc(bY→Yb)3*
-            aaaYbbbbcccc(aY→aa)
-            aaaabbbbcccc
-            Környezetfüggő!
-            
-        </para>
-        
+            A grammatika forrása a fólia.</para>                        
+        </listitem>  
+        <listitem>
+                <para>S(S→aXbc)</para>                        
+        </listitem>
+        <listitem>
+                <para>aXbc(Xb→bX)</para>                        
+        </listitem> 
+        <listitem>
+                <para>abXc(Xc→Ybcc)</para>                        
+        </listitem> 
+        <listitem>
+                <para>abYbcc(bY→Yb)</para>                        
+        </listitem> 
+        <listitem>
+                <para>aYbbcc(aY→aaX)</para>                        
+        </listitem> 
+        <listitem>
+                <para>aaXbbcc(Xb→xB)2*</para>                        
+        </listitem> 
+        <listitem>
+                <para>aabbXcc(Xc→Ybcc)</para>                        
+        </listitem> 
+        <listitem>
+                <para>aabbYbccc(bY→Yb)</para>                        
+        </listitem> 
+        <listitem>
+                <para>aaYbbbccc(aY→aaX)</para>                        
+        </listitem> 
+        <listitem>
+                <para>aaaXbbbccc(Xb→bX)3*</para>                        
+        </listitem> 
+        <listitem>
+                <para>aaabbbXccc(Xc→Ybcc)</para>                        
+        </listitem> 
+        <listitem>
+                <para>aaabbbYbcccc(bY→Yb)3*</para>                        
+        </listitem> 
+        <listitem>
+                <para>aaaYbbbbcccc(aY→aa)</para>                        
+        </listitem> 
+        <listitem>
+                <para>aaaabbbbcccc</para>                        
+        </listitem> 
+        <listitem>
+                <para>Környezetfüggő! Az abc-nek bárhanyadik hatványa előállítható.</para>                        
+        </listitem>     
+    </itemizedlist>
+    
     </section>        
                 
     <section>
