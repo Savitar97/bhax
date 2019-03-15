@@ -25,6 +25,11 @@
         <para>
             Tehát itt pozitív számokat tudunk ábrázolni. A megvalósítás 2 féle lehet vagy indítunk egy for ciklust 0-tól és minden egyes lépésnél egy stringbe összefűzzük az egyeseket. Vagy pedig a számtól indítunk egy ciklust 0-ig és ugyan ezt tesszük. 
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/turing.jpg" scale="45" />
+                </imageobject>
+        </mediaobject>
     </section>        
         
     <section>
@@ -41,6 +46,60 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <para>
+            A környezetfüggő grammatika olyan szabályok összessége,amely segítségével a nyelvben minden jelsorozatot képesek vagyunk előállítani.
+        </para>
+        <para>
+            A grammatika forrása a fólia:
+            A, B, C „változók”
+            a, b, c „konstansok”
+            A → aAB, A → aC, CB → bCc, cB → Bc, C → bc
+            S-ből indulunk ki.
+            S→ aC
+            aC(C→ bc)
+            abc
+            
+            S→ aAB
+            aAB(A→ aAB)
+            aaABB(A→ aAB)
+            aaaABBB(A→ aAB)
+            aaaaABBBB(A→ aC)
+            aaaaaCBBBB(CB→ bCc)
+            aaaaabCcBBB(cB→ Bc)
+            aaaaabCBcBB(CB→ bCc)
+            aaaaabbCccBB(cB→ Bc)x2
+            aaaaabbCBccB(CB→ bCc)
+            aaaaabbbCcccB(cB→ Bc)x3
+            aaaaabbbCBccc(CB→ bCc)
+            aaaaabbbbCcccc(C→ bc)
+            aaaaabbbbbccccc
+            
+            Ez a grammatika biztosan ezt a nyelvet generálja.
+        </para>
+        <para>
+            S, X, Y „változók”
+            a, b, c „konstansok”
+            S → abc, S → aXbc, Xb → bX, Xc → Ybcc, bY → Yb, aY -> aaX, aY → aa
+            S-ből indulunk ki
+            A grammatika forrása a fólia.
+            S(S→aXbc)
+            aXbc(Xb→bX)
+            abXc(Xc→Ybcc)
+            abYbcc(bY→Yb)
+            aYbbcc(aY→aaX)
+            aaXbbcc(Xb→xB)2*
+            aabbXcc(Xc→Ybcc)
+            aabbYbccc(bY→Yb)
+            aaYbbbccc(aY→aaX)
+            aaaXbbbccc(Xb→bX)3*
+            aaabbbXccc(Xc→Ybcc)
+            aaabbbYbcccc(bY→Yb)3*
+            aaaYbbbbcccc(aY→aa)
+            aaaabbbbcccc
+            Környezetfüggő!
+            
+        </para>
+        
     </section>        
                 
     <section>
@@ -64,7 +123,7 @@
             A C nyelv tartalmazza a többsoros utasítás blokkokat,iterációkat (for,while,do-while),vezérlő szerkezeteket(if,switch),operátorok(++,--,!=,stb),deklarációk.
         </para>
         <para>
-            Backus normal form egy általánosított leírása a programozási nyelveknek.Nyelv független.
+            Backus normal form egy általánosított leírása a programozási nyelveknek.Nyelv független. Vagyis ez a séma ráilleszthető a legtöbb programozási nyelvre és használható a nyelvekben írt programok leírására.
         </para>
         <programlisting><![CDATA[
             A backus leírás röviden:
