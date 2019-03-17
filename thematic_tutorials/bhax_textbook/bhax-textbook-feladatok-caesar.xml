@@ -33,7 +33,16 @@
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
+        </para>
+        <para>
+            Az exor titkosítás egy viszonylag egyszerű, de mégis hatékony titkosítási módszer tud lenni.
+        </para>
+        <para>
+            Ha törekszünk arra, hogy a kulcs minél hosszabb legyen. Ugyanis a program működése, hogy a szöveg karakterein egyessével bitenkénti xor műveletet hajtunk végre.Viszont ha a szöveg hoszabb,mint a kulcs akkor ismétlődéssel érjük el a titkosítást. Mármint a kulcsot ismételjük mindaddig, amíg a szöveget teljesen nem titkosítjuk.
         </para>            
+        <para>
+            
+        </para>
     </section>        
     <section>
         <title>Java EXOR titkosító</title>
