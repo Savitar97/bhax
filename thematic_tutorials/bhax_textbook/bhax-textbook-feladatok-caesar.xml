@@ -136,7 +136,7 @@
             Az exortörésben meghívjük az exor eljárást majd az exorozott szöveget átadjuk a tiszta lehetnek vizsgálatra,ha passzol akkor majd a brutal force-s forban az if igaz lesz és kiirja a terminálra a kulcsot és a megfejtett szöveget.
         </para>
         <para>
-            A mainbe szintén definiáljuk a kulcsot és a titkos szöveget. A while-ban hívjuk be a titkos szöveget. A while-t követő forban pedig mindig 0-ázzuk a bufferben a maradék helyet. Ezután jönnek a kulcspróbálgatásos for ciklusok, amelyek a törést végzik.Ha nem állt le a for akkor újra exorozunk,így nincs szükség újabb meg újabb bufferre.
+            A mainbe szintén definiáljuk a kulcsot és a titkos szöveget. A while-ban hívjuk be a titkos szöveget. A while-t követő forban pedig mindig 0-ázzuk a bufferben a maradék helyet. Ezután jönnek a kulcspróbálgatásos for ciklusok, amelyek a törést végzik, itt párhuzamosítva a gyorsabb működés érdekében.Ha nem állt le a for akkor újra exorozunk,így nincs szükség újabb meg újabb bufferre.
         </para>
         <para>
             Így néz ki a program futás közben:
