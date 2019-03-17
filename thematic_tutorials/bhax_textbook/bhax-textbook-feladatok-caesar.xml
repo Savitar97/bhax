@@ -71,8 +71,25 @@
             Ha törekszünk arra, hogy a kulcs minél hosszabb legyen. Ugyanis a program működése, hogy a szöveg karakterein egyessével bitenkénti xor műveletet hajtunk végre.Viszont ha a szöveg hoszabb,mint a kulcs akkor a kulcs ismétlődésével érjük el a titkosítást.Tehát például 8 karakterű kulcsnál a szöveg első karakterét a kulcs első karakterével exorozzuk, a másodikat a másodikkal és így tovább.
         </para>            
         <para>
-            
+            A programban elsőként definiáltuk a max kulcsméretet és a max buffer méretet.Deklarálunk 2 char tömböt ezek segítségével, majd deklarálunk és inicializáltunk 2 változót ez a kulcs_index és az olvasott_bajtok.
         </para>
+        <para>
+            Majd az int kulcs_meretbe megadjuk, hogy mekkora a kulcsunk ezt az argv[1] karakter tömbjének mérete adja. Ugyanis az argv az a futtatáskor bemenő egységeket nézi az argv[0] maga a futtatás parancsa a terminálta a ./fájlnév. Az 1 itt a kulcs amit megadunk. Ezek char mátrixok. Azt, hogy hány bemenet van az az ilyen char tömb az az argc-ben van letárolva ami ezeknek a számát kapja értékül.
+        </para>
+        <para>
+            A strncpy-vel másoljuk át a bemenetben megadott kulcsot az argv[1]-tömbből a kulcs tömbbe. A while beolvassa a txt-t az első karaktertől a végéig(a buffer méretéig), a read visszatérési értéke a beolvasott bájtok száma.A for ciklus végig megy a szövegen és ez titkosítja a maradékos osztással éri el a program, ha kisebb a kulcs mint a szöveg, akkor a kulcs ismétlődésével titkosítsunk.
+        </para>
+        <para>
+            A write és a read is ha negatív értéket kap akkor hibát fog kiírni.
+         </para>
+         <para>
+             A readnél a 0 azt jelenti, hogy a standard inputról olvasson.A writenál az 1 es, hogy a standard outputba írjon azaz ez oldja meg, hogy a megadott szövegfájlt olvassa be és a megadott fájlba írja ki.
+         </para>
+         <para>
+             Fordítani a szokásos módon tudjuk. Futtatási segédlet a következő minta:<programlisting><![CDATA[
+            ./exor kulcs <bemenőszöveg.txt>titkosítottszöveg.txt
+       ]]></programlisting> 
+         </para>
     </section>        
     <section>
         <title>Java EXOR titkosító</title>
@@ -83,7 +100,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog1/tree/master/exor">https://github.com/Savitar97/Prog1/tree/master/exor</link>                
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
@@ -98,11 +115,37 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog1/tree/master/exor">https://github.com/Savitar97/Prog1/tree/master/exor</link>                
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+        </para>
+        <para>
+            Az exor törés az exor visszafejtése. Ez olyan mint a brutal force, addig próbálgatjuk a kulcs kombinációkat, amíg vissza nem kapjuk a szöveget.
+        </para>
+        <para>
+            Annak meghatározásához, hogy jó -e a szöveg most két függvényt írtunk egyik szempont az átlagos szóhosszak figyelembe vétele a másik pedig,a mondatokban gyakran előforduló szavak.
+        </para>
+        <para>
+            Az átlagos szóhosszt úgy kapjuk, hogy megszámoljuk hány darab space van a szövegben, majd a bemenő szöveg hosszát elosztjuk a szóközök számával.
+        </para>
+        <para>
+            Az exorban ugyan azt csináljuk mint a titkosításnál csak most vissza fejtjük a titkos szöveget.
+        </para>
+        <para>
+            Az exortörésben meghívjük az exor eljárást majd az exorozott szöveget átadjuk a tiszta lehetnek vizsgálatra,ha passzol akkor majd a brutal force-s forban az if igaz lesz és kiirja a terminálra a kulcsot és a megfejtett szöveget.
+        </para>
+        <para>
+            A mainbe szintén definiáljuk a kulcsot és a titkos szöveget. A while-ban hívjuk be a titkos szöveget. A while-t követő forban pedig mindig 0-ázzuk a bufferben a maradék helyet. Ezután jönnek a kulcspróbálgatásos for ciklusok, amelyek a törést végzik.Ha nem állt le a for akkor újra exorozunk,így nincs szükség újabb meg újabb bufferre.
+        </para>
+        <para>
+            Így néz ki a program futás közben:
+        </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/exor.png" scale="20" />
+                </imageobject>
+        </mediaobject>
     </section>        
     <section>
         <title>Neurális OR, AND és EXOR kapu</title>
