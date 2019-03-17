@@ -6,19 +6,49 @@
         </keywordset>
     </info>
     <section>
-        <title><type>int ***</type> háromszögmátrix</title>
+        <title><type>double **</type> háromszögmátrix</title>
         <para>
-           
+            Írj egy olyan <function>malloc</function> és <function>free</function>
+            párost használó C programot, amely helyet foglal
+            egy alsó háromszög mátrixnak a szabad tárban!
         </para>
         <para>
-            Megoldás videó:
+            Megoldás videó: <link xlink:href="https://youtu.be/1MRTuKwRsB0">https://youtu.be/1MRTuKwRsB0</link>,
+            <link xlink:href="https://youtu.be/RKbX5-EWpzA">https://youtu.be/RKbX5-EWpzA</link>.
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://gitlab.com/Savitar97/bhax/blob/master/thematic_tutorials/bhax_textbook/Caesar/tm.c">https://gitlab.com/Savitar97/bhax/blob/master/thematic_tutorials/bhax_textbook/Caesar/tm.c</link>               
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+        </para>
+        <para>
+            Az alsó háromszög mátrix lényege, hogy a főátló fölött csupa 0-érték helyezkedik el. Az alsó háromszögmátrixokat sorfolytonosan szoktuk ábrázolni, ha M[i,j] a j>i akkor a j értéke 0.
+        </para>
+        <para>
+            Az nr-ben inicializáljuk, hogy hány soros és oszlopos legyen a mátrixunk. Ezután létrehozunk(deklarálunk) egy double típúsú mutatóra mutató mutatót, amely egy 2 dimenziós tömb lesz.
+        </para>
+        <para>
+            Majd kiiratjuk a címét ennek a mutatónak. Itt még nincs érték adva neki. Ezután a tm-nek a malloc típuskényszerítve double-re visszaad egy pointert a dinamikusan lefoglalt területtel. Egy pointernek lefoglalt hely függ,hogy hány bites a rendszerünk mivel általában 64 bitesek a rendszerek ezért ez 8 bájtos lesz, itt most megszorozzuk az nr el, tehát 40 bájtot foglal le a malloc. Ha nem tudod helyet foglalni akkor visszaad valamilyen hibát,itt a hibakezelést egy egyszerű return -1 oldja meg.
+        </para>
+        <para>
+        Ezzel lefoglaltuk a sorokat azonosító mutatóknak a helyet(5 mutatónak a helyét).  
+        </para>
+        <para>
+         Ezután a következő malloccal a sorokban elhelyezkedő elemekre foglalunk le helyet. Mivel a double mérete is 8 bájt ezért az első sorba 1*8bájtot a következőben 2*8 bájtot és így tovább foglalunk le. Miután ez lefut az elemeknek a helye is le lesz foglalva.
+        </para>
+        <para>
+            Majd kiiratjuk az első sorra hivatkozó mutató memória területét.
+        </para>
+        <para>
+            Majd feltöltjük a mátrixunkat elemekkel ez a forcikus 0-14 ig fogja feltölteni.
+            </para>
+        <para>
+            A következő értékadásokkal kicseréljük a 4.sor elemeit a megadott elemekre csak különböző hivatkozásokkal van felírva, de mind ugyan azt jelenti.
+        </para>
+        <para>
+            A program végén a free felszabadítja a malloc által lefoglalt de nem használt memória területeket.
+        </para>     
     </section>        
     <section>
         <title>C EXOR titkosító</title>
@@ -29,7 +59,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/exor">https://github.com/Savitar97/Prog1/tree/master/exor</link>               
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
@@ -38,7 +68,7 @@
             Az exor titkosítás egy viszonylag egyszerű, de mégis hatékony titkosítási módszer tud lenni.
         </para>
         <para>
-            Ha törekszünk arra, hogy a kulcs minél hosszabb legyen. Ugyanis a program működése, hogy a szöveg karakterein egyessével bitenkénti xor műveletet hajtunk végre.Viszont ha a szöveg hoszabb,mint a kulcs akkor ismétlődéssel érjük el a titkosítást. Mármint a kulcsot ismételjük mindaddig, amíg a szöveget teljesen nem titkosítjuk.
+            Ha törekszünk arra, hogy a kulcs minél hosszabb legyen. Ugyanis a program működése, hogy a szöveg karakterein egyessével bitenkénti xor műveletet hajtunk végre.Viszont ha a szöveg hoszabb,mint a kulcs akkor a kulcs ismétlődésével érjük el a titkosítást.Tehát például 8 karakterű kulcsnál a szöveg első karakterét a kulcs első karakterével exorozzuk, a másodikat a másodikkal és így tovább.
         </para>            
         <para>
             
