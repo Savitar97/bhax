@@ -169,7 +169,12 @@
         </para>
         <para>
             Ha növeljük a rejtett neuronok számát akkor pontosodik az érték és kevesebb lépésből képes meghatározni az eredményt az az több mintát készít. A stepmax meghatározza a maximum lépések számát. A threshhold a küszöbfüggvény, hogy körülbelül mennyivel pontosítsa az értéket ha nem sikerülne kiszámolni. Majd a compute kiadásával már számol a megtanult módon itt ellenőrizhetjük, hogy megtanulta -e a program a számítást.
-        </para>           
+        </para> 
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Rplot1.png" scale="20" />
+                </imageobject>
+        </mediaobject>          
     </section>        
     <section>
         <title>Hiba-visszaterjesztéses perceptron</title>
@@ -186,7 +191,7 @@
             Tanulságok, tapasztalatok, magyarázat...
         </para>
         <para>
-            A hiba-visszaterjesztéses perceptron(back-propagation) a rejtett rétegekben fellépő hibákat is a tudtunkra hozza. Vagyis ami a színfalak mögött történik. Ugyanis a végeredmény kiszámításánál létrejövő hibákért már a rejtett rétegben kialakult hibák a felelősek. Az ilyen visszaterjesztési perceptronokat csak olyan neurális hálóknál lehet alkalmazni ahol van hidden réteg.
+            A hiba-visszaterjesztéses perceptron(back-propagation) a rejtett rétegekben fellépő hibákat is a tudtunkra hozza. Vagyis ami a színfalak mögött történik. Ugyanis a végeredmény kiszámításánál létrejövő hibákért már a rejtett rétegben kialakult hibák a felelősek. Az ilyen visszaterjesztési perceptronokat csak olyan neurális hálóknál lehet alkalmazni ahol van hidden réteg. A program 
          </para>        
     </section>        
         
