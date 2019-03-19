@@ -104,7 +104,10 @@
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+        </para> 
+        <para>
+            A programunk úgy kezdődik h létrehozunk egy Exor osztályt. Majd létrehozunk egy stringet,amelyben a  kulcsot tároljuk és nyitunk két csatornát egy bejövőt és egy kimenőt az olvasás íráshoz. A throws a hibakezeléshez kell ha nem sikerül a beolvasás vagy kiiratás akkor hibát dob. Ezután definiálunk egy byte változót a buffernek és egy kulcs indexet, amely a kulcs első karakterére hivatkozik kezdetben és egy olvasott bájtokat, amely a beomenetről beolvasott szöveg hosszával egyenlő. Aztán a while-al olvassuk be a szöveget és letároljuk a bufferben közben a méretét az olvasott bájtokba. Aztán a forban titkosítunk a maradékos osztás azért szükséges, hogy ha a szöveg hosszabb mint a kulcs akkor a kulcs index ismét 0-tól kezdődjön mivel karakterenként történik a titkosítás. Majd a végén a write-al a megadott kimenetre írunk.
+        </para>           
     </section>        
     <section>
         <title>C EXOR törő</title>
@@ -136,7 +139,7 @@
             Az exortörésben meghívjük az exor eljárást majd az exorozott szöveget átadjuk a tiszta lehetnek vizsgálatra,ha passzol akkor majd a brutal force-s forban az if igaz lesz és kiirja a terminálra a kulcsot és a megfejtett szöveget.
         </para>
         <para>
-            A mainbe szintén definiáljuk a kulcsot és a titkos szöveget. A while-ban hívjuk be a titkos szöveget. A while-t követő forban pedig mindig 0-ázzuk a bufferben a maradék helyet. Ezután jönnek a kulcspróbálgatásos for ciklusok, amelyek a törést végzik, itt párhuzamosítva a gyorsabb működés érdekében.Ha nem állt le a for akkor újra exorozunk,így nincs szükség újabb meg újabb bufferre.
+            A mainbe szintén definiáljuk a kulcsot és a titkos szöveget,a p-titkossal megkapjuk a szöveg méretét. A while-ban hívjuk be a titkos szöveget. A while-t követő forban pedig mindig 0-ázzuk a bufferben a maradék helyet. Ezután jönnek a kulcspróbálgatásos for ciklusok, amelyek a törést végzik, itt párhuzamosítva a gyorsabb működés érdekében.Ha nem állt le a for akkor újra exorozunk,így nincs szükség újabb meg újabb bufferre.
         </para>
         <para>
             Így néz ki a program futás közben:
@@ -160,7 +163,13 @@
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+        </para> 
+        <para>
+            A program futására az R-hez hozzá kell adnunk a neuralnetwork library-t. Ezután megadjuk neki az első mintát, ami alapján majd tanulni fog a program,tehát megoldunk egy minta feladatot. Tehát a program előre tudja mi lesz a bemenet és a kimenet. A program automatikusan választ súlyokat majd az értéket szorozzuk ezzel a súlyjal és összeadjuk őket és hozzáadja az eltolás mértékét. Majd behelyettesít egy 1/(1+exp(-x)) függvénybe. A kapott eredmény mindig 0 és 1 közé fog esni. A neural net függvénynél elsőnek megadjuk, hogy milyen értéket kell kaptunk ez az OR-nak az értéke Ha több kimeneti értéket számolunk akkor +-t használunk a felsoroláshoz, majd a ~-al adjuk meg, hogy miből kell ezt az eredményt kapnia, azaz a bemenetet.Következőnek megadjuk,hogy honnan vegye a bemenő adatokat.(Pl.:or.data,orand.data)
+        </para>
+        <para>
+            Ha növeljük a rejtett neuronok számát akkor pontosodik az érték és kevesebb lépésből képes meghatározni az eredményt az az több mintát készít. A stepmax meghatározza a maximum lépések számát. A threshhold a küszöbfüggvény, hogy körülbelül mennyivel pontosítsa az értéket ha nem sikerülne kiszámolni. Majd a compute kiadásával már számol a megtanult módon itt ellenőrizhetjük, hogy megtanulta -e a program a számítást.
+        </para>           
     </section>        
     <section>
         <title>Hiba-visszaterjesztéses perceptron</title>
@@ -171,11 +180,14 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/nbatfai/nahshon/blob/master/ql.hpp#L64">https://github.com/nbatfai/nahshon/blob/master/ql.hpp#L64</link>             
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+        </para>
+        <para>
+            A hiba-visszaterjesztéses perceptron(back-propagation) a rejtett rétegekben fellépő hibákat is a tudtunkra hozza. Vagyis ami a színfalak mögött történik. Ugyanis a végeredmény kiszámításánál létrejövő hibákért már a rejtett rétegben kialakult hibák a felelősek. Az ilyen visszaterjesztési perceptronokat csak olyan neurális hálóknál lehet alkalmazni ahol van hidden réteg.
+         </para>        
     </section>        
         
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
