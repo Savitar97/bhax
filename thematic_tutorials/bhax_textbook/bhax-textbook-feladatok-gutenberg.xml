@@ -15,6 +15,7 @@
         <para>         
             <citation>PICI</citation>       
         </para>
+        
     </section>        
     <section>
         <title>Programozás bevezetés</title>
@@ -23,7 +24,32 @@
         </para>
         <para>
             Megoldás videó: <link xlink:href="https://youtu.be/zmfT9miB-jY">https://youtu.be/zmfT9miB-jY</link>
-        </para>        
+        </para>
+        <para>
+            3. Fejezet Vezérlési szerkezetek
+            
+            A C-nyelvben az utasításokat pontos vesszővel zárjuk. Az utasítás blokkokat {}-el jelöljük.
+        </para>
+        <para>
+            3.2
+            If-else
+            
+            Az if szerkezet döntést hozó utasítás. Ha(feltétel) utasítás else utasítás2 , az elsre nem mindig van szükség lehet olyan is, hogy ha történik valami akkor csináljon valamit a program,ha nem akkor ugorja át. Az else ág mindig a hozzá legközelebb lévő else nélküli ifhez fog tartozni. Ha nem így szeretnénk akkor az if hatáskörét {}-jelek közé kell tenni. Az ifnek van egy másik fajtája az else if itt több feltétel egymásba ágyazása történik. Itt a legutolsó else akkor fut le ha egyik feltétel sem teljesül. Amint egy teljesül a feltételek közül a program végrehajtja és kilép az else-if ágról.
+        </para>
+        
+        <para>
+            3.3 Switch
+            A switchet többirányú programelágazások esetén használjuk itt valamilyen állandó értékhez rendeli az utasítást. A switchben case-eket hozunk létre, amelyek akkor futnak le ha teljesül az állandó, ezen kívül minden case-t break-el kell zárni.Létezik egy default ág, amely akkor fut le ha egyik case feltétele se teljesül.
+            </para>
+            <para>
+                A break el nem csak a switchből tudunk kilépni hanem bármely ciklust képesek vagyunk vele megszakítani.
+             </para> 
+             <para>
+                A for előírt lépésszámú ciklus, amelynek van egy kezdő értéke egy végértéke és egy lépésszáma. 
+              </para>
+              <para>
+                  A while addig fut amíg a ciklusfejben megadott feltétel hamis nem lesz.
+               </para>   
     </section>        
     <section>
         <title>Programozás</title>

@@ -191,7 +191,7 @@
             Tanulságok, tapasztalatok, magyarázat...
         </para>
         <para>
-            A hiba-visszaterjesztéses perceptron(back-propagation) a rejtett rétegekben fellépő hibákat is a tudtunkra hozza. Vagyis ami a színfalak mögött történik. Ugyanis a végeredmény kiszámításánál létrejövő hibákért már a rejtett rétegben kialakult hibák a felelősek. Az ilyen visszaterjesztési perceptronokat csak olyan neurális hálóknál lehet alkalmazni ahol van hidden réteg. A program 
+            A hiba-visszaterjesztéses perceptron(back-propagation) a rejtett rétegekben fellépő hibákat is a tudtunkra hozza. Vagyis ami a színfalak mögött történik. Ugyanis a végeredmény kiszámításánál létrejövő hibákért már a rejtett rétegben kialakult hibák a felelősek. Az ilyen visszaterjesztési perceptronokat csak olyan neurális hálóknál lehet alkalmazni ahol van hidden réteg. A program bekér egy képet. Majd a size-ban definiáljuk a kép méretét(szélesség*magasság).Majd a for ciklusban végig megyünk a kép pixelein.
          </para>        
     </section>        
         
