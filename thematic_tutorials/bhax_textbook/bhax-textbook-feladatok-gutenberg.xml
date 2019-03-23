@@ -62,5 +62,39 @@
         <para>                
             <citation>BMECPP</citation>
         </para>
+        <para>
+            A BME-tankönyv második fejezete a C++ újításait veszi szemügyre a C-vel szemben ezek nagyrészt, csak az olvashatóbb kódot szolgálják.
+        </para>
+        <para>
+        Az első változás a függvények paraméterénél van.C++ ban ha egy függvénynek nem adunk paramétert akkor az egy void paraméterrel lesz egyenlő. C-ben ugyanez tetszőleges számú paramétert jelentett,de C++-ban ez a lehetőség már a ...-lett.
+        </para>
+        <para>
+            Ha nem adunk meg visszatérési típust akkor C-nél ez az int lesz viszont C++-nál már hibát ír ki a fordító azaz nincs alapból ilyen definiálva.
+        </para>
+        <para>
+            C++-ban kétféle main függvény van van a sima int main() és létezik az int main(int argc,char** argv). Az argc a bemenő paraméterek számát, míg az argv egy 2 dimenziós tömböt ad vissza magukról a bemenő argumentumokról. És C++-ban már nem kötelező a return 0; ami a sikeres futást jelzi.
+        </para>
+        <para>
+            Ezeken kívül bevezetésre került a bool típus ez megkönnyíti az olvasást két értéke van true és false.
+         </para>
+         <para>
+             Emellett alapértelmezett típus lett a wchar_t amivel több bájtos karaktereket lehet letárolni pl unicode karakterek. 
+         </para>
+         <para>
+             Képesek vagyunk C függvényeket meghívni C++-ból ez az extern "C"-vel lehetséges. Ez a fordítottját is lehetővé teszi,ha a C++-ban definiálunk egy ilyen függvényt akkor C-ből képesek vagyunk C++ függvényt hívni.
+         </para>
+         <para>
+             Emellett adhatunk meg alapértelmezett argumentumokat ezeket arra az esetre hozhatunk létre ha létrejöhet olyan hiba, hogy a felhasználó kevesebb argumentumot ad meg ekkor van rá egy alapértelmezett alternatíva.
+          </para>
+          <para>
+              A változók deklarálása bárhol történhet ahol utasítás lehetséges a C++-ban érdemes mindig azelőtt deklarálni egy változót mielőtt felhasználunk ezzel átláthatóbb a kód.
+          </para>
+          <para>
+             Függvénynevek túlterhelése: A C-ben a függvényeket a neve azonosította, így nem lehetett két ugyan azzal a névvel rendelkező fv.-t létrehozni. De a C++-ban egy fügvényt már a neve és az argumentumai együttesen azonosítja.
+           </para>
+           <para>
+               Paraméter szerinti átadás. A függényben pointert hívunk meg int* valami néven,míg a változó elé egy és jelet teszünk, így a változó memória címét adjuk át a függvénynek tehát ha valamilyen módosítás történik a változóval a függvényben az kihat a mainben deklarált változóra is.
+            </para>
     </section>        
+  
 </chapter>                

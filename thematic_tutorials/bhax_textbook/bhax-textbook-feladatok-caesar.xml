@@ -146,7 +146,7 @@
         </para>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/exor.png" scale="20" />
+                    <imagedata fileref="img/exor.png" scale="25" />
                 </imageobject>
         </mediaobject>
     </section>        
@@ -155,6 +155,12 @@
         <para>
             R
         </para>
+        <caution>
+            <title>
+                Tutor
+            </title>
+            <para>Ebben a feladatban tutoráltam Molnár Antalt.</para>
+        </caution>
         <para>
             Megoldás videó: <link xlink:href="https://youtu.be/Koyw6IH5ScQ">https://youtu.be/Koyw6IH5ScQ</link>
         </para>
@@ -172,7 +178,7 @@
         </para> 
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/Rplot1.png" scale="20" />
+                    <imagedata fileref="img/Rplot1.png" scale="50" />
                 </imageobject>
         </mediaobject>          
     </section>        
@@ -191,7 +197,7 @@
             Tanulságok, tapasztalatok, magyarázat...
         </para>
         <para>
-            A hiba-visszaterjesztéses perceptron(back-propagation) a rejtett rétegekben fellépő hibákat is a tudtunkra hozza. Vagyis ami a színfalak mögött történik. Ugyanis a végeredmény kiszámításánál létrejövő hibákért már a rejtett rétegben kialakult hibák a felelősek. Az ilyen visszaterjesztési perceptronokat csak olyan neurális hálóknál lehet alkalmazni ahol van hidden réteg. A program bekér egy képet. Majd a size-ban definiáljuk a kép méretét(szélesség*magasság).Majd a for ciklusban végig megyünk a kép pixelein.
+            A hiba-visszaterjesztéses perceptron(back-propagation) a rejtett rétegekben fellépő hibákat is a tudtunkra hozza. Vagyis ami a színfalak mögött történik. Ugyanis a végeredmény kiszámításánál létrejövő hibákért már a rejtett rétegben kialakult hibák a felelősek. Az ilyen visszaterjesztési perceptronokat csak olyan neurális hálóknál lehet alkalmazni ahol van hidden réteg. A visszaterjesztés a legutolsó rejtett neurontól kezdődik ellentétesen mint az alap számolás,tehát a kimenet előtti neurontól. A visszaterjesztéses módszer lényege,hogy frissített súlyjal megbecsüljük, hogy az előző neuron mennyire hibázott a kívánt értéktől ez jó iránymutatást adhat a súlyok javításán. A program bekér egy képet. Majd a size-ban definiáljuk a kép méretét(szélesség*magasság).Majd a for ciklusban végig megyünk a kép pixelein. Példányosítjuk a perceptron osztályunkat, amely majd annyi neurális szintet képez ahány bemenet van. A perceptron a szigmoid függvényt használja 1.0/ ( 1.0 + exp ( -x ) ). Az unitsba tároljuk majd le a súlyjal megszorzott értékünket. Amelyről majd a sigmund megmondja, hogy jó -e vagy sem. A learning eljárásban történik a visszaterjesztés.Annak kiszámítása, hogy mekkora volt az eltérés úgy történik, hogy a sigmoid-al kiszámolt értéket kivonjuk az 1.0-ból az az a felső határból majd frissítsük a súlyokat és újra megnézzük.
          </para>        
     </section>        
         
