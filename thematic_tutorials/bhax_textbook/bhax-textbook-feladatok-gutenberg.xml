@@ -93,7 +93,13 @@
              Függvénynevek túlterhelése: A C-ben a függvényeket a neve azonosította, így nem lehetett két ugyan azzal a névvel rendelkező fv.-t létrehozni. De a C++-ban egy fügvényt már a neve és az argumentumai együttesen azonosítja.
            </para>
            <para>
-               Paraméter szerinti átadás. A függényben pointert hívunk meg int* valami néven,míg a változó elé egy és jelet teszünk, így a változó memória címét adjuk át a függvénynek tehát ha valamilyen módosítás történik a változóval a függvényben az kihat a mainben deklarált változóra is.
+               Paraméter szerinti átadás: A függényben pointert hívunk meg int* valami néven,míg a változó elé egy és jelet teszünk, így a változó memória címét adjuk át a függvénynek tehát ha valamilyen módosítás történik a változóval a függvényben az kihat a mainben deklarált változóra is. C++-ban bevezették a referencia típust.Így elég ha simán átadjuk a változó értékét majd a függvényben adunk és jelet az argumentumnak aztán mint egy sima változó úgy tudunk vele dolgozni.
+            </para>
+            <para>
+                Az és jel ezen kívül még egy egyoperandusú operátor ami a változó címét adja vissza C-ben még nem szerepelhetett deklarációnál,így a C++-ezt felhasználhatta a referencia típushoz.
+            </para>
+            <para>
+                A cím szerinti paraméter átadás főként a nagyméretű adatszerkezetnél hasznos ugyanis nem kell egy másolatot készíteni róluk, hanem közvetlenül használhatjuk az adatszerkezetet és módosítgathatunk benne.
             </para>
     </section>        
   
