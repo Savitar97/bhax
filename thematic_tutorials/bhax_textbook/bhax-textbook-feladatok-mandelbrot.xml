@@ -7,14 +7,21 @@
     </info>
     <section>
         <title>A Mandelbrot halmaz</title>
-        <para>
-                
-        </para>
+        
         <para>
             Megoldás videó:
         </para>
         <para>
             Megoldás forrása:                
+        </para>
+        <para> 
+            A program elején definiáljuk a kép méretét és az iterációs határt mivel végtelen számra nem tudjuk megnézni ezért kell valamilyen korlát.      
+        </para>
+        <para>
+            A mainben most használjuk az argc és argv-t, ez csak azért kell,hogy megadhassuk hogy milyen néven mentse el a kimenetet. Ha nem adunk meg fájl nevet az első if fog hibaüzenetet dobni nekünk.
+        </para>
+        <para>
+            Ezután létrehozunk egy 2 dimenziós tömböt a kép méreteivel. Ezután a mandel függvénynek átadjuk ezt a tömböt. Itt vannak a futási időhöz való számítást segítő változók. De ami lényeg az a számoláshoz tartozó változók és, hogy az adott komplex szám a halmaznak eleme -e, ez akkor lehetséges ha a z kisebb mint 2 vagy elértük a 255. iterációt. Majd feltöltjük a tömböt. Majd létrehozunk egy új képet kép néven és pixelenként bejárjuk és ami benne van a halmazba elem azon a helyen a képkocka színét átszínezzük. Majd a write(argv[1])-el a megadott fájlnévvel készítünk egy képet. Az így kapott ábra a mandelbrot halmaz grafikus megjelenítése, amely egy fraktál az az egy végtelenül komplex alakzat lesz. Vagyis minél jobban rá nagyítunk ismétlődésként megfog jelenni ez az ábra.
         </para>
     </section>        
         
@@ -28,6 +35,12 @@
         </para>
         <para>
             Megoldás forrása:                
+        </para>
+        <para>
+            Ez a program ugyan az mint az előző csak most a complex osztályt fogjuk használni. Elsőként felvesszük a kezdetleges változókat vagyis, hogy mekkora legyen majd a kép mérete, hányszor fogunk iterálni és az intervallumot amin ábrázolni szeretnénk. Ezeket majd konzolról kérjük be de inicializáljuk, majd az if megvizsgálja megvan -e a kellő bemeneti adat, ha nincs akkor hibaüzenetet dob a program hasznáaltára.
+        </para>
+        <para>
+            Ezután létrehozunk egy üres képet a mérettel és a szélességgel. Ezután a dx és dy al megadjuk, hogy minden egyes lépéssel mennyit megyünk előre azaz a lépésközöket. A következő for ciklussal végig megyünk a képnek a képpontjain. Ezután kiszámoljuk C-nek a valós és imaginárius részét és ezeket átadjuk a komplex C számnak.Majd létrehozunk egy z_n komplex számot és inicializáljuk. Ezután jön egy while ciklus ami addig megy amíg a z_n abszolút értékben kisebb mint 4 vagy pedig elértük az iterációs határt. Majd a while ciklus törzsében kiszámoljuk a z_n értékék és növeljük az iterációs határt. Majd ha kilép a while ciklusból a képnek az adott sorában és oszlopában lévő pixel színét átállítjuk. Az int százalékkal a feldolgozás állását közvetítjük a consolra. Végén kiiratjuk a képet a megadott fájlba.
         </para>
     </section>        
                 
