@@ -56,7 +56,19 @@
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
-        </para>                        
+        </para>
+        <para>
+            A biomorfos program abban különbözik az előzőtől, hogy most több argumentumot tudunk megadni tehát adhatunk kezdőértéket egy komplexszámnak cc-nek, amelyet majd z-hez mindig hozzáadunk. A bekért karakterket az atoi intté alakítja míg az atof lebegőpontos számmá. Az előzőhöz képest ahol egy while-t futtattam, hogy eldöntsem mely elemeket tartoznak a halmazba és ez a feltétel az volt hogy abszolút értékbe a z komplex szám kisebb mint négy, vagy elértük -e az iterációs határt. Ez a feltétel most annyiban változott, hogy R ben megadhatjuk hogy mekkora érték felett kell legyen a z valós vagy z imaginárius részének és csak akkor növeljük az iterációk számát(ez egy küszöbérték), vagyis az iteráció azt az értéket fogja megkapni a 0-és az iterációs határ között,amelyre még teljesül a feltétel. Emellett még lényeges változtatás, hogy eddig csak az iterációt osztottuk maradékosan a kép színeihez, de mostmár konstansokkal szorozzuk meg a különböző színeket előállító képletet. Ez színesebb képet fog eredményezni és a több argumentum nagyobb szabadságot nyújt a felhasználónak,hogy különböző képeket alkosson.
+            A biomorfos képek az egysejtűekre hasonlítanak, elég érdekes formákat lehet alkotni a program segítségével.
+        </para>
+        <para>
+            Az általam létrehozott biomorf amely szerintem egész jól néz ki:
+        </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/bmorf.png" scale="30" />
+                </imageobject>
+        </mediaobject>                      
     </section>                     
 
     <section>
