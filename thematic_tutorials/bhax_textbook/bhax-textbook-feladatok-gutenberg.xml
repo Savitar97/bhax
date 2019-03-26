@@ -15,7 +15,29 @@
         <para>         
             <citation>PICI</citation>       
         </para>
-        
+        <para>
+            A megírt programokat "forrásszövegnek" nevezzük. A nyelvtani szabályai a forrásszövegeknek a szintaktikai szabályok, míg a tartalmi szabályokat a szemantika adja meg.
+            A forrásszöveget a fordítóprogram alakítja gépi kóddá, amelyet a processzor feltud dolgozni. A fordító program végzi tehát a kód szemantikai,szintaktikai,lexikális vizsgálatát és a kód generálását a szemantikai hibát nem mindig veszi észre mivel lehet, hogy olyan hibát vétettünk, amely formailag helyes csak nem a várt eredményt kapjuk.
+            A gépi kódból a szerkesztő állít elő futtatható programot. A magas szintű nyelvek közül a C-ben előfordító segítségével generálunk forrásszövegből forrásszöveget.
+            Az interpreternek is megvan a saját elemzője viszont itt soronként veszi az utasítást és egyből el is végzi. A programnyelvek szabályai a hivatkozási nyelvek.
+            Amikor a programozó programkódot ír akkor algoritmusokat fogalmaz meg, amivel vezérli a processzort. A lefgőbb eszköz a változó, amelyben értékeket tud letárolni, amelyeket az algoritmusok változtatnak.
+            
+        </para>
+        <para>
+            Imperatív nyelvek:Eljárásorientált nyelvek,Objektum orientált nyelvek.
+         </para>
+         <para>
+             Dekleratív nyelvek : Funkcionális nyelvek, logikai nyelvek.
+         </para>
+         <para>
+             Az adattípus egy absztrakt programozási eszköz. Az adattípusnak neve van , amely egy azonosító. Egy adattípust három dolog határoz meg: tartomány, műveletek,reprezentáció. A tartomány megmondja milyen értékeket vehet fel a változó. Minden típúsos nyelvnek vannak standard beépített típúsai. Némelyik programozási nyelv megengedi, hogy definiáljunk típúsokat. Vannak olyan típúsok,amelyet úgy kapok, hogy egy másik típús tartományát szűkítem le ők az altípúsok.Adattípúsok csoportja lehet skalár vagy struktúrált.
+             Egyszerű típusok: egész,valós, karakteres,logikai.
+             Összetett típusok:tömb(értékei csak egyféle típusú lehet kivéve olyan programozási nyelvekben ahol megvan engedve, hogy a tömb összetett adattípusú legyen.A tömb indexei általában egész típúsúak.A tömb nevével a tömb összes elemére képesek vagyunk hivatkozni.).
+             Mutató típus:elemei memóriacímek, legfontosabb művelet a memóriacímen lévő érték elérése.
+         </para>
+         <para>
+             Nevesített konstans: mindig deklarálni kell van neve, típusa és értéke. Mindig a nevével hivatkozunk rá és a hozzá rendelt értékre hivatkozik.
+         </para>
     </section>        
     <section>
         <title>Programozás bevezetés</title>

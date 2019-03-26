@@ -98,8 +98,13 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Újra a mandelbrot halmazzal fogunk foglalkozni, de most felhasználjuk a qt-t hogy létrehozzunk egy grafikus interfacet. A programban a tartományt ugyan úgy az a, b , c és d változó határozza meg A képlet most is ugyan az mint a legelsőnél, amivel számoljuk az iterációt: z_(n+1) = z_n * z_n + c, ez a számolás a frakszal.cpp-ben van. A számításokat soronként küldjük vissza a frakablaknak, amely majd elvégzi a színezést. A változó deklarációja és inicializálása a számításokhoz a frakablak.h-ban található.A frakablak.cpp-ben definiáljuk, hogy mit csináljon a program az egérmozgására és, hogyha kijelölünk egy területet az egérrel akkor arra a területre nagyítson rá. Tehát a mousepressevent letárolja a kattintásunk koordinátáit, míg a mousemove a szélességet és a magasságot tehát, hogy az adott pontból mekkora területet jelöltünk ki. Majd a felengedéskor újra számol és rá zoomol a területre.Az N gomb lenyomásával változtathatjuk az iterációs határt amivel változik a kép részletessége is, ugyanis az N gomb lenyomására az iterációs határ kétszereződik emiatt nagyobb lesz a részletessége a képnek,így amikor jobban rá zoomolunk akkor nem csak olyan mintha egy sima képre nagyítanánk mivel ha az iterációs határ megnő akkor a mandelbrothalmaznak egyre több eleme lesz emiatt változik a kép is.Persze minden számolás után update-eljük az osztáyban lévő értékeket. Az újra számoláshoz készítünk mindig egy új FrakSzal-t, a régi mandelbrot halmazt töröljük és a frissített iterációshatárral számolunk.  
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/mandelzoom.png" scale="30" />
+                </imageobject>
+        </mediaobject> 
     </section>                     
                                                                                                                                                                             
     <section>
