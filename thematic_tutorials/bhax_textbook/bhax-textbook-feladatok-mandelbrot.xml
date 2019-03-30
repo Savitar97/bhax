@@ -81,10 +81,19 @@
         <para>
             Megoldás forrása:  
         </para>
+        <para>
+            Lényegében itt azt kell megfigyelnünk, hogy mennyivel gyorsabban dolgoznak a cuda magok a processzornál. A processzornál ugyebár a képpontokat szekvenciálisan számljuk tehát a processzor egyessével számolja a képpontokat.Ez a cudanál egyszerre történik most az az minden egyes képpontot egy szál fog számolni a számolás egyszerre történik mint a párhuzamos programoknál. Ez hatalmas sebességbeli növekedést eredményez konkrétan egy pillanat alatt végez a program ha elég erős a videókártyánk, mivel itt már a gpu számol nem a cpu.
+        </para>
     </section>                     
 
     <section>
         <title>Mandelbrot nagyító és utazó C++ nyelven</title>
+        <caution>
+            <title>
+                Tutor
+            </title>
+            <para>Ebben a feladatban tutoráltam tutoráltam Kun-Limberger Anettet.</para>
+        </caution>
         <para>
             Építs GUI-t a Mandelbrot algoritmusra, lehessen egérrel nagyítani egy területet, illetve egy pontot
             egérrel kiválasztva vizualizálja onnan a komplex iteréció bejárta z<subscript>n</subscript> komplex számokat!
@@ -102,7 +111,7 @@
         </para>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/mandelzoom.png" scale="30" />
+                    <imagedata fileref="img/mandelzoom.png" scale="20" />
                 </imageobject>
         </mediaobject> 
     </section>                     
@@ -110,6 +119,7 @@
     <section>
         <title>Mandelbrot nagyító és utazó Java nyelven</title>
         <para>
+            
         </para>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
