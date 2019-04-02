@@ -12,7 +12,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/mandelcomplex">https://github.com/Savitar97/Prog1/tree/master/mandelcomplex</link>              
         </para>
         <para> 
             A program elején definiáljuk a kép méretét és az iterációs határt mivel végtelen számra nem tudjuk megnézni ezért kell valamilyen korlát.      
@@ -34,7 +34,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/mandelcomplex">https://github.com/Savitar97/Prog1/tree/master/mandelcomplex</link>              
         </para>
         <para>
             Ez a program ugyan az mint az előző csak most a complex osztályt fogjuk használni. Elsőként felvesszük a kezdetleges változókat vagyis, hogy mekkora legyen majd a kép mérete, hányszor fogunk iterálni és az intervallumot amin ábrázolni szeretnénk. Ezeket majd konzolról kérjük be de inicializáljuk, majd az if megvizsgálja megvan -e a kellő bemeneti adat, ha nincs akkor hibaüzenetet dob a program hasznáaltára.
@@ -79,7 +79,7 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href="https://gitlab.com/Savitar97/bhax/tree/master/attention_raising/CUDA">https://gitlab.com/Savitar97/bhax/tree/master/attention_raising/CUDA</link> 
         </para>
         <para>
             Lényegében itt azt kell megfigyelnünk, hogy mennyivel gyorsabban dolgoznak a cuda magok a processzornál. A processzornál ugyebár a képpontokat szekvenciálisan számljuk tehát a processzor egyessével számolja a képpontokat.Ez a cudanál egyszerre történik most az az minden egyes képpontot egy szál fog számolni a számolás egyszerre történik mint a párhuzamos programoknál. Ez hatalmas sebességbeli növekedést eredményez konkrétan egy pillanat alatt végez a program ha elég erős a videókártyánk, mivel itt már a gpu számol nem a cpu.
@@ -92,7 +92,7 @@
             <title>
                 Tutor
             </title>
-            <para>Ebben a feladatban tutoráltam tutoráltam Kun-Limberger Anettet.</para>
+            <para>Ebben a feladatban tutoráltam Kun-Limberger Anettet.</para>
         </caution>
         <para>
             Építs GUI-t a Mandelbrot algoritmusra, lehessen egérrel nagyítani egy területet, illetve egy pontot
@@ -100,7 +100,7 @@
         </para>
             
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/Nagyito">https://github.com/Savitar97/Prog1/tree/master/Nagyito</link> 
         </para>
 
         <para>

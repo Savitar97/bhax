@@ -22,7 +22,16 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat... térj ki arra is, hogy a JDK forrásaiban a Sun programozói
             pont úgy csinálták meg ahogyan te is, azaz az OO nemhogy nem nehéz, hanem éppen természetes neked!
-        </para>                
+        </para>  
+        <para>
+            Elsőként létrehozzuk a polargen osztályt.Amelyben deklarálunk egy konstruktort és egy destruktort. A konstruktorban egy a private részben tárolt nincstarolt nevű bool típúsú változót inicializálunk és meghívjuk a randomot. És létrehozunk még egy következő nevű double függvényt.
+        </para>
+        <para>
+            A private részben két változót deklarálunk egyik a tarolt a másik a nincstarolt. Ezután a PolarGen névtérben lévő kovetkezo függvényt írjuk le, ha a nincstarolt=true akkor létrehozunk 5 változót az u1 és az u2 random értéket vesznek fel és ezeket az értékeket felhasználjuk a v1 és v2 értékek kiszámolásánál. Majd a w a v1 és v2 értékek négyzetének az összege. Ez az érték addig változik, amíg nem lesz kisebb az értéke w-nek 1-nél, a do while miatt legalább 1x lefut a ciklus. Majd egy r változóba a gyökét veszi a -2*log(w)-nek, amelyet eloszt w-vel. Majd ezt az értéket felhasználja a tarolt-nál, amely a private-ban lévő változóba teszi az értéket az r*v2-t és a nincstaroltat negáljuk tehát az értéke true helyett false lesz. A visszatérési értéke a fv-nek r*v1 lesz.  
+        </para>
+        <para>
+            Ha már van tárolt érték akkor pedig azzal tér vissza. Majd a main-be meghívjuk az osztályunkat pg néven és a forral létrehozunk 10 mintapéldányát az osztálnyak.
+        </para>         
     </section>        
 
     <section>
@@ -36,6 +45,21 @@
         <para>
             Megoldás forrása:                
         </para>
+        <para>
+            Ez a bináris fa, a bináris fák egy speciális típúsa ugyanis LZW algoritmust használ, ami egy tömörítő algoritmus.
+        </para>
+        <para>
+            Kezdésképp létrehozunk egy struktúrát binfa néven, amely tartalmaz egy értéket és 2 struktúra típúsú mutatót. A BINFA és *BINFA_PTR a typedefnek a kulcsszavai mindkettő binfa típúsú lesz. 
+         </para>
+         <para>
+             Ezután meghívunk egy BINFA_PTR típúsú függvényt, amely visszaadja majd értékül a példányosított p eredményét, amely egy sikeres dinamikus memória foglalás az új elemnek.
+         </para>
+         <para>
+             A következő két eljárásnál az externnel jelezzük a fordítónak, hogy majd a program végén fogjuk deklarálni őket.A kiirba ha van elemünk a fában akkor növeljük a mélységet ha a mélység nagyobb mint a maximum mélység akkor ezt egyenlővé tesszük majd kiiratjuk elsőként a jobbos elemet majd a balost és visszacsökkentjük a mélységet. A szabaditnál a fölöslegesen lefoglalt tárhelyet szabadítjuk fel.
+         </para>
+         <para>
+             Létrehozunk egy karater típúsú változót, amely majd azt mutatja milyen elem megy be a fába. Ezután deklarálunk és inicializáljuk a fának a gyökerét majd a fa mutatót ráállítjuk a gyökérre ezután majd a while ciklusban pakolgatjuk az elemeket jobbra vagy balra attól függően hogy milyen elem megy be a fába, ha nincs több érték az adott ágon akkor visszaállítjuk a mutatót a gyökérre.
+          </para>
     </section>        
         
     <section>
@@ -49,8 +73,38 @@
         <para>
             Megoldás forrása:                
         </para>
+        <para>
+               A fabejárás 3 különböző féle képpen történhet.Lehet inorder amikor a baloldalt veszi először majd a gyökeret irassa ki és csak aztán tér át a jobb oldalra. A második lehetőség a preorder itt a gyökeret irassa ki először, majd a bal oldalt és végül a jobb oldalt. A legutolsó variáció a postorder, amikor elsőként irassuk ki a bal oldalt majd a jobb oldalt és csak végül a gyökeret. Inordernél a csomópontok mindig középre kerülnek.
+               </para>
+               <para>
+                   A lényeg hogy mikor irassuk ki az egyes és nullás gyermeket, ha a forciklus előtt akkor postorder, ha a forciklus után akkor preorder, ha pedig az egyest a forciklus előtt és a nullást a forciklus után akkor inorder bejárással irassuk ki a bináris fánkat.
+                </para>
+                <para>
+                    Inorder bejárás:
+                 </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/inorder.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        <para>
+                    Preorder bejárás:
+                 </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/preorder.png" scale="30" />
+                </imageobject>
+        </mediaobject> 
+        <para>
+                    Postorder bejárás:
+                 </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/postorder.png" scale="30" />
+                </imageobject>
+        </mediaobject> 
     </section>        
-                        
+                   
     <section>
         <title>Tag a gyökér</title>
         <para>
@@ -62,6 +116,16 @@
         </para>
         <para>
             Megoldás forrása:                
+        </para>
+        <para>
+            A C-s változattól abban különbözik, hogy használhatunk osztályokat. Létre is hozzuk az LZWBinFa osztályunkat majd deklarálunk egy konstruktort és egy destruktort. Majd túlterheljük az operátort a void operator-ban, amely paraméterül a char b-t kapja. Ezzel vizsgáljuk milyen elem megy be épp.
+            Ha ez az elem 0 és a fának nincs 0 ás eleme akkor létrehozunk egyet neki. Ha van akkor ráállítjuk a fa mutatót. Ha ez az elem 1-es akkor hasonlóképpen működik. Majd jön a kiir eljárás, amely rekurzívan hívja meg magát.Argumentumként megkapja a gyökeret és azt, hogy mit kell kiirni ez az egyes gyermek és nullás gyermek lesz.
+            Ezután az LZWBinFa osztály private részében létrehozunk egy Csomópont osztályt. A csomópont konstruktora argumentumként kapja meg inicializálva a gyökér karaktert és typedefeljük a betűt a a balNullát és a jobbEgyet. Ezután jön a destruktora az osztálynak. Ezután jönnek a csomópontok gyermekeinek vizsgálata, van -e nekik ha nincs akkor nullal tér vissza.
+            Majd a két eljárás, amelynek mutatója átadja a címet, hogy hol legyen az egyes vagy nullás gyermeke a megadott csomópontnak. A char get betűben pedig az értéket vizsgáljuk, hogy éppen 0 vagy 1 es jön.
+            Majd a private részben deklaráljuk a mutatókat és a változókat és letiltjuk a másoló konstruktort. Ezután a csomópont osztályon kívül létrehozzuk a csomópont fa mutatót, amely mindig az aktuális csomópont elemre mutat. Majd deklaráljuk a számításhoz szükséges függvények változóit és letiltjuk a binfának is a másolását.
+            Létrehozzuk a kiir eljárást, a kiiratás csak akkor tud megtörténni ha van elem a fában,itt inorder kiiratás történik.Ezután a fölösleges nem használt részeket felszabadítjuk a szabadíttal. Majd van egy protected rész ahol kiemeljük, hogy a fának van egy kitüntetett tag csomópontja a /. Ezután az osztályból kilépve a sima globális térbe létrehozunk egy usage eljárást, amelyel ha hibásan futtatnánk a programot segítséget nyújtunk a felhasználónak.
+            A mainben a try catch hibakezelő eljárást alkalmazzuk. Ha nincs elég argumentum megadva akkor hibaüzenetet dobunk, ezután inicializálunk egy mutatót, amely a fájl nevére mutat.Majd vizsgáljuk, hogy a fájl név után a -o kapcsoló jön -e, ha nem hibaüzenetet dobunk.Majd az fstreammel beolvassuk a fájlt, amelynek megadtuk a bemenő fájl nevének címét. Majd létrehozzuk a kifile-t, amely a fájlba írásért lesz felelős.
+            Deklarálunk egy karakter változót és meghívjuk a LZWBinFa osztályt binfa néven.Majd indítunk egy while ciklust, amelyben felsoroljuk a kivételeket, hogy mit hagyjon figyelmen kívül a beolvasás.A következő forciklusban végig megyünk a 8 biten és ha egyes van akkor egyes kerül a tárba ha 0-ás akkor 0. A kifile-nak átadjuk a binfát, majd a mélység,átlag,szórást és végül bezárjuk a filestreamet.
         </para>
     </section>        
                 
@@ -77,6 +141,9 @@
         <para>
             Megoldás forrása:  
         </para>
+        <para>
+            A különbség mostmár az hogy a csomópontból pointer lett. Tehát a konstruktorba be kelett vinni kívülről az eddig átadott fa gyokeret. Mivel eddig a gyökér tagként szerepelt a csomópontba, de most mutató lett tehát könnyedén átadhatjuk az értékét a fának ami egy mutató. Miután a gyökérből pointert csináltunk így könnyedén elhagyhatjuk az és jeleket ugyanis alapból a memória címét fogja átadni majd nem kell érték szerinti referenciaként hivatkozni rá.Viszont, így hogy pointer lett a destruktorban őt is felkell szabadítani tehát bele írjuk a delete gyokeret a destruktorba.
+        </para>
     </section>                     
 
     <section>
@@ -90,6 +157,10 @@
         </para>
         <para>
             Megoldás forrása:  
+        </para>
+        <para>
+            A mozgató konstruktornál létrehozunk egy új konstruktort. A konstruktorban létrehozzuk a gyökér csomópontot és a mutatót erre irányítjuk. Majd a magasságot 0-ra állítjuk. Ezután jön a destruktor, amit azért itt hívunk meg mert a gyökérre mutató root mutatót null pointerre állítja aztán ha kiakarnánk törölni a semmit arra szegmentációs hibát dobna a fordító. Itt felszabadítjuk a dinamikusan lefoglalt memóriát és a gyökeret.Mivel az egy éses BT-t már ellőttük a másolásnál ezért 2 éssel jelöljük a mozgató konstruktort itt a megadott mutatótak egyenlővé tesszük az eredeti fa paramétereivel. És a gyökér mutatóját nullázzuk,mármint az eredetijét.
+            Az önmagára való hivatkozást a this-el érjük el. Mivel az előző objektumok még léteznek ezért ezeket törölnünk kell mivel akkor nem tudnánk bepakolni a mozgatottakat ugyan arra a tárhelyre. Majd rekurzívan végig járjuk a fát és a tárolt értékeket átállítjuk az új csomópontokra. Mivel a csomópont az osztály privát részébe van ezért kell neki get függvény, mert csak úgy nem lehet hozzáférni.Így nem tudják egyéb osztályok módosítani. A mozgató konstruktorral nem történik duplikáció hanem az új felül írja a régit. Ugyan oda mozgatjuk vissza az adatokat csak más névvel hivatkozunk rá. A mozgató és másoló konstruktort azért tiltottuk le mivel elég veszélyes őket feloldva hagyni egy olyan programban, amely dinamikus memóriát használ.
         </para>
     </section>                     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
