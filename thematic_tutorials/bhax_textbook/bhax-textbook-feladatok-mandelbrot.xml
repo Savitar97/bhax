@@ -119,6 +119,13 @@
     <section>
         <title>Mandelbrot nagyító és utazó Java nyelven</title>
         <para>
+            A mandelbrot nagyító javában. Mivel a mandelbrot javás programunkhoz készítünk nagyítót, ezért ez lesz a szülő osztály. A származtatást az extends kifejezéssel érjük el.
+            Létrehozunk két változót private jogosultságokkal. Az elsőben azt a pontot tároljuk el, ahova kattintunk majd az egérrel tehát a kezdő pont koordinátáit. A másik az egér jelenlegi pozícióját fogja tárolni.
+            Ez a terület kijelölésénél lesz majd fontos, hogy mekkora területet jelölünk ki. Majd meghívjuk az osztály konstruktorát public jogosultságokkal és 6 argumentummal, amelyből az első 4 argumentum a tartományt adja meg.Majd a tömbnek a méretét, amelyben a halmaz szerepel.
+            Majd a nagyítási pontosságot, a képen ez adja azt, hogy minél részletesebb legyen a többszörös nagyításnál. Ezt követően a superrel meghívjuk az ős osztály konstruktorát az argumentumaival. A supert többféle képpen lehet használni. Képesek vagyunk vele azonnal a szülő osztály konstruktorát argumentumokkal vagy nélküle,esetleg a változóit,függvényeit meghívni.
+            A settitle-vel adjuk meg az ablaknak a nevét. Majd a mouseListenerrel figyeljük az egér vezérlést. Ha kattintunk akkor letároljuk a koordinátáit az egérnek.Felengedéskor a megadott tartományt újra számoljuk. És létrehozunk egy új objektumot a halmaznak, amelyet kirajzolunk.  A nagyítandó területet úgy számoljuk, hogy a jelenlegi egér pozícióból, azaz a négyszög jobb alsó sarkából kivonjuk a bal felső sarok koordinátáit, ez lesz az mx és my.
+            Az s lenyomásával pillanatfelvételt készíthetünk a fájl nevében megjlenítsük, hogy milyen tartományi értéknél készítettük a képet.Az n gombbal változtatunk az iterációs értékeken mindig növeljük a pontosságot 256 al. Az m-el ugyan úgy növeljük a pontosságot de itt 10*256-al pontosítunk. Majd jön a kép kirajzolása, ha számítást végzünk akkor egy vörös vonallal jelezzük az állapotát ezt a drawline éri el. A számításhoz a kijelölt területet zölddel jelezzük, ezt a drawrect éri el. Végül a mainbe létrehozunk egy mandelbrot halmaz példányt és már futtathatjuk is a programunkat.</para>
+           <para> A fordítás a következővel hajtjuk végre: <command>javac MandelbrotHalmazNagyító.java</command>.</para><para> A futtatást pedig, így hajtjuk végre:<command>java MandelbrotHalmazNagyító</command>.
             
         </para>
     </section>
