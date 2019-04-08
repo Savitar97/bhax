@@ -60,11 +60,15 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/BrainBbench">https://github.com/Savitar97/Prog1/tree/master/BrainBbench</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A BrainB benchmark egy felmérés. Amely főleg az mmorpgvel játszó játékosokat képes mérni. Mégpedig azt, hogy mennyire képesek követni a karakterüket a tömegbe. A lényeg,hogy az egérmutatót a karakterünkön samun tartsuk a játék pedig egyre több hőst generál a karakterünk köré és 10 percen keresztül nem szabad elveszteni a karakterünk nyomát.Majd a benchmark ad egy eredményt, amely számosítja a teljesítményét a játékosnak. Ez alapján készíthetünk esetleg egy táblázatot, hogy meghatározzuk sávokban is a pontszámokat, így megtudjuk ki a jobb képességű.A moba területen is hasznos lehet a játék ugyanis a teamfightokban a sok effekt között könnyen eveszíthetjük a karakterünket vagy épp a focusolandó enemy játékosét.
+            Ezzel a programmal lehetséges, mérni az egyén teljesítőképességét és kiválogatni azokat akik sokkal jobbak az átlagtól és akár a csapatok meghatározhatnának egy minimális pontszámot, amit elkell érni a jelentkezéshez.Viszont a 10 perc szerintem elég sok idő. Mármint jó a koncentráció képességet próbára tesszük. De akkor is elég unalmas végig ülni, amíg a teszt lefut.
         </para>            
+        <para>
+            És most beszéljünk kicsit a programról a BrainBThread.cpp-ben hozzuk létre a hős osztályunkat és itt hozzuk létre(deklaráljuk) a hősünket Samut.A hős osztály konstruktorában. A mozgását az ablakban randommal számoljuk. A Qthread-ban határozzuk meg az eventeket.Ilyen  a pause. És magát, hogy a hőst hogyan jelnítse meg, hogy írja ki a nevét stb.A BrainBWin-ben vannak meghatározva a presd eventek vagyis, hogy az egérgomb levan -e nyomva vagy nincs és hogy az S el mentse el az eredményt a P-vel pause-oljon az ESC-el vagy Q-val pedig lépjen ki.Ha az egérgombot lenyomjuk akkor kezdődik a mérés.Az ifben vizsgáljuk, hogy az egér a hősünkön van -e ha igen akkor létrehozunk egy new entropyt ez a incCompban van a BrainBThread.h-ban és növeljük a hősünk agilityjét 2 vel ha nincs rajta akkor kiszedünk a vektorból egy entropyt és csökkentjük a hősünk agilityjét.
+        </para>
     </section>        
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                

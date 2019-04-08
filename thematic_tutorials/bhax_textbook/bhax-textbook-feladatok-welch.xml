@@ -17,7 +17,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/polar">https://github.com/Savitar97/Prog1/tree/master/polar</link>              
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat... térj ki arra is, hogy a JDK forrásaiban a Sun programozói
@@ -107,6 +107,12 @@
                    
     <section>
         <title>Tag a gyökér</title>
+        <caution>
+            <title>
+                Tutor
+            </title>
+            <para>Ebben a feladatban tutoráltam Ádám Petrát.</para>
+        </caution>
         <para>
             Az LZW algoritmust ültesd át egy C++ osztályba, legyen egy Tree és egy beágyazott Node
             osztálya. A gyökér csomópont legyen kompozícióban a fával!
@@ -159,7 +165,7 @@
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp">https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp</link> 
         </para>
         <para>
-            A mozgató szemantikához a mutatós gyökerű binfát fogjuk felhasználni. Amíg nem írtuk meg a mozgató szemantikát addig tiltanunk kellett.Az osztály private részében. Ez a csomópontra és a fára egyaránt vonatkozik. A mozgató konstruktorra &&-el hivatkozunk. Az && operátor jelzi, hogy jobboldali referenciáról van szó. Ez azért jó, mert a jobboldali referencia elkerüli a fölösleges másolatot.Ez azért jó mert ha másoljuk akkor megmarad az előző gyakran szükségtelen másolat,vagy úgyis elpusztítjuk egy destruktorral.De a mozgató szemantikával elkerüljük az ideiglenes másolatot mivel konkrét memória címekkel dolgozunk.
+            A mozgató szemantikához a mutatós gyökerű binfát fogjuk felhasználni. Amíg nem írtuk meg a mozgató szemantikát addig tiltanunk kellett.Az osztály private részében. Ez a csomópontra és a fára egyaránt vonatkozik. A mozgató konstruktorra dupla és-el hivatkozunk. Az dupla és operátor jelzi, hogy jobboldali referenciáról van szó. Ez azért jó, mert a jobboldali referencia elkerüli a fölösleges másolatot.Ez azért jó mert ha másoljuk akkor megmarad az előző gyakran szükségtelen másolat,vagy úgyis elpusztítjuk egy destruktorral.De a mozgató szemantikával elkerüljük az ideiglenes másolatot mivel konkrét memória címekkel dolgozunk.
             A konstruktorba elsőként nullára állítjuk a gyökér pointert.Ez azért szükséges, hogy a régit bele tudjuk tenni az újonnan elkészített gyökérbe.Ezt a move segítségével érjük el. Ez lényegében az értéket átpakolja az újba majd a régit null-ra állítja. Majd ezután visszatérünk az új gyökérrel.Következőnek túlterheljük az =jel operátort.És az új gyökérelemekbe beleteszem a régi gyökér elemeket.Majd visszaadom az újnak a this-el. De a régieket ezután töröljük.A mozgatást a mainbe úgy érjük el, hogy a move-al átpakoljuk az egész binFa-t a binFa2-be. Ilyenkor a binFa üres lesz és a binFa2 lesz az új példány.
         </para>
     </section>                     

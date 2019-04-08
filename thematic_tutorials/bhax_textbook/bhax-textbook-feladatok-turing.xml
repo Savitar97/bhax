@@ -198,6 +198,12 @@ false]]></screen>
 
     <section>
         <title>Labdapattogás</title>
+        <caution>
+            <title>
+                Tutor
+            </title>
+            <para>Ebben a feladatban tutoráltam Ádám Petrát.</para>
+        </caution>
         <para>
             Először if-ekkel, majd bármiféle logikai utasítás vagy kifejezés
             nasználata nélkül írj egy olyan programot, ami egy labdát pattogtat a karakteres konzolon! (Hogy mit értek
@@ -306,6 +312,12 @@ false]]></screen>
 
     <section>
         <title>Helló, Google!</title>
+        <caution>
+            <title>
+                Tutor
+            </title>
+            <para>Ebben a feladatban tutoráltam Ádám Petrát.</para>
+        </caution>
         <para>
             Írj olyan C programot, amely egy 4 honlapból álló hálózatra kiszámolja a négy lap Page-Rank 
             értékét!
