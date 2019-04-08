@@ -43,7 +43,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/binfac/binfa.c">https://github.com/Savitar97/Prog1/blob/master/binfac/binfa.c</link>              
         </para>
         <para>
             Ez a bináris fa, a bináris fák egy speciális típúsa ugyanis LZW algoritmust használ, ami egy tömörítő algoritmus.
@@ -71,7 +71,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/binfac/binfa.c">https://github.com/Savitar97/Prog1/blob/master/binfac/binfa.c</link>              
         </para>
         <para>
                A fabejárás 3 különböző féle képpen történhet.Lehet inorder amikor a baloldalt veszi először majd a gyökeret irassa ki és csak aztán tér át a jobb oldalra. A második lehetőség a preorder itt a gyökeret irassa ki először, majd a bal oldalt és végül a jobb oldalt. A legutolsó variáció a postorder, amikor elsőként irassuk ki a bal oldalt majd a jobb oldalt és csak végül a gyökeret. Inordernél a csomópontok mindig középre kerülnek.
@@ -115,7 +115,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Bevprog/tree/master/vedes">https://github.com/Savitar97/Bevprog/tree/master/vedes</link>               
         </para>
         <para>
             A C-s változattól abban különbözik, hogy használhatunk osztályokat. Létre is hozzuk az LZWBinFa osztályunkat majd deklarálunk egy konstruktort és egy destruktort. Majd túlterheljük az operátort a void operator-ban, amely paraméterül a char b-t kapja. Ezzel vizsgáljuk milyen elem megy be épp.
@@ -139,7 +139,7 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp">https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp</link> 
         </para>
         <para>
             A különbség mostmár az hogy a csomópontból pointer lett. Tehát a konstruktorba be kelett vinni kívülről az eddig átadott fa gyokeret. Mivel eddig a gyökér tagként szerepelt a csomópontba, de most mutató lett tehát könnyedén átadhatjuk az értékét a fának ami egy mutató. Miután a gyökérből pointert csináltunk így könnyedén elhagyhatjuk az és jeleket ugyanis alapból a memória címét fogja átadni majd nem kell érték szerinti referenciaként hivatkozni rá.Viszont, így hogy pointer lett a destruktorban őt is felkell szabadítani tehát bele írjuk a delete gyokeret a destruktorba.
@@ -156,11 +156,11 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása:  
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp">https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp</link> 
         </para>
         <para>
-            A mozgató konstruktornál létrehozunk egy új konstruktort. A konstruktorban létrehozzuk a gyökér csomópontot és a mutatót erre irányítjuk. Majd a magasságot 0-ra állítjuk. Ezután jön a destruktor, amit azért itt hívunk meg mert a gyökérre mutató root mutatót null pointerre állítja aztán ha kiakarnánk törölni a semmit arra szegmentációs hibát dobna a fordító. Itt felszabadítjuk a dinamikusan lefoglalt memóriát és a gyökeret.Mivel az egy éses BT-t már ellőttük a másolásnál ezért 2 éssel jelöljük a mozgató konstruktort itt a megadott mutatótak egyenlővé tesszük az eredeti fa paramétereivel. És a gyökér mutatóját nullázzuk,mármint az eredetijét.
-            Az önmagára való hivatkozást a this-el érjük el. Mivel az előző objektumok még léteznek ezért ezeket törölnünk kell mivel akkor nem tudnánk bepakolni a mozgatottakat ugyan arra a tárhelyre. Majd rekurzívan végig járjuk a fát és a tárolt értékeket átállítjuk az új csomópontokra. Mivel a csomópont az osztály privát részébe van ezért kell neki get függvény, mert csak úgy nem lehet hozzáférni.Így nem tudják egyéb osztályok módosítani. A mozgató konstruktorral nem történik duplikáció hanem az új felül írja a régit. Ugyan oda mozgatjuk vissza az adatokat csak más névvel hivatkozunk rá. A mozgató és másoló konstruktort azért tiltottuk le mivel elég veszélyes őket feloldva hagyni egy olyan programban, amely dinamikus memóriát használ.
+            A mozgató szemantikához a mutatós gyökerű binfát fogjuk felhasználni. Amíg nem írtuk meg a mozgató szemantikát addig tiltanunk kellett.Az osztály private részében. Ez a csomópontra és a fára egyaránt vonatkozik. A mozgató konstruktorra &&-el hivatkozunk. Az && operátor jelzi, hogy jobboldali referenciáról van szó. Ez azért jó, mert a jobboldali referencia elkerüli a fölösleges másolatot.Ez azért jó mert ha másoljuk akkor megmarad az előző gyakran szükségtelen másolat,vagy úgyis elpusztítjuk egy destruktorral.De a mozgató szemantikával elkerüljük az ideiglenes másolatot mivel konkrét memória címekkel dolgozunk.
+            A konstruktorba elsőként nullára állítjuk a gyökér pointert.Ez azért szükséges, hogy a régit bele tudjuk tenni az újonnan elkészített gyökérbe.Ezt a move segítségével érjük el. Ez lényegében az értéket átpakolja az újba majd a régit null-ra állítja. Majd ezután visszatérünk az új gyökérrel.Következőnek túlterheljük az =jel operátort.És az új gyökérelemekbe beleteszem a régi gyökér elemeket.Majd visszaadom az újnak a this-el. De a régieket ezután töröljük.A mozgatást a mainbe úgy érjük el, hogy a move-al átpakoljuk az egész binFa-t a binFa2-be. Ilyenkor a binFa üres lesz és a binFa2 lesz az új példány.
         </para>
     </section>                     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
