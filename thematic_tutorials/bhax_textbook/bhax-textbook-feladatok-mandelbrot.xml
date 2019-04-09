@@ -73,6 +73,12 @@
 
     <section>
         <title>A Mandelbrot halmaz CUDA megvalósítása</title>
+        <caution>
+            <title>
+                Tutorált
+            </title>
+            <para>Ebben a feladatban tutorált Molnár Antal.</para>
+        </caution>
         <para>
         </para>
         <para>

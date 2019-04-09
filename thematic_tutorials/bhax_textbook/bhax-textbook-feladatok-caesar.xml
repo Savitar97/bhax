@@ -93,6 +93,12 @@
     </section>        
     <section>
         <title>Java EXOR titkosító</title>
+        <caution>
+            <title>
+                Tutorált
+            </title>
+            <para>Ebben a feladatban tutorált Molnár Antal.</para>
+        </caution>
         <para>
             Írj egy EXOR titkosítót Java-ban!
         </para>
