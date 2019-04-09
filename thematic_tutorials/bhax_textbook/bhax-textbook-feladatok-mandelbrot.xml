@@ -92,7 +92,7 @@
             <title>
                 Tutor
             </title>
-            <para>Ebben a feladatban tutoráltam Kun-Limberger Anettet.</para>
+            <para>Ebben a feladatban tutoráltam Kun-Limberger Anettet és Duszka Ákos Attilát.</para>
         </caution>
         <para>
             Építs GUI-t a Mandelbrot algoritmusra, lehessen egérrel nagyítani egy területet, illetve egy pontot
@@ -122,7 +122,7 @@
             <title>
                 Tutor
             </title>
-            <para>Ebben a feladatban tutoráltam Kun-Limberger Anetett.</para>
+            <para>Ebben a feladatban tutoráltam Kun-Limberger Anetett és Duszka Ákos Attilát.</para>
         </caution>
         <para>
             A mandelbrot nagyító javában. Mivel a mandelbrot javás programunkhoz készítünk nagyítót, ezért ez lesz a szülő osztály. A származtatást az extends kifejezéssel érjük el.

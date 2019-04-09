@@ -316,7 +316,7 @@ false]]></screen>
             <title>
                 Tutor
             </title>
-            <para>Ebben a feladatban tutoráltam Ádám Petrát.</para>
+            <para>Ebben a feladatban tutoráltam Ádám Petrát és Duszka Ákos Attilát.</para>
         </caution>
         <para>
             Írj olyan C programot, amely egy 4 honlapból álló hálózatra kiszámolja a négy lap Page-Rank 
@@ -414,6 +414,12 @@ false]]></screen>
 
     <section xml:id="Brun">
         <title>100 éves a Brun tétel</title>
+        <caution>
+            <title>
+                Tutorált
+            </title>
+            <para>Ebben a feladatban tutorált Duszka Ákos Attilát.</para>
+        </caution>
         <para>
             Írj R szimulációt a Brun tétel demonstrálására!
         </para>
@@ -463,6 +469,12 @@ false]]></screen>
     
     <section xml:id="bhax-textbook-feladatok-turing.MontyHall">
         <title>A Monty Hall probléma</title>
+        <caution>
+            <title>
+                Tutorált
+            </title>
+            <para>Ebben a feladatban tutorál Duszka Ákos Attilát.</para>
+        </caution>
         <para>
             Írj R szimulációt a Monty Hall problémára!
         </para>
