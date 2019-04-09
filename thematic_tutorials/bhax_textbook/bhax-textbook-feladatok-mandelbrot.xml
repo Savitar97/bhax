@@ -118,6 +118,12 @@
                                                                                                                                                                             
     <section>
         <title>Mandelbrot nagyító és utazó Java nyelven</title>
+        <caution>
+            <title>
+                Tutor
+            </title>
+            <para>Ebben a feladatban tutoráltam Kun-Limberger Anetett.</para>
+        </caution>
         <para>
             A mandelbrot nagyító javában. Mivel a mandelbrot javás programunkhoz készítünk nagyítót, ezért ez lesz a szülő osztály. A származtatást az extends kifejezéssel érjük el.
             Létrehozunk két változót private jogosultságokkal. Az elsőben azt a pontot tároljuk el, ahova kattintunk majd az egérrel tehát a kezdő pont koordinátáit. A másik az egér jelenlegi pozícióját fogja tárolni.

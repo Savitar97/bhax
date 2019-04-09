@@ -38,6 +38,78 @@
          <para>
              Nevesített konstans: mindig deklarálni kell van neve, típusa és értéke. Mindig a nevével hivatkozunk rá és a hozzá rendelt értékre hivatkozik.
          </para>
+         <para>
+             Utasítások
+         </para>
+         <para>
+             Utasításokkal adjuk meg az algoritmus lépéseit.Kétféle van deklarációs és végrehajtó utasítások.
+             A deklarációs utasítások a fordítóprogramnak szólnak, olyan infromációt szolgáltat amelyet a fordítóprogram használ fel majd a tárgykód elkészítéséhez.
+             A végrehajtó utasítások csoportosítása a következő szerint zajlik:
+                     
+          </para>
+          <itemizedlist>
+          <listitem>
+              <para>1. Értékadó utasítás:módosítja vagy beállítja a változó értékeit
+          </para>
+          </listitem>
+          <listitem>
+              <para>2. Üres utasítás:főleg az eljárás orientált nyelvekben van rájuk szükség ilyenkor a processzor egy üres utasítást hajt végre
+          </para>
+          </listitem>
+          <listitem>
+              <para>3. Ugró utasítás:goto utasítás a program a futását máshonnan folytatja(ahová az ugró utasítás mutat) 
+          </para>
+          </listitem>
+          <listitem>
+              <para>4. Elágaztató utasítások:if else szerkezet vagy a többirányú switch szerkezet.Itt tudjuk irányítani, hogy a program futása merre haladjon tovább. Ifnél ha egy utasítás van a zárójel blokkot elhagyhatjuk.Switchnél van default-ág amely akkor hajtódik végre ha egyik lehetőség sem hajtódik végre.
+          </para>
+          </listitem>
+          <listitem>
+              <para>5. Ciklusszervezı utasítások:bizonyos utasítások ismétlése. Előírt lépésszámú ciklus for.Elől tesztelős ciklus while, hátul tesztelős do while.Ha egyszersem fut le üres ciklusnak hívjuk a do while mindenképp lefut 1x.Emellett a ciklusok lehetnek végtelenek és összetettek mikor egymásba ágyazzuk őket.
+          </para>
+          </listitem>
+          <listitem>
+              <para> 6. Hívó utasítás: 
+          </para>
+          </listitem>
+          <listitem>
+              <para>7. Vezérlésátadó utasítások:continue, break,return. A continuevel kitudunk hagyni például ciklusból lépéseket,break-el megtudjuk szakítani a ciklust vagy az utasítást. A returnnel adunk vissza értékeket főképp függvényeknél használjuk őket.
+          </para>
+          </listitem>
+          <listitem>
+              <para>8. I/O utasítások
+          </para>
+          </listitem>
+          <listitem>
+              <para>9. Egyéb utasítások
+          </para>
+          <para>
+              Programok szerkezete:
+          </para>
+          <para>
+              Az eljárásorientált nyelvekben :alprogram,blokk,csomag,taszk létezik.
+          </para>
+          <para>
+              Az alprogramok az újrafelhasználás eszközei másnéven eljárások vagy függvények.A meghívásukkal aktivizálódnak.Meghívni a deklarált nevükkel tudjuk.Az alprogramoknak van neve, paraméter listája,törzse amiben az utasítások és vezérlések szerepelnek és környezete, amelyben megtudjuk hívni. A függvényeknek mindig van visszatérési értékük,tehát értéket számolnak ez az érték bármilyen típúsú lehet.Az eljárás ezzel szemben valamilyen tevékenységet hajt végre és ahol meghívjuk ennek a tevékenységnek az eredményét akarjuk felhasználni.
+          </para>
+          <para>
+              Függvényt meghívni csak kifejezésben lehet. A függvény akkor fejeződik be szabályosan ha van visszatérési értéke. Nem szabályosan legtöbbször megszakítás vagy goto utasítással való megszakítással.
+              Minden programozási nyelvben van egy fő program egység a main. Minden alprogram ennek adja át a vezérlést.
+          </para>
+          <para>
+              A hívási lánc: amikor egy programegység meghív egy másik programegységet.
+              Rekurzió lehet közvetlen:Amikor a program önmagát hívja meg rekurzívan vagy lehet közvetett amikor egy már előzőleg meghívottat és lefutott alprogramot újra meghív.Ezek mindig átírhatók iteratív algoritmusokká ami kevesebb memóriát használ.Néhány programozási nyelvben meglehet határozni másodlagos belépési pontokat vagyis, hogy ne a fejtől fusson le a függvény vagy az eljárás.
+           </para>
+           <para>
+               Paraméterkiértékelés:formális paraméterlistából csak egy darab van viszont az aktuális paraméterlisták száma végtelen lehet.
+               Paraméterkiértékelés aspektusok:sorrendi kötés vagy név szerinti kötés.
+               
+           </para>
+           <para>
+               A blokk: olyan programegység amely más programegység belsejében helyezkedik el.A blokk aktivizációja úgy történik hogy vagy rákerül a vezérlés vagy a goto utasítással a kezdetére ugrunk.
+           </para>
+          </listitem>
+          </itemizedlist>
     </section>        
     <section>
         <title>Programozás bevezetés</title>

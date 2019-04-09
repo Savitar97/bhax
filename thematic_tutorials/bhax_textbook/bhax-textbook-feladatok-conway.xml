@@ -11,6 +11,17 @@
             Írj Qt C++-ban egy hangyaszimulációs programot, a forrásaidról utólag reverse engineering jelleggel
             készíts UML osztálydiagramot is!
         </para>
+        <caution>
+            <title>
+                Felhasznált irodalom:
+             </title>
+             <para>
+                <link xlink:href=" http://www.cs.ubbcluj.ro/~csatol/mestint/pdfs/BME_SpecialisUtkeresoAlgoritmusok.pdf">http://www.cs.ubbcluj.ro/~csatol/mestint/pdfs/BME_SpecialisUtkeresoAlgoritmusok.pdf</link>
+             </para>
+             <para>
+                 Az ábra a <link xlink:href="https://bhaxor.blog.hu/2018/10/10/myrmecologist">https://bhaxor.blog.hu/2018/10/10/myrmecologist</link> származik.
+             </para>
+        </caution>
         <para>
             Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2018/10/10/myrmecologist">https://bhaxor.blog.hu/2018/10/10/myrmecologist</link>
         </para>
@@ -18,8 +29,29 @@
             Megoldás forrása: <link xlink:href=""></link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+            A hangyaszimuláció a hangyák mozgását és nyomvonalát szimulálja, minden hangya feromon nyomot hagy, és ha feromon nyomra lép akkor elkezdi követni az előző hangya által hagyott feromont,a feromon kezdetben sötétzöld de egyre halványodik ha nem kezdi el követni egy újabb hangya.Minél erősebb egy feromon nyom annál nagyobb az esélye, hogy elkezdi követni egy közelben járó hangya. Elsőként is létrehozzuk a hangya osztályt,amelyben a hangyák koordinátáit és mozgásukat adjuk meg. A mozgásuk irányát maradékos osztással számoljuk.Majd típusdefiniáljuk a hangya osztályt, ez a multiplicitás miatt, ugyanis több hangyát akarunk majd létrehozni és kezelni.
+            Az AntWinbe adjuk meg az ablak tulajdonságait(A hangyák megjelenítését, amely zöld négyzetekkel történik,a rácsvonalak méreteit és a megfelelő key eventeket ez itt most csak a pause a P vel és a Q-val vagy ESC-el való kilépés. Ha nem adunk meg semmit kapcsolóval akkor az alapértelmezett értékeket veszi fel viszont mi is megadhatjuk neki az ablak tulajdonságait és a hangyák tulajdonságait. Emellett a kirajzolás event is itt történik meg.
+        </para>
+        <para>
+            A parancssorban itt az érték megadaást a qcommandlineoptionnal érjük el. Amit módosítani tudunk a w kapcsolóval a szélességet cellákban mérve. Az m-el a magasságot cellákban mérve. Ezen kívül megadhatjuk a hangyák számát(-n), sebességüket(-t két lépés közötti időt nézi), és a párolgási időt(-p), hogy hány mp után pusztítsuk el az objektumot.Majd a nyomvonalukat a hangyáknak ezek a feromonok(-f) és a cellák méretét(-c), hogy hány hangya fér rá egy cellára.
+        </para>   
+        <para>
+            Az antthread.h ban vannak a program eventjei, hogy éppen fut -e a program vagy szünetel.Ha nem adunk meg kapcsolókkal értékeket akkor az antwin.h-ban lévő alap beállításokkal fog futni a program.
+            A program futtatásához a Qt-nak legalább 5.2 es verziója szükséges.
+        </para>    
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Ant.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/antabra.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        <para>
+            Az ábra elején lévő + jelzi hogy globálisan hozzáférhető -e az adott program részhez a - a helyi hozzáférésű részek.
+        </para>    
     </section>        
     <section>
         <title>Java életjáték</title>
@@ -46,11 +78,20 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href="https://sourceforge.net/p/udprog/code/ci/master/tree/source/kozepes/Qt/sejtautomata/">https://sourceforge.net/p/udprog/code/ci/master/tree/source/kozepes/Qt/sejtautomata/</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+            A programban a sejt ablakban van definiálva, hogy mekkora legyen az ablak lényegében, hogy hány cella van. A cellák méretét külön adjuk meg itt, 6x6 os kocka.A sejtnek két állapota van élő vagy halott, élő marad mindaddig amíg kettő vagy három szomszédja van ellenkező esetben halott lesz.A sejt ablakban az élőlények a siklók, amelyek másolják magukat és adott irányba haladnak. A siklókat sikló ágyúkból lőjük ki.A sikló ágyúknak fix pozíciója van. A painteventben rajzoljuk ki magát a táblát és a skiló kilövőket.Minden egyes kockának 8 szomszédja van az az egy sejt 9 kockát befolyásol.
+            A lényeg, hogy teremthetünk egy világot ahol eldönthetjük a létrehozott sejtek számát az az megadhatjuk mikor lehet élő a sejt vagy mikor halott.Így végülis a populációt tudjuk befolyásolni. És ez egy olyan játék ahol a személy csak megfigyelője az eseményeknek nem pedig részese ugyanis miután beállítottuk a szabályait a világnak onnantól magától fut és teremtődnek az élőlények.
+        </para>
+             <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/eletjatek.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        <para>
+            Káoszba fordult világ a halálozási arány csökkentésével.
+        </para>     
     </section>        
     <section>
         <title>BrainB Benchmark</title>
