@@ -7,20 +7,24 @@
     </info>
     <section>
         <title>Szoftmax Py MNIST</title>
-        <para>aa
+        <para>
             Python
         </para>
         <para>
-            Megoldás videó:
+            Megoldás videó: <link xlink:href="https://youtu.be/j7f9SkJR3oc">https://youtu.be/j7f9SkJR3oc</link>      
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/tensorflow/tensorflow/releases/tag/v0.9.0">https://github.com/tensorflow/tensorflow/releases/tag/v0.9.0</link> (/tensorflow-0.9.0/tensorflow/examples/tutorials/mnist/), <link xlink:href="https://progpater.blog.hu/2016/11/13/hello_samu_a_tensorflow-bol">https://progpater.blog.hu/2016/11/13/hello_samu_a_tensorflow-bol</link>  
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/tensorflow/twicetwo.py">https://github.com/Savitar97/Prog1/blob/master/tensorflow/twicetwo.py</link>
+        </para>
+        <para>
+           A tensorflowot a google készítette a gépi tanulást segíti, a tervezésben a fejlesztésben és a tanulmányozásban használják főként mivel készít adatáramlási gráfot, amelyben a node-ok a matematikai műveletek és az élek az az áramló adatok. A tensorflow-ot import tensorflow ként hívjuk meg. A readimg függvény beolvassa a kép file-t majd dekódolja erre a későbbiekben lesz szükség.A program lényege, hogy a megadott képen szereplő számot felismerje.Ehhez megkell tanítanunk a programunkat. Tehát elsőnek készítünk egy modelt.Majd ezen gyakoroltassuk a programunkat. Majd futtatunk egy teszt kört ahol a program kiirja a becsült pontosságát. Ezután a 42 es tesztkép felismerése következik. Majd végül a beolvasott képünkön teszteljük a program működését.
         </para>
     </section>        
 
+<!--
     <section>
         <title>Szoftmax R MNIST</title>
         <para>
@@ -36,7 +40,8 @@
             Tanulságok, tapasztalatok, magyarázat...
         </para>
     </section>        
-
+-->
+    
     <section>
         <title>Mély MNIST</title>
         <para>
@@ -52,7 +57,7 @@
             Tanulságok, tapasztalatok, magyarázat...
         </para>
     </section>        
-
+<!--
     <section>
         <title>Deep dream</title>
         <para>
@@ -68,13 +73,13 @@
             Tanulságok, tapasztalatok, magyarázat...
         </para>
     </section>        
-                  
+-->                  
     <section>
-        <title>Robotpszichológia</title>
+        <title>Minecraft-MALMÖ</title>
         <para>
         </para>
         <para>
-            Megoldás videó:
+            Megoldás videó: <link xlink:href="https://youtu.be/bAPSu3Rndi8">https://youtu.be/bAPSu3Rndi8</link>      
         </para>
         <para>
             Megoldás forrása:                

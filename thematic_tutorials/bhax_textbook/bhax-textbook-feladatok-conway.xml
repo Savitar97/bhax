@@ -46,7 +46,7 @@
         </mediaobject>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/antabra.png" scale="30" />
+                    <imagedata fileref="img/antabra.png" scale="40" />
                 </imageobject>
         </mediaobject>
         <para>
@@ -63,11 +63,21 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása: <link xlink:href=""></link>               
+            Megoldás forrása: <link xlink:href="https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apb.html#conway"></link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>            
+            A java életjáték lényege, hogy vannak élő és halott sejtek. Tehát a sejtnek ez a két állapota van. Egy élő sejt addig él tovább, amíg 2 vagy 3 szomszédja élő. Ha ez nem teljesül akkor elpusztul. Egyik véglet a túlnépesedés amikor 3-tól több a másik véglet amikor 2 nél kevesebb akkor pedig túl kevés az életben maradáshoz.Ha halott állapotban van egy sejt, akkor mindaddig halott marad, amíg 3 szomszédja élő. Két ráccsal dolgozunk egy jelenlegi állapottal és a megváltozott állapottal. Ezt az időfejlődés eljárás befolyásolja, itt figyeljük a sejtek állapotát, azt hogy hogyan változnak. A rácsok közötti váltakozást egy indexxel figyeljük. Külön definiáljuk a cella méreteit és azt, hogy mekkora a sejttér azaz, hogy hány cella magas és széles.
+            Emellett definiáljuk, hogy mennyi idő múlva váltson a jelenlegi sejttér a következőre. A programban készíthetünk pillanatfelvételt az S gombbal ezeket számoljuk, hogy hányat készítünk. Magát a felvétel készítését egy bool típúsú változóval érjük el. Majd a konstruktorban definiáljuk a sejtterünket, kezdetben minden sejt állapota halott. Majd létrehozzuk az első élőlényeket a siklókilövőket. Magát a sejtteret úgy hozzuk létre, hogy ami kiúszik az egyik oldalon az térjen vissza a másikon. A funkció gombok a program futása során a már tárgyalt 'S', ezen kívül van lehetőségünk felezni a cella méreteit a 'K'-val vagy esetleg duplázni az 'N'-el. Emellett a 'G'-vel gyorsíthatjuk a rácsok közötti váltást vagy pedig az 'L'-el lassíthatjuk. Az egérmutatóval változtathatjuk a sejtek állapotát. Tehát ha húzzuk az egeret a cellákon akkor a halott cellákból élőket tudunk csinálni. A kezdeti cellaméret 10x10 es.
+            A sejttér kirajzolásáért a paint eljárás a felelős. Ha egy sejt élő akkor feketével rajzoljuk ki ellenkező esetben fehérre színezzük a cellát. A rácsokat szürkével rajzoljuk ki. A létrehozott siklók a sejttérben automatikusan másolják magukat és megadott irányba haladnak. És végülis a legjobban az egérrel tudunk beavatkozni az egész sejttér fejlődésbe. A mainben már csak példányosítjuk magát a sejtautomatát a konstruktora segítségével. A következő feladatban majd láthatjuk ennek a feladatnak a c++ és qt segítségével elkészített megoldását.
+        </para>
+        <para>
+            Élet a sejttérben:
+            </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/sejtautomata1.png" scale="30" />
+                </imageobject>
+        </mediaobject>         
     </section>        
     <section>
         <title>Qt C++ életjáték</title>
@@ -114,6 +124,11 @@
         <para>
             És most beszéljünk kicsit a programról a BrainBThread.cpp-ben hozzuk létre a hős osztályunkat és itt hozzuk létre(deklaráljuk) a hősünket Samut.A hős osztály konstruktorában. A mozgását az ablakban randommal számoljuk. A Qthread-ban határozzuk meg az eventeket.Ilyen  a pause. És magát, hogy a hőst hogyan jelnítse meg, hogy írja ki a nevét stb.A BrainBWin-ben vannak meghatározva a presd eventek vagyis, hogy az egérgomb levan -e nyomva vagy nincs és hogy az S el mentse el az eredményt a P-vel pause-oljon az ESC-el vagy Q-val pedig lépjen ki.Ha az egérgombot lenyomjuk akkor kezdődik a mérés.Az ifben vizsgáljuk, hogy az egér a hősünkön van -e ha igen akkor létrehozunk egy new entropyt ez a incCompban van a BrainBThread.h-ban és növeljük a hősünk agilityjét 2 vel ha nincs rajta akkor kiszedünk a vektorból egy entropyt és csökkentjük a hősünk agilityjét.
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/BrainB.png" scale="30" />
+                </imageobject>
+        </mediaobject>
     </section>        
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
