@@ -148,7 +148,7 @@
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp">https://github.com/Savitar97/Prog1/blob/master/mozgato/pointer2.cpp</link> 
         </para>
         <para>
-            A különbség mostmár az hogy a csomópontból pointer lett. Tehát a konstruktorba be kelett vinni kívülről az eddig átadott fa gyokeret. Mivel eddig a gyökér tagként szerepelt a csomópontba, de most mutató lett tehát könnyedén átadhatjuk az értékét a fának ami egy mutató. Miután a gyökérből pointert csináltunk így könnyedén elhagyhatjuk az és jeleket ugyanis alapból a memória címét fogja átadni majd nem kell érték szerinti referenciaként hivatkozni rá.Viszont, így hogy pointer lett a destruktorban őt is felkell szabadítani tehát bele írjuk a delete gyokeret a destruktorba.
+            A különbség mostmár az hogy a csomópontból pointer lett. Tehát a konstruktorba be kellett vinni a konstruktor argumentum listájából az eddig átadott fa gyokeret(ugyebár eddig a konstruktor után volt írva a : után felsorolva). Mivel eddig a gyökér tagként szerepelt a csomópontba, de most mutató lett tehát könnyedén átadhatjuk az értékét a fának ami egy mutató,tehát memória cím átadása történik. Miután a gyökérből pointert csináltunk így könnyedén elhagyhatjuk az és jeleket ugyanis alapból a memória címét fogja átadni majd nem kell érték szerinti referenciaként hivatkozni rá.Viszont, így hogy pointer lett a destruktorban őt is felkell szabadítani tehát bele írjuk a delete gyokeret a destruktorba.
         </para>
     </section>                     
 
