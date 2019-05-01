@@ -23,6 +23,11 @@
         <para>
             Ezután létrehozunk egy 2 dimenziós tömböt a kép méreteivel. Ezután a mandel függvénynek átadjuk ezt a tömböt. Itt vannak a futási időhöz való számítást segítő változók. De ami lényeg az a számoláshoz tartozó változók és, hogy az adott komplex szám a halmaznak eleme -e, ez akkor lehetséges ha a z kisebb mint 2 vagy elértük a 255. iterációt. Majd feltöltjük a tömböt. Majd létrehozunk egy új képet kép néven és pixelenként bejárjuk és ami benne van a halmazba elem azon a helyen a képkocka színét átszínezzük. Majd a write(argv[1])-el a megadott fájlnévvel készítünk egy képet. Az így kapott ábra a mandelbrot halmaz grafikus megjelenítése, amely egy fraktál az az egy végtelenül komplex alakzat lesz. Vagyis minél jobban rá nagyítunk ismétlődésként megfog jelenni ez az ábra.
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/mandel.png" scale="50" />
+                </imageobject>
+        </mediaobject> 
     </section>        
         
     <section>
@@ -85,11 +90,30 @@
             Megoldás videó: 
         </para>
         <para>
-            Megoldás forrása: <link xlink:href="https://gitlab.com/Savitar97/bhax/tree/master/attention_raising/CUDA">https://gitlab.com/Savitar97/bhax/tree/master/attention_raising/CUDA</link> 
+            Megoldás forrása: <link xlink:href="https://gitlab.com/Savitar97/bhax/tree/master/attention_raising/CUDA">https://gitlab.com/Savitar97/bhax/tree/master/attention_raising/CUDA</link>
+             
         </para>
+        <para><link xlink:href="https://www.nvidia.com/docs/IO/116711/sc11-cuda-c-basics.pdf">https://www.nvidia.com/docs/IO/116711/sc11-cuda-c-basics.pdf</link></para>
         <para>
-            Lényegében itt azt kell megfigyelnünk, hogy mennyivel gyorsabban dolgoznak a cuda magok a processzornál. A processzornál ugyebár a képpontokat szekvenciálisan számljuk tehát a processzor egyessével számolja a képpontokat.Ez a cudanál egyszerre történik most az az minden egyes képpontot egy szál fog számolni a számolás egyszerre történik mint a párhuzamos programoknál. Ez hatalmas sebességbeli növekedést eredményez konkrétan egy pillanat alatt végez a program ha elég erős a videókártyánk, mivel itt már a gpu számol nem a cpu.
+            Lényegében itt azt kell megfigyelnünk, hogy mennyivel gyorsabban dolgoznak a cuda magok a processzornál. A processzornál ugyebár a képpontokat szekvenciálisan számljuk tehát a processzor egyessével számolja a képpontokat.Ez a cudanál egyszerre történik most az az minden egyes képpontot egy szál fog számolni a számolás egyszerre történik mint a párhuzamos programoknál. Ez hatalmas sebességbeli növekedést eredményez konkrétan egy pillanat alatt végez a program ha elég erős a videókártyánk, mivel itt már a gpu számol nem a cpu. Ez azért lehetséges mivel a GPU-ban sokkal több szál van mint a processzorban.
+            A programban a cudaMalloccal foglalunk helyet a GPU-n dinamikusan történik, amely a kép méretei alapján és az int mérete alapján történik.A dim3 adja meg a blokkok és szálak méretét, ezzel 3 dimenzióban szoktuk megadni,de itt most csak 2-t használunk. Külön figyelmet kíván a:
         </para>
+         <programlisting language="c"><![CDATA[
+       <<<
+             és
+       >>>
+             operátor.
+
+  ]]></programlisting>
+  <para>
+      Ezekkel használjuk a kernelt azt hogy hány szálat szeretnénk futtatni és hány blokkra osztjuk fel ezeket a szálakat azaz ez a párhuzamos kernelünk, a grid a legfelsőbb szintje az az ez olyan mint egy keret(rács),amely összefogja a blokkokat és szálakat, ezen kívül a tgrid a blokk méretet számolja ki.Ezeket adjuk át a kernelnek. A global típúsú függvények az eszközön futnak és a processzoron futó program hívja meg, míg  a device kódokat a processzor nem tudja meghívni ezek csak a videókártyán használhatók. A cudaMemcpyvel tudunk adatokat mozgatni a videókártyán számolt adat és a processzor között.Mivel dinamikusan forglaltunk memóriát itt is fel kell szabadítani ezt a cudaFree-vel érjük el.
+  </para>
+  <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/cuda.png" scale="200" />
+                </imageobject>
+        </mediaobject>
+        <para>Először cudával lett futtatva majd azután C-ben processzorral.</para>
     </section>                     
 
     <section>
@@ -117,7 +141,7 @@
         </para>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/mandelzoom.png" scale="20" />
+                    <imagedata fileref="img/mandelzoom.png" scale="50" />
                 </imageobject>
         </mediaobject> 
     </section>                     
@@ -131,6 +155,9 @@
             <para>Ebben a feladatban tutoráltam Kun-Limberger Anetett és Duszka Ákos Attilát.</para>
         </caution>
         <para>
+        Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/javacnagyito">https://github.com/Savitar97/Prog1/tree/master/javacnagyito</link> 
+        </para>
+        <para>
             A mandelbrot nagyító javában. Mivel a mandelbrot javás programunkhoz készítünk nagyítót, ezért ez lesz a szülő osztály. A származtatást az extends kifejezéssel érjük el.
             Létrehozunk két változót private jogosultságokkal. Az elsőben azt a pontot tároljuk el, ahova kattintunk majd az egérrel tehát a kezdő pont koordinátáit. A másik az egér jelenlegi pozícióját fogja tárolni.
             Ez a terület kijelölésénél lesz majd fontos, hogy mekkora területet jelölünk ki. Majd meghívjuk az osztály konstruktorát public jogosultságokkal és 6 argumentummal, amelyből az első 4 argumentum a tartományt adja meg.Majd a tömbnek a méretét, amelyben a halmaz szerepel.
@@ -140,6 +167,11 @@
            <para> A fordítás a következővel hajtjuk végre: <command>javac MandelbrotHalmazNagyító.java</command>.</para><para> A futtatást pedig, így hajtjuk végre:<command>java MandelbrotHalmazNagyító</command>.
             
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Mandelnagyit.png" scale="100" />
+                </imageobject>
+        </mediaobject>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                

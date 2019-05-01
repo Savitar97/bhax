@@ -110,6 +110,27 @@
            </para>
           </listitem>
           </itemizedlist>
+          <para>
+              Az I/O:
+          </para>
+          <para>
+              Az I/O az eszközökkel kapcsolatos kommunikációért felelős. Feladata a perifériák és program közötti adatmozgatás. Az I/O-nál az állományok a fontosak. Ezek lehetnek logikai vagy fizikai állományok, amelyeket funkcióik szerint is megkülönböztetjük van az input ami a program bemenete tehát már létező fájl. Az output a program által létrehozott fájl és van az input-output ez az eset, amikor egy fájlt beolvasunk majd módosítjuk a tartalmát,de nem új fájlt hozunk létre mint az outputnál. 
+          </para>
+          <para>
+              Az adatátvitelt is két részre bontjuk van a folyamatos és a bináris átvitel. A bináris átvitelnél a bitsorozatnak meg kell egyeznie a tárban és az adattárolón is. A file streameket mindig deklarálni kell. Figyelni kell, hogy milyen adatokkal dolgozunk és aszerint választani adattípust. A filestream deklarálásával és a filenév megadásával megnyitjuk az adott file-t és ekkor dolgozhatunk vele módosíthatjuk,felhasználhassuk a benne lévő adatokat. Ezeket a filestreameket a használat után mindig lekell zárni. Kiemelt fontossággal a streamwritereket.
+              </para>
+              <para>
+                  A C nyelvnek az input/output alapból nem része ezt külön könyvtár meghívásával implementálhatjuk a nyelvbe.
+              </para>
+              <para>
+                  Kivétel kezelés:
+                  </para>
+                  <para>
+                      A kivételkezelés egy meghatározott program rész, amely akkor fut le ha valamilyen esemény bekövetkezik. A kivételeknek van egy neve és egy kódja.
+                  </para>
+                  <para>
+                      A beépített kivételek például nullával való osztás vagy egy tömb indexén való túl hivatkozás. A programozó is definiálhat kivételeket, ezt főleg a try catch szerkezettel képes elérni vagy az if-el.Kivétel keletkezésekor is folytatódhat a program például a goto utasítás használatával vagy egyszerűen olyan kivételt adunk meg, amely nem szakítja meg a program futását például a do while-ban ha azt vizsgáljuk, hogy a megadott formában adtuk -e meg a bemenetet, ha nem akkor csak annyit csinálunk,hogy újra kérjük, hogy adja meg a felhasználó.
+                  </para>
     </section>        
     <section>
         <title>Programozás bevezetés</title>
@@ -212,6 +233,30 @@
                 A statikus függvények törzsében nem használhatunk this mutatót mivel nem lenne értelme.
                 Az első futtatott kód a program indulásakor nem a main függvény első sora hanem a statikus és globális változók konstruktorai.Beágyazott függvények esetén megkell adni a teljes elérési utat,ha nem az osztálydefinícióban definiált.A beágyazott osztályoknál nem kap speciális jogokat sem a beágyazott sem a tartalmazó osztály.A különböző absztrakt adattípusok miatt megjelent az operátor túlterhelés.A c++-ban az operátorok az argumentumaikon végeznek műveletet,az operátorok különböző számú argumentumot igényelhetnek. A c++-ban az operator kulcsszó.Itt nem az operátorok működésének megváltoztatása a cél, hanem az, hogy a saját magunk által létrehozott típusra is használhassuk.A túlterhelt operátorokat általában tagfüggvényként érdemes definiálni.
             </para>
+            <para>
+              Típuskonverzió:  
+            </para>
+            <para>
+                C++-ban az enum típusnál a típuskonverziót muszáj kiírni, ugyan ez a helyzet a void*-nál ugyan ez a helyzet áll fent. Referenciaként való átadásnál nem használható típuskényszerítés. Ugyanis a memóriareprezentációk eltérőek minden típusnál.Függvénynek nem tudunk átadni ideiglenesen létrehozott értéket, csak ha a függvény konstanst kér paraméterül. Mivel az ideiglenesen létrehozott értékek konstansok.
+            </para>
+            <para>
+                Ha viszont nem akarjuk változtatni az értéket akkor a fordító engedi felhasználni a kényszerített típuscserét csak, ilyenkor a const kulcsszót kell használnunk.Tehát elkerüljük a fölösleges másolgatásokat és dolgozhatunk az argumentumként átadott értékkel.
+            </para>
+            <para>
+                A C++-ban a megírt osztályokat könnyen használhassuk típusként mint a beépített típúsokat akkor azt az operátor túlterheléssel és konverziós konstruktor jelenti a megoldás kulcsát. A stringeket a \0 karakterrel zárjuk ez egy nul terminator karakter, az az egy záró karakter, ezt nem számoljuk a string hosszába. Tehát egy char tömböt a legkönnyebben úgy alakítunk stringgé, hogy túlterheljük az összeadás operátort, amely így összefogja fűzni a szöveget és a char tömb elemszámát 1 el megnövelve a végére tesszük a \0 záró karaktert.
+                A típuskonverzió a beépített típúsokra úgy működik, hogy a kívánt típust zárójelekbe zárva elé tesszük az átalakítani kívánt változó neve elé. Ha egy argumentumú a konstruktor akkor itt a konvezió magától értetődik. Ha kiakarjuk kapcsolni az automatikus típuskonverziót akkor azt az osztályunk konstruktora elé írt  explicit kulcsszóval érhetjük el. A visszaalakítást az operator kulcsszóval érhetjük el ilyenkor a konstruktor visszatérési értékéhez nem kell típust megadni mert azt már a bemenetkor megkapott változó megmutatja. Az ilyen operátorok csak tagfüggvényként hívhatók meg, mivel globálisan nem alkalmazhatók.
+                Viszont nincsenek kizárva az öröklődés alól és lehetnek virtuálisak is. Ha több megoldás is létezik akkor a fordítónknak megkell adnunk, hogy pontosan, hogyan szeretnénk létrehozni a típus átalakítást. Ha nem írunk másoló konstruktort akkor is létezik, mivel a fordító biztosít egy bitenkénti vagy másnéven sekély másolást. A leszármaztatás és az öröklődés nagyon veszélyes ugyanis felléphet olyan probléma, hogy a mutató a program által használt memóriaterüten kívülre próbál hivatkozni, ezért az oprendszer a biztonság szempontjából leállítja  a programot.
+             </para>
+             <para>
+                 A c++ a típuskonverzióra új teret nyit ezek a castok. Ez lehet statikus vagy dinamikus vagy konstans, esetleg újraértelmező konverzió.Használata az előző 4 _cast típus_neve és az átalakítani kívánt változó. Konstans típust csak konstans típuskonverzió alakíthat nem konstans típussá.
+             </para>
+             <para>
+                 Kivételkezelés(hozzá kapcsolódó rész a pici könyvben):
+                 </para>
+                 <para>
+                     A kivételkezelés lényege, hogy a program futása során felmerülő problémákat kezeljük. Tehát a program ne hibásan folytassa a működését.
+                     Ha valamilyen kivétel bekövetkezik a kivételkezelő segítségével érjük el, hogy a program egy új ágon folytatódjon. A try-catch szerkezet az alap hibakezelő parancs.Itt különböző hibaüzeneteket a throw kulcsszóval tudunk megadni. A try blokkban lévő kód lefut ha nem tapasztal hibát és ilyenkor a catch ág nem fut le és a catch után folytatódik azonnal a program. Ha hibát tapasztal akkor kiirja a throw-ban megadott hibaüzenetet. A throw paraméterét kivétel objektumnak is nevezzük. A throw utasítás a returnhoz hasonló. A catch(...) minden kivételt eltud kapni viszont ha megadunk neki valamilyen argumentumot akkor csak akkor dob hibaüzenetet ha illeszkedik valamelyik hiba típusra. A nem elkapott kivételek esetén a program meghívja az abort függvényt, amely a program bezárásával jár ezek a kezeletlen kivételek. A kivételkezelésnek vannak szintjei, ezt a try-catch blokkok egybeágyazásával érhetjük el. A kivételkezelésnél lehetséges a kivétel újra dobása tehát a throw-al elkapott hibát tovább dobhatjuk a throwval egy fentebbi szinten lévő kivétel kezelőnek. A kivétel dobása és elkapása között is futhat le utasítás, ilyenek az osztályok destruktorai amelyek felszabadítják az objektumot. Az uncaught_exception függvény megmondja, hogy a kivételkezelés miatt futott -e le a destruktor vagy sem. A valóságban persze kivételkezelő osztályokat használunk inkább a kivételek kezelésére. 
+                 </para>
     </section>        
   
 </chapter>                

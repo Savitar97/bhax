@@ -42,6 +42,20 @@
         <para>
             <command>gcc vegtelen3.c -o vegtelen3 -fopenmp</command>
         </para>
+        <para>
+            Végtelen ciklus 1 mag 100%-os használattal:
+         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/vegtelen1mag.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        <para>Végtelen ciklus az összes mag kihasználásával:</para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/vegtelenosszesmag.png" scale="30" />
+                </imageobject>
+        </mediaobject>
         <para>  
             Ha azt akarjuk, hogy 0%-ot használjon a processzorból akkor azt a:
          </para>
@@ -56,7 +70,12 @@
         </programlisting>
         <para>
           könyvtár tartalmazza. Tehát a használatához megkell hívnunk.
-</para>        
+</para> 
+<mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/vegtelen0mag.png" scale="30" />
+                </imageobject>
+        </mediaobject>       
     </section>        
         
     <section>
@@ -270,6 +289,14 @@ false]]></screen>
         <para>
             Tapasztalat:C-ben van egy kis hiba mivel, amikor eléri a pálya tetejét a labda nem egyből pattan vissza, ez csak if-nél jelentkezik. If nélkül a két abszolút értékes függvénnyel nem jelentkezik ez a hiba.
         </para>
+        <para>
+            A program futás közben:
+        </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/labda.png" scale="150" />
+                </imageobject>
+        </mediaobject>
     </section>                     
 
     <section>
@@ -284,9 +311,7 @@ false]]></screen>
         <para>
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/szohossz/bitshift.cpp">https://github.com/Savitar97/Prog1/blob/master/szohossz/bitshift.cpp</link>
         </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat... 
-        </para>
+        
         <para>
             A szóhossz megnézéséhez a bitenkénti léptetés operátort használjuk:
         <screen>
