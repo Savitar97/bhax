@@ -182,6 +182,7 @@ false]]></screen>
         <para>
             Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog1/blob/master/valtcser/valtcser.c">https://github.com/Savitar97/Prog1/blob/master/valtcser/valtcser.c</link> 
         </para>
+        
         <para>
             Két változó értékének felcserélése többféle módon is történhet a legalapvetőbb a segédváltozó használata.Ekkor a 2 változóhoz behozunk egy ideiglenes segédváltozót, amiben valamelyik változó értékét letároljuk, majd az első változó értékét egyenlővé tesszük a másodikkal, majd a második értékét egyenlővé tesszük az ideiglenesben letárolt első változó értékével. Ez itt látható:
         </para>
@@ -213,6 +214,11 @@ false]]></screen>
         <para>
         A kizáróvagy(xor) lényege, hogy csak akkor igaz ha az egyik igaz.Ez binárisan azt jelenti,hogy akkor 1 es ha ugyan azon a biten lévő érték az egyik változónál 1 es a másikban 0 ás.Az elso változó binárisan 0101 a masodik 0011 kizáró vagyot végre hajtva az elso értéke 0110 lesz, aminek az értéke 6. Majd újra kizáró vagyot végrehajtva a masodik értéke 0101 lesz, ami 5 tehát megkapta az elso ertékét. Ezután még egyszer kizáróvagy-ot használunk ekkor az elso értéke 0011 lesz, ami 10 es számrendszerbe 3. Tehát a két változó értéke felcserélődött.   
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/valtcser.png" scale="30" />
+                </imageobject>
+        </mediaobject>  
     </section>                     
 
     <section>
@@ -333,6 +339,21 @@ false]]></screen>
         <para>
             Igazából 32 bites a szóhossz csak az elsőt nem számolja szóval 31+1.
         </para>
+        <para>
+            De ezen könnyen javíthatunk ha, a while helyett do while-t használunk:
+        </para>
+        <screen>
+        <![CDATA[do{
+			cout<<szam<<'\n';
+			counter++;
+        }while (szam <<=1);
+]]>
+        </screen>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/bitshiftjav.png" scale="30" />
+                </imageobject>
+        </mediaobject>
     </section>                     
 
     <section>

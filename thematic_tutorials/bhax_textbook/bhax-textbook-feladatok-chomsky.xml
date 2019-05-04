@@ -14,7 +14,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:Az előadás fóliája.               
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
@@ -182,6 +182,10 @@
         </para>
         <para>
             Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog1/blob/master/hivatkozas/hivatkozas.c">https://github.com/Savitar97/Prog1/blob/master/hivatkozas/hivatkozas.c</link> 
+            
+        </para>
+        <para>
+            <link xlink:href="https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma">https://hu.wikipedia.org/wiki/Backus%E2%80%93Naur-forma</link>
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
@@ -194,6 +198,7 @@
             Backus normal form egy általánosított leírása a programozási nyelveknek.Nyelv független. Vagyis ez a séma ráilleszthető a legtöbb programozási nyelvre és használható a nyelvekben írt programok leírására.
         </para>
         <programlisting><![CDATA[
+            Forrás:https://arato.inf.unideb.hu/batfai.norbert/UDPROG/deprecated/Prog1_1.pdf?fbclid=IwAR1eImHN5PINqTMnhpJItlqA_PtEcfNGKqndS6nt5wNTFr_X-hcSdiVr5iQ
             A backus leírás röviden:
         <szimbólum> ::= <kifejezés a szimbólumra>
             van egy szimbólum aztán a ::= után van egy formai leírása 
