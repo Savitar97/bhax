@@ -48,7 +48,12 @@
         </para>
         <para>
             A program végén a free felszabadítja a malloc által lefoglalt de nem használt memória területeket.
-        </para>     
+        </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/doublecsillag.png" scale="30" />
+                </imageobject>
+        </mediaobject>      
     </section>        
     <section>
         <title>C EXOR titkosító</title>

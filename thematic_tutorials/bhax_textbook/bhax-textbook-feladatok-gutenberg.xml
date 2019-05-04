@@ -36,7 +36,7 @@
              Mutató típus:elemei memóriacímek, legfontosabb művelet a memóriacímen lévő érték elérése.
          </para>
          <para>
-             Nevesített konstans: mindig deklarálni kell van neve, típusa és értéke. Mindig a nevével hivatkozunk rá és a hozzá rendelt értékre hivatkozik.
+             Nevesített konstans: mindig deklarálni kell, van neve, típusa és értéke. Mindig a nevével hivatkozunk rá és a hozzá rendelt értékre hivatkozik.
          </para>
          <para>
              Utasítások

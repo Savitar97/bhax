@@ -323,6 +323,11 @@ main ()
         <para>
             A programot a <keycap>Ctrl+D</keycap>-vel tudjuk leállítani.
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/realnum.png" scale="30" />
+                </imageobject>
+        </mediaobject>
     </section>                     
 
     <section>
