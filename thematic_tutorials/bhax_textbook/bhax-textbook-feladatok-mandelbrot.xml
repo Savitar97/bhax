@@ -47,6 +47,11 @@
         <para>
             Ezután létrehozunk egy üres képet a mérettel és a szélességgel. Ezután a dx és dy al megadjuk, hogy minden egyes lépéssel mennyit megyünk előre azaz a lépésközöket. A következő for ciklussal végig megyünk a képnek a képpontjain. Ezután kiszámoljuk C-nek a valós és imaginárius részét és ezeket átadjuk a komplex C számnak.Majd létrehozunk egy z_n komplex számot és inicializáljuk. Ezután jön egy while ciklus ami addig megy amíg a z_n abszolút értékben kisebb mint 4 vagy pedig elértük az iterációs határt. Majd a while ciklus törzsében kiszámoljuk a z_n értékék és növeljük az iterációs határt. Majd ha kilép a while ciklusból a képnek az adott sorában és oszlopában lévő pixel színét átállítjuk. Az int százalékkal a feldolgozás állását közvetítjük a consolra. Végén kiiratjuk a képet a megadott fájlba.
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/mandel1.png" scale="50" />
+                </imageobject>
+        </mediaobject> 
     </section>        
                 
     <section>
