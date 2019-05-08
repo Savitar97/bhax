@@ -45,17 +45,26 @@
         <para>
             Végtelen ciklus 1 mag 100%-os használattal:
          </para>
+         <figure>
+             <title>Végtelen ciklus 100%-os használattal</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/vegtelen1mag.png" scale="30" />
                 </imageobject>
+                <textobject>
+                    <phrase>Végtelen ciklus</phrase>
+                </textobject>
         </mediaobject>
+         </figure>
         <para>Végtelen ciklus az összes mag kihasználásával:</para>
+        <figure>
+             <title>Végtelen ciklus az összes mag 100%-os használattal</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/vegtelenosszesmag.png" scale="30" />
                 </imageobject>
         </mediaobject>
+        </figure>
         <para>  
             Ha azt akarjuk, hogy 0%-ot használjon a processzorból akkor azt a:
          </para>
@@ -70,12 +79,15 @@
         </programlisting>
         <para>
           könyvtár tartalmazza. Tehát a használatához megkell hívnunk.
-</para> 
+</para>
+<figure>
+             <title>Végtelen ciklus 0%-os használattal</title>
 <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/vegtelen0mag.png" scale="30" />
                 </imageobject>
-        </mediaobject>       
+        </mediaobject>
+</figure>      
     </section>        
         
     <section>
@@ -214,11 +226,14 @@ false]]></screen>
         <para>
         A kizáróvagy(xor) lényege, hogy csak akkor igaz ha az egyik igaz.Ez binárisan azt jelenti,hogy akkor 1 es ha ugyan azon a biten lévő érték az egyik változónál 1 es a másikban 0 ás.Az elso változó binárisan 0101 a masodik 0011 kizáró vagyot végre hajtva az elso értéke 0110 lesz, aminek az értéke 6. Majd újra kizáró vagyot végrehajtva a masodik értéke 0101 lesz, ami 5 tehát megkapta az elso ertékét. Ezután még egyszer kizáróvagy-ot használunk ekkor az elso értéke 0011 lesz, ami 10 es számrendszerbe 3. Tehát a két változó értéke felcserélődött.   
         </para>
+        <figure>
+             <title>Változócsere</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/valtcser.png" scale="30" />
                 </imageobject>
-        </mediaobject>  
+        </mediaobject>
+        </figure> 
     </section>                     
 
     <section>
@@ -298,11 +313,14 @@ false]]></screen>
         <para>
             A program futás közben:
         </para>
+        <figure>
+             <title>Labdapattogtatás</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/labda.png" scale="150" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>                     
 
     <section>
@@ -331,11 +349,14 @@ false]]></screen>
         <para>
           Ez azt eredményezi, hogy 2-nek hatványait kapjuk és amikor eléri az int maximális méretét utána 0-t kap eredményül, mivel a bitsorozat teljesen ki 0-ázódik.Tehát a 32. lépésre, nem lesz olyan bit, amin képesek leszünk ábrázolni az 1 est.   
         </para>
+        <figure>
+             <title>Szóhossz</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/bitshift.png" scale="50" />
                 </imageobject>
         </mediaobject>
+        </figure>
         <para>
             Igazából 32 bites a szóhossz csak az elsőt nem számolja szóval 31+1.
         </para>
@@ -349,11 +370,14 @@ false]]></screen>
         }while (szam <<=1);
 ]]>
         </screen>
+        <figure>
+             <title>Szóhossz jó megoldás</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/bitshiftjav.png" scale="30" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>                     
 
     <section>
@@ -445,17 +469,23 @@ false]]></screen>
 }
        ]]></programlisting>
        <para>Érdekesség ha az egyik oldal nem mutat semmire.Tehát ha az utolsó oszlopot mondjuk teljesen ki 0-ázzuk akkor a pagerank is kinullázódna ha 2 tizedes jegyik néznénk az értéket.</para>
+       <figure>
+             <title>Pagerank hibásmegoldás</title>
        <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/nulla.png" scale="50" />
+                    <imagedata fileref="img/nulla.png" scale="100" />
                 </imageobject>
         </mediaobject>
+       </figure>
         <para>A helyes megoldás:</para>
+        <figure>
+             <title>Pagerank helyes megoldás</title>
            <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/elso.png" scale="50" />
+                    <imagedata fileref="img/elso.png" scale="100" />
                 </imageobject>
             </mediaobject>
+        </figure>
     </section>
 
     <section xml:id="Brun">
@@ -500,11 +530,14 @@ false]]></screen>
         <para>
             Végül a plot kirajzolja a függvényt.
          </para>
+         <figure>
+             <title>A konstans közelítése</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/Rplot.png" scale="100" />
                 </imageobject>
         </mediaobject>
+         </figure>
         <para>
             A képen látható, hogy a párosprímek reciprokának összege egyre jobban tart a 2 felé,tehát egy véges értékhez konvergál, amely a Brun konstans azaz a Brun tétel teljesül.
         </para>
@@ -563,11 +596,14 @@ false]]></screen>
         <para>
             Egy példa a program futására:
         </para>
+        <figure>
+             <title>Monty Hall teszt</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/monty.png" scale="50" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>
 
 </chapter>                

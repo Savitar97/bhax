@@ -25,11 +25,14 @@
         <para>
             Tehát itt pozitív számokat tudunk ábrázolni. A megvalósítás 2 féle lehet vagy indítunk egy for ciklust 0-tól és minden egyes lépésnél egy stringbe összefűzzük az egyeseket. Vagy pedig a számtól indítunk egy ciklust 0-ig és ugyan ezt tesszük. 
         </para>
+        <figure>
+             <title>Turing gép</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/turing.jpg" scale="45" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>        
         
     <section>
@@ -234,11 +237,14 @@
         <para>
             A következő hibaüzenetet kapjuk:
         </para>
+        <figure>
+             <title>Hibaüzenet</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/error.png" scale="50" />
                 </imageobject>
         </mediaobject>
+        </figure>
         <para>
             Emellett van olyan ami a c89-ben működik, de c99 ben nem. Ilyen a következő kódcsipet:
         </para>
@@ -323,11 +329,14 @@ main ()
         <para>
             A programot a <keycap>Ctrl+D</keycap>-vel tudjuk leállítani.
         </para>
+        <figure>
+             <title>Lexikális elemző</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/realnum.png" scale="30" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>                     
 
     <section>
@@ -445,11 +454,14 @@ main()
           <para>
               A program futása során a lexer cseréli a beírt karakter sorozatot és ez 1337 5P34CH.
           </para>
+          <figure>
+             <title>1337 5P34CH</title>
           <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/leet.png" scale="30" />
                 </imageobject>
         </mediaobject>
+          </figure>
     </section>                     
 
 
@@ -764,11 +776,14 @@ int main()
      <para>
          Futtatva következő eredményt kapjuk:
      </para>
+     <figure>
+             <title>Deklaráció</title>
       <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/deklaracio.png" scale="75" />
                 </imageobject>
         </mediaobject>
+     </figure>
     <programlisting><![CDATA[int c[5];]]></programlisting>
     <para>
         A c deklarál egy 5 elemű tömböt.

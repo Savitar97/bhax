@@ -93,11 +93,14 @@
         <para>
             Ha már van tárolt érték akkor pedig azzal tér vissza. Majd a main-be meghívjuk az osztályunkat pg néven és a forral létrehozunk 10 mintapéldányát az osztálnyak. Ez az osztály a random számgenerálás osztálya. Tehát végülis 10 véletlen számot fog generálni nekünk a program a Java-ban ez az osztály ugyan így szerepel a forrásfáflok közt Random.java néven találjuk a mappában. Az objektum orientáltságnak 3 lényeges pontja van az egyik, hogy az összetartozó adatok képekes legyenek egy zárt adategységet alkotni. Az adatrejtés segítségével kezeljük a jogosultságokat vagyis, hogy az előtt említett egységből, ki milyen adatokat képes elérni(private,protected,public). Emellett a harmadik fontos tulajdonság az öröklődés. Öröklődés során az "utód" örökli a szülője összes tulajdonságát, de lehetőségünk van még plusz tulajdonságokat adni neki.
         </para>
+        <figure>
+             <title>Polargen random</title>
          <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/sourcejava.png" scale="30" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>        
 
     <section>
@@ -323,27 +326,36 @@ szabadit (BINFA_PTR elem)
                 <para>
                     Inorder bejárás:
                  </para>
+                 <figure>
+             <title>Inorder bejárás</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/inorder.png" scale="30" />
                 </imageobject>
         </mediaobject>
+                 </figure>
         <para>
                     Preorder bejárás:
                  </para>
+                 <figure>
+             <title>Preorder bejárás</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/preorder.png" scale="30" />
                 </imageobject>
-        </mediaobject> 
+        </mediaobject>
+                 </figure>
         <para>
                     Postorder bejárás:
                  </para>
+                 <figure>
+             <title>Postorder bejárás</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/postorder.png" scale="30" />
                 </imageobject>
-        </mediaobject> 
+        </mediaobject>
+                 </figure>
     </section>        
                    
     <section>

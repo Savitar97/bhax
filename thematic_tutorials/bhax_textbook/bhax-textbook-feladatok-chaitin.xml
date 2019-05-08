@@ -61,11 +61,22 @@
            Az gimp-text-layer-new létrehozunk egy új text layert ez argumentumként megkapja a képet, a szöveget, a betűméretet és a pixeleket. A gimp-image-insert-layer adja hozzá a lajert a képhez a megadott pozícióba. A szöveg eltolását a képen a gimp-layer-set-offsets segíti, ezzel igazítjuk középre. A két layer konbinációját a gimp-image-merge-down éri el. A második lépésben használunk egy erős gaus elmosást. Ezt a plug-in-gauss-iir-el tudjuk használni itt a függvény megkapja a képünket az elmosni kívánt layert, az elmosás értékét és az irányokat.
             A 3. lépésben állitjuk be a színszinteket, hogy egy nagyon világos vakító fehér színű szöveget kapjunk. Itt a gimp-drawable-levels-t fogjuk használni, amely megkapja a layert, azt hogy melyik csatornát akarjuk módosítani,az intenzitási értékeket, és a gammát. A step 4-el ugyan azt hívjuk. Majd az 5. lépésben kijelöljük a hátteret ami a fekete rész és ezt kell invertálni.A 6. lépésben létrehozunk egy új layert és ugyebár az előző kijelölés miatt megmarad a szöveg körvonala mivel a fekete részt szelektáltuk ki és ezt adjuk hozzá a képhez.Majd a 7. lépésben állítunk be egy szürkés skalár színátmenetet(gradienst) a szövegnek.Majd a 8. lépésben készítünk egy bump mapet a szövegnek. Majd a 9. lépésben állíjuk be a színgörbéket a gimp-curves-spline függvény segítségével és készen is van a scriptünk. 
         </para>
+        <figure>
+             <title>Nemesis króm effektel</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/nemesis.png" scale="100" />
                 </imageobject>
-        </mediaobject>     
+        </mediaobject>
+        </figure>
+        <figure>
+             <title>Nemesisborder króm effektel</title>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Nemesisborder1.png" scale="400" />
+                </imageobject>
+        </mediaobject>
+        </figure>     
     </section>        
 
     <section>
@@ -87,11 +98,14 @@
             Párbeszéd ablakokat a gimp-message-el tudunk készíteni. Az elkészített képet a gimp-display-new-al jelenítsük meg új ablakban.Majd ki cleareljük a képet gimp-image-clean-all.
             Futtatáskor a kép méretét tudjuk beállítani a betűtípust és a betűméretet. Ezen kívül a színt és színskálát.
         </para>
+        <figure>
+             <title>Név mandala</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/mandala.png" scale="100" />
                 </imageobject>
-        </mediaobject>          
+        </mediaobject>
+        </figure>          
     </section>        
 
 <!--    

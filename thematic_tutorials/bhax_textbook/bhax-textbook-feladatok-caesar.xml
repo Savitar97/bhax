@@ -25,11 +25,14 @@
         <para>
             Az alsó háromszög mátrix lényege, hogy a főátló fölött csupa 0-érték helyezkedik el. Az alsó háromszögmátrixokat sorfolytonosan szoktuk ábrázolni, ha M[i,j] a j>i akkor a j értéke 0.
         </para>
+        <figure>
+             <title>Memória példa</title>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/doublecsillag2.png" scale="30" />
+                    <imagedata fileref="img/doublecsillag2.png" scale="150" />
                 </imageobject>
         </mediaobject>
+        </figure>
         <para>
             Az nr-ben inicializáljuk, hogy hány soros és oszlopos legyen a mátrixunk. Ezután létrehozunk(deklarálunk) egy double típúsú mutatóra mutató mutatót, amely egy 2 dimenziós tömb lesz, ez látható a fenti képen.
         </para>
@@ -54,11 +57,14 @@
         <para>
             A program végén a free felszabadítja a malloc által lefoglalt de nem használt memória területeket.
         </para>
+        <figure>
+             <title>Alsó háromszög mátrix</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/doublecsillag.png" scale="30" />
                 </imageobject>
-        </mediaobject>      
+        </mediaobject> 
+        </figure>     
     </section>        
     <section>
         <title>C EXOR titkosító</title>
@@ -160,11 +166,14 @@
         <para>
             Így néz ki a program futás közben:
         </para>
+        <figure>
+             <title>Exortörés</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/exor.png" scale="25" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>        
     <section>
         <title>Neurális OR, AND és EXOR kapu</title>
@@ -192,11 +201,14 @@
         <para>
             Ha növeljük a rejtett neuronok számát akkor pontosodik az érték és kevesebb lépésből képes meghatározni az eredményt az az több mintát készít. A stepmax meghatározza a maximum lépések számát. A threshhold a küszöbfüggvény, ez amolyan leállási kritérium. Majd a compute kiadásával már számol a megtanult módon itt ellenőrizhetjük, hogy megtanulta -e a program a számítást. Lényegében a program próbál olyan értékpárokat találni súlynak és eltolási értéknek, amivel egy megközelítőleg hasonló értéket kap mint a mintában neki végeredményként megadott adat.
         </para> 
+        <figure>
+             <title>Signum függvény</title>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/Rplot1.png" scale="50" />
+                    <imagedata fileref="img/Rplot1.png" scale="100" />
                 </imageobject>
-        </mediaobject>          
+        </mediaobject> 
+        </figure>         
     </section>        
     <section>
         <title>Hiba-visszaterjesztéses perceptron</title>

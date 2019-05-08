@@ -38,17 +38,23 @@
         <para>
             Az antthread.h ban vannak a program eventjei, hogy éppen fut -e a program vagy szünetel.Ha nem adunk meg kapcsolókkal értékeket akkor az antwin.h-ban lévő alap beállításokkal fog futni a program.
             A program futtatásához a Qt-nak legalább 5.2 es verziója szükséges.
-        </para>    
+        </para>
+        <figure>
+             <title>Hangyaszimuláció</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/Ant.png" scale="30" />
                 </imageobject>
         </mediaobject>
+        </figure>
+        <figure>
+             <title>UML osztálydiagramm</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/antabra.png" scale="40" />
                 </imageobject>
         </mediaobject>
+        </figure>
         <para>
             Az ábra elején lévő + jelzi hogy globálisan hozzáférhető -e az adott program részhez a - a helyi hozzáférésű részek.
         </para>    
@@ -73,11 +79,14 @@
         <para>
             Élet a sejttérben:
             </para>
+            <figure>
+             <title>Sejtautomata</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/sejtautomata1.png" scale="30" />
                 </imageobject>
-        </mediaobject>         
+        </mediaobject>
+            </figure>         
     </section>        
     <section>
         <title>Qt C++ életjáték</title>
@@ -94,11 +103,14 @@
             A programban a sejt ablakban van definiálva, hogy mekkora legyen az ablak lényegében, hogy hány cella van. A cellák méretét külön adjuk meg itt, 6x6 os kocka.A sejtnek két állapota van élő vagy halott, élő marad mindaddig amíg kettő vagy három szomszédja van ellenkező esetben halott lesz.A sejt ablakban az élőlények a siklók, amelyek másolják magukat és adott irányba haladnak. A siklókat sikló ágyúkból lőjük ki.A sikló ágyúknak fix pozíciója van. A painteventben rajzoljuk ki magát a táblát és a skiló kilövőket.Minden egyes kockának 8 szomszédja van az az egy sejt 9 kockát befolyásol.
             A lényeg, hogy teremthetünk egy világot ahol eldönthetjük a létrehozott sejtek számát az az megadhatjuk mikor lehet élő a sejt vagy mikor halott.Így végülis a populációt tudjuk befolyásolni. És ez egy olyan játék ahol a személy csak megfigyelője az eseményeknek nem pedig részese ugyanis miután beállítottuk a szabályait a világnak onnantól magától fut és teremtődnek az élőlények.
         </para>
+        <figure>
+             <title>Életjáték</title>
              <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/eletjatek.png" scale="30" />
                 </imageobject>
         </mediaobject>
+        </figure>
         <para>
             Káoszba fordult világ a halálozási arány csökkentésével.
         </para>     
@@ -124,11 +136,14 @@
         <para>
             És most beszéljünk kicsit a programról a BrainBThread.cpp-ben hozzuk létre a hős osztályunkat és itt hozzuk létre(deklaráljuk) a hősünket Samut.A hős osztály konstruktorában. A mozgását az ablakban randommal számoljuk. A Qthread-ban határozzuk meg az eventeket.Ilyen  a pause. És magát, hogy a hőst hogyan jelnítse meg, hogy írja ki a nevét stb.A BrainBWin-ben vannak meghatározva a presd eventek vagyis, hogy az egérgomb levan -e nyomva vagy nincs és hogy az S el mentse el az eredményt a P-vel pause-oljon az ESC-el vagy Q-val pedig lépjen ki.Ha az egérgombot lenyomjuk akkor kezdődik a mérés.Az ifben vizsgáljuk, hogy az egér a hősünkön van -e ha igen akkor létrehozunk egy new entropyt ez a incCompban van a BrainBThread.h-ban és növeljük a hősünk agilityjét 2 vel ha nincs rajta akkor kiszedünk a vektorból egy entropyt és csökkentjük a hősünk agilityjét.
         </para>
+        <figure>
+             <title>BrainB benchmark</title>
         <mediaobject>
                 <imageobject>
                     <imagedata fileref="img/BrainB.png" scale="30" />
                 </imageobject>
         </mediaobject>
+        </figure>
     </section>        
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
