@@ -49,7 +49,7 @@
         </para>
         <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/mandel1.png" scale="50" />
+                    <imagedata fileref="img/mandel1.png" scale="20" />
                 </imageobject>
         </mediaobject> 
     </section>        

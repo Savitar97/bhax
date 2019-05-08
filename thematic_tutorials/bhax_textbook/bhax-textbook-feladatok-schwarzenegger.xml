@@ -35,7 +35,11 @@
             Itt a feladatunkban az elfogadási arányt(iterációs határ,gradient) 50% nál húztuk meg tehát a program hibázhat. A pontosságot minél több hidden réteggel és noda-al tudjuk növelni. Tehát az egész egy valószínűségi értéket figyel ha megüti a meghatározott küszöböt ez az érték és a hiba mértéke kevés akkor a program elfogadja mint megoldást. A programmal 28*28 pixeles képekről döntjük el, hogy milyen szám szerepel a képen. A y_ a loss-t definiáljuk, amely azt számolja,hogy mennyire térünk el a a várt eredményünktől. A GradientDescentOptimizer deriváltakat számít a hibahatárok figyelembe vételével. Ez a minimize.
                 
             </para>
-        
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Softmax.png" scale="30" />
+                </imageobject>
+        </mediaobject>
     </section>        
 
 <!--

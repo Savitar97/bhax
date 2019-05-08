@@ -25,8 +25,13 @@
         <para>
             Az alsó háromszög mátrix lényege, hogy a főátló fölött csupa 0-érték helyezkedik el. Az alsó háromszögmátrixokat sorfolytonosan szoktuk ábrázolni, ha M[i,j] a j>i akkor a j értéke 0.
         </para>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/doublecsillag2.png" scale="30" />
+                </imageobject>
+        </mediaobject>
         <para>
-            Az nr-ben inicializáljuk, hogy hány soros és oszlopos legyen a mátrixunk. Ezután létrehozunk(deklarálunk) egy double típúsú mutatóra mutató mutatót, amely egy 2 dimenziós tömb lesz.
+            Az nr-ben inicializáljuk, hogy hány soros és oszlopos legyen a mátrixunk. Ezután létrehozunk(deklarálunk) egy double típúsú mutatóra mutató mutatót, amely egy 2 dimenziós tömb lesz, ez látható a fenti képen.
         </para>
         <para>
             Majd kiiratjuk a címét ennek a mutatónak. Itt még nincs érték adva neki. Ezután a tm-nek a malloc típuskényszerítve double-re visszaad egy pointert a dinamikusan lefoglalt területtel. Egy pointernek lefoglalt hely függ,hogy hány bites a rendszerünk mivel általában 64 bitesek a rendszerek ezért ez 8 bájtos lesz, itt most megszorozzuk az nr el, tehát 40 bájtot foglal le a malloc. Ha nem tudod helyet foglalni akkor visszaad valamilyen hibát,itt a hibakezelést egy egyszerű return -1 oldja meg.
