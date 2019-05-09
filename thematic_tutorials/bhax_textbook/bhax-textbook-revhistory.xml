@@ -34,12 +34,20 @@
             Aktualizálás, javítások.
         </revremark>
     </revision>
-	<revision>
+    <revision>
         <revnumber>0.0.5</revnumber>
         <date>2019-05-02</date>
         <authorinitials>T.Attila</authorinitials>
         <revremark>
             Feladatok kész.Utómunkállatok szükségesek még,bővítés és ellenőrzés.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.6</revnumber>
+        <date>2019-05-08</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Ábrák felcímzése, ábrajegyzék kész.
         </revremark>
     </revision>
 </revhistory>

@@ -51,9 +51,6 @@
                 <imageobject>
                     <imagedata fileref="img/vegtelen1mag.png" scale="30" />
                 </imageobject>
-                <textobject>
-                    <phrase>Végtelen ciklus</phrase>
-                </textobject>
         </mediaobject>
          </figure>
         <para>Végtelen ciklus az összes mag kihasználásával:</para>
