@@ -106,6 +106,9 @@
             Megoldás forrása:<link xlink:href="https://github.com/Microsoft/malmo">https://github.com/Microsoft/malmo</link>                
         </para>
         <para>
+            Megoldás forrása:<link xlink:href="https://microsoft.github.io/malmo/0.17.0/Python_Examples/Tutorial.pdf">https://microsoft.github.io/malmo/0.17.0/Python_Examples/Tutorial.pdf</link>                
+        </para>
+        <para>
             Valószínűleg sokan ismerik a MineCraft játékot a kockákból álló világ melynek a főszereplője Steve. A program lényege,hogy Steve egy megadott időintervallumon belül ne akadjon el semmiben. Tehát képes legyen kikerülni a mozgását blokkoló akadályokat.Ezt úgy értük el hogy a steve körül lévő 26 kockát vizsgáljuk mivel ő áll a közepén. Ha nincs szabad út előtt megpróbálja kikerülni ha nem lehetséges akkor ugrik.Azt, hogy épp milyen objektum van Steve előtt a program jelzi. A forgásszámláló counter 8-ban lett meghatározva. Steve egyenesen előre halad mindaddig, amíg valamilyen akadályba nem ütközik. Akadályok lehetnek a víz,levegő,növényzet. A program futása során számoljuk az akadályokat és kiirjuk, hogy steve előtt éppen milyen objektum van.Az akadályok elkerülésének lehetőségei az ugrás, a kitérés vagy az akadály elpusztítása. Az elpusztítás akkor lehet jó lehetőség ha 2 blokk magas fal veszi körül Stevet mert azt már nem tudja átugrani. A programba a cselekvési utasításokat a while world state is mission running ba kell beleírnunk. Az agent alapvető utasításai attack,move,turn,jump,stafe,use ezeknek argumentumként a sebességet adjuk meg 1 a max sebesség tehát 0 és 1 között adhatunk meg argumentumként neki értéket.
         </para>
     </section>        
