@@ -111,6 +111,87 @@
         <para>
             Valószínűleg sokan ismerik a MineCraft játékot a kockákból álló világ melynek a főszereplője Steve. A program lényege,hogy Steve egy megadott időintervallumon belül ne akadjon el semmiben. Tehát képes legyen kikerülni a mozgását blokkoló akadályokat.Ezt úgy értük el hogy a steve körül lévő 26 kockát vizsgáljuk mivel ő áll a közepén. Ha nincs szabad út előtt megpróbálja kikerülni ha nem lehetséges akkor ugrik.Azt, hogy épp milyen objektum van Steve előtt a program jelzi. A forgásszámláló counter 8-ban lett meghatározva. Steve egyenesen előre halad mindaddig, amíg valamilyen akadályba nem ütközik. Akadályok lehetnek a víz,levegő,növényzet. A program futása során számoljuk az akadályokat és kiirjuk, hogy steve előtt éppen milyen objektum van.Az akadályok elkerülésének lehetőségei az ugrás, a kitérés vagy az akadály elpusztítása. Az elpusztítás akkor lehet jó lehetőség ha 2 blokk magas fal veszi körül Stevet mert azt már nem tudja átugrani. A programba a cselekvési utasításokat a while world state is mission running ba kell beleírnunk. Az agent alapvető utasításai attack,move,turn,jump,stafe,use ezeknek argumentumként a sebességet adjuk meg 1 a max sebesség tehát 0 és 1 között adhatunk meg argumentumként neki értéket.
         </para>
+        <para>
+            Sajnos a gyenge gépem miatt a futtatás eléggé haldoklott. De a telepítése az egésznek eléggé egyszerű letöltjük a Malmo-0.37.0-Linux-Ubuntu-18.04-64bit_withBoost_Python3.6 ezt <link xlink:href="https://github.com/Microsoft/malmo/releases">innen</link> tudjuk megtenni.Ezután kicsomagoljuk a főkönyvtárunkba. 
+         </para>
+         <para>
+             Szükségünk van még a következőkre: <command>sudo apt-get install libboost-all-dev libpython3.5 openjdk-8-jdk ffmpeg python-tk python-imaging-tk</command>
+             </para>
+          <para>
+              Majd bemegyünk a malmö mappájába ott megkeressük a Minecraft mappát és ott futtatjuk a <command>./launchClient.sh</command>-t
+          </para>
+          <para>
+              Valószínűleg szükséges lesz kiadni a terminálba egy <command>export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/</command> és egy <command>export MALMO_XSD_PATH=~/MalmoPlatform/Schemas</command> parancsot a futtatáshoz.
+            </para>
+          <para>
+              Ez megfog nyitni egy MineCraft játék ablakot. Ezután nyitunk egy újabb terminált és megkeressük a python exmaples-t. És itt tudjuk futtatni a mintákat és ha csinálunk saját küldetést szintén ide kell betennünk. Ha esetleg problémák lennének a futtatással érdemes megnézni, hogy a 10000-res portot nem -e használja más alkalmazás mivel alapértelmezetten ezt használja a malmö. Ha esetleg ütközés lenne a run_mission.py ba megkeressük a client infot is itt tudjuk átírni.
+          </para>
+          <para>
+              Ha fut a küldetésünk az f3-al tudunk bővebb információt kapni például memória használat milyen blokk van előttünk milyen irányba nézünk stb.
+          </para>
+          <para>Minta egy küldetéses xml-re ahol az időt, a játékmódot, küldetés kezdetén a chatre kiirt szöveget stb-t tudjuk beállítani.</para>
+          <programlisting language="xml"><![CDATA[
+       missionXML='''<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+            <Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            
+              <About>
+                <Summary>Misszió leírás</Summary>
+              </About>
+              
+              <ServerSection>
+                <ServerHandlers>
+                  <FlatWorldGenerator generatorString="3;7,220*1,5*3,2;3;,biome_1"/>
+                  <ServerQuitFromTimeUp timeLimitMs="50000"/> //itt állíthatjuk be az időt
+                  <ServerQuitWhenAnyAgentFinishes/>
+                </ServerHandlers>
+              </ServerSection>
+              
+              <AgentSection mode="Survival">
+                <Name>QuitBot</Name>
+                <AgentStart/>
+                <AgentHandlers>
+                  <ObservationFromFullStats/>
+                  <ContinuousMovementCommands turnSpeedDegs="180"/>
+                  <ChatCommands />
+                  <MissionQuitCommands quitDescription="give_up"/>
+                  <RewardForMissionEnd>
+                    <Reward description="give_up" reward="-1000"/>
+                  </RewardForMissionEnd>''' + malmoutils.get_video_xml(agent_host) + '''
+                </AgentHandlers>
+              </AgentSection>
+            </Mission>'''
+       ]]>
+        </programlisting>
+        <para>Egy újabb példa az agent-nek kiadott parancsokhoz</para>
+        <programlisting language="python"><![CDATA[
+       while world_state.is_mission_running:
+    print(".", end="")
+    time.sleep(0.5)
+    count += 1
+    world_state = agent_host.getWorldState()
+    for error in world_state.errors:
+        print("Error:",error.text)
+    for reward in world_state.rewards:
+        print("Reward:",reward.getValue())
+    agent_host.sendCommand("attack 1")
+    agent_host.sendCommand("move 1")
+    agent_host.sendCommand("jump 1")
+print()
+print("Mission ended")
+       ]]>
+        </programlisting>
+        <para>Az agent host gondoskodik a cselekvések elvégzéséről.</para>
+     <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/malmo.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/malmo1.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+          
     </section>        
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 </chapter>                
