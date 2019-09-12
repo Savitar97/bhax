@@ -62,7 +62,11 @@
     <section>
         <title>"Gagyi"</title>
         <para>
-            
+            Az ismert formális 2 tesztkérdéstípusra adj a szokásosnál
+            (miszerint x, t az egyik esetben az objektum által hordozott érték, a másikban meg az objektum
+            referenciája) „mélyebb” választ, írj Java példaprogramot mely egyszer végtelen ciklus, más x, t
+            értékekkel meg nem! A példát építsd a JDK Integer.java forrására 3 , hogy a 128-nál inkluzív objektum
+            példányokat poolozza!
         </para>
         <para>
             Megoldás videó:
@@ -70,8 +74,30 @@
         <para>
             Megoldás forrása:                
         </para>
+        <programlisting language="java"><![CDATA[
+ 90:   // This caches some Integer values, and is used by boxing
+ 91:   // conversions via valueOf().  We must cache at least -128..127;
+ 92:   // these constants control how much we actually cache.
+  93:   private static final int MIN_CACHE = -128;
+  94:   private static final int MAX_CACHE = 127;
+  95:   private static Integer[] intCache = new Integer[MAX_CACHE - MIN_CACHE + 1];
+ 305:   public static Integer valueOf(int val)
+ 306:   {
+ 307:     if (val < MIN_CACHE || val > MAX_CACHE)
+ 308:       return new Integer(val);
+ 309:     synchronized (intCache)
+ 310:       {
+ 311:     if (intCache[val - MIN_CACHE] == null)
+ 312:       intCache[val - MIN_CACHE] = new Integer(val);
+ 313:     return intCache[val - MIN_CACHE];
+ 314:       }
+ 315:   }
+          ]]>
+        </programlisting> 
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Mivel a cache-nek a mérete -128 és 127 közé esik,így ha az objektumunk ebből a tartományból vesz fel értéket akkor az Integer osztály valueof(int val) függvénye fog lefutni.
+            Tehát az előltesztelős ciklusunknak a feltétele egyből teljesül és kilép. Viszont, ha ezen a tartományon kívül veszünk fel értéket akkor false eredményt kapunk és végtelen ciklusunk lesz.
+            Ez egy memória megtakarító és teljesítmény növelő funkció, amit autoboxingnak neveznek.
         </para>
     </section>
     <section>
