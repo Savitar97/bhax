@@ -26,7 +26,20 @@
             A polargenünk két előállított normálisa a v1 és v2 változó. A példánytagunk, amely a nem visszaadottat tárolja az a tarolt nevű változó.
             A logikai tagunk a nincsTarolt változó ezt igazról indítjuk, mivel az elején még nincs érték a tarolt nevű változónkban.Tehát elsőnek az if águnknak a true ága fog lefutni elsőként.
             Itt addig fut a do while ciklusunk, amíg a w változó értéke nem lesz 1-nél nagyobb. Majd számolunk egy r-t. A tarolt változónkba letároljuk az r*v2-t. Majd a nincsTarolt-at false-ra állítjuk és kiiratjuk a nem tárolt normálist az r*v1-et.
-            Következő futtatásnál az ifnek a hamis ága fog lefutni. Tehát a letárolt értéket fogja kiiratni a program és a nincsTaroltat újra true-ra állítjuk, hogy új két normálist számoljon a programunk. A konstruktorban inicializáljuk a nincsTaroltat, hogy minden egyes objektum példányosításnál true értékkel induljon a program.
+            Következő futtatásnál az ifnek a hamis ága fog lefutni. Tehát a letárolt értéket fogja kiiratni a program és a nincsTaroltat újra true-ra állítjuk, hogy új két normálist számoljon a programunk. A konstruktorban inicializáljuk a nincsTaroltat, hogy minden egyes objektum példányosításnál true értéket vegyen fel a nincsTarolt változó.    
+        </para>
+        <figure>
+             <title>Polargen random</title>
+         <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/sourcejava.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        </figure>
+        <para>
+            A C++-os verziónál a header file-ban írjuk meg a PolarGen osztályunkat. Az osztálynak itt nem csak a konstruktorát kell megírni, de a destruktorát is. Javaval ellentétben, ugyanis ott a garbage collector elvégzi a munkát, tehát nekünk nem szükséges definiálnunk.
+            Az osztály kovetkezo nevű függvényét mivel kívülről hívtuk meg, ezért a ::-t kell használnunk, amely mutatja melyik osztály hatáskörébe tartozik. A felépítés a Java-s hoz képest nem sokat változott. A különbség annyiban szenbetűnő, hogy a java erősen objektum orientált, míg a C++-ban lehetőségünk van ettől eltérni.
+            A példányosításnál is látunk minimális különbséget ugyanis a javaban mindig a new kulcsszót kell használnunk, míg C++-ban elég az osztály nevét és az objektum nevét megadni.
             
         </para>
     </section>        
