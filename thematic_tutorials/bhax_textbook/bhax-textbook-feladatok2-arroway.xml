@@ -53,7 +53,10 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Binfa">https://github.com/Savitar97/Prog2/tree/master/Binfa</link>              
+        </para>
+        <para>
+            Servlet megoldása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/WebApplication1">https://github.com/Savitar97/Prog2/tree/master/WebApplication1</link>
         </para>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
@@ -88,7 +91,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Gagyi">https://github.com/Savitar97/Prog2/tree/master/Gagyi</link>                
         </para>
         <programlisting language="java"><![CDATA[
  90:   // This caches some Integer values, and is used by boxing
