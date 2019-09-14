@@ -1,14 +1,16 @@
 <chapter xmlns="http://docbook.org/ns/docbook" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" version="5.0" xml:lang="hu">
     <info>
-        <title>Helló, Arroway!</title>
+        <title>Helló, Schwarzenegger!</title>
         <keywordset>
             <keyword/>
         </keywordset>
     </info>
 
     <section>
-        <title>OO szemlélet</title>
+        <title>Port scan</title>
         <para>
+Mutassunk rá ebben a port szkennelő forrásban a kivételkezelés szerepére!
+https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/ch01.html#id527287
         </para>
         <para>
             Megoldás videó:
@@ -22,9 +24,10 @@
     </section>        
 
     <section>
-        <title>Homokozó</title>
+        <title>AOP</title>
         <para>
-            
+            Szőj bele egy átszövő vonatkozást az első védési programod Java átiratába! (Sztenderd védési
+feladat volt korábban.)
         </para>
         <para>
             Megoldás videó:
@@ -37,9 +40,11 @@
         </para>
     </section>        
     <section>
-        <title>"Gagyi"</title>
+        <title>Junit teszt</title>
         <para>
-            
+            A https://progpater.blog.hu/2011/03/05/labormeres_otthon_avagy_hogyan_dolgozok_fel_egy_pedat
+poszt kézzel számított mélységét és szórását dolgozd be egy Junit tesztbe (sztenderd védési feladat
+volt korábban).
         </para>
         <para>
             Megoldás videó:
@@ -51,35 +56,6 @@
             Tanulságok, tapasztalatok, magyarázat...
         </para>
     </section>
-    <section>
-        <title>Yoda</title>
-        <para>
-            
-        </para>
-        <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
-    </section>
-    <section>
-        <title>Kódolás from scratch</title>
-        <para>
-            
-        </para>
-        <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
-    </section>
+    
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                

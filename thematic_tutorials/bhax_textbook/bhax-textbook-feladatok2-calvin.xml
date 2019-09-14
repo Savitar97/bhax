@@ -8,7 +8,9 @@
 
     <section>
         <title>MNIST</title>
-        <para>
+        <para>Az alap feladat megoldása, +saját kézzel rajzolt képet is ismerjen fel,
+https://progpater.blog.hu/2016/11/13/hello_samu_a_tensorflow-bol Háttérként ezt vetítsük le:
+https://prezi.com/0u8ncvvoabcr/no-programming-programming/
         </para>
         <para>
             Megoldás videó:
@@ -24,7 +26,8 @@
     <section>
         <title>Deep MNIST</title>
         <para>
-            
+         Mint az előző, de a mély változattal. Segítő ábra, vesd össze a forráskóddal a
+https://arato.inf.unideb.hu/batfai.norbert/NEMESPOR/DE/denbatfai2.pdf 8. fóliáját!   
         </para>
         <para>
             Megoldás videó:
@@ -39,7 +42,7 @@
     <section>
         <title>Android telefonra a TF objektum detektálója</title>
         <para>
-            
+            Telepítsük fel, próbáljuk ki!
         </para>
         <para>
             Megoldás videó:
@@ -54,7 +57,7 @@
     <section>
         <title>SMNIST for Machines</title>
         <para>
-            
+            Készíts saját modellt, vagy használj meglévőt, lásd: https://arxiv.org/abs/1906.12213
         </para>
         <para>
             Megoldás videó:
@@ -69,7 +72,9 @@
     <section>
         <title>Minecraft MALMO-s példa</title>
         <para>
-            
+            A https://github.com/Microsoft/malmo felhasználásával egy ágens példa, lásd pl.:
+https://youtu.be/bAPSu3Rndi8, https://bhaxor.blog.hu/2018/11/29/eddig_csaltunk_de_innentol_mi,
+https://bhaxor.blog.hu/2018/10/28/minecraft_steve_szemuvege
         </para>
         <para>
             Megoldás videó:

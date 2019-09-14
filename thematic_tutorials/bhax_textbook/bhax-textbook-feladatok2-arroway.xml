@@ -58,6 +58,22 @@
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <figure>
+             <title>Binfa Servlet indexpage</title>
+         <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/servlet.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        </figure>
+        <figure>
+             <title>Binfa Servlet after run</title>
+         <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/servlet2.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        </figure>
     </section>        
     <section>
         <title>"Gagyi"</title>
