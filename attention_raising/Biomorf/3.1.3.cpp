@@ -66,6 +66,7 @@ main ( int argc, char *argv[] )
     {
         std::cout << "Hasznalat: ./3.1.2 fajlnev szelesseg magassag n a b c d reC imC R" << std::endl;
         return -1;
+        //n=iterációs határ a,b,c,d=pozíció koordinátái reC=pontosság 
     }
 
     png::image < png::rgb_pixel > kep ( szelesseg, magassag );

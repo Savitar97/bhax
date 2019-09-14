@@ -22,7 +22,7 @@
 //   https://www.tankonyvtar.hu/hu/tartalom/tamop412A/2011-0063_01_parhuzamos_prog_linux
 //
 //  https://youtu.be/gvaqijHlRUs
-//
+//  g++ mandelpngt.c++ -o mandelpngt -lpng
 #include <iostream>
 #include "png++/png.hpp"
 #include <sys/times.h>

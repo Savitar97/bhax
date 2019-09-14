@@ -22,7 +22,7 @@
 //   https://www.tankonyvtar.hu/hu/tartalom/tamop412A/2011-0063_01_parhuzamos_prog_linux
 //
 //  https://youtu.be/gvaqijHlRUs
-//
+//	futtatás	nvcc mandelpngc_600x600_1.cu  -o mandelpngc600 -lpng
 
 #include <png++/image.hpp>
 #include <png++/rgb_pixel.hpp>
