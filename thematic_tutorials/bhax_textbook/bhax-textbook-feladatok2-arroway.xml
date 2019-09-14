@@ -112,7 +112,12 @@
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A Yoda condition a nevét a Starwars karakteréről kapta, aki elég egyedi angolnyelvi szintaxisával is kitűnt a sorozatból ez az egyedi szintaxis az volt, hogy az alany->ige->tárgyat felcserélte tárgy->alany->igére.
+            A Yoda condition lényege az, hogy egy ekvivalenciánál a konstanst nem a megszokott jobb oldalára írjuk az ekvivalenciának, hanem a bal oldalra.
+            Ezt általában stringeknél használjuk. Tehát nem az objektumunkat hasonlítsuk össze a stringgel, hanem a stringet az objektumunkkal.
+            Az előnye a feltétel betartásának az, hogy elkerüljük a NullPointerExceptions-t.Viszont a hátránya az, hogy a kód olvasását nehezebbé teszi.
+            Ugyanis ilyenkor jobbról balra érdemesebb olvasnunk a feltételeket. Viszont ezen kívül még, megkímélhetjük magunkat az == helyett = operátor hibától.
+            
         </para>
     </section>
     <section>
