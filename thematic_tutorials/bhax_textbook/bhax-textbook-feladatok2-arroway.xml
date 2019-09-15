@@ -59,7 +59,15 @@
             Servlet megoldása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/WebApplication1">https://github.com/Savitar97/Prog2/tree/master/WebApplication1</link>
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A binfa java a c++-hoz képest nem sokat változik. A különbség annyi, hogy itt nem választhatunk, hogy tagként,referenciaként vagy esetleg pointerként adjuk át a csomópontot.
+            Ugyanis a javaban nincsenek pointerek. A létrehozott Node osztály azaz a csomópont osztály tartalmaz egy érték változót és egy jobb és egy bal oldali objektumát a csomópontnak.
+            Ezen kívül tartalmazza a jobb és baloldali csomópontok értékének lekérdezéséhez szükséges get függvényeket és az értékek beállításához szükséges set függvényeket, ezen kívül a csomópont értékének lekérdezéséhez szükséges get függvény.
+            Most nézzük a binfa osztályt. Először is létrehozunk egy final kulcsszóval ellátott Node objektumot a root-ot, ez lesz a fánknak a gyökere. Tehát ennek az értéke nem változik fix marad az egész program futása során. Ezen kívül létrehozzuk a csomópontnak a jelenlegi objektumát amibe, majd az értéket pakoljuk, ami éppen jön a bemenetről.
+            Emellett itt definiáljuk az átlaghoz,mélységhez,magassághoz és szóráshoz szükséges változókat private kulcsszóval. Javaban látszik, hogy nem private blokk van, hanem mindig jelezni kell, hogy az a változó,metódus,függvény stb éppen milyen láthatósági körben szerepel.
+            Az osztály konstruktorában inicializáljuk a csomópontot és a fa magasságát és a fa kezdetét ráállítsuk a csomópontra. Ugyanis innen fogunk indulni.
+            Emellett csinálunk egy olyan Node típúsú függvényt, amely mindig a root-ot fogja vissza adni. Az épp bemenő értékeket a metódusokban és a Node konstruktorában is jelzett Node típúsú rhs objektumba adjuk át. A write függvénnyel írjuk be a bemenő értékeket a fába. Ha a bemenő karakter 0, akkor megnézzük van -e érték a bal oldalon, ha nincs akkor létrehozunk egyet azaz beírjuk a 0-ást a fába.
+            Egyébként ha van akkor rálépünk arra a csomópontra és nézzük a következő karaktert. Ugyan ez fut le akkor is ha 1-es érték megy be a fába csak logikusan ott a jobb oldalt vizsgáljuk. A writeout metódussal fogjuk kiiratni a fánkat.Ezen kívül még vannak a mélység,átlag,szórás számoló függvényeink.
+            Legutolsó sorban nézzük meg a main osztályunkat. Itt láthatjuk, hogy String args-t vizsgálunk. Ugyanis a binfának megkell adni egy bemenetet és egy kimenetet. Ha tehát az argumentumaink száma kisebb mint 2 akkor hibát iratunk ki. Majd létrehozunk egy filereadert és példányosítjuk a Binfánkat bt néven.Majd a while függvénnyel olvassuk ki a bemenő file-ból az adatokat kihagyva pár karaktert például a spaceeket. Végül a 2. megadott argumentumunkba beírjuk a kimenetet.
         </para>
         <figure>
              <title>Binfa Servlet indexpage</title>
@@ -77,6 +85,11 @@
                 </imageobject>
         </mediaobject>
         </figure>
+        <para>
+            A binfa szervlet megvalósításához a netbeans ide-t használtam. A servlethez a binfa main osztályát kellett áthelyezni. Ehhez az osztálynak örökölnie kellett a HttpServlet tulajdonságait és Override-olni a doGet függvényt, amelynek a két paramétere a request és a response, na meg persze importolni a servlet könyvtárakat.
+            Lényegében a böngésző címsorából adom meg a bemenetet a binfának. A request.getParameter el és ennek a zárójelben megadott paramétere hivatkozik az indexben megadott inputra.Tehát a textboxra. És a kimenetnél történt változásnál a setContentType-nál állítjuk be, hogy milyen típúsú választ akarunk küldeni a kliensnek itt most jelenleg text/html.Majd a response.getWriterrel küldjük át a kliensnek a választ és a out.println-al építjük fel a html lapot, amit a kliens fog megkapni.
+            A szerverhez Tomcatet használtam. 
+        </para>
     </section>        
     <section>
         <title>"Gagyi"</title>
@@ -118,6 +131,22 @@
             Tehát az előltesztelős ciklusunknak a feltétele egyből teljesül és kilép. Viszont, ha ezen a tartományon kívül veszünk fel értéket akkor false eredményt kapunk és végtelen ciklusunk lesz.
             Ez egy memória megtakarító és teljesítmény növelő funkció, amit autoboxingnak neveznek.
         </para>
+        <figure>
+             <title>Végtelen ciklus 128-nál</title>
+         <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Gagyi.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        </figure>
+        <figure>
+             <title>Leállás 127-nél</title>
+         <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Gagyi2.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        </figure>
     </section>
     <section>
         <title>Yoda</title>
