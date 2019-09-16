@@ -9,7 +9,14 @@
     <section>
         <title>C++ és Java</title>
         <para>
-            
+            Ebben a fejezetben a Java és C++ nyelv összefüggéseit és különbségeit fogjuk vizsgálni. Már a könyv elején is említik, hogy
+            a Java a jelölésrendszerében nagyon sokmindent átvett a C++-ból.Az előzőleges tudásunkból pedig tudjuk, hogy a C++ eljárás és objektum orientált
+            nyelv, míg a Java már szimplán az objektum orientált szemléletmódot követi. Az objektum orientált programozás célja, hogy implementálja a valós-világ egyedeit. Az objektum a valós világ egyedeire utal. Míg az objektum orientált programozás egy paradigma arra, hogy
+            olyan programot írjunk, amely osztályokat és objektumokat használ.Az objektumoknak vannak tulajdonságai és van viselkedésük.A tulajdonságokat változókkal írjuk le általában, míg a viselkedést a metódusokkal jellemezzük. Az objektumok lehetnek fizikai vagy logikai dolgok.
+            Emellett az objektum orientáltságnál fontos megemlíteni az öröklődést.Amikor az egyik objektum örökli minden tulajdonságát és viselkedését a szülőobjektumától.A Java-ban ezen kívül nagy figyelmet fordítottak a biztonságra és a megbízhatóságra.
+            Ebből következik az, hogy itt már nincsenek pointerek minden referencia. A Javában interpretert használnak, míg a C++-ban compiler végzi a fordítást.
+            A C++ fordító gépi kódra fordítja a programot. Addig a Java fordítóprogramja egy byte kódot hoz létre, amelyet a JVM futtat. Ezért a Java platform független. Míg azért a C++-nál vannak megkötések.
+            A Java program objektumok és ezek blueprintjeinek összessége. Az osztály változókból és metódusokból épül fel. A JVM hátránya a sebesség.(lassabb mint a compiler)
         </para>
     </section>
     <section>
