@@ -9,14 +9,64 @@
     <section>
         <title>C++ és Java</title>
         <para>
-            Ebben a fejezetben a Java és C++ nyelv összefüggéseit és különbségeit fogjuk vizsgálni. Már a könyv elején is említik, hogy
+            Ebben a fejezetben a Java és C++ nyelv összefüggéseit és különbségeit fogjuk vizsgálni és bővebben tárgyaljuk a Java programozási nyelvet. Már a könyv elején is említik, hogy
             a Java a jelölésrendszerében nagyon sokmindent átvett a C++-ból.Az előzőleges tudásunkból pedig tudjuk, hogy a C++ eljárás és objektum orientált
             nyelv, míg a Java már szimplán az objektum orientált szemléletmódot követi. Az objektum orientált programozás célja, hogy implementálja a valós-világ egyedeit. Az objektum a valós világ egyedeire utal. Míg az objektum orientált programozás egy paradigma arra, hogy
-            olyan programot írjunk, amely osztályokat és objektumokat használ.Az objektumoknak vannak tulajdonságai és van viselkedésük.A tulajdonságokat változókkal írjuk le általában, míg a viselkedést a metódusokkal jellemezzük. Az objektumok lehetnek fizikai vagy logikai dolgok.
-            Emellett az objektum orientáltságnál fontos megemlíteni az öröklődést.Amikor az egyik objektum örökli minden tulajdonságát és viselkedését a szülőobjektumától.A Java-ban ezen kívül nagy figyelmet fordítottak a biztonságra és a megbízhatóságra.
+            olyan programot írjunk, amely osztályokat és objektumokat használ.Az objektumoknak vannak tulajdonságai és van viselkedésük.Az objektumok tulajdonságait változókkal írjuk le általában, míg a viselkedésüket a metódusokkal jellemezzük. Az objektumok lehetnek fizikai vagy logikai dolgok.
+            Emellett az objektum orientáltságnál fontos megemlíteni az öröklődést.Amikor az egyik objektum örökli minden tulajdonságát és viselkedését a szülőobjektumától.
+        </para>
+        <para>
+            
+        </para>
+        <para>
+            A Java-ban ezen kívül nagy figyelmet fordítottak a biztonságra és a megbízhatóságra.
             Ebből következik az, hogy itt már nincsenek pointerek minden referencia. A Javában interpretert használnak, míg a C++-ban compiler végzi a fordítást.
             A C++ fordító gépi kódra fordítja a programot. Addig a Java fordítóprogramja egy byte kódot hoz létre, amelyet a JVM futtat. Ezért a Java platform független. Míg azért a C++-nál vannak megkötések.
             A Java program objektumok és ezek blueprintjeinek összessége. Az osztály változókból és metódusokból épül fel. A JVM hátránya a sebesség.(lassabb mint a compiler)
+        </para>
+        <para>
+            
+        </para>
+        
+        <para>
+            Javában ha több osztályunk van akkor mindig azt fogja futtatni, amelyikben a JVM megtalálja a main-t.Javaban a C vagy C++ nyelvtől eltérően a visszatérési típus megadása minden metódus számára kötelező.
+            A C++-tól eltérően itt már egy igazi String szövegtömbbel kerülnek átadásra a paraméterek nem char.
+        </para>
+       
+        <para>
+        A java-val könnyen írhatunk olyan kódot, amely html-ben futtatható ez az applet.Ilyenkor a html oldalon kívül a java kód is letöltődik a weboldalt megtekintő részére és a távoli gépen fog futni.Persze gondoltak arra,hogy ez veszélyforrást jelenthetne
+        a vírusok miatt, de a java futtatórendszerének erős a biztonsági rendszere. Az applet programoknak fontos jellemzőjük, hogy hiányzik a main metódusuk.
+        </para>
+        
+        <para>
+            A változók típúsai nem különböznek a C++-ban használtaktól.
+        </para>
+       
+        <para>
+            Javában a final kulcsszóval hivatkozunk rájuk,míg C++-ban const ként. Javaban lehetőségünk van ezenkívül az unicode karakterek használatára is mivel már nem a 8 vagy 7 bites karaktereket használja, mint a C++ vagy a C.
+        </para>
+        
+        <para>
+            A megjegyzések használata megegyezik a C++-éval, kivétel hogy itt már vannak dokumentációs megjegyzések, ami olyan mint a több soros megjegyzés csak 2 db *-al kezdjük.
+            A dokumentációs megjegyzéseket a javadochoz tudjuk használni.Ez kiszedi a kódból a lényeges információkat és egy html oldalként jeleníti meg. Használata olyan mint a fordítása a java programoknak csak nem javacot használunk,hanem javadocot.
+        </para>
+        
+        <para>
+            Ugyan úgy mint C++-ban a class szóval hívjuk meg.Minden egyes osztály tagnak egyessével adhatjuk meg a láthatóságát.Ha elhagyjuk akkor csak az adott osztályban látható.
+            Az új objektumokat szintén ugyan úgy a new kulcsszóval vagyunk képesek létrehozni.Javaban az új objektumok létrehozásukkor inicializálódnak 0 vagy null értékkel. A nyelvben már nem karakter tömb hanem ellenőrzőtt String osztály szerepel.
+            A static kulcsszó nem egy elemhez tartozik hanem az osztályhoz.Ez azt jelenti, hogy a new alkalmazásakor nem foglalódik le memóriaterület számukra az objektumban.Nem kell inicializálásnál értéket adni nekik. Ezen kívül az osztály nevével is hivatkozhatunk rájuk.
+            Az ezzel megjelölt objektumból tetszőleges számú objektum készítése után is csak egy lesz.A memória felszabadítása úgy történik, hogy egyszerűen már nem hivatkozunk az objektumra, azaz null értéket adunk neki,ezzel szemben C++-ban a delete vagy a free metódust kellett használnunk. 
+        </para>
+        <para>
+        A metódusok a C++-hoz hasonlóan működnek és a kivételkezelés is a try-catch-el.A C++-al ellenben a Java már tartalmazza a párhuzamosítást és a grafikai megoldásokat sem kell különböző megoldásokkal megoldani pl Qt.A javának már van saját grafikai csomagja a Swing.Emellett kikerültek a Javaban a nyelből a goto és a const szavak ezek bár foglaltak mégsem használtak.
+        
+            
+        </para>
+        <para>Literálok:</para>
+        <para>
+         A típusoknál a primitív típúsú típusok mellet megjelentek a csomagoló osztályaik.
+         pl.:az int nek az Integer.Ez annyiban különbözik, hogy ezek objektumhivatkozásokat tartalmaznak.Ezek bizonyos kontextusokban nyerik el valódi jelentőségüket.Ilyenek az adatszerkezetek.
+         A java nyelvben a tömböket ugyan úgy kell megadni viszont a C++tól eltérően ez már igazi típus és nem csak a mutatók egy másik formája.  
         </para>
     </section>
     <section>
