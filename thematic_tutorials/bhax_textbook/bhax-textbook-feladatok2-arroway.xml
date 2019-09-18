@@ -127,9 +127,9 @@
           ]]>
         </programlisting> 
         <para>
-            Mivel a cache-nek a mérete -128 és 127 közé esik,így ha az objektumunk ebből a tartományból vesz fel értéket akkor az Integer osztály valueof(int val) függvénye fog lefutni.
-            Tehát az előltesztelős ciklusunknak a feltétele egyből teljesül és kilép. Viszont, ha ezen a tartományon kívül veszünk fel értéket akkor false eredményt kapunk és végtelen ciklusunk lesz.
-            Ez egy memória megtakarító és teljesítmény növelő funkció, amit autoboxingnak neveznek.
+            Mivel a cache-nek a mérete -128 és 127 közé esik,így ha az objektumunk ebből a tartományból vesz fel értéket akkor az Integer osztály valueof(int val) függvénye fog lefutni,tehát a cache-en belül poolozza az Integer objektumokat.
+            Tehát az előltesztelős ciklusunknak a feltétele egyből teljesül és kilép. Viszont, ha ezen a tartományon kívül veszünk fel értéket akkor a valueof új Integer objektumot hoz létre, ezért false eredményt kapunk és végtelen ciklusunk lesz.
+            Ez egy memória megtakarító és teljesítmény növelő funkció, amit autoboxingnak neveznek. Tehát a poolozás miatt a két objektumnak ugyan az lesz a referenciája,ezt megkerülhetjük ha new-al hozzuk létre.
         </para>
         <figure>
              <title>Végtelen ciklus 128-nál</title>
