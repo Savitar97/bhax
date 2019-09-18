@@ -72,7 +72,40 @@
     <section>
         <title>Python</title>
         <para>
+            A pythont 1990-ben alkotta meg Guido van Rossum. Ez egy magas szintű,dinamikus,objektum orientált programozási nyelv.
+            Pythonban a fejlesztés sokkal könnyebb mint Javaban vagy C/C++-ban. Tökéletes választás a prototípusok elkészítéséhez vagy algoritmusok teszteléséhez.
+            Rengetek modult tartalmaz. Ezek lefedik a hálózatkezelés,felhasználói felület kialakítása,fájlkezelés,rendszerhívások területet és ezen kívül még sok mást is.
+            A pythonnak nincs szüksége fordításra vagy linkelésre.A kódok pythonba sokkal rövidebbek mint java-ban vagy c++-ban.A magasszintű adattípusok segítségével összetett kifejezéseket valósíthatunk meg röviden.
+            A csoportosítás egyszerű tagolással működik nem kell zárójelezni. Nem kell a változókat vagy argumentumokat definiálni,ezen kívül a ; is elhagyható az utasítások végéről.
+            Ha több sorban akarunk utasítást használni a \-t kell használni.A python kis és nagybetű érzékeny. Az értelmezője mindent tokenekre bont. Tokenfajták:azonosítók,kulcsszók,operátorok,literálok,delimiterek.
+            A megjegyzéseket a #-el írhatjuk, ez a sor végéig tart. A pythonba minden adatot objektum reprezentál.Itt nem muszáj változó típust adni,ez automatikusan történik érték alapján.
+            </para>
+            <para>Adatszerkezetek: ennesek sima zárójellel hivatkozunk rájuk az értékek közé vesszőt teszünk, listák kocka zárójellel hivatkozunk rá,szótárak kapcsos zárójellel hivatkozunk rájuk kulcs-érték párokat használ.
+            Pythonban a null értékre None-val hivatkozunk.Szekvenciákat a + jellel fűzhetünk össze. Az indexek 0-nál kezdődnek,és ezekre a :-al hivatkozhatunk.
             
+        </para>
+        <para>
+            Változók:objektumokra mutató referenciák,nincs típusuk.Ugyan úgy mint a javánál ha egy objektumra nem hivatkozik már semmi, akkor a garbage collector felszabadítja.
+            Egy változó hozzárendelést a del kulcsszóval törölhetünk.A függvényben felvett változók alapértelmezetten lokálisak lesznek, ha globálisat akarunk létrehozni a függvény elején kell és a global kulcsszót kell elé írnunk.
+        </para>
+        <para>
+            Lista műveletek:count megadja az előfordulások számát,append hozzáfűz a lista végére,extend egy másik listát fűz a lista végére,insert beszúr egy elemet a megadott helyre.
+            Remove eltávolítja az első előfordulást a listából,pop az i edik elemet távolítja el.Revers megfordítja az elemek sorrendjét.Sort:sorba rendez.
+        </para>
+        <para>
+            Kiiratás konzolra maradt a print.Az if hasonló mint a többi nyelven kivéve, hogy itt else if helyett elif-van. A függvények is hasonlóak kivéve a fornál a 3 as tagolásból kettő lett csak megkell adni min lépkedjen végig a ciklus.
+            Támogatja a goto utasítást. Függvényeket a def kulcsszóval hozhatunk létre.Függvényeknek egy visszatérési értéke van,de akár ennesekkel is visszatérhet.
+        </para>
+        <para>
+            Ahogy már említettem a python támogatja az objektum orientált programozást. Osztályokat a class szóval hozhatunk létre.Az osztályoknak lehetnek attribútumai és függvényei.
+            Ezen kívül van inheritance-is azaz öröklődés. Az osztályoknak lehet egy speciális konstruktor metódusuk az _ _init_ _.A speciális tulajdonságú változókat és függvényeket jelezzük még úgy, hogy két alulvonás közé írjuk őket.
+            Az init függvény első paramétere a self azaz az objektum maga.
+        </para>
+        <para>
+            Modulok:Sokat segítenek a mobilapplikáció fejlesztésben. PL.:messaging modul az sms üzenetek kezelését,sysinfo a telefon adatainak lekérdezése imei,aksi töltöttségi szintje.
+        </para>
+        <para>
+            A kivételkezelés szintén támogatott és hasonló a C++hoz try-catch szerkezet.
         </para>
     </section>
 </chapter>
