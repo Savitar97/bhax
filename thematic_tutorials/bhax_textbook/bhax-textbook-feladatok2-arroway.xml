@@ -367,7 +367,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Yoda">https://github.com/Savitar97/Prog2/tree/master/Yoda</link>               
         </para>
         <para>
             A Yoda condition a nevét a Starwars karakteréről kapta, aki elég egyedi angolnyelvi szintaxisával is kitűnt a sorozatból ez az egyedi szintaxis az volt, hogy az alany->ige->tárgyat felcserélte tárgy->alany->igére.
@@ -420,11 +420,115 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Scratch">https://github.com/Savitar97/Prog2/tree/master/Scratch</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A BBP algoritmus a 20. század egyik legfontosabb felfedezése volt. Segítségével kiszámolhatjuk a pi-nek a d+1-dik jegyének a hexadecimális értéket úgy, hogy a megelőző jegyek nem kell kiszámolni.
+            Kezdetben létrehozunk egy osztályt a PiBBP algoritmusnak. A BBP algoritmus alapján:
         </para>
+        <programlisting language="java"><![CDATA[
+        {16^d Pi} = {4*{16^d S1} - 2*{16^d S4} - {16^d S5} - {16^d S6}}
+          ]]>
+        </programlisting>
+        <para>
+            Természetesen a {}- a törtrészét jelöli. Tehát  a konstruktorunknak van egy paramétere a d. Majd létrehozzuk a változókat. Kezdetben a d16pi-t.Kezdőértékül a 0.0d-vel jelöljük, hogy double lesz az értéke. Az S1,S4,S5,S6-nak metódussal(függvénnyel) számoljuk az értékét.
+            d16Pi-értékét a fenti képlet alapján számoljuk. Majd a kiszámított értékből kivonjuk a lefelé kerekített értékét a d16Pi-nek ezzel elérve, hogy 0 és 1 közé essen d16Pi értéke. A végeredmény építéséhez a StringBuffert használjuk. A hexajegyek tömböt használjuk, hogy a 10 feletetti értéket helyettesítsük.
+            Mivel a 16-os számrendszerben a 10-es számjegy az A például és egészen F-ig megy. Majd létrehozunk egy while ciklust, ami addig megy ameddig a d16pi értéke nem lesz 0-val egyenlő.Itt elvégzünk egy típuskényszerítést és egy lefelé kerekítést a d16Pi-n és letároljuk a jegy-be.Ugyebár ha a jegy 10-nél kisebb nem kell vele semmit csinálnunk.
+            Viszont ha 10 vagy ettől nagyobb, akkor a vissza adott értéket a hexajegyekből választjuk. Ugyebár ha 10 et kapunk például eredményül akkor abból kivonva 10-et megkapjuk a 0. indexű elemet a tömbben. Ezt használjuk itt ki.
+            Majd a végén a toString metódussal létrehozzuk a stringet, amit mi hoztunk létre a biztonság kedvéért, pedig minden osztálynak van toString metódusa javaban.
+        </para>
+        <programlisting language="java"><![CDATA[
+        public PiBBP(int d) {
+        
+        double d16Pi = 0.0d;
+        
+        double d16S1t = d16Sj(d, 1);
+        double d16S4t = d16Sj(d, 4);
+        double d16S5t = d16Sj(d, 5);
+        double d16S6t = d16Sj(d, 6);
+        
+        d16Pi = 4.0d*d16S1t - 2.0d*d16S4t - d16S5t - d16S6t;
+        
+        d16Pi = d16Pi - StrictMath.floor(d16Pi);
+        
+        StringBuffer sb = new StringBuffer();
+        
+        Character hexaJegyek[] = {'A', 'B', 'C', 'D', 'E', 'F'};
+        
+        while(d16Pi != 0.0d) {
+            
+            int jegy = (int)StrictMath.floor(16.0d*d16Pi);
+            System.out.println(jegy);
+            if(jegy<10)
+                sb.append(jegy);
+            else
+                sb.append(hexaJegyek[jegy-10]);
+            
+            d16Pi = (16.0d*d16Pi) - StrictMath.floor(16.0d*d16Pi);
+        }
+        
+        d16PiHexaJegyek = sb.toString();
+        System.out.println("S1:"+d16S1t+" "+"S2:"+d16S4t+" "+"S3:"+d16S5t+" "+"S4:"+d16S6t);
+    }
+          ]]>
+        </programlisting>
+        <para>
+            Mint az elején már mondtam az S1,S4,S5,S6-ot függvénnyel számoljuk ez a következő függvény,2 argumentuma van, a d szám ismét azaz amit megadunk és a j, ami (1,4,5,6):
+        </para>
+        <programlisting language="java"><![CDATA[
+            public double d16Sj(int d, int j) {
+        
+        double d16Sj = 0.0d;
+        
+        for(int k=0; k<=d; ++k)
+            d16Sj += (double)n16modk(d-k, 8*k + j) / (double)(8*k + j);
+            return d16Sj - StrictMath.floor(d16Sj);
+        }
+          ]]>
+        </programlisting>
+        <para>
+            A d16Sj-nél még egy függvényt használunk,amely szintén 2 paraméteres ezzel számoljuk a 16^n mod k-t.Ugyebár n a kitevő és k a modulus.
+        </para>
+        <programlisting language="java"><![CDATA[
+            public long n16modk(int n, int k) {
+        
+        int t = 1;
+        while(t <= n)
+            t *= 2;
+        
+        long r = 1;
+        
+        while(true) {
+            
+            if(n >= t) {
+                r = (16*r) % k;
+                n = n - t;
+            }
+            
+            t = t/2;
+            
+            if(t < 1)
+                break;
+            
+            r = (r*r) % k;
+            
+        }
+        
+        return r;
+    }
+          ]]>
+        </programlisting>
+        <para>
+            A végeredmény nem lett teljesen jó sajnos.6C65E52CB459350050E4BB1 helyett 6C65E5308 jött ki. A d=1000001 értéknél.
+        </para>
+        <figure>
+             <title>Scratch</title>
+         <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/Scratch.png" scale="200" />
+                </imageobject>
+        </mediaobject>
+        </figure>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
