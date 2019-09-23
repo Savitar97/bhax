@@ -28,14 +28,14 @@
             </para>
             <programlisting language="java"><![CDATA[
             boolean nincsTarolt = true;
-    double tarolt;
+            double tarolt;
 
-    public PolarGen () {
+            public PolarGen () {
 
-        nincsTarolt = true;
+            nincsTarolt = true;
 
-    }
-          ]]>
+            }
+            ]]>
         </programlisting>
             <para>
             Tehát elsőnek az if águnknak a true ága fog lefutni elsőként.
@@ -45,7 +45,7 @@
         <programlisting language="java"><![CDATA[
             public double kovetkezo () {
 
-        if (nincsTarolt) {
+            if (nincsTarolt) {
 
             double u1, u2, v1, v2, w;
             do
@@ -64,14 +64,14 @@
             nincsTarolt = !nincsTarolt;
 
             return r * v1;
-        }
-        else
-        {
-            nincsTarolt = !nincsTarolt;
-            return tarolt;
-        }
+            }
+            else
+            {
+                nincsTarolt = !nincsTarolt;
+                return tarolt;
+            }
 
-    }
+            }
 
           ]]>
         </programlisting>
@@ -84,7 +84,7 @@
         </mediaobject>
         </figure>
         <para>
-            A C++-os verziónál a header file-ban írjuk meg a PolarGen osztályunkat. Az osztálynak itt nem csak a konstruktorát kell megírni, de a destruktorát is. Javaval ellentétben, ugyanis ott a garbage collector elvégzi a munkát, tehát nekünk nem szükséges definiálnunk.
+            A C++-os verziónál a header file-ban írjuk meg a <classname>PolarGen</classname> osztályunkat. Az osztálynak itt nem csak a konstruktorát kell megírni, de a destruktorát is. Javaval ellentétben, ugyanis ott a garbage collector elvégzi a munkát, tehát nekünk nem szükséges definiálnunk.
             Az osztály kovetkezo nevű függvényét mivel kívülről hívtuk meg, ezért a ::-t kell használnunk, amely mutatja melyik osztály hatáskörébe tartozik. A felépítés a Java-s hoz képest nem sokat változott. A különbség annyiban szenbetűnő, hogy a java erősen objektum orientált, míg a C++-ban lehetőségünk van ettől eltérni.
             A példányosításnál is látunk minimális különbséget ugyanis a javaban mindig a new kulcsszót kell használnunk, míg C++-ban elég az osztály nevét és az objektum nevét megadni.A polargen lényegében két randomot állít elő (-1,1) intervallumban a függvény segítségével.
             
@@ -107,116 +107,116 @@
         </para>
         <para>
             A binfa java a c++-hoz képest nem sokat változik. A különbség annyi, hogy itt nem választhatunk, hogy tagként,referenciaként vagy esetleg pointerként adjuk át a csomópontot.
-            Ugyanis a javaban nincsenek pointerek. A létrehozott Node osztály azaz a csomópont osztály tartalmaz egy érték változót és egy jobb és egy bal oldali objektumát a csomópontnak.
+            Ugyanis a javaban nincsenek pointerek. A létrehozott <classname>Node</classname> osztály azaz a csomópont osztály tartalmaz egy érték változót és egy jobb és egy bal oldali objektumát a csomópontnak.
             Ezen kívül tartalmazza a jobb és baloldali csomópontok értékének lekérdezéséhez szükséges get függvényeket és az értékek beállításához szükséges set függvényeket, ezen kívül a csomópont értékének lekérdezéséhez szükséges get függvény.
-            </para>
+        </para>
         <programlisting language="java"><![CDATA[
         class Node {
-	private char value;
-	private Node left;
-	private Node right;
+        private char value;
+        private Node left;
+        private Node right;
+        
+        public Node(char rhs){
+            value = rhs;
+            left = null;
+            right = null;
+        }
 	
-	public Node(char rhs){
-		value = rhs;
-		left = null;
-		right = null;
-	}
 	
-	
-	public char getNode(){
-		return value;
-	} 
-	
-	public void setLeft(Node rhs){
-		left = rhs;
-	}
-	
-	public void setRight(Node rhs){
-		right = rhs;
-	}
-	
-	public Node getLeft(){
-		return left;
-	}
-	
-	public Node getRight(){
-		return right;
-	}
-	
-}
+        public char getNode(){
+            return value;
+        } 
+        
+        public void setLeft(Node rhs){
+            left = rhs;
+        }
+        
+        public void setRight(Node rhs){
+            right = rhs;
+        }
+        
+        public Node getLeft(){
+            return left;
+        }
+        
+        public Node getRight(){
+            return right;
+        }
+        
+        }
           ]]>
         </programlisting>
             <para>
-            Most nézzük a binfa osztályt. Először is létrehozunk egy final kulcsszóval ellátott Node objektumot a root-ot, ez lesz a fánknak a gyökere. Tehát ennek az értéke nem változik fix marad az egész program futása során. Ezen kívül létrehozzuk a csomópontnak a jelenlegi objektumát amibe, majd az értéket pakoljuk, ami éppen jön a bemenetről.
+            Most nézzük a <classname>binfa</classname> osztályt. Először is létrehozunk egy final kulcsszóval ellátott Node objektumot a root-ot, ez lesz a fánknak a gyökere. Tehát ennek az értéke nem változik fix marad az egész program futása során. Ezen kívül létrehozzuk a csomópontnak a jelenlegi objektumát amibe, majd az értéket pakoljuk, ami éppen jön a bemenetről.
             Emellett itt definiáljuk az átlaghoz,mélységhez,magassághoz és szóráshoz szükséges változókat private kulcsszóval. Javaban látszik, hogy nem private blokk van, hanem mindig jelezni kell, hogy az a változó,metódus,függvény stb éppen milyen láthatósági körben szerepel.
             Az osztály konstruktorában inicializáljuk a csomópontot és a fa magasságát és a fa kezdetét ráállítsuk a csomópontra. Ugyanis innen fogunk indulni.
             Emellett csinálunk egy olyan Node típúsú függvényt, amely mindig a root-ot fogja vissza adni. Az épp bemenő értékeket a metódusokban és a Node konstruktorában is jelzett Node típúsú rhs objektumba adjuk át. A write függvénnyel írjuk be a bemenő értékeket a fába. Ha a bemenő karakter 0, akkor megnézzük van -e érték a bal oldalon, ha nincs akkor létrehozunk egyet azaz beírjuk a 0-ást a fába.
             Egyébként ha van akkor rálépünk arra a csomópontra és nézzük a következő karaktert. Ugyan ez fut le akkor is ha 1-es érték megy be a fába csak logikusan ott a jobb oldalt vizsgáljuk. A writeout metódussal fogjuk kiiratni a fánkat.Ezen kívül még vannak a mélység,átlag,szórás számoló függvényeink.
-            Legutolsó sorban nézzük meg a main osztályunkat. Itt láthatjuk, hogy String args-t vizsgálunk. Ugyanis a binfának megkell adni egy bemenetet és egy kimenetet. Ha tehát az argumentumaink száma kisebb mint 2 akkor hibát iratunk ki. Majd létrehozunk egy filereadert és példányosítjuk a Binfánkat bt néven.Majd a while függvénnyel olvassuk ki a bemenő file-ból az adatokat kihagyva pár karaktert például a spaceeket. Végül a 2. megadott argumentumunkba beírjuk a kimenetet.
+            Legutolsó sorban nézzük meg a <classname>main</classname> osztályunkat. Itt láthatjuk, hogy String args-t vizsgálunk. Ugyanis a binfának megkell adni egy bemenetet és egy kimenetet. Ha tehát az argumentumaink száma kisebb mint 2 akkor hibát iratunk ki. Majd létrehozunk egy filereadert és példányosítjuk a Binfánkat bt néven.Majd a while függvénnyel olvassuk ki a bemenő file-ból az adatokat kihagyva pár karaktert például a spaceeket. Végül a 2. megadott argumentumunkba beírjuk a kimenetet.
         </para>
         <programlisting language="java"><![CDATA[
             class BinTree{
-	private final Node root;
-	private Node current;
-	private int treeHeight;
-	private int melyseg, maxMelyseg, atlagosszeg, atlagdb;
-	private double atlag,szorasosszeg, szoras;
-	
-	
-	public BinTree(){
-		root = new Node('/');
-		current = root;
-		treeHeight = -1;
-	}
+            private final Node root;
+            private Node current;
+            private int treeHeight;
+            private int melyseg, maxMelyseg, atlagosszeg, atlagdb;
+            private double atlag,szorasosszeg, szoras;
+            
+            
+            public BinTree(){
+                root = new Node('/');
+                current = root;
+                treeHeight = -1;
+            }
 
-	public Node getRoot(){
-		return root;
-	}
-	public void setCurrent(Node rhs){
-		current = rhs;
-	}
-	
-	public void write(char b){
-		if(b == '0'){
-			if(current.getLeft() == null){
-				current.setLeft(new Node('0'));
-				setCurrent(root);
-			}
-			else{
-				setCurrent(current.getLeft());
-			}
-		}
-		
-		if(b == '1'){
-			if(current.getRight() == null){
-				current.setRight(new Node('1'));
-				setCurrent(root);
-			}
-			else{
-				setCurrent(current.getRight());
-			}
-		}	
-	}
-	
-	
-	public void writeOut(Node n, PrintWriter pw){
-		if(n != null)
-		{
-			++treeHeight;
-			
-			writeOut(n.getLeft(),pw);
-			
-			for(int i = 0; i < treeHeight; i++){
-				pw.print('-');
-			}
-			
-			pw.println(n.getNode() + " (" + treeHeight + ")");
-			
-			writeOut(n.getRight(),pw);
-			--treeHeight;
-		}
-	}	
-}
+            public Node getRoot(){
+                return root;
+            }
+            public void setCurrent(Node rhs){
+                current = rhs;
+            }
+            
+            public void write(char b){
+                if(b == '0'){
+                    if(current.getLeft() == null){
+                        current.setLeft(new Node('0'));
+                        setCurrent(root);
+                    }
+                    else{
+                        setCurrent(current.getLeft());
+                    }
+                }
+                
+                if(b == '1'){
+                    if(current.getRight() == null){
+                        current.setRight(new Node('1'));
+                        setCurrent(root);
+                    }
+                    else{
+                        setCurrent(current.getRight());
+                    }
+                }	
+            }
+            
+            
+            public void writeOut(Node n, PrintWriter pw){
+                if(n != null)
+                {
+                    ++treeHeight;
+                    
+                    writeOut(n.getLeft(),pw);
+                    
+                    for(int i = 0; i < treeHeight; i++){
+                        pw.print('-');
+                    }
+                    
+                    pw.println(n.getNode() + " (" + treeHeight + ")");
+                    
+                    writeOut(n.getRight(),pw);
+                    --treeHeight;
+                }
+            }	
+        }
           ]]>
         </programlisting>
         <figure>
@@ -230,15 +230,15 @@
         <programlisting language="html"><![CDATA[
         <!DOCTYPE html>
 
-<html>
-    <body>
-        <h2>BinfaInput</h2>
-<form action="nemesis" method="get">
-    <input type="text" name="text"/>
-    <input type="submit" value="Submit"/>
-</form>
-    </body>
-</html>
+        <html>
+            <body>
+                <h2>BinfaInput</h2>
+        <form action="nemesis" method="get">
+            <input type="text" name="text"/>
+            <input type="submit" value="Submit"/>
+        </form>
+            </body>
+        </html>
 
           ]]>
         </programlisting>
@@ -251,14 +251,14 @@
         </mediaobject>
         </figure>
         <para>
-            A binfa szervlet megvalósításához a netbeans ide-t használtam. A servlethez a binfa main osztályát kellett áthelyezni. Ehhez az osztálynak örökölnie kellett a HttpServlet tulajdonságait és Override-olni a doGet függvényt, amelynek a két paramétere a request és a response, na meg persze importolni a servlet könyvtárakat.
+            A binfa szervlet megvalósításához a netbeans ide-t használtam. A servlethez a binfa <classname>main</classname> osztályát kellett áthelyezni. Ehhez az osztálynak örökölnie kellett a HttpServlet tulajdonságait és Override-olni a doGet függvényt, amelynek a két paramétere a request és a response, na meg persze importolni a servlet könyvtárakat.
         </para>
         <programlisting language="java"><![CDATA[
             @WebServlet(name = "nemesis", urlPatterns = {"/nemesis"})
-public class nemesis extends HttpServlet {
+            public class nemesis extends HttpServlet {
 
-   @Override
-public void doGet(HttpServletRequest request, HttpServletResponse response)
+            @Override
+            public void doGet(HttpServletRequest request, HttpServletResponse response)
           ]]>
         </programlisting>
         <para>
@@ -291,46 +291,46 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
             Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Gagyi">https://github.com/Savitar97/Prog2/tree/master/Gagyi</link>                
         </para>
         <programlisting language="java"><![CDATA[
- 90:   // This caches some Integer values, and is used by boxing
- 91:   // conversions via valueOf().  We must cache at least -128..127;
- 92:   // these constants control how much we actually cache.
-  93:   private static final int MIN_CACHE = -128;
-  94:   private static final int MAX_CACHE = 127;
-  95:   private static Integer[] intCache = new Integer[MAX_CACHE - MIN_CACHE + 1];
- 305:   public static Integer valueOf(int val)
- 306:   {
- 307:     if (val < MIN_CACHE || val > MAX_CACHE)
- 308:       return new Integer(val);
- 309:     synchronized (intCache)
- 310:       {
- 311:     if (intCache[val - MIN_CACHE] == null)
- 312:       intCache[val - MIN_CACHE] = new Integer(val);
- 313:     return intCache[val - MIN_CACHE];
- 314:       }
- 315:   }
+        90:   // This caches some Integer values, and is used by boxing
+        91:   // conversions via valueOf().  We must cache at least -128..127;
+        92:   // these constants control how much we actually cache.
+        93:   private static final int MIN_CACHE = -128;
+        94:   private static final int MAX_CACHE = 127;
+        95:   private static Integer[] intCache = new Integer[MAX_CACHE - MIN_CACHE + 1];
+        305:   public static Integer valueOf(int val)
+        306:   {
+        307:     if (val < MIN_CACHE || val > MAX_CACHE)
+        308:       return new Integer(val);
+        309:     synchronized (intCache)
+        310:       {
+        311:     if (intCache[val - MIN_CACHE] == null)
+        312:       intCache[val - MIN_CACHE] = new Integer(val);
+        313:     return intCache[val - MIN_CACHE];
+        314:       }
+        315:   }
           ]]>
         </programlisting> 
         <para>
-            Mivel a cache-nek a mérete -128 és 127 közé esik,így ha az objektumunk ebből a tartományból vesz fel értéket akkor az Integer osztály valueof(int val) függvénye fog lefutni,tehát a cache-en belül poolozza az Integer objektumokat(azaz nem hoz létre új objektumot, hanem ugyan azt használja fel, referenciára hivatkozik).
+            Mivel a cache-nek a mérete -128 és 127 közé esik,így ha az objektumunk ebből a tartományból vesz fel értéket akkor az <classname>Integer</classname> osztály valueof(int val) függvénye fog lefutni,tehát a cache-en belül poolozza az Integer objektumokat(azaz nem hoz létre új objektumot, hanem ugyan azt használja fel, referenciára hivatkozik).
             Tehát az előltesztelős ciklusunknak a feltétele egyből teljesül és kilép. Viszont, ha ezen a tartományon kívül veszünk fel értéket akkor a valueof új Integer objektumot hoz létre, ezért false eredményt kapunk és végtelen ciklusunk lesz.
             Ez egy memória megtakarító és teljesítmény növelő funkció, amit autoboxingnak neveznek. Tehát a poolozás miatt a két objektumnak ugyan az lesz a referenciája,ezt megkerülhetjük ha new-al hozzuk létre.
         </para>
         <programlisting language="java"><![CDATA[
         Integer x = 128;
-	Integer t = 128;
-	while (x <= t && x >= t && t != x)
-		{ System.out.println("Gagyi");  }
-	System.out.println("Gagyi vége"); 
-        
-          ]]>
+        Integer t = 128;
+        while (x <= t && x >= t && t != x)
+            { System.out.println("Gagyi");  }
+        System.out.println("Gagyi vége"); 
+            
+            ]]>
         </programlisting>
         <programlisting language="java"><![CDATA[
         De akkor is végtelen ciklust kapunk ha a new kulcsszóval hozzuk létre az objektumokat mert akkor nem a valueof true ága fut végig.
         Integer x = new Integer(127);
-	Integer t = new Integer(127);
-	while (x <= t && x >= t && t != x)
-		{ System.out.println("Gagyi");  }
-	System.out.println("Gagyi vége"); 
+        Integer t = new Integer(127);
+        while (x <= t && x >= t && t != x)
+            { System.out.println("Gagyi");  }
+        System.out.println("Gagyi vége"); 
           ]]>
         </programlisting>
         <figure>
@@ -343,10 +343,10 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
         </figure>
         <programlisting language="java"><![CDATA[
         Integer x = 127;
-	Integer t = 127;
-	while (x <= t && x >= t && t != x)
-		{ System.out.println("Gagyi");  }
-	System.out.println("Gagyi vége"); 
+        Integer t = 127;
+        while (x <= t && x >= t && t != x)
+            { System.out.println("Gagyi");  }
+        System.out.println("Gagyi vége"); 
           ]]>
         </programlisting>
         <figure>
@@ -379,7 +379,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
         </para>
         <programlisting language="java"><![CDATA[
             String rand= null;
-		if(rand.equals("foo")){
+		    if(rand.equals("foo")){
 			System.out.println(rand);
 		}
 
@@ -404,7 +404,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
         </figure>
         <programlisting language="java"><![CDATA[
             String rand= null;
-		if("foo".equals(rand)){
+		    if("foo".equals(rand)){
 			System.out.println(rand);
 		}
 
@@ -424,7 +424,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
         </para>
         <para>
             A BBP algoritmus a 20. század egyik legfontosabb felfedezése volt. Segítségével kiszámolhatjuk a pi-nek a d+1-dik jegyének a hexadecimális értéket úgy, hogy a megelőző jegyek nem kell kiszámolni.
-            Kezdetben létrehozunk egy osztályt a PiBBP algoritmusnak. A BBP algoritmus alapján:
+            Kezdetben létrehozunk egy osztályt a <classname>PiBBP</classname> algoritmusnak. A BBP algoritmus alapján:
         </para>
         <programlisting language="java"><![CDATA[
         {16^d Pi} = {4*{16^d S1} - 2*{16^d S4} - {16^d S5} - {16^d S6}}
@@ -478,12 +478,12 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
         <programlisting language="java"><![CDATA[
             public double d16Sj(int d, int j) {
         
-        double d16Sj = 0.0d;
-        
-        for(int k=0; k<=d; ++k)
-            d16Sj += (double)n16modk(d-k, 8*k + j) / (double)(8*k + j);
-            return d16Sj - StrictMath.floor(d16Sj);
-        }
+            double d16Sj = 0.0d;
+            
+            for(int k=0; k<=d; ++k)
+                d16Sj += (double)n16modk(d-k, 8*k + j) / (double)(8*k + j);
+                return d16Sj - StrictMath.floor(d16Sj);
+            }
           ]]>
         </programlisting>
         <para>
@@ -492,30 +492,30 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
         <programlisting language="java"><![CDATA[
             public long n16modk(int n, int k) {
         
-        int t = 1;
-        while(t <= n)
-            t *= 2;
-        
-        long r = 1;
-        
-        while(true) {
-            
-            if(n >= t) {
-                r = (16*r) % k;
-                n = n - t;
+                int t = 1;
+                while(t <= n)
+                    t *= 2;
+                
+                long r = 1;
+                
+                while(true) {
+                    
+                    if(n >= t) {
+                        r = (16*r) % k;
+                        n = n - t;
+                    }
+                    
+                    t = t/2;
+                    
+                    if(t < 1)
+                        break;
+                    
+                    r = (r*r) % k;
+                    
+                }
+                
+                return r;
             }
-            
-            t = t/2;
-            
-            if(t < 1)
-                break;
-            
-            r = (r*r) % k;
-            
-        }
-        
-        return r;
-    }
           ]]>
         </programlisting>
         <para>
