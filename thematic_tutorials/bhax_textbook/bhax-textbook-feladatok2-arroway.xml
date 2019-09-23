@@ -79,14 +79,14 @@
              <title>Polargen random</title>
          <mediaobject>
                 <imageobject>
-                    <imagedata fileref="img/polargen.png" scale="30" />
+                    <imagedata fileref="img/polargen.png" scale="200" />
                 </imageobject>
         </mediaobject>
         </figure>
         <para>
             A C++-os verziónál a header file-ban írjuk meg a PolarGen osztályunkat. Az osztálynak itt nem csak a konstruktorát kell megírni, de a destruktorát is. Javaval ellentétben, ugyanis ott a garbage collector elvégzi a munkát, tehát nekünk nem szükséges definiálnunk.
             Az osztály kovetkezo nevű függvényét mivel kívülről hívtuk meg, ezért a ::-t kell használnunk, amely mutatja melyik osztály hatáskörébe tartozik. A felépítés a Java-s hoz képest nem sokat változott. A különbség annyiban szenbetűnő, hogy a java erősen objektum orientált, míg a C++-ban lehetőségünk van ettől eltérni.
-            A példányosításnál is látunk minimális különbséget ugyanis a javaban mindig a new kulcsszót kell használnunk, míg C++-ban elég az osztály nevét és az objektum nevét megadni.
+            A példányosításnál is látunk minimális különbséget ugyanis a javaban mindig a new kulcsszót kell használnunk, míg C++-ban elég az osztály nevét és az objektum nevét megadni.A polargen lényegében két randomot állít elő (-1,1) intervallumban a függvény segítségével.
             
         </para>
     </section>        
@@ -311,7 +311,7 @@ public void doGet(HttpServletRequest request, HttpServletResponse response)
           ]]>
         </programlisting> 
         <para>
-            Mivel a cache-nek a mérete -128 és 127 közé esik,így ha az objektumunk ebből a tartományból vesz fel értéket akkor az Integer osztály valueof(int val) függvénye fog lefutni,tehát a cache-en belül poolozza az Integer objektumokat.
+            Mivel a cache-nek a mérete -128 és 127 közé esik,így ha az objektumunk ebből a tartományból vesz fel értéket akkor az Integer osztály valueof(int val) függvénye fog lefutni,tehát a cache-en belül poolozza az Integer objektumokat(azaz nem hoz létre új objektumot, hanem ugyan azt használja fel, referenciára hivatkozik).
             Tehát az előltesztelős ciklusunknak a feltétele egyből teljesül és kilép. Viszont, ha ezen a tartományon kívül veszünk fel értéket akkor a valueof új Integer objektumot hoz létre, ezért false eredményt kapunk és végtelen ciklusunk lesz.
             Ez egy memória megtakarító és teljesítmény növelő funkció, amit autoboxingnak neveznek. Tehát a poolozás miatt a két objektumnak ugyan az lesz a referenciája,ezt megkerülhetjük ha new-al hozzuk létre.
         </para>
