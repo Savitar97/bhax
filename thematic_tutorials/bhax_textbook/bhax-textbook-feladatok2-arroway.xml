@@ -272,7 +272,7 @@
         </mediaobject>
         </figure>
         <para>
-            A binfa szervlet megvalósításához a netbeans ide-t használtam. A servlethez a binfa <classname>main</classname> osztályát kellett áthelyezni. Ehhez az osztálynak örökölnie kellett a HttpServlet tulajdonságait és Override-olni a doGet függvényt, amelynek a két paramétere a request és a response, na meg persze importolni a servlet könyvtárakat.
+            A binfa szervlet megvalósításához a netbeans ide-t használtam. A servlethez a binfa <classname>main</classname> osztályát kellett áthelyezni. Ehhez az osztálynak örökölnie kellett a HttpServlet tulajdonságait és Override-olni a doGet függvényt, amelynek a két paramétere a request és a response, na meg persze importolni a servlet könyvtárakat. A request el kapom meg az értéket a címsorból és a response-val tudok majd válaszolni tehát kiiratni majd.
         </para>
         <programlisting language="java"><![CDATA[
             @WebServlet(name = "nemesis", urlPatterns = {"/nemesis"})
@@ -293,8 +293,20 @@
         </programlisting>
     <para>
             És a kimenetnél történt változásnál a setContentType-nál állítjuk be, hogy milyen típúsú választ akarunk küldeni a kliensnek itt most jelenleg text/html.Majd a response.getWriterrel küldjük át a kliensnek a választ és a out.println-al építjük fel a html lapot, amit a kliens fog megkapni.
-            A szerverhez Tomcatet használtam. Amit az IDE-ben nagyon könnyű behúzni a projektbe.
+            A szerverhez Tomcatet használtam. Amit az IDE-ben nagyon könnyű behúzni a projektbe. De ha maven projektet csinálunk akkor a pom.xml-ben is tudjuk pluginként behúzni.
         </para>
+        <programlisting language="xml"><![CDATA[
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/binfa</path>
+                </configuration>
+            </plugin>
+            A futtatás ilyenkor mvn clean package tomcat7:run- al történik.
+          ]]>
+        </programlisting>
     </section>        
     <section>
         <title>"Gagyi"</title>

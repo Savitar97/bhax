@@ -52,8 +52,30 @@
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Az UML jelentősége, hogy jelenleg a szoftverfejlesztés egyetlen szabványos modellező nyelve.Főként az UML osztálydiagrammot használjuk. Mivel ez írja le az osztályokat, interfészeket és a típusukat. Ezenkívül ezek kapcsolatait.
+            Az UML modellező nyelvben a diagrammok dobozokból, vonalakból, ikonokból és szöveges információkból állnak.
+            Az UML diagrammok legfontosabb elemei az osztályok, amelyet téglalappal jelölünk. A téglalapot 3 különböző részre osztjuk. Az első rész az osztály nevét adja meg. A második részbe kerülnek a változók és ezek típúsai. Az utolsó és egyben 3. részben az osztály metódusait soroljuk fel. Az attribútumok szintaxisa a következőképpen alakul:elsőként a láthatóság, amelyet követ a változó neve. Ezt követően jön a típusa és multiplicitása, amelyet egy = jel követ. Az = jel után adjuk meg a változó értékét ha van. A legvégén pedig a tulajdonságait írhatjuk fel {}-be zárva. A tulajdonság lehet például az, hogy a változó csak olvasható. Ez jelenti azt,hogy konstans változóról van szó.Ha egy attribútum statikus akkor azt aláhúzással jelöljük.Ha egy taggfüggvény a konstans akkor a query tulajdonsággal adjuk meg.
         </para>
+        <para>
+        	Beszéljünk a láthatósági szintek jelöléséről:
+        	A + jelenti a publicot, a - a private és a # a protected.Ezen kívül van még egy a package, amelyet a ~ jelöl.Ez C++-ban nincs, de javaban már igen.
+        </para>
+        <para>
+        	Az virtuális vagy másnéven absztrakt műveleteket dőlt betűvel vagy {absztrakt} tulajdonsággal látjuk el.Ha minden művelet absztrakt vagy nincs attribútuma az osztálynak akkor azt az osztály névszakaszában az interface kulcsszóval jelöljük.
+        </para>
+        <para>
+        	Kapcsolatok:
+        </para>
+        <para>
+        	Asszociáció: Egyetlen vonallal jelöljük és középre írjuk az asszociáció nevét.Példa: A foglalás és a szállás. A foglalás lefoglalja a szállást. Tehát itt az asszociáció neve a lefoglal. És kis nyíl fejjel jelöljük az irányt. Ezen kívül szerepneveket is megadhatunk, hogy hogyan vesz részt a kapcsolatban a két fél. Példa egy cégnél a személy munkavállalóként vesz részt a kapcsoaltban, míg a cég munkáltatóként. Itt is ugyan úgy jelölhetünk multiplicitást. Például egy cég több alkalmazottat is foglalkoztat általában mivel van egy kötelező létszám amit megkell haladnia. És lehet olyan, hogy azzal nem muszály foglalkoznunk a modellünkben, hogy a munkavállalónknak van -e több munkahelye.
+        	Az asszociációnak van két speciális fajtája a konpozíció és az aggregáció.
+        </para>
+        <para>
+        	Aggregáció:az aggregáció jele az üres rombusz. Az aggregáció tartalmazást jelöl. Tehát a rombuszt a tartalmazó oldalára tesszük. Például egy vállalatnak lehet egy vagy több részlege. Sokan semmitmondónak tekintik és nem ajánlják a használatát.
+       	</para>
+       	<para>
+       		Kompozíció: Jelölése fekete tömött rombusz.Kompozíció esetén két lényeges fogalom van. Az első az, hogy a tartalmazott objektum pontosan egy tartalmazó objektumhoz tartozik. Vagyis egy tartalmazott objektumot nem tartalmazhat több objektum, tehát nincs megosztás. A másik pedig az, hogy a tartalmazott és a tartalmazó együtt jön létre és együtt is szűnik meg. A kompozíciót ugyan úgy implementáljuk, mint az asszociációt, csak ilyenkor a destruktorban megkell írnunk a felszabadító kódot és a konstruktorban a létrehozó kódrészeletet.
+       	</para>
     </section>
     <section>
         <title>BPMN</title>
