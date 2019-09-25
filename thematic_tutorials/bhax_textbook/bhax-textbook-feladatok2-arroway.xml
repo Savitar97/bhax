@@ -39,8 +39,8 @@
         </programlisting>
             <para>
             Tehát elsőnek az if águnknak a true ága fog lefutni elsőként.
-            Itt addig fut a do while ciklusunk, amíg a w változó értéke nem lesz 1-nél nagyobb. Majd számolunk egy r-t. A tarolt változónkba letároljuk az r*v2-t. Majd a nincsTarolt-at false-ra állítjuk és kiiratjuk a nem tárolt normálist az r*v1-et.
-            Következő futtatásnál az ifnek a hamis ága fog lefutni. Tehát a letárolt értéket fogja kiiratni a program és a nincsTaroltat újra true-ra állítjuk, hogy új két normálist számoljon a programunk. A konstruktorban inicializáljuk a nincsTaroltat, hogy minden egyes objektum példányosításnál true értéket vegyen fel a nincsTarolt változó.    
+            Itt addig fut a do while ciklusunk, amíg a w változó értéke nem lesz 1-nél nagyobb. Majd számolunk egy r-t. A tarolt változónkba letároljuk az r*v2-t. Majd a nincsTarolt-at negáljuk és kiiratjuk a nem tárolt normálist az r*v1-et.
+            Következő futtatásnál az ifnek a hamis ága fog lefutni. Tehát a letárolt értéket fogja kiiratni a program és a nincsTaroltat újra negáljuk ezzel true-ra állítjuk, hogy új két normálist számoljon a programunk. A konstruktorban inicializáljuk a nincsTaroltat, hogy minden egyes objektum példányosításnál true értéket vegyen fel a nincsTarolt változó.    
         </para>
         <programlisting language="java"><![CDATA[
             public double kovetkezo () {
@@ -87,8 +87,29 @@
             A C++-os verziónál a header file-ban írjuk meg a <classname>PolarGen</classname> osztályunkat. Az osztálynak itt nem csak a konstruktorát kell megírni, de a destruktorát is. Javaval ellentétben, ugyanis ott a garbage collector elvégzi a munkát, tehát nekünk nem szükséges definiálnunk.
             Az osztály kovetkezo nevű függvényét mivel kívülről hívtuk meg, ezért a ::-t kell használnunk, amely mutatja melyik osztály hatáskörébe tartozik. A felépítés a Java-s hoz képest nem sokat változott. A különbség annyiban szenbetűnő, hogy a java erősen objektum orientált, míg a C++-ban lehetőségünk van ettől eltérni.
             A példányosításnál is látunk minimális különbséget ugyanis a javaban mindig a new kulcsszót kell használnunk, míg C++-ban elég az osztály nevét és az objektum nevét megadni.A polargen lényegében két randomot állít elő (-1,1) intervallumban a függvény segítségével.
-            A java jdk könyvtárában hasonlóképp megtalálható a jdk/src/share/classes/java/util Random.java fájlában.
+            A java jdk könyvtárában hasonlóképp megtalálható a jdk/src/share/classes/java/util Random.java fájlában, de nem teljesen ugyan az a kettő.A jdkban szereplő kód a következőképpen néz ki:
         </para>
+        <programlisting language="java"><![CDATA[
+            synchronized public double nextGaussian() {
+        // See Knuth, ACP, Section 3.4.1 Algorithm C.
+        if (haveNextNextGaussian) {
+            haveNextNextGaussian = false;
+            return nextNextGaussian;
+        } else {
+            double v1, v2, s;
+            do {
+                v1 = 2 * nextDouble() - 1; // between -1 and 1
+                v2 = 2 * nextDouble() - 1; // between -1 and 1
+                s = v1 * v1 + v2 * v2;
+            } while (s >= 1 || s == 0);
+            double multiplier = StrictMath.sqrt(-2 * StrictMath.log(s)/s);
+            nextNextGaussian = v2 * multiplier;
+            haveNextNextGaussian = true;
+            return v1 * multiplier;
+        }
+        }
+          ]]>
+        </programlisting>
     </section>        
 
     <section>
