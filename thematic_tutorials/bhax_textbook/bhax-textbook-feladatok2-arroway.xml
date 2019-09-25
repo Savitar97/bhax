@@ -87,7 +87,7 @@
             A C++-os verziónál a header file-ban írjuk meg a <classname>PolarGen</classname> osztályunkat. Az osztálynak itt nem csak a konstruktorát kell megírni, de a destruktorát is. Javaval ellentétben, ugyanis ott a garbage collector elvégzi a munkát, tehát nekünk nem szükséges definiálnunk.
             Az osztály kovetkezo nevű függvényét mivel kívülről hívtuk meg, ezért a ::-t kell használnunk, amely mutatja melyik osztály hatáskörébe tartozik. A felépítés a Java-s hoz képest nem sokat változott. A különbség annyiban szenbetűnő, hogy a java erősen objektum orientált, míg a C++-ban lehetőségünk van ettől eltérni.
             A példányosításnál is látunk minimális különbséget ugyanis a javaban mindig a new kulcsszót kell használnunk, míg C++-ban elég az osztály nevét és az objektum nevét megadni.A polargen lényegében két randomot állít elő (-1,1) intervallumban a függvény segítségével.
-            
+            A java jdk könyvtárában hasonlóképp megtalálható a jdk/src/share/classes/java/util Random.java fájlában.
         </para>
     </section>        
 
@@ -308,6 +308,26 @@
         313:     return intCache[val - MIN_CACHE];
         314:       }
         315:   }
+
+        private static class IntegerCache {
+        private IntegerCache(){}
+
+        static final Integer cache[] = new Integer[-(-128) + 127 + 1];
+
+        static {
+            for(int i = 0; i < cache.length; i++)
+                cache[i] = new Integer(i - 128);
+        }
+        }
+
+        public static Integer valueOf(int i) {
+        final int offset = 128;
+        if (i >= -128 && i <= 127) { // must cache
+            return IntegerCache.cache[i + offset];
+        }
+        return new Integer(i);
+        }
+        jdk/src/share/classes/java/lang
           ]]>
         </programlisting> 
         <para>
