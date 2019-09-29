@@ -19,7 +19,7 @@ Barki/madarak/)
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Liskov">https://github.com/Savitar97/Prog2/tree/master/Liskov</link>              
         </para>
         <para>
             A liskov elv arról szól,hogy minden osztályt helyettesíthessen a gyermek osztálya anélkül,
@@ -56,6 +56,14 @@ Barki/madarak/)
            }
             ]]>
           </programlisting>
+          <figure>
+            <title>Liskovsert</title>
+        <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/Liskovsert.png" scale="200" />
+               </imageobject>
+       </mediaobject>
+       </figure>
           <para>
               Mint látható a liskov elv itt sérül ugyanis a program szerint a pingvin képes repülni. A probléma onnan adódik, hogy azt tettük fel, hogy minden madár tud repülni.
               Ezért tévesen a repül metódust a madár osztályba írtuk.Tehát az alap tervezéssel volt a probléma. A megoldás az, ha csinálunk egy külön interface-t, amely a repülés tulajdonságot jelenti,bár ekkor a madár osztályt is interface-ve kell alakítanunk, mivel a többszörös öröklődés nem lehetséges javaban.
@@ -84,11 +92,25 @@ Barki/madarak/)
                     Sas sas=new Sas();
                     Pingvin pingvin=new Pingvin();
                     sas.repul();
-                    pingvin.repul();
+                    pingvin.repul();//hibát fog kiirni mivel itt már nem tud repülni a pingvin
                 }
             }
             ]]>
           </programlisting>
+          <figure>
+            <title>Liskovjo</title>
+        <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/Liskovjo.png" scale="200" />
+               </imageobject>
+       </mediaobject>
+       </figure>
+          <para>
+              A kódokról röviden. A különbség a C++-os és a Javas megvalósításban: Az osztályok létrehozása ugyan úgy a class kulcsszóval történik.
+              Amit ezután észrevehetünk, hogy a C++-ban a láthatósági szintek külön részeket alkotnak pl.: public:, míg javaban minden egyes metódus vagy változó előtt jelezve találjuk a láthatóságát.
+              Emellett a futás közbeni polimorfizmusra is találunk példát(amelynek része a metódus túlterhelés) még pedig a virtual kulcsszóval jelzett metódust a C++-ban és a Java-s kódban is, amikor Override-ot látunk. Szintúgy megjelenik az öröklődés mindkét esetben.
+              Javaban ez az extends kulcsszóval történik míg C++-ban a class gyerekosztály:szülőosztály formában történik. 
+          </para>
     </section>        
 
     <section>
