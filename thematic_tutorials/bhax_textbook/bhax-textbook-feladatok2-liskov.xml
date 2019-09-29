@@ -22,8 +22,73 @@ Barki/madarak/)
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A liskov elv arról szól,hogy minden osztályt helyettesíthessen a gyermek osztálya anélkül,
+            hogy a program működése megváltozna. Legyen S T-nek egy leszármazottja, ekkor minden T típúsú
+            objektum legyen helyettesíthető S objektumokkal. Jelen esetünkben vizsgáljunk meg egy példát:
         </para>
+        <programlisting language="java"><![CDATA[
+            class Madar{
+                void repul(){
+                   System.out.println("I belive I can fly");
+               }
+           }
+           
+           class Sas extends Madar{
+               @Override
+               void repul(){
+                   System.out.println("A sas repül");
+               }
+           }
+           
+           class Pingvin extends Madar{
+           
+           }
+           
+           class Liskov{
+               public static void main(String[] args) {
+                   Madar madar=new Madar();
+                   madar.repul();
+                   madar=new Sas();
+                   madar.repul();
+                   madar=new Pingvin();
+                   madar.repul();
+               }
+           }
+            ]]>
+          </programlisting>
+          <para>
+              Mint látható a liskov elv itt sérül ugyanis a program szerint a pingvin képes repülni. A probléma onnan adódik, hogy azt tettük fel, hogy minden madár tud repülni.
+              Ezért tévesen a repül metódust a madár osztályba írtuk.Tehát az alap tervezéssel volt a probléma. A megoldás az, ha csinálunk egy külön interface-t, amely a repülés tulajdonságot jelenti,bár ekkor a madár osztályt is interface-ve kell alakítanunk, mivel a többszörös öröklődés nem lehetséges javaban.
+              Hasonlót csak az interfacekkel érünk el.
+          </para>
+          <programlisting language="java"><![CDATA[
+            interface Madar{
+	 
+            }
+            
+            interface RepuloMadar {
+                abstract void repul();
+            }
+            class Sas  implements RepuloMadar{
+                public void repul(){
+                    System.out.println("A sas repül");
+                }
+            }
+            
+            class Pingvin implements Madar{
+            
+            }
+            
+            class Liskovjo{
+                public static void main(String[] args) {
+                    Sas sas=new Sas();
+                    Pingvin pingvin=new Pingvin();
+                    sas.repul();
+                    pingvin.repul();
+                }
+            }
+            ]]>
+          </programlisting>
     </section>        
 
     <section>
