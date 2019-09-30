@@ -65,7 +65,7 @@ Barki/madarak/)
        </mediaobject>
        </figure>
           <para>
-              Mint látható a liskov elv itt sérül ugyanis a program szerint a pingvin képes repülni. A probléma onnan adódik, hogy azt tettük fel, hogy minden madár tud repülni.
+              Jelen esetünkben a T az a madár és az S-ek a pingvin és a sas.Mint látható a liskov elv itt sérül ugyanis a program szerint a pingvin képes repülni. A probléma onnan adódik, hogy azt tettük fel, hogy minden madár tud repülni.
               Ezért tévesen a repül metódust a madár osztályba írtuk.Tehát az alap tervezéssel volt a probléma. A megoldás az, ha csinálunk egy külön interface-t, amely a repülés tulajdonságot jelenti,bár ekkor a madár osztályt is interface-ve kell alakítanunk, mivel a többszörös öröklődés nem lehetséges javaban.
               Hasonlót csak az interfacekkel érünk el.
           </para>
@@ -97,7 +97,7 @@ Barki/madarak/)
             }
             ]]>
           </programlisting>
-          <figure>
+        <figure>
             <title>Liskovjo</title>
         <mediaobject>
                <imageobject>
@@ -124,11 +124,76 @@ https://arato.inf.unideb.hu/batfai.norbert/UDPROG/deprecated/Prog2_1.pdf (98. f�
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Szulogyerek">https://github.com/Savitar97/Prog2/tree/master/Szulogyerek</link>              
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Ebben a feladatunkban megjelenik az öröklődés mint fontos tényező. Az öröklődésnél ugyebár a gyermek hozzáfér a szülő osztály
+            definiált metódusaihoz, de fordítva ez nem igaz. Tekintsük meg az alábbi példát:
         </para>
+        <programlisting language="java"><![CDATA[
+            class Szulo{
+                void message(){
+                    System.out.println("Szülő üzenete.");
+                }
+            }
+            
+            class Pulya extends Szulo{
+                @Override
+                void message(){
+                    System.out.println("Szülő üzenet felülír");
+                }
+                void message2(){
+                    System.out.println("Gyerek üzenete");
+                }
+            }
+            
+            class Szulogyerek{
+                public static void main(String[] args) {
+                    Szulo szulo = new Szulo();
+                    szulo.message();
+                    szulo=new Pulya();
+                    szulo.message();
+                    //Itt látható, hogy a szülő nem tudja meghívni a gyerek metódusát.Tehát az ősön keresztül, csak az ős üzenetei küldhetők.A gyermeké nem.
+                    //szulo.message2();
+                    Pulya gyerek=new Pulya();
+                    gyerek.message();
+                    gyerek.message2();
+            
+                }
+            }
+            ]]>
+          </programlisting>
+          <figure>
+            <title>Szulogyerek</title>
+        <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/Szulogyerek.png" scale="200" />
+               </imageobject>
+       </mediaobject>
+       </figure>
+       <para>
+           Ha a kikommentelt részt kiszedjük akkor errort kapunk.
+       </para>
+       <para>
+           Na tehát van egy <classname>Szulo</classname> osztályunk, és egy <classname>Pulya</classname> osztályunk, amelyet a szülőből származtatunk.A származtatást a extends jelöli.
+           A szülőnek van egy metódusa a message. A gyerek ezt override-olja(polimorfizmus) és ezen kívül van még egy message2 metódusa. Majd jön a példányosítás. Elsőnek is példányosítunk
+           egy szülő típúsú objektumot ez a következő képpen zajlik Osztálynév amit követ az objektum neve ezt egy =-jel követi, aztán jön a new szó a példányosításhoz végül pedig a konstruktorja az osztálynak, amiben lehet inicializáció. Majd kiirassuk vele a metódusát.
+           Majd a szülőn keresztül példányosítunk egy pulya osztályt. És meghívjuk a message-t. Mi történik? Az Overrideolt metódus fut le a szülő metódusa helyett.
+       </para>
+       <para>
+           Most próbáljuk meg meghívni a message2-t. Azt várnánk, hogy lefog futni a függvény mivel az Overrideolt függvény lefut.De ez nem következik be, hanem errort kapunk.
+           Mi lehet a probléma? Az, hogy a message-t a <classname>Pulya</classname> a szülőtől örökölte tehát a szülőn keresztül is képes elérni. Míg a message2-t a szülőosztály nem ismeri, mivel nincs a hatókörében.
+           Viszont, ha példányosítunk egy Pulya osztálytípúsú objektumot, akkor az már ismerni fogja a message2-t. Ezen kívül egy kis plusz megjegyzés, ha leszármaztatunk egy osztályt és nem hozunk létre saját konstruktort akkor a szülő osztály paraméter nélküli konstruktorát fogja örökölni.
+           Ezen kívül C++-ban támogatott a többszörös öröklődés tehát ott minden szülő osztály paraméter nélküli konstruktorát átveszi a gyermek.
+       </para>
+       <figure>
+        <title>Szulogyerek</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/CPPSzulogyerek.png" scale="200" />
+                </imageobject>
+            </mediaobject>
+        </figure>
     </section>        
     <section>
         <title>Anti OO</title>
@@ -160,6 +225,12 @@ Apró módosításokat eszközölj benne, pl. színvilág.
         <para>
             Megoldás forrása:                
         </para>
+        <caution>
+            <title>
+                Tutorált
+            </title>
+            <para>Ebben a feladatban tutorált Racs Tamás.</para>
+        </caution>
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>

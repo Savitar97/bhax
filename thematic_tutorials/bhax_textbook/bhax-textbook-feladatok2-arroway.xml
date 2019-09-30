@@ -126,6 +126,12 @@
         <para>
             Servlet megoldása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/WebApplication1">https://github.com/Savitar97/Prog2/tree/master/WebApplication1</link>
         </para>
+        <caution>
+            <title>
+                Tutoráltás
+            </title>
+            <para>Ebben a feladatban tutoráltam Molnár Antal Albertet,Ádám Petrát.</para>
+        </caution>
         <para>
             A binfa java a c++-hoz képest nem sokat változik. A különbség annyi, hogy itt nem választhatunk, hogy tagként,referenciaként vagy esetleg pointerként adjuk át a csomópontot.
             Ugyanis a javaban nincsenek pointerek. A létrehozott <classname>Node</classname> osztály azaz a csomópont osztály tartalmaz egy érték változót és egy jobb és egy bal oldali objektumát a csomópontnak.
