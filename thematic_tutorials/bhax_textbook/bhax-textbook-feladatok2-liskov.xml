@@ -200,13 +200,14 @@ https://arato.inf.unideb.hu/batfai.norbert/UDPROG/deprecated/Prog2_1.pdf (98. f�
         <para>
             A BBP algoritmussal 4 a Pi hexadecimális kifejtésének a 0. pozíciótól számított 10^6, 10^7, 10^8 darab
 jegyét határozzuk meg C, C++, Java és C# nyelveken és vessük össze a futási időket!
-https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apas03.html#id561066
+
         </para>
         <para>
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apas03.html#id561066">https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apas03.html#id561066</link>
+            <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/AntiOO">https://github.com/Savitar97/Prog2/tree/master/AntiOO</link>       
         </para>
         <para>
         A következő táblázat tartalmazza a mérési eredményeinket:
@@ -273,7 +274,7 @@ Apró módosításokat eszközölj benne, pl. színvilág.
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/smnist-master/forHumans/androidhuman">https://github.com/Savitar97/Prog2/tree/master/smnist-master/forHumans/androidhuman</link>               
         </para>
         <caution>
             <title>
@@ -284,6 +285,14 @@ Apró módosításokat eszközölj benne, pl. színvilág.
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+        <figure>
+                <title>Smnist</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/Android.png" scale="10" />
+                        </imageobject>
+                    </mediaobject>
+        </figure>
     </section>
     <section>
         <title>Ciklomatikus komplexitás</title>
@@ -296,11 +305,45 @@ fóliát)!
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Komplexit%C3%A1s">https://github.com/Savitar97/Prog2/tree/master/Komplexit%C3%A1s</link>                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A ciklomatikus komplexitás a program összetettségét vizsgálja. Megszálmolja a programban az metódusok, feltételes elágazások,
+            ciklusok,try catch-ek, a logikai operátorok, a ?: operátorok és a ?. operátorok számát és ez alapján kalkulálja ki az értéket, amelyet McCabe értéknek is neveznek. A komplexitás számolásához a gráf
+            elméletet használják fel. A ciklomatikus komplexitás az:
+            M = E − N + 2P képlettel számolható ki, ahol M a McCabe érték, amely egyenlő az élek-csomópontok + az összefüggő komponensek száma.
         </para>
+        <para>
+            A ciklomatikus komplexitás kiszámításához egy maven plugint használtam a már megírt binfa servleten.
+        </para>
+        <programlisting language="java"><![CDATA[
+            <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>javancss-maven-plugin</artifactId>
+                    <version>2.1</version>
+                </plugin>
+            ]]>
+          </programlisting>
+        <para>
+            Ha a maven pom.xml ünkbe a pluginok közé beírjuk az alábbi kódcsipetet, majd a <command>mvn site</command> és <command>mvn javancss:report</command> futtatásával a projekt könyvtárában a
+            target/site mappában megtaláljuk a plugin által kiszámolt komplexitást és egyéb információkat, amelyet egy html oldal formájában tekinthetünk meg. 
+        </para>
+        <figure>
+                <title>Ciklomatikus Komplexitás</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/CykloComplex.png" scale="35" />
+                        </imageobject>
+                    </mediaobject>
+        </figure>
+        <figure>
+                <title>Maven</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/maven.png" scale="200" />
+                        </imageobject>
+                    </mediaobject>
+        </figure>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
