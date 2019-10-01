@@ -198,7 +198,7 @@ https://arato.inf.unideb.hu/batfai.norbert/UDPROG/deprecated/Prog2_1.pdf (98. f�
     <section>
         <title>Anti OO</title>
         <para>
-            A BBP algoritmussal 4 a Pi hexadecimális kifejtésének a 0. pozíciótól számított 10 6, 107, 108 darab
+            A BBP algoritmussal 4 a Pi hexadecimális kifejtésének a 0. pozíciótól számított 10^6, 10^7, 10^8 darab
 jegyét határozzuk meg C, C++, Java és C# nyelveken és vessük össze a futási időket!
 https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apas03.html#id561066
         </para>
@@ -209,8 +209,58 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/apas03.html#id561
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+        A következő táblázat tartalmazza a mérési eredményeinket:
         </para>
+        <table border="1">
+                <caption>Eredmények</caption>
+                <thead align="left" valign="middle">
+                   <tr>
+                       <td>0xJegy</td>
+                       <td>C[sec]</td>
+                       <td>C++[sec]</td>
+                       <td>C#[sec]</td>
+                       <td>Java[sec]</td>
+                   </tr>
+                 </thead>
+                <tbody align="left" valign="middle" >
+                   <tr>
+                     <td>10<superscript>6</superscript></td>
+                     <td>1.879098</td>
+                     <td>1.901872</td>
+                     <td>2,064295</td>
+                     <td>1.69</td>
+                     </tr>
+                     <tr>
+                     <td>10<superscript>7</superscript></td>
+                     <td>21.816081</td>
+                     <td>21.985074</td>
+                     <td>23,2984408</td>
+                     <td>19.672</td>
+                     </tr>
+                     <tr>
+                     <td>10<superscript>8</superscript></td>
+                     <td>250.840815</td>
+                     <td>251.886862</td>
+                     <td>264,5961322</td>
+                     <td>224.895</td>
+                     </tr>
+                </tbody>
+            </table>
+    <para>
+        A BBP algoritmust az előző fejezetben már létrehoztuk és kitárgyaltuk. A programkódban viszont változások keletkeztek.
+        Ennek az oka, hogy a C nem objektum orientált programozási nyelv.Míg a másik 3 igen.Bár java és C#-nál teljesen nem tudjuk eltüntetni az
+        objektum orientáltságot. Az eredmények megszületéséhez ugyebár, mindig a for ciklusban lévő d-t kell megváltoztatnunk.
+        A C#-os kód futtatásához a visual studio code-ot használtam. Ezen kívül szükséges volt még a 
+        <command>sudo apt-get install dotnet-sdk-3.0</command> telepítése. Ezután Visual Studio Code terminálba <command>dotnet new console</command>
+        majd <command>dotnet build</command> végül <command>run</command>. A build abba a mappába, amelyikben éppen vagyunk létrehoz egy új c# projektet.
+        A projekt alapból egy helloworld program lesz.
+    </para>
+    <para>
+        De visszakanyarodva a mérési eredményekhez. A java toronymagasan az első. Az interpreter úgy tűnik gyorsabb mint a compiler.
+        Második helyen végzett a C és minimálisan lemaradva a C++. Utolsó helyen végzett a C# ez lehetséges kompatibilitási okokból is.(Windowson futtatva valószínüleg más eredményt produkált volna)
+        A gép konfigja, amivel a teszt készült: A processzor egy i5-7200U, amely egy 2 mag 4 szálas processzor 2.5GHz-es alapórajellel és 3.1GHz Turbo Boost-al.
+        A VGA egy Geforce 940MX 2gb ddr5 ös dedikált videó kártya. Ezen kívül 4 gb ddr4 es 2133MHz es RAM-mal van felszerelve a gép.
+    </para>
     </section>
     <section>
         <title>Hello Android!</title>
