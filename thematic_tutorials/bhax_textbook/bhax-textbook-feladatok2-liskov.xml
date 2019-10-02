@@ -283,13 +283,53 @@ Apró módosításokat eszközölj benne, pl. színvilág.
             <para>Ebben a feladatban tutorált Racs Tamás.</para>
         </caution>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A feladatunk, hogy megváltoztassuk például a színvilágát az smnist android alkalmazásnak. Ehez először lekellett szednünk az android stúdiót. Én az ubuntu szoftverekből kerestem ki és telepítettem.
         </para>
+        <para>
+            Az android stúdió telepítése egyszerűen ment. A program felélesztése már kevésbé. Kezdetben importálni próbáltam.
+            Hát ez nem jött össze sajnos, ugyanis a gradle fájlok és még rengeteg dolog hiányzott.
+        </para>
+        <para>
+            Ezután új projekttel próbálkoztam kezdetben nagyon nem akart sikerülni. De végül csak feléledt.Ugyebár létrehoztam az üres projektet majd a kellő helyre bemásoltam a fileokat.
+            De ettől még mindig hibát írt ki. Elsőnek is átkellett írni a package neveket a sajátomra. De ezután is hibába ütköztem.
+            Két megoldást is találtam a hiba elhárítására kezdetben az volt a problémája, hogy a <command>android.support.v7.app.AppCompatActivity</command>
+            nem találta. Erre a megoldás az volt, hogy a build.gradle-ben, a compile sdk verziót csökkentettem 27-re. A másikban Racs Tamás segített.
+        </para>
+        <programlisting language="java"><![CDATA[
+            import androidx.appcompat.app.AppCompatActivity;
+            public class SMNISTE3Activity extends AppCompatActivity 
+            ]]>
+          </programlisting>
+          <para>
+              Az SMNISTE3Activity.java-ban kellet a fent lévő módosításokat elvégezni. Ezen kívül beleütköztem abba a hibába is, hogy a program nem találta az R könyvtárát.
+          </para>
+          <programlisting language="java"><![CDATA[
+            import com.example.androidhuman.R;
+            ]]>
+          </programlisting>
+          <para>
+              Ekkor egyszerűen importáltuk az R-t. A com.example.androidhuman helyére az aktuális package-et kell írni.
+          </para>
+          <para>
+              De még ígysem működött. Ugyanis valamiért nem látta a program az SMNISTE3Activity osztályt. Ez azért volt mert egy helyen relatívan volt megadva az elérési út, ezt abszolútra javítva már indult is a program.
+              Azaz még teljesen nem mert a kompatibilitási hibákat javítani kellett az android 8.1 előtti verziókhoz.
+          </para>
+          <para>
+              Na de térjünk vissza a kódhoz. Ugyebár a színvilágot akarjuk módosítani. Ezt úgy tehetjük meg, hogy a SurfaceViewben találunk egy bg color nevű tömböt amelynek két eleme van.
+              Ezek lesznek a villogó háttér színei RGB-ben megadva.
+          </para>
+          <para>
+              A többi színt a cinit metódusban találjuk. A textpaint a körökben lévő szöveg színét módosítja. Az msgpaint a lent lévő értékeket jelöli, az elért teljesítményt leíró szöveg színét változtatja.
+              A dotpaint logikusan a pont színét változtatja meg. A borderpaint a keret színét változtatja. Végül a fillPaint a pont és szöveg mögötti hátteret tölti ki az adott színnel.A módosítás eredménye lent látható a képen.
+          </para>
+          <para>
+              Ha az elején felugró licence-et akarjuk módosítani akkor azt az Activityben tehetjük meg. Az android.alertdialog.builder-nél.
+          </para>
         <figure>
                 <title>Smnist</title>
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="img/Android.png" scale="10" />
+                            <imagedata fileref="img/Android.png" scale="100" />
                         </imageobject>
                     </mediaobject>
         </figure>
