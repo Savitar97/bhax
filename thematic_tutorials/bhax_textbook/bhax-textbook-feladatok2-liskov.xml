@@ -251,6 +251,27 @@ jegyét határozzuk meg C, C++, Java és C# nyelveken és vessük össze a futá
         A BBP algoritmust az előző fejezetben már létrehoztuk és kitárgyaltuk. A programkódban viszont változások keletkeztek.
         Ennek az oka, hogy a C nem objektum orientált programozási nyelv.Míg a másik 3 igen.Bár java és C#-nál teljesen nem tudjuk eltüntetni az
         objektum orientáltságot. Az eredmények megszületéséhez ugyebár, mindig a for ciklusban lévő d-t kell megváltoztatnunk.
+    </para>
+    <programlisting language="java"><![CDATA[
+        for(int d=100000000; d<100000001; ++d) {
+            
+            d16Pi = 0.0d;
+            
+            d16S1t = d16Sj(d, 1);
+            d16S4t = d16Sj(d, 4);
+            d16S5t = d16Sj(d, 5);
+            d16S6t = d16Sj(d, 6);
+            
+            d16Pi = 4.0d*d16S1t - 2.0d*d16S4t - d16S5t - d16S6t;
+            
+            d16Pi = d16Pi - Math.floor(d16Pi);
+            
+            jegy = (int)Math.floor(16.0d*d16Pi);
+            
+        }
+        ]]>
+      </programlisting>
+    <para>
         A C#-os kód futtatásához a visual studio code-ot használtam. Ezen kívül szükséges volt még a 
         <command>sudo apt-get install dotnet-sdk-3.0</command> telepítése. Ezután Visual Studio Code terminálba <command>dotnet new console</command>
         majd <command>dotnet build</command> végül <command>run</command>. A build abba a mappába, amelyikben éppen vagyunk létrehoz egy új c# projektet.
