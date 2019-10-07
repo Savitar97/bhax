@@ -741,6 +741,15 @@ use case és class diagramokat).
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
+
+        <figure>
+          <title>Latex OOCWC diag</title>
+              <mediaobject>
+                  <imageobject>
+                      <imagedata fileref="img/Latexdiag.png" scale="200" />
+                  </imageobject>
+              </mediaobject>
+      </figure>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
