@@ -421,7 +421,7 @@ main (int argc, char *argv[])
        		Kompozíció: Jelölése fekete tömött rombusz.Kompozíció esetén két lényeges fogalom van. Az első az, hogy a tartalmazott objektum pontosan egy tartalmazó objektumhoz tartozik. Vagyis egy tartalmazott objektumot nem tartalmazhat több objektum, tehát nincs megosztás. A másik pedig az, hogy a tartalmazott és a tartalmazó együtt jön létre és együtt is szűnik meg. A kompozíciót ugyan úgy implementáljuk, mint az asszociációt, csak ilyenkor a destruktorban megkell írnunk a felszabadító kódot és a konstruktorban a létrehozó kódrészeletet.
         </para>
         <para>
-            Tehát a közös közöttük, hogy mindekettő az asszociáció egy speciális esete és, hogy mindkettő tartalmazást jelöl.
+            Tehát a közös közöttük, hogy mindekettő az asszociáció egy speciális esete és, hogy mindkettő tartalmazást jelöl. Az ábránkon két konpozíciót látunk.
         </para>
         <figure>
             <title>UML Vedes</title>
@@ -672,6 +672,14 @@ char Csomopont::getBetu() {
                     </imageobject>
                 </mediaobject>
         </figure>
+        <figure>
+          <title>UML Esettanulmány a könyvből futtatva</title>
+              <mediaobject>
+                  <imageobject>
+                      <imagedata fileref="img/Esettan2.png" scale="200" />
+                  </imageobject>
+              </mediaobject>
+      </figure>
     </section>
     <section>
         <title>BPMN</title>
@@ -741,7 +749,7 @@ use case és class diagramokat).
         <para>
             A feladat megoldásához a visual paradigm-ot használtam arra, hogy egy vázlatot készítsek, amelyet majd texben megvalósítok.
             A TeX-es oldalról a tikzuml-t használtam. A használatának a leírását a következő linken találjuk:<link xlink:href="https://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/doc/tikzumlmanual.pdf">https://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/doc/tikzumlmanual.pdf</link>.
-
+            Igazából a feladat nagy része a pepecs munkával telt. Beigazítani az osztály blokkokat és beméretezni őket. Viszont én például aki alig használt eddig latexet elég sokat tanultam belőle.
         </para>
         <programlisting language="java"><![CDATA[
           \usepackage{tikz-uml}
