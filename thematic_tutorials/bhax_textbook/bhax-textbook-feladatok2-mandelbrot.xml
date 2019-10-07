@@ -739,9 +739,39 @@ use case és class diagramokat).
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Latex">https://github.com/Savitar97/Prog2/tree/master/Latex</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
+            A feladat megoldásához a visual paradigm-ot használtam arra, hogy egy vázlatot készítsek, amelyet majd texben megvalósítok.
+            A TeX-es oldalról a tikzuml-t használtam. A használatának a leírását a következő linken találjuk:<link xlink:href="https://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/doc/tikzumlmanual.pdf">https://perso.ensta-paristech.fr/~kielbasi/tikzuml/var/files/doc/tikzumlmanual.pdf</link>.
 
+        </para>
+        <programlisting language="java"><![CDATA[
+          \usepackage{tikz-uml}
+          ]]>
+        </programlisting>
+        <para>
+          A fent lévő packaget kell behúznunk.
+          Osztály létrehozásának szintaxisa a következő:
+        </para>
+        <programlisting language="java"><![CDATA[
+          \umlclass[tulajdonságok például a típusleírás vagy x és y]{class név}
+          {
+            változók blokkja
+            pl.: x:int és mindig "\\"-el választjuk el. 
+            Arra figyeljünk oda, hogy az underscore használatához használnunk kell a következő packaget:\usepackage{underscore}
+            a destruktor jelénél a \~{}-t az &-eknél a \&-t a #-nél szintén a \#-t.
+          }
+          {metódusok blokkja}
+          ]]>
+        </programlisting>
+        <para>
+          A kapcsolatoknál aggregáció, asszociáció stb használata a következő:
+        </para>
+        <programlisting language="java"><![CDATA[
+          Nyíl nélküli irányítatlan asszociáció  pl:\umlassoc{CarType}{Car}
+          Nyilazott asszociáció \umluniassoc{CarType}{Car}
+          Agregáció:\umlaggreg {ShmClient}{MyShmClient} A tartalmazó osztályt írjuk először majd utána a tartalmazottat.
+          Öröklődés \umlinherit {ShmClient}{MyShmClient}
+          ]]>
+        </programlisting>
         <figure>
           <title>Latex OOCWC diag</title>
               <mediaobject>
