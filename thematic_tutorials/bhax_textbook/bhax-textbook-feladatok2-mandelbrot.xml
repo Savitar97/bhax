@@ -442,7 +442,7 @@ main (int argc, char *argv[])
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/uml-regenerate">https://github.com/Savitar97/Prog2/tree/master/uml-regenerate</link>              
         </para>
         <para>
             A forward engineering az, amikor nem a kész kódból generálunk UML diagrammot hanem fordítva. Tehát először elkészítjük a diagrammot majd képesek vagyunk belőle kódot generálni.
