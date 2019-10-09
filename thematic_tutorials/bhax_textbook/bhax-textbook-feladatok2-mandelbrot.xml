@@ -416,12 +416,12 @@ main (int argc, char *argv[])
           </programlisting>
         <para>
         	Asszociáció: Egyetlen vonallal jelöljük és középre írjuk az asszociáció nevét.Példa: A foglalás és a szállás. A foglalás lefoglalja a szállást. Tehát itt az asszociáció neve a lefoglal. És kis nyíl fejjel jelöljük az irányt. Ezen kívül szerepneveket is megadhatunk, hogy hogyan vesz részt a kapcsolatban a két fél. Példa egy cégnél a személy munkavállalóként vesz részt a kapcsoaltban, míg a cég munkáltatóként. Itt is ugyan úgy jelölhetünk multiplicitást. Például egy cég több alkalmazottat is foglalkoztat általában mivel van egy kötelező létszám amit megkell haladnia. És lehet olyan, hogy azzal nem muszály foglalkoznunk a modellünkben, hogy a munkavállalónknak van -e több munkahelye.
-        	Az asszociációnak van két speciális fajtája a konpozíció és az aggregáció.
+        	Az asszociációnak van két speciális fajtája a kompozíció és az aggregáció.
         	Aggregáció:az aggregáció jele az üres rombusz. Az aggregáció tartalmazást jelöl. Tehát a rombuszt a tartalmazó oldalára tesszük. Például egy vállalatnak lehet egy vagy több részlege. Sokan semmitmondónak tekintik és nem ajánlják a használatát.
        		Kompozíció: Jelölése fekete tömött rombusz.Kompozíció esetén két lényeges fogalom van. Az első az, hogy a tartalmazott objektum pontosan egy tartalmazó objektumhoz tartozik. Vagyis egy tartalmazott objektumot nem tartalmazhat több objektum, tehát nincs megosztás. A másik pedig az, hogy a tartalmazott és a tartalmazó együtt jön létre és együtt is szűnik meg. A kompozíciót ugyan úgy implementáljuk, mint az asszociációt, csak ilyenkor a destruktorban megkell írnunk a felszabadító kódot és a konstruktorban a létrehozó kódrészeletet.
         </para>
         <para>
-            Tehát a közös közöttük, hogy mindekettő az asszociáció egy speciális esete és, hogy mindkettő tartalmazást jelöl. Az ábránkon két konpozíciót látunk.
+            Tehát a közös közöttük, hogy mindekettő az asszociáció egy speciális esete és, hogy mindkettő tartalmazást jelöl. Az ábránkon két kompozíciót látunk. Ez azt jelenti, hogy a tartalmazott önmagában nem tud létezni, csak valaminek a részeként. Tehát a csomópont csak a binfa részeként létezhet. És mivel a nyíl átvan húzva, így ez nem navigáló asszociáció.Ez azt jelenti, hogy a binfából mindig képezhető csomópont, de csomópontból nem állítható vissza a binfa.
         </para>
         <figure>
             <title>UML Vedes</title>
@@ -627,7 +627,7 @@ char Csomopont::getBetu() {
         </para>
         <para>
         	Asszociáció: Egyetlen vonallal jelöljük és középre írjuk az asszociáció nevét.Példa: A foglalás és a szállás. A foglalás lefoglalja a szállást. Tehát itt az asszociáció neve a lefoglal. És kis nyíl fejjel jelöljük az irányt. Ezen kívül szerepneveket is megadhatunk, hogy hogyan vesz részt a kapcsolatban a két fél. Példa egy cégnél a személy munkavállalóként vesz részt a kapcsoaltban, míg a cég munkáltatóként. Itt is ugyan úgy jelölhetünk multiplicitást. Például egy cég több alkalmazottat is foglalkoztat általában mivel van egy kötelező létszám amit megkell haladnia. És lehet olyan, hogy azzal nem muszály foglalkoznunk a modellünkben, hogy a munkavállalónknak van -e több munkahelye.
-        	Az asszociációnak van két speciális fajtája a konpozíció és az aggregáció.
+        	Az asszociációnak van két speciális fajtája a kompozíció és az aggregáció.
         </para>
         <para>
         	Aggregáció:az aggregáció jele az üres rombusz. Az aggregáció tartalmazást jelöl. Tehát a rombuszt a tartalmazó oldalára tesszük. Például egy vállalatnak lehet egy vagy több részlege. Sokan semmitmondónak tekintik és nem ajánlják a használatát.
@@ -639,7 +639,7 @@ char Csomopont::getBetu() {
             Esettanulmány:
         </para>
         <para>
-            A feladat egy számítógépek és konponenseinek eladásával foglalkozó kereskedés számára, egy olyan alkalmazás elkészítése,
+            A feladat egy számítógépek és komponenseinek eladásával foglalkozó kereskedés számára, egy olyan alkalmazás elkészítése,
             amely nyilvántartja a kereskedésben lévő alkatrészeket és konfigurációkat. A programunknak tartalmaznia kell a termékek áruból való betöltését,
             ezek képernyőre történő listázását, valamint állományba való kiírását és ezen kívül az árak kialakítását. A rendszert úgy kell kiépítenünk, hogy a jövőbeli termékcsaládokat is támogassa. Ezt úgy érjük el, hogy megvalósítunk egy keretrendszert osztálykönyvtár formában.
             Az erre vonatkozó követelmények a következők:
@@ -776,8 +776,8 @@ use case és class diagramokat).
         <programlisting language="java"><![CDATA[
           Nyíl nélküli irányítatlan asszociáció  pl:\umlassoc{CarType}{Car}
           Nyilazott asszociáció \umluniassoc{CarType}{Car}
-          Agregáció:\umlaggreg {ShmClient}{MyShmClient} A tartalmazó osztályt írjuk először majd utána a tartalmazottat.
-          Öröklődés \umlinherit {ShmClient}{MyShmClient}
+          Agregáció:\umlaggreg {ShmClient}{MyShmClient} A tartalmazó osztályt írjuk először majd utána a tartalmazottat.Fehér rombusz a jele a tartalmazó felől.
+          Öröklődés \umlinherit {ShmClient}{MyShmClient} Az UML-ben általánosításként ismerjük. Jele egy kitöletetlen, zárt nyílvégű nyíl.Amely a leszármaztatottól mutat az ős felé.
           ]]>
         </programlisting>
         <figure>

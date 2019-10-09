@@ -20,8 +20,106 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/adatok.html
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A Java a C++ és C-vel ellentétben már támogatja az ékezetes betűket tartalmazó osztály neveket,változóneveket stb.-t. A programunk fordításához az ISO-8859-2 azaz a Latin-2-es karakterkészletet használtuk.
+            Mivel ez tartalmazza a magyar ékezetes betűket.
+            Ezt a következőképpen érjük el:
         </para>
+        <programlisting language="java"><![CDATA[
+            javac -encoding ISO-8859-2 MandelbrotHalmazNagyító.java
+            ]]>
+          </programlisting>
+          <figure>
+                <title>MandelbrotHalmazError</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/MandelError.png" scale="200" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+        <para>
+            Alapból fordítva a következő hibaüzenet vár minket. Amiből látszik, hogy utf8-as karakterek szükségesek.
+        </para>
+        <para>
+            A fordítónak a -encoding kapcsolóval adjuk meg, hogy milyen karakterkódolást használjon.
+        </para>
+        <para>
+            A nagyítónk nem változott maradt a Prog1-ben megismert Java-s nagyító annyi különbséggel, hogy ékezetes karaktereket használunk a deklarációban.
+        </para>
+        <programlisting language="java"><![CDATA[
+            public MandelbrotHalmazNagyító(double a, double b, double c, double d,
+            int szélesség, int iterációsHatár) {
+        // Az õs osztály konstruktorának hívása
+        super(a, b, c, d, szélesség, iterációsHatár);
+        setTitle("A Mandelbrot halmaz nagyításai");
+        // Egér kattintó események feldolgozása:
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            // Egér kattintással jelöljük ki a nagyítandó területet
+            // bal felsõ sarkát vagy ugyancsak egér kattintással
+            // vizsgáljuk egy adott pont iterációit:
+            public void mousePressed(java.awt.event.MouseEvent m) {
+                // Az egérmutató pozíciója
+                x = m.getX();
+                y = m.getY();
+                // Az 1. egér gombbal a nagyítandó terület kijelölését
+                // végezzük:
+                if(m.getButton() == java.awt.event.MouseEvent.BUTTON1 ) {
+                    // A nagyítandó kijelölt területet bal felsõ sarka: (x,y)
+                    // és szélessége (majd a vonszolás növeli)
+                    mx = 0;
+                    my = 0;
+                    repaint();
+                } else {
+                    // Nem az 1. egér gombbal az egérmutató mutatta c
+                    // komplex számból indított iterációkat vizsgálhatjuk
+                    MandelbrotIterációk iterációk =
+                            new MandelbrotIterációk(
+                            MandelbrotHalmazNagyító.this, 50);
+                    new Thread(iterációk).start();
+                }
+            }
+            // Vonszolva kijelölünk egy területet...
+            // Ha felengedjük, akkor a kijelölt terület
+            // újraszámítása indul:
+            public void mouseReleased(java.awt.event.MouseEvent m) {
+                if(m.getButton() == java.awt.event.MouseEvent.BUTTON1 ) {
+                    double dx = (MandelbrotHalmazNagyító.this.b
+                            - MandelbrotHalmazNagyító.this.a)
+                            /MandelbrotHalmazNagyító.this.szélesség;
+                    double dy = (MandelbrotHalmazNagyító.this.d
+                            - MandelbrotHalmazNagyító.this.c)
+                            /MandelbrotHalmazNagyító.this.magasság;
+                    // Az új Mandelbrot nagyító objektum elkészítése:
+                    new MandelbrotHalmazNagyító(
+                            MandelbrotHalmazNagyító.this.a+x*dx,
+                            MandelbrotHalmazNagyító.this.a+x*dx+mx*dx,
+                            MandelbrotHalmazNagyító.this.d-y*dy-my*dy,
+                            MandelbrotHalmazNagyító.this.d-y*dy,
+                            600,
+                            MandelbrotHalmazNagyító.this.iterációsHatár);
+                }
+            }
+        });
+        // Egér mozgás események feldolgozása:
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            // Vonszolással jelöljük ki a négyzetet:
+            public void mouseDragged(java.awt.event.MouseEvent m) {
+                // A nagyítandó kijelölt terület szélessége és magassága:
+                mx = m.getX() - x;
+                my = m.getY() - y;
+                repaint();
+            }
+        });
+    }
+            ]]>
+          </programlisting>
+        <figure>
+                <title>MandelbrotHalmazNagyító</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/Nagyító.png" scale="40" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
     </section>        
 
     <section>
@@ -47,7 +145,166 @@ struktúrájába!
         <para>
             Tanulságok, tapasztalatok, magyarázat...
         </para>
-    </section>        
+    </section>
+    <section>
+        <title>l334d1c4 5</title>
+        <para>
+Írj olyan OO Java vagy C++ osztályt, amely leet cipherként működik, azaz megvalósítja ezt a betű
+helyettesítést: https://simple.wikipedia.org/wiki/Leet (Ha ez első részben nem tetted meg, akkor írasd
+ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
+        </para>
+        <para>
+                Megoldás videó:
+            </para>
+            <para>
+                Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/LexerSajatJava">https://github.com/Savitar97/Prog2/tree/master/LexerSajatJava</link>              
+            </para>
+        <para>
+            A saját java lexer megvalósításánál, a java Scanner osztályát használtam, hogy a standard inputról kérjek be adatot a felhasználótól. Mindezt egy végtelen ciklusba tettem, ami addig megy amíg üres szót nem adunk meg. Majd példányosítottam a lexer osztályom lex néven. Úgy, hogy a konstruktorába átadom a bemenő stringet.
+        </para>
+        <programlisting language="java"><![CDATA[
+            class Program{
+                public static void main(String[] args) {
+                    while(true){
+                        Scanner in = new Scanner(System.in);
+                        String s = in.nextLine();
+                        if(s.length()<1){
+                            break;
+                        }
+                        System.out.println();
+                        Lexer lex=new Lexer(s);
+                        System.out.println(lex.Lextext());
+                        System.out.println();
+                           }
+                }
+                }
+                
+            ]]>
+          </programlisting>
+        <para>
+            Ezt a bemenő stringet a konstruktorba kisbetűs stringre alakítom. Ezen kívül az osztályom tartalmaz egy többdimenziós tömböt a lexert, ami azt tartalmazza, hogy mivé kell átalakítani a karaktert.
+        </para>
+        <programlisting language="java"><![CDATA[
+    private String text;
+
+	public Lexer(String text)
+	{
+		this.text=text.toLowerCase();
+	}
+
+    private String[][] lexer=
+	{
+		{"α", "4", "@", "/-\\"},//a
+		{"ß", "8", "|3", "|}"},//b
+		{"©", "€", "¢", "{"},//c
+		{"d", "|)", "|]", "|}"},//d
+		...
+
+	};
+            ]]>
+          </programlisting>
+        <para>
+        Majd létrehoztam egy metódust lextext néven, amely egy stringet fog vissza adni. A lexerezés megoldásához a StringBuilder osztályt használom.
+            Mivel a dinamikusan változó szövegnek itt nagy hasznát veszem.Egy for ciklussal, amit itt én inkább foreach ciklusnak neveznék bejárom a karaktertömbbé alakított bevitt szöveget karakterenként. Majd megvizsgálom milyen a karakter egy switch-el és ez alapján választom ki,hogy a tömb melyik sorából kell kivennem a helyettesítő karaktert.
+            A 4 variáció közül a random ciklus segít a programnak választani, hogy mit helyettesítsen be. Ezen kívül megadtam egy default ágat, ha esetleg olyan karaktert írna be, ami nem szerepel a helyettesítési tömbben akkor ugyan azt a karaktert adja vissza mint amit bemenetként kapott. Majd ennek a végén a stringbuildert stringgé alakítom és newtextként térek vissza vele.
+        </para>
+        <programlisting language="java"><![CDATA[
+            public String Lextext(){
+                StringBuilder sb=new StringBuilder();
+                String newtext;
+                for(char c:text.toCharArray()){
+                    Random rand = new Random();
+                    int random = rand.nextInt(4);
+                    switch(c){
+                        case 'a':sb.append(lexer[0][random]);
+                        break;
+                        case 'b':sb.append(lexer[1][random]);
+                        break;
+                        case 'c':sb.append(lexer[2][random]);
+                        break;
+                        case 'd':sb.append(lexer[3][random]);
+                        break;
+                        case 'e':sb.append(lexer[4][random]);
+                        break;
+                        case 'f':sb.append(lexer[5][random]);
+                        break;
+                        case 'g':sb.append(lexer[6][random]);
+                        break;
+                        case 'h':sb.append(lexer[7][random]);
+                        break;
+                        case 'i':sb.append(lexer[8][random]);
+                        break;
+                        case 'j':sb.append(lexer[9][random]);
+                        break;
+                        case 'k':sb.append(lexer[10][random]);
+                        break;
+                        case 'l':sb.append(lexer[11][random]);
+                        break;
+                        case 'n':sb.append(lexer[12][random]);
+                        break;
+                        case 'm':sb.append(lexer[13][random]);
+                        break;
+                        case 'o':sb.append(lexer[14][random]);
+                        break;
+                        case 'p':sb.append(lexer[15][random]);
+                        break;
+                        case 'q':sb.append(lexer[16][random]);
+                        break;
+                        case 'r':sb.append(lexer[17][random]);
+                        break;
+                        case 's':sb.append(lexer[18][random]);
+                        break;
+                        case 't':sb.append(lexer[19][random]);
+                        break;
+                        case 'u':sb.append(lexer[20][random]);
+                        break;
+                        case 'v':sb.append(lexer[21][random]);
+                        break;
+                        case 'w':sb.append(lexer[22][random]);
+                        break;
+                        case 'x':sb.append(lexer[23][random]);
+                        break;
+                        case 'y':sb.append(lexer[24][random]);
+                        break;
+                        case 'z':sb.append(lexer[25][random]);
+                        break;
+                        case '0':sb.append(lexer[26][random]);
+                        break;
+                        case '1':sb.append(lexer[27][random]);
+                        break;
+                        case '2':sb.append(lexer[28][random]);
+                        break;
+                        case '3':sb.append(lexer[29][random]);
+                        break;
+                        case '4':sb.append(lexer[30][random]);
+                        break;
+                        case '5':sb.append(lexer[31][random]);
+                        break;
+                        case '6':sb.append(lexer[32][random]);
+                        break;
+                        case '7':sb.append(lexer[33][random]);
+                        break;
+                        case '8':sb.append(lexer[34][random]);
+                        break;
+                        case '9':sb.append(lexer[35][random]);
+                        break;
+                        default: sb.append(c);
+                    }
+                }
+                newtext=sb.toString();
+                return newtext;
+                
+            }
+            ]]>
+          </programlisting>
+    </section>
+    <section>
+        <title>Full screen</title>
+        <para>
+                Készítsünk egy teljes képernyős Java programot!
+                Tipp: https://www.tankonyvtar.hu/en/tartalom/tkt/javat-tanitok-javat/ch03.html#labirintus_jatek
+        </para>
+    </section>      
     <section>
         <title>Paszigráfia Rapszódia OpenGL full screen vizualizáció</title>
         <para>
