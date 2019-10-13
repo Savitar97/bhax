@@ -304,6 +304,85 @@ ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
                 Készítsünk egy teljes képernyős Java programot!
                 Tipp: https://www.tankonyvtar.hu/en/tartalom/tkt/javat-tanitok-javat/ch03.html#labirintus_jatek
         </para>
+        <para>
+            A teljes képernyős alkalmazáshoz javafx-et használta. Ez volt az első javafx alkalmazásom.
+            Tehát egy kis fun-alkalmazást csináltam.
+        </para>
+        <para>
+            A futtatáshoz érdemes a javafx-sdk-13-as verzióját használni. Máskülönben olyan errort kapunk a MediaPlayer létrehozására amire megoldást sehol nem találunk.(Tapasztalat)
+        </para>
+        <para>
+            A program futtatásakor a következő kép fogad minket(vagyis nem pont ez mert egy kis ablakba indul elsőnek a scene):
+        </para>
+        <figure>
+            <title>Alkalmazás indítás</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/fullscreen.png" scale="40" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <para>
+            Összesen 3 action button-van. A fullscreen logikusan kiteszi teljesképernyősre az alkalmazást a normalscreen pedig vissza ablak módba.
+        </para>
+        <programlisting language="java"><![CDATA[
+            Fullscreen.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    primaryStage.setFullScreen(true);
+                }
+            });
+    
+            Normalscreen.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    primaryStage.setFullScreen(false);
+                }
+            });
+            ]]>
+          </programlisting>
+          <para>
+              Ez lényegében ennyi. Míg a Start lejátszik egy hang file-t. Kicseréli a képet és feldob egy alert boxot. A hang file-t sajnos csak azok élvezhetik akik letöltik a programot.
+              De itt egy kép a start gomb megnyomása után történő eseményről:
+          </para>
+          <figure>
+            <title>Start megnyomása</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/fullscreenstart.png" scale="40" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <para>
+            A feladat megoldására az ötlet akkor jött, amikor épp youtuben néztem, hogy a mesterlövész puskák távcsövén is linux operációs rendszer egyik disztrója fut és a videóben épp azt törték fel.
+        </para>
+        <para>
+            Scene létrehozása java fxben a következőképpen történik:
+        </para>
+        <programlisting language="java"><![CDATA[
+            Scene scene = new Scene(bp, 500, 500);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+            ]]>
+          </programlisting>
+          <para>
+              A bp az nekem egy borderpane ez végülis egy csoport szülője. Ugyebár a scane-nél az első argumentum az általában vagy egy csoport vagy egy szülő(root).
+              És a szülőből letudunk származtatni a .get childrennel. De végülis a borderpane felelős azért,hogy feltudjam osztani 5 részre a scene-t. A másik két érték az ablak méretét adja meg.
+              Emellett 4. értékként megadhatunk neki például színt, hogy a Scene színe milyen legyen.
+          </para>
+          <para>
+              Képet és zenét vagy videót behúzni a következőképpen tudunk:
+          </para>
+          <programlisting language="java"><![CDATA[
+            Image img = new Image("pic1.png",1260,600,false,true);
+            Image img1 = new Image("pic2.png",1260,600,false,true);
+            ImageView iv=new ImageView(img);
+
+            Media media=new Media(new File("/home/nemesis/IdeaProjects/FullScreen/src/supa.mp3").toURI().toString());
+            MediaPlayer player = new MediaPlayer(media);
+            ]]>
+          </programlisting>
+  
     </section>      
     <section>
         <title>Paszigráfia Rapszódia OpenGL full screen vizualizáció</title>
