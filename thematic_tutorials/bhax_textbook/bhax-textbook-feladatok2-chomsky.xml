@@ -5,7 +5,7 @@
             <keyword/>
         </keywordset>
     </info>
-
+    
     <section>
         <title>Encoding</title>
         <para>
@@ -17,11 +17,12 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/adatok.html
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Encoding">https://github.com/Savitar97/Prog2/tree/master/Encoding</link>               
         </para>
         <para>
+            A mandelbrot nagyítós feladattal már találkoztunk a Prog1-es kurzuson. Most ezt kellett magyar ékezetes karakterekkel megírni és lefordítani. Kezdezben ez nem sikerült, de az interpreter hamar segített rájönni, hogy a kódolással van gondja a fordítás közben.
             A Java a C++ és C-vel ellentétben már támogatja az ékezetes betűket tartalmazó osztály neveket,változóneveket stb.-t. A programunk fordításához az ISO-8859-2 azaz a Latin-2-es karakterkészletet használtuk.
-            Mivel ez tartalmazza a magyar ékezetes betűket.
+            Mivel ez tartalmazza a magyar ékezetes betűket. De ezen kívül használhatjuk a Windows-1252 kódolást is.
             Ezt a következőképpen érjük el:
         </para>
         <programlisting language="java"><![CDATA[
@@ -32,7 +33,7 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/adatok.html
                 <title>MandelbrotHalmazError</title>
                     <mediaobject>
                         <imageobject>
-                            <imagedata fileref="img/MandelError.png" scale="200" />
+                            <imagedata fileref="img/MandelError.png" scale="150" />
                         </imageobject>
                     </mediaobject>
             </figure>
@@ -124,6 +125,12 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/adatok.html
 
     <section>
         <title>OOCWC Lexer</title>
+        <caution>
+                <title>
+                    Tutorált
+                </title>
+                <para>Ebben a feladatban tutorált Racs Tamás.</para>
+        </caution>
         <para>
           Izzítsuk
 be
@@ -140,14 +147,174 @@ struktúrájába!
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/robocar-emulator">https://github.com/Savitar97/Prog2/tree/master/robocar-emulator</link>             
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A lexer egy lexikális elemző, amely a szövegek feldolgozását segíti elő. A lexert már prog1-en is használtuk a leet programunk megírásához.
+            Ott az volt a feladata, hogy a bemenő szöveg karaktereit felismerje majd cserélje ki másikra. Most megfigyelhetjük, hogy a file kiterjesztése nem .l hanem .ll.
         </para>
+        <para>
+            Ugyebár itt a részeket két százalékjel választja el egymástól. Az első ilyen rész tuti, hogy bekerül a programba. Itt adjuk meg a definíciókat két  százalékjel és kapcsoszárójel közé téve. Ezt követik a konstansok inicializálása.   
+        </para>
+        <programlisting language="java"><![CDATA[
+            %option c++
+%option noyywrap
+
+%{
+#define YY_DECL int justine::robocar::CarLexer::yylex()
+#include "carlexer.hpp"
+#include <cstdio>
+#include <limits>
+%}
+
+INIT	"<init"
+INITG	"<init guided"
+WS	[ \t]*
+WORD	[^-:\n \t()]{2,}
+INT	[0123456789]+
+FLOAT	[-.0123456789]+
+ROUTE	"<route"
+CAR	"<car"
+POS	"<pos"
+GANGSTERS	"<gangsters"
+STAT	"<stat"
+DISP	"<disp>"
+            ]]>
+          </programlisting>
+          <para>
+              Itt olvashatunk olyan kulcsszavakat mint a route azaz az útvonal, pozíció, gangstrek, pozíció. Tehát valószínüleg a programban ezeknek az adatoknak a feldolgozására használjuk fel majd a lexert.
+              Tehát az autók irányítása azzal történhet, hogy a generált koordinátákat beolvassa a lexer feldolgozásra.
+          </para>
+          <para>Majd ezt követik azok a szabályok, amiket elfogad a lexerünk. Tehát a jó bemenetek definiálása.</para>
+          <programlisting language="java"><![CDATA[
+            %% 
+{DISP}					{
+					  m_cmd = 0;
+					}
+{POS}{WS}{INT}{WS}{INT}{WS}{INT}	{
+					  std::sscanf(yytext, "<pos %d %u %u", &m_id, &from, &to);
+					  m_cmd = 10001;
+					}
+{CAR}{WS}{INT}				{
+					  std::sscanf(yytext, "<car %d", &m_id);
+					  m_cmd = 1001;
+					}
+{STAT}{WS}{INT}				{
+					  std::sscanf(yytext, "<stat %d", &m_id);
+					  m_cmd = 1003;
+					}
+{GANGSTERS}{WS}{INT}			{
+					  std::sscanf(yytext, "<gangsters %d", &m_id);
+					  m_cmd = 1002;
+					}
+{ROUTE}{WS}{INT}{WS}{INT}({WS}{INT})*	{
+				  int size{0};
+				  int ss{0};
+				  int sn{0};				  
+				  
+				  std::sscanf(yytext, "<route %d %d%n", &size, &m_id, &sn);
+				  ss += sn;
+				  for(int i{0}; i<size; ++i)
+				  {
+				    unsigned int u{0u};
+				    std::sscanf(yytext+ss, "%u%n", &u, &sn);
+				    route.push_back(u);
+				    ss += sn; 				    
+				  }
+				  m_cmd = 101;
+				}
+{INIT}{WS}{WORD}{WS}("c"|"g")	{
+				  std::sscanf(yytext, "<init %s %c>", name, &role);
+				  num = 1;
+				  m_cmd = 0;
+				}
+{INIT}{WS}{WORD}{WS}{INT}{WS}("c"|"g")	{
+				  std::sscanf(yytext, "<init %s %d %c>", name, &num, &role);
+				  if(num >200)
+				  {
+				    m_errnumber = 1;
+				    num = 200;
+				  }
+				  m_cmd = 1;
+				}				
+{INITG}{WS}{WORD}{WS}("c"|"g")	{
+				  std::sscanf(yytext, "<init guided %s %c>", name, &role);
+				  num = 1;
+				  m_guided = true;
+				  m_cmd = 3;
+				}
+{INITG}{WS}{WORD}{WS}{INT}{WS}("c"|"g")	{				  
+				  std::sscanf(yytext, "<init guided %s %d %c>", name, &num, &role);
+				  if(num >200)
+				  {
+				    m_errnumber = 1;
+				    num = 200;
+				  }
+				  m_guided = true;
+				  m_cmd = 2;
+				}								
+.				{;}
+%%
+            ]]>
+          </programlisting>
+  <para>
+      Mint látható ezt két százalékjel válaszja el tehát egy új programrészhez érkeztünk. A kapcsoszárójelek közé írjuk sorba a szavakat. Tehát például a Car nál elfogadja azt, ami úgy kezdődik, ahogy a Carban definiáljuk.
+      Majd követi egy whitespace vagy egy tabulátor és egy int szám. Ugyebár fent behívjuk a CarLexer header file-t, ami a CarLexer osztályunkat tartalmazza amit a yyFlexLexerből származtatunk.
+      Emellett van egy operátor túlterhelésünk. És a privát változóink amelyeket itt használunk. Tehát amiben tároljuk a feldolgozott értékeinket.
+      Ez a megadási mód hasonló, ahhoz mint amikor formális nyelvek és automaták tantárgynál egy automatának felírjuk kifejezéssel, hogy milyen nyelvet kell elfogadnia. Az sscanfel pakoljuk be a megfelelő változóba az értékeket.
+  </para>
+  <para>
+      A program felélesztésében Racs Tamás segített.
+  </para>
+  <programlisting language="java"><![CDATA[
+    A program futtatásának lépései:
+    rcemu:
+    1.src/smartcity --node2gps=../lmap.txt
+    Ezzel előkészíti a debrecen térképet.
+    2.src/traffic
+    Futtatja a forgalom szervert.
+    rcwin:
+    3.java -jar target/site/justine-rcwin-0.0.16-jar-with-dependencies.jar ../lmap.txt
+    Ezzel már fut is a programunk. Igaz még csak sima autók lesznek rajta.
+    4.src/samplemyshmclient --team=Police
+    Hozzáadja a rendőröket.
+    5.(sleep 1; echo "<init Norbi 100 g>"; sleep 1)|telnet localhost 10007
+    Hozzáadja a Gangstereket.
+    ]]>
+  </programlisting>
+  <figure>
+        <title>Valószínüleg ezt dolgozza fel a lexer</title>
+            <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/policeroute.png" scale="30" />
+                </imageobject>
+            </mediaobject>
+    </figure>
+    <figure>
+            <title>Fut a program</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/programrun.png" scale="30" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <figure>
+                <title>Ha nem adunk meg Gangstereket a program figyelmeztet!</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/teampolice.png" scale="30" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
     </section>
-    <section>
+    <section>         
         <title>l334d1c4 5</title>
+        <caution>
+                <title>
+                    Tutor
+                </title>
+                <para>Ebben a feladatban tutoráltam Ádám Petra,Kun Anettet.</para>
+        </caution>
         <para>
 Írj olyan OO Java vagy C++ osztályt, amely leet cipherként működik, azaz megvalósítja ezt a betű
 helyettesítést: https://simple.wikipedia.org/wiki/Leet (Ha ez első részben nem tetted meg, akkor írasd
@@ -305,6 +472,9 @@ ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
                 Tipp: https://www.tankonyvtar.hu/en/tartalom/tkt/javat-tanitok-javat/ch03.html#labirintus_jatek
         </para>
         <para>
+            <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/FullScreen">https://github.com/Savitar97/Prog2/tree/master/FullScreen</link>
+        </para>
+        <para>
             A teljes képernyős alkalmazáshoz javafx-et használta. Ez volt az első javafx alkalmazásom.
             Tehát egy kis fun-alkalmazást csináltam.
         </para>
@@ -385,6 +555,7 @@ ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
   
     </section>      
     <section>
+
         <title>Paszigráfia Rapszódia OpenGL full screen vizualizáció</title>
         <para>
             Lásd vis_prel_para.pdf! Apró módosításokat eszközölj benne, pl. színvilág, textúrázás, a szintek jobb
@@ -428,8 +599,86 @@ Lásd https://youtu.be/XpBnR31BRJY
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A perceptron osztályt is használtuk már Prog1-en.Ekkor még csak egy értéket számolt. A szigmoid függvénnyel ami 0 és 1 közé lőtt be egy értéket.
         </para>
+        <programlisting language="java"><![CDATA[
+            return sigmoid ( units[n_layers - 1][0] );
+            ]]>
+          </programlisting>
+          <para>
+              Eddig ez volt a visszatérési értékünk. Na mi most egy képet szeretnénk kapni ugyebár. Ezért nem csak egy értéket kell számolnunk. Hanem n_units[n_layers -1], ami ugyebár a kép szélessége szorozva a magassággal. Ez egy 600x600 as képnél 360000.
+              És ezek az értékek szintén a szigmoid függvénnyel vannak számolva tehát még mindig maradunk a [0,1] intervallumon.
+          </para>
+          <programlisting language="java"><![CDATA[
+            A sigmoid függvényünk:
+            double sigmoid ( double x )
+            {
+                return 1.0/ ( 1.0 + exp ( -x ) );
+            }
+            A ciklus amivel a sigmoid értékekkel töltjük fel a tömbünket:
+            #pragma omp parallel for
+            for ( int j = 0; j < n_units[i]; ++j )
+            {
+                units[i][j] = 0.0;
+
+                for ( int k = 0; k < n_units[i-1]; ++k )
+                {
+                    units[i][j] += weights[i-1][j][k] * units[i-1][k];
+                }
+
+                units[i][j] = sigmoid ( units[i][j] );
+
+            }
+            ]]>
+          </programlisting>
+          <para>
+              De mivel már az operátor függvényünk nem egy értéket hanem egy tömböt ad vissza ugyebár. A képünket konkrétan. Ezért a doublet double*-ra kellett változtatnunk.
+              Különben a compiler egy olyan hiba üzenettel fogad hogy a double nem alakítható double*-ra.
+          </para>
+          <programlisting language="java"><![CDATA[
+            for(int i = 0; i < n_units[n_layers -1]; i++){
+                image[i] = units[n_layers -1][i];
+                }
+                return image;
+            ]]>
+          </programlisting>
+          <para>
+              Lényegében ennyi módosítást kellett eszközölnünk. A hpp-ben. Most lássuk a cpp kódot.
+          </para>
+          <programlisting language="java"><![CDATA[
+            Perceptron* p = new Perceptron(3, size, 256, size);
+            ]]>
+          </programlisting>
+          <para>
+              Mivel már nem egy értéket várunk eredményül ezért a perceptronunk kimenő értékének a számát(konstruktorban az utolsó érték) növelnünk kellett a kép méretére. Ugyebár a perceptronunk konstruktorának várt 4 argumentuma
+              az első a bemenő input vagy a layerek száma a második a súlyok száma, harmadik a hidden rétegek száma, és az utolsó a várt outputok száma.
+          </para>
+          <para>Na és mivel már nem egy számot akarunk kapni ezért a value-t átkell írnunk double* value-ra, hogy egy tömb legyen.</para>
+          <para>Majd legvégül végig bekell járnunk a képet és módosítani a pixeleket és kiírni.</para>
+          <programlisting language="java"><![CDATA[
+            for(int i = 0; i < kep.get_width(); ++i)
+            for(int j = 0; j<  kep.get_height(); ++j){
+            kep[i][j].blue = value[i*kep.get_height()+j];
+            }
+            kep.write("visszakep.png");
+            ]]>
+          </programlisting>
+          <figure>
+                <title>A kép előtte</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/mandala2.png" scale="150" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+            <figure>
+                    <title>A visszadott kép</title>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="img/visszakep.png" scale="70" />
+                            </imageobject>
+                        </mediaobject>
+            </figure>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
