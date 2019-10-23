@@ -19,8 +19,87 @@ osztályát (miután kicsomagoltuk az src.zip állományt, arra ráengedve)!
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A feladatban a boost könyvtárakat kellett használnunk és egy olyan programot kellett írnunk, amely végigjárja a könyvtárat és ha java-s fájlt talál akkor kiirja a nevét.
+            A boost előnye az, hogy működik minden modern operációs rendszeren, de főként az unix rendszereken felkapott a használata.
         </para>
+        <para>
+            Ubuntun a telepítéséhez elég volt kiadni a <command>sudo apt-get install libboost-all-dev</command> parancsot a terminálban.
+        </para>
+        <para>A program megírásánál nagy segítség volt a <link xlink:href="https://www.boost.org/doc/libs/1_68_0/libs/filesystem/doc/tutorial.html">https://www.boost.org/doc/libs/1_68_0/libs/filesystem/doc/tutorial.html</link></para>
+        <para>Ezek közül a tut3.cpp az ami lényeges számunkra. Ez egy jó alapot biztosított, amelyet kombinálnunk kellett a fénykardban megírt metódussal.</para>
+        <programlisting language="java"><![CDATA[
+            int main(int argc, char* argv[])
+        {
+        if (argc < 2)
+        {
+            cout << "Kevés argumentum\n";
+            return 1;
+        }
+
+        path p (argv[1]);
+
+        if (is_directory(p))
+            {
+                cout << p << " is a directory containing:\n";
+                read_acts(p);
+                for (auto& x : v)
+                { 
+                cout << "      " << x.filename() << '\n';
+                }
+
+            
+                        
+            }
+            else
+            {
+                cout<<"Nem mappát adtál meg"<<endl;
+                return 2;
+            }
+            cout<<counter<<endl;
+
+
+        return 0;
+        }
+            ]]>
+          </programlisting>
+        <para>Kezdjük a main-nél a programunk magyarázását. A mainbe elsőnek megvizsgáljuk van -e kellő argumentum ha nem errort dobunk. Ugyanis a mappát, amit vizsgálni akarunk argumentumként adjuk meg a futtatáskor.
+            Majd a path metódusnak átadjuk az első argumentumot ami, ugyebár a mappa neve lesz. Ezután rögtön ezután megvizsgáljuk, hogy p azaz a megadott argumentum mappa-e. Ha nem akkor errort dobunk.</para>
+        <para>
+            Aztán meghívom a readacts metódust (amit a fénykardból használtam fel) a p-re. Beszéljünk most kicsit erről a readact-s metódusról. A readact metódus argumentumként egy boost::filesystem::path típúsú változót vár. A metódus annyit csinál ha az elérési út egy fájl akkor megnézi, hogy a kiterjesztése .java -e. Ezt a vizsgálatot végzi a
+            !ext.compare ( boost::filesystem::extension ( path ) ) ) itt azért van a negálás, hogy az ifnek a true ágja fut le ugyanis a compare egyezésnél 0-t adna vissza. Utána megvizsgáljuk, hogy a path mappa-e. Ha mappa akkor rekurzívan bejárjuk. És ugyan úgy ha .java kiterjesztésű fájlt találunk a mappában akkor betesszük a vektorba.
+            A végén bejárjuk a vektort és kiiratjuk az eltárolt fileneveket. Természetesen ez a vektor nem szükségszerű, viszont ha rendezni akarjuk a kapott elemeket vagy pedig fel akarjuk használni akkor hasznos.
+        </para>
+        <programlisting language="java"><![CDATA[
+void read_acts ( boost::filesystem::path path )
+    {
+		
+        if ( is_regular_file ( path ) ) {
+
+                std::string ext ( ".java" );
+                if ( !ext.compare ( boost::filesystem::extension ( path ) ) ) {
+                   counter++;
+
+				v.push_back(path);
+
+                   
+                }
+
+        } else if ( is_directory ( path ) )
+                for ( boost::filesystem::directory_entry & entry : boost::filesystem::directory_iterator ( path ) ){
+                        read_acts ( entry.path());
+                    }
+
+    }
+            ]]>
+          </programlisting>
+          <figure>
+                <title>Futtatás:</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/JDK.png" scale="30" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
     </section>        
 
     <section>
@@ -36,8 +115,91 @@ szemantikáját, a mozgató konstruktort alapozd a mozgató értékadásra!
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A mozgató és másoló konstruktorral már prog 1-en is találkoztunk a binfánál. Így én ezen keresztül mutatnám be.
+            Kezdetben tegyük tisztába nagyjából a fogalmat, hogy mit jelent a bal és jobb érték referencia. A bal értékű referenciát
+            az =-jelhez köti kapcsolat. Ugyanis ezek olyan kifejezések, amiknek értéket tudunk adni. Ebből következtetve a jobbérték referencia
+            minden olyan kifejezés, amit értékül tudunk adni. A másoló konstruktor és értékadás mind a kettő baloldali referenciát,míg a mozgatók jobboldali referenciát várnak paraméterül.
+            Az alapértelmezett másoló konstruktor csak a sekély másolást engedélyezi a mélymásolást mindig megkell írni.
         </para>
+        <para>
+            Kezdjük a másoló konstruktorral:
+        </para>
+        <programlisting language="java"><![CDATA[
+            LZWBinFa ( const LZWBinFa & regi ) {
+            std::cout << "LZWBinFa copy ctor called" << std::endl;
+            gyoker = masol(regi.gyoker, regi.fa);
+             }
+             Kisebb programokban elég a 
+             *this=regi;
+             Meghívása  a mainben:
+             LZWBinFa binFa3(binFa);
+          ]]>
+        </programlisting>
+        <para>
+            Ez a konstruktor a mélymásolást hívja meg. Tehát lényegében megkettőzzük az objektumunkat. Lefoglaljuk a kellő memória területet, majd
+            a binfát átmásoljuk a binfa3-ba. Itt megkettőzzük az elemeket. Nincs erőforrás megosztás.
+        </para>
+        <para>
+            Másoló értékadás:
+        </para>
+        <programlisting language="java"><![CDATA[
+             LZWBinFa& operator= ( const LZWBinFa & regi ) 
+            {
+                std::cout << "LZWBinFa copy assignment" << std::endl;
+
+                gyoker->balNulla =  masol ( regi.gyoker->balNulla, regi.fa ) ;
+                gyoker->jobbEgy =  masol ( regi.gyoker->jobbEgy, regi.fa ) ;
+
+                if ( regi.fa ==  regi.gyoker)
+                    fa = gyoker;
+                return *this;
+
+            }
+            meghívása például
+            binfa4=binfa3;
+          ]]>
+        </programlisting>
+        <para>
+            Ezt hívjuk sekély másolásnak. A sekély másolás itt azt jelenti, hogy nem kettőzzük az elemeket, hanem most a két objektum megosztja egymás között
+            a tárolt adatokat. Vagyis lényegében a másolat pointereit ráállítjuk az eredetinek a pointereire. Tehát ha módosítjuk a másolatot az eredeti is módosul.
+        </para>
+        <para>Mozgató konstruktor és értékadás:</para>
+        <programlisting language="java"><![CDATA[
+            LZWBinFa (LZWBinFa && regi ){
+            std::cout<<"LZWBinFa move ctor called"<<std::endl;
+            gyoker = nullptr;
+            
+            *this = std::move(regi);
+
+            }
+            meghívása mainben például:
+
+            LZWBinFa binfa5(std::move(binfa3));
+
+              LZWBinFa & operator= (LZWBinFa && regi){
+      
+                std::swap(gyoker, regi.gyoker);
+                std::cout << "LZWBinFa move assignment" << std::endl;
+                return *this;
+            }
+
+            meghívása mainben példa:
+            binFa2=std::move(binFa);
+          ]]>
+        </programlisting>
+        <para>
+            A másolókkal ellentétben a mozgatás lényege az, hogy az erőforrást átcsoportosítsuk. Tehát így amiből mozgatunk annak kiürül a tartalma
+            és az amibe mozgassuk annak pedig megtelik a tartalma a forrás tartalmával. Láthatjuk, hogy a movectorban az std::move-ot hívjuk meg. Míg az értékadásban a swap-et.
+            A move az ugyebár "mozgatja" a neki megadott paramétert. Míg a swap felcseréli a neki megadott 2 paramétert.
+        </para>
+        <figure>
+            <title>MozgMasolBinfa</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/mozgmasol.png" scale="40" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
     </section>        
     <section>
         <title>Hibásan implementált RSA törése</title>
@@ -70,11 +232,89 @@ hét/Perceptron osztály feladatot is.)
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A perceptron osztályt is használtuk már Prog1-en.Ekkor még csak egy értéket számolt. A szigmoid függvénnyel ami 0 és 1 közé lőtt be egy értéket.
         </para>
+        <programlisting language="java"><![CDATA[
+            return sigmoid ( units[n_layers - 1][0] );
+            ]]>
+          </programlisting>
+          <para>
+              Eddig ez volt a visszatérési értékünk. Na mi most egy képet szeretnénk kapni ugyebár. Ezért nem csak egy értéket kell számolnunk. Hanem n_units[n_layers -1], ami ugyebár a kép szélessége szorozva a magassággal. Ez egy 600x600 as képnél 360000.
+              És ezek az értékek szintén a szigmoid függvénnyel vannak számolva tehát még mindig maradunk a [0,1] intervallumon.
+          </para>
+          <programlisting language="java"><![CDATA[
+            A sigmoid függvényünk:
+            double sigmoid ( double x )
+            {
+                return 1.0/ ( 1.0 + exp ( -x ) );
+            }
+            A ciklus amivel a sigmoid értékekkel töltjük fel a tömbünket:
+            #pragma omp parallel for
+            for ( int j = 0; j < n_units[i]; ++j )
+            {
+                units[i][j] = 0.0;
+
+                for ( int k = 0; k < n_units[i-1]; ++k )
+                {
+                    units[i][j] += weights[i-1][j][k] * units[i-1][k];
+                }
+
+                units[i][j] = sigmoid ( units[i][j] );
+
+            }
+            ]]>
+          </programlisting>
+          <para>
+              De mivel már az operátor függvényünk nem egy értéket hanem egy tömböt ad vissza ugyebár. A képünket konkrétan. Ezért a doublet double*-ra kellett változtatnunk.
+              Különben a compiler egy olyan hiba üzenettel fogad hogy a double nem alakítható double*-ra.
+          </para>
+          <programlisting language="java"><![CDATA[
+            for(int i = 0; i < n_units[n_layers -1]; i++){
+                image[i] = units[n_layers -1][i];
+                }
+                return image;
+            ]]>
+          </programlisting>
+          <para>
+              Lényegében ennyi módosítást kellett eszközölnünk. A hpp-ben. Most lássuk a cpp kódot.
+          </para>
+          <programlisting language="java"><![CDATA[
+            Perceptron* p = new Perceptron(3, size, 256, size);
+            ]]>
+          </programlisting>
+          <para>
+              Mivel már nem egy értéket várunk eredményül ezért a perceptronunk kimenő értékének a számát(konstruktorban az utolsó érték) növelnünk kellett a kép méretére. Ugyebár a perceptronunk konstruktorának várt 4 argumentuma
+              az első a bemenő input vagy a layerek száma a második a súlyok száma, harmadik a hidden rétegek száma, és az utolsó a várt outputok száma.
+          </para>
+          <para>Na és mivel már nem egy számot akarunk kapni ezért a value-t átkell írnunk double* value-ra, hogy egy tömb legyen.</para>
+          <para>Majd legvégül végig bekell járnunk a képet és módosítani a pixeleket és kiírni.</para>
+          <programlisting language="java"><![CDATA[
+            for(int i = 0; i < kep.get_width(); ++i)
+            for(int j = 0; j<  kep.get_height(); ++j){
+            kep[i][j].blue = value[i*kep.get_height()+j];
+            }
+            kep.write("visszakep.png");
+            ]]>
+          </programlisting>
+          <figure>
+                <title>A kép előtte</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/mandala2.png" scale="150" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+            <figure>
+                    <title>A visszadott kép</title>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="img/visszakep.png" scale="70" />
+                            </imageobject>
+                        </mediaobject>
+            </figure>
     </section>
     <section>
-        <title>Összefoglaló</title>
+        <title>Összefoglaló:Másoló-Mozgató konstruktor,értékadás</title>
         <para>
            Az előző 4 feladat egyikéről írj egy 1 oldalas bemutató „”esszé szöveget! 
         </para>
@@ -85,8 +325,141 @@ hét/Perceptron osztály feladatot is.)
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A javaval ellentétben a C++-ban nagyobb szabadságunk van a memória kezelésére. A C-hez hasonlóan. Viszont emiatt nekünk kell gondoskodnunk a memória felszabadításért is.
+            Azért, hogy ne legyen memória elfolyás. Javaban a GarbageCollector megoldja helyettünk.
         </para>
+        <para>
+            Ejtsünk szót a bal és jobbérték referenciákról. Balérték referenciák azok amik az egyenlőségjel bal oldalán szerepelnek, tehát azok amiknek értéket tudunk adni ezzel szemben a jobb érték referenciák azok amiket értékül tudunk adni.
+            Azaz amik az egyenlőségjel jobb oldalán foglalnak helyet.
+        </para>
+        <programlisting language="java"><![CDATA[
+            Példa:
+            int a=10;
+            int&bal_ref=a;
+            int&&jobbertek_ref=42;
+          ]]>
+        </programlisting>
+        <para>
+            Alapesetben mikor megírunk egy osztályt létrehozunk egy konstruktort és egy destruktort neki. Minden osztály alapértelmezettként létrehoz magának egy másoló konstruktort.
+            De ez csak a sekély másolást biztosítja. Így ha dinamikus adattagunk van akkor vagy megírjuk a mélymásolást, vagy pedig tiltjuk a használatát. Ezt úgy érjük el, hogy privát láthatóságban deklaráljuk.
+            Erre találták ki a rule of three-t. Tehát implementálnunk kell a destruktort a másoló konstruktort és a másoló értékadást. Ha ezek nincsenek deklarálva akkor a compiler létrehozza őket magától. A C++11-el bejött a mozgató szemantika.
+            Tehát azóta már a rule of five-ról beszélhetünk ugyanis az előző 3-hoz hozzá került még a mozgató konstruktor és a mozgató értékadás.
+        </para>
+        <para>
+            Nemrég említettem, hogy a sekély másolást használja alapból az osztály. Ez veszélyes mivel a sekély másolás lényege az, hogy nem egy új másolatot hoz létre az adott objektumból csak ugyan arra a memória címre fog mutatni az az objektumunk amibe másoltuk a forrást.
+            Tehát ilyenkor, ha felszabadítjuk a forrást és sekély másolást hívtunk meg azelőtt rá. Akkor könnyedén hibába ütközhetünk. Mivel a másolat is ugyan oda mutat ahova az eredeti. Tehát ha a forrást nullázzuk akkor a másolat is a felszabadított területre fog mutatni.
+            És akár véletlenül 2x is felszabadíthatjuk azt a területet.
+        </para>
+        <para>
+            Az előzőekben a sekély másolásról volt szó most említsük meg a mély másolást is. A mélymásolás az amikor teljesen lemásoljuk a forrást és utána már a másolat nem kapcsolódik az eredetihez.
+            Tehát egy külön példány jön létre aminek a módosításával már nem módosítjuk az eredetit. Viszont ez rendkívül erőforrás igényes. Emiatt jó, hogy létrehozták a mozgató szemantikát. Szó volt az előzőekben a jobb és bal érték referenciákról is.
+            Ezek úgy kapcsolódnak a történetbe, hogy a másoló szemantika mindig bal oldali referenciát vár, míg a mozgató mindig jobboldalit.
+        </para>
+        <para>
+            A mozgató szemantikánál már nem új példányok létrehozásával foglalkozunk hanem a forrásból való erőforrás átcsoportosításával. Tehát az eredetiből kipakoljuk az adatot és átpakoljuk az újba.
+            Erre segítségünkre van az std::move és std::swap parancsok. Míg a swap felcseréli az értékeket addig a move "mozgatja". Itt nem tényleges mozgatásról van szó hanem az eredeti pointert felváltjuk egy másikra de az értékek maradnak a helyükön.
+        </para>
+        <programlisting language="java"><![CDATA[
+            A mozgató és másoló szemantika szignatúrája:
+            Mozgató értékadás:
+            T& operator=(T&& data)
+            Mozgató konstruktor:
+            T ( T&& data )
+            Másoló értékadás:
+            T& operator=(T& other)
+            Másoló konstruktor:
+            T ( const T& data )
+          ]]>
+        </programlisting>
+        <para>
+            Amint látjuk mind a másoló mind a mozgató osztálytípúsú paramétert vár bemenetnek. És a visszatérési értékük is általában *this lesz. Tehát osztálytípúsú a visszatérési értékük is.
+            Mozgatáskor érdemes kinullázni az előző pointert, hogy az már ne mutasson a mozgatott értékre mivel mozgatáskor is hasonló dolog történik mint a sekély másoláskor. Az is látható, hogy a jobbérték referenciákat mindig kettős és el jelöljük,
+            míg a bal értékreferenciákra a szokásos egy és-sel hivatkozunk. A konstruktorok között a meghívástól függően fog választani a compiler. Ugyebár a paraméterek alapján. Ugyanis itt használjuk az operátor túlterheléseket az = jel operátort terheljük túl és
+            használjuk a metódusnevek túlterhelését is. Az operátor túlterhelés hasznos, hogy a saját osztály típúsunkra is érvényes legyen az =-jel például, de más operátorokat is túl lehet terhelni, hogy esetleg mást csináljanak mint alapból.
+        </para>
+    </section>
+    <section>
+        <title>String Osztály</title>
+        <para>Megoldás forrása:</para>
+        <para>A feladat az volt, hogy hozzunk létre saját string osztályt. A feladatot úgy kezdtem, hogy létrehoztam egy char* buffert ami majd a stringre mutat.Kezdetben ez nullpointerként deklarálom. Emellett létrehoztam egy hossz változót ami a string hosszát adja majd meg.
+            Ezek kerülnek ugyebár az osztály privát láthatóságába.Ezután kezdhetjük a publikos részt. Itt először is létrehozzuk a konstruktorunkat ami paraméterként megkap egy konstans char* argumentumot.Ezután beállítjuk a buffer és a hossz értékét.Ha jó a bemenet azaz a buffer nem üres akkor bemásoljuk a bufferbe a szöveget.
+            Ugyebár a char* szöveg a szöveg első karakterére fog mutatni míg a +hossz megadja az utolsó karakter helyét. És a copy 3. paramétere az output azaz hogy a bufferbe akarjuk berakni a szöveget.
+        </para>
+        <programlisting language="java"><![CDATA[
+            class Osztaly{
+            private:
+                char* buff=nullptr;
+                int hossz=0;
+            public:
+                Osztaly(const char* szoveg){
+                    hossz=std::strlen(szoveg);
+                    buff=new char[hossz+1];
+                    if(buff!=0)
+                    {	
+                        //OutputIt copy( InputIt first, InputIt last, OutputIt d_first );
+                        std::copy(szoveg,szoveg+hossz, buff);
+                    }
+                    else
+                    {
+                        std::cout<<"Hibás"<<std::endl;
+                    
+                    }
+                }
+                    ]]>
+        </programlisting>
+        <para>
+            Majd jöhetnek a szokásos másoló és mozgató konstruktorok és értékadások. Ugyanúgy mint a binfás mozgató másoló-s feladatnál. A mozgató konstruktornál move-ot a mozgató értékadásnál swap-et használunk. A visszatérési értékek is a szokásos *this-ek azaz önhivatkozások amelyek erre az objektumra vonatkoznak.
+            Ezután jönnek az operátor túltöltések ugyanis szeretnénk, hogy azok a mi osztályunkra is működjenek. Ahhoz, hogy kitudjuk írni a kettős kacsacsőr operátor működését írjuk felül. Ehhez friend függvényként kell meghívnunk.Ezt láthattuk már régebben az LZWBinFánál is.
+        </para>
+        <programlisting language="java"><![CDATA[
+            friend std::ostream & operator<< (std::ostream & os, LZWBinFa & bf)
+            {
+                bf.kiir (os);
+                return os;
+            }
+
+            Most nekünk így kell használnunk:
+            friend std::ostream& operator<< (std::ostream& os,const Osztaly& szoveg)
+            {
+                os << szoveg.buff;
+                return os;
+            }
+          ]]>
+        </programlisting>
+        <para>
+            Ezen kívül azt is szeretnénk, hogy a stringünknek egy adott karakterjére lehessen a []- hivatkozni. Ezt a [] operátor túlterhelésével érjük el.
+        </para>
+        <programlisting language="java"><![CDATA[
+        char operator[](int x) const{
+                
+                if( x > hossz ) { std::cout << "Túlhivatkoztál!" <<std::endl; }
+                return (buff[x]);
+                }
+          ]]>
+        </programlisting>
+        <para>Ez is egy egyszerű dolog ugyanis a karakter indexekre egész számokkal hivatkozunk ezért ugyebár az argumentum egy int lesz. Ami ha nagyobb mint a szöveg hossza hibát dobunk egyébként meg visszadjuk a szövegnek a megfelelő karakterét, ami ugyebár a bufferben tárolódik.</para>
+        <programlisting language="java"><![CDATA[
+            void rev() 
+		    { 
+		    int n = hossz; 
+		  
+		    
+		    for (int i = 0; i < n / 2; i++) 
+		        std::swap(buff[i], buff[n - i - 1]); 
+		    } 
+          ]]>
+        </programlisting>
+        <para>
+            Végül még egy metódus, amely megfordítja a stringünket.
+        </para>
+        <figure>
+                <title>String futtatás</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/MyString.png" scale="40" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                

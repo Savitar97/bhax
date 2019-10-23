@@ -464,6 +464,53 @@ ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
             }
             ]]>
           </programlisting>
+          <para>
+              Ezt átírva map használatával. Kisebb módosításokat kellett eszközölni.
+          </para>
+          <programlisting language="java"><![CDATA[
+            class Lexer{
+                private String text;
+                public Lexer()
+                {
+                    
+                }
+             
+                public static Map<String, String[]> lexer = new HashMap<String, String[]>();
+            
+            
+            
+                public String Lextext(String text){
+                    this.text=text.toLowerCase();
+                    Random rand = new Random();
+                    for (Map.Entry<String, String[]> peldany : lexer.entrySet()) {
+            
+                        int random = rand.nextInt(4);
+                        String kulcs = peldany.getKey();
+                        String[] ertek = peldany.getValue();
+                        text= text.replace(kulcs, ertek[random]);
+                    }
+                    return text;
+                    
+                }
+                
+                
+            }
+            ]]>
+          </programlisting>
+          <para>
+              Így néz ki az új osztályunk. Kicseréltük a multidimenziós tömbünket egy hasító táblára. Ami kulcs érték párokkal dolgozik.
+              Mostmár fölösleges volt a string builder tehát csak argumentumként közvetlenül átadom a bemenő szöveget.Így a toLowerCase is átkerült ide.
+              A forciklusban most a hash táblánkat járjuk és ahol a hash tábla kulcsa megegyezik a szövegben lévő karakterrel ott kicseréljük a karaktert valamelyikre az értékek string tömbből.
+              Ugyebár ha a kulcsok között nem szerepel az érték például most az ékezetes betűk akkor ott ugyan azt adja vissza. Legvégül a függvényünk visszaadja a lexerezett szöveget.
+          </para>
+          <programlisting language="java"><![CDATA[
+            //pár példa, hogy hogyan adunk hozzá kulcs érték párokat
+            lex.lexer.put("a",new String[] {"α", "4", "@", "/-\\"});
+            lex.lexer.put("b",new String[] {"ß", "8", "|3", "|}"});
+            lex.lexer.put("c",new String[] {"©", "€", "¢", "{"});
+            ]]>
+          </programlisting>
+  
     </section>
     <section>
         <title>Full screen</title>
@@ -524,7 +571,7 @@ ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
                 </mediaobject>
         </figure>
         <para>
-            A feladat megoldására az ötlet akkor jött, amikor épp youtuben néztem, hogy a mesterlövész puskák távcsövén is linux operációs rendszer egyik disztrója fut és a videóben épp azt törték fel.
+            A feladat megoldására az ötlet akkor jött, amikor épp youtuben néztem, hogy a mesterlövész puskák távcsövén is linux operációs rendszer egyik disztrója fut és a videóban épp azt törték fel.
         </para>
         <para>
             Scene létrehozása java fxben a következőképpen történik:
