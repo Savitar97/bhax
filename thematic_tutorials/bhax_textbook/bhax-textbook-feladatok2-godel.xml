@@ -154,7 +154,15 @@ dobozosat) akkor itt az alkalom!
                     <imagedata fileref="img/mandala.png" scale="100" />
                 </imageobject>
         </mediaobject>
-        </figure>    
+        </figure>
+        <figure>
+             <title>Név mandala2</title>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/NemesisR.png" scale="100" />
+                </imageobject>
+        </mediaobject>
+        </figure>      
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
