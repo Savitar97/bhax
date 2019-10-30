@@ -67,7 +67,50 @@ Interface Comparable szerepét!
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A Comparable interface szerepére kellett rávilágítanunk ebben a feladatban. Ezt az interface-t meghívó objektumok listáit vagy tömbjeit képesek vagyunk automatikusan rendezni az array.sort-al vagy
+            a Collections.sort al. Azok az objektumok, amelyek ezt az interface-t használják ezen kívül használhatók kulcsként rendezett map-okban vagy egy rendezett halmaz elemeiként anélkül, hogy lenne specifikált összehasonlító algoritmusuk.
+            A specifikált algoritmus alatt azt értem, hogy külön osztályt hozunk létre az objektum bizonyos tulajdonság szerinti rendezésére. Például itt létrehozhatnánk külön név szerinti rendezést, pont szerinti rendezést stb. Ezt Comperatornak nevezzük.
+            A compareto ugyebár úgy működik, hogy egyet ad vissza ha a vizsgált objektumunk nagyobb a megadott objektumnál. -1 el tér vissza ha kisebb a megadott objektumnál és 0 ha egyenlő a két objektum. A Comparable interface lényege, hogy ezt a vizsgálódást kiterjesszük
+            az általunk megadott típúsokra is.
+            A kódban ez így jelenik meg:
+        </para>
+        <programlisting language="java"><![CDATA[
+        class Csapat implements Comparable<Csapat> {
+
+        protected String nev;
+        protected double ertek;
+
+        public Csapat(String nev, double ertek) {
+            this.nev = nev;
+            this.ertek = ertek;
+        }
+
+        public int compareTo(Csapat csapat) {
+            if (this.ertek < csapat.ertek) {
+            return -1;
+            } else if (this.ertek > csapat.ertek) {
+            return 1;
+            } else {
+            return 0;
+            }
+        }
+        }
+          ]]>
+        </programlisting>
+        <para>
+            Itt látható, hogy a csapat osztályunkra implementáljuk a Comparable interface-t ugyebár a kacsacsőrök közé a T- típust kell megadni.
+            Ugyebár létrehoztunk 2 változót a csapat nevét és a pontját. A konstruktorban csak azt definiáltuk, hogy a paraméterként bejövő értékeket táruljuk le
+            a változóinkba. Majd megírjuk az összehasonlító metódust.Itt lényegében érték szerint növekvőbe rendezzük az értékeket. De mivel a csapatokat abc-szerint redezzük.
+            Ezért majd a kódban ennek az ellentetjét azaz a reverse-t kell vennünk. Hogy az értékek a jó csapathoz kerüljenek.
+        </para>
+        <programlisting language="java"><![CDATA[
+            java.util.List<Csapat> rendezettCsapatok = java.util.Arrays.asList(csapatok);
+            java.util.Collections.sort(rendezettCsapatok);
+            java.util.Collections.reverse(rendezettCsapatok);
+          ]]>
+        </programlisting>
+        <para>
+            Itt látható a mainben szereplő lényeg ugyebár mint az elején említettem megtudjuk rá hívni a collections.sort-ot.Ez itt látszik is.
         </para>
     </section>
     <section>
@@ -92,14 +135,26 @@ Interface Comparable szerepét!
 dobozosat) akkor itt az alkalom!
         </para>
         <para>
-            Megoldás videó:
+            Megoldás videó: <link xlink:href="https://bhaxor.blog.hu/2019/01/10/a_gimp_lisp_hackelese_a_scheme_programozasi_nyelv">https://bhaxor.blog.hu/2019/01/10/a_gimp_lisp_hackelese_a_scheme_programozasi_nyelv</link>      
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/GIMP_Lisp/Mandala">https://gitlab.com/nbatfai/bhax/tree/master/attention_raising/GIMP_Lisp/Mandala</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Ebben a gimp scriptben ugyan úgy mint az előzőnél az elején definiáljuk az új képünket és layereinket. A gimp-image-new függvény létrehoz egy listát, mivel minden gimpfüggvény egy listát ad vissza. A lista elemeihez a car-al férünk hozzá, ami kiveszi a lista első elemét. A legfontosabb rész itt a forgatások mivel a mandala úgy készül, hogy a szöveget körbe forgatjuk egy pontban és így a betűk keresztezik majd egymást. A forgatást a gimp-item-transform-rotate-simple függvénnyel érjük el.A változók értékét a set-el tudjuk beállítani.
+            Mivel a betűknek a mérete változó szövegtípúsonként ezért függvényt használunk ezeknek az értékeknek a kezelésére ez a text-wh függvény. Ez konkrétan lekéri a fonttípusnak a méreteit és azt tároljuk a szélességben és a magasságban.
+            A forgatások után a plug-in-autocrop-layer törli az üres szegélyeket. Majd megadjuk a szélesség és magasságnak a kirajzolható méreteket a drawable-el ez a függvény a kirajzolható pixelekkel tér vissza. Majd ez alapján újraméretezzük a layert a resize- al. Az ecset méreteit a gimp-context-set-brush-size-al tudjuk módosítani ez pixelben adja meg a méreteket. Ezzel adjuk meg majd a mandala keretének a vastagságát, amelyet az gimp-image-select-ellipse-el hozunk létre. Ebből 2 van az egyik a külső körív a vastagabb 22 pixel míg a véknyabb 8 pixel vastag.
+            Párbeszéd ablakokat a gimp-message-el tudunk készíteni. Az elkészített képet a gimp-display-new-al jelenítsük meg új ablakban.Majd ki cleareljük a képet gimp-image-clean-all.
+            Futtatáskor a kép méretét tudjuk beállítani a betűtípust és a betűméretet. Ezen kívül a színt és színskálát.
         </para>
+        <figure>
+             <title>Név mandala</title>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/mandala.png" scale="100" />
+                </imageobject>
+        </mediaobject>
+        </figure>    
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
