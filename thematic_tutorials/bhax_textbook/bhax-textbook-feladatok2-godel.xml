@@ -19,7 +19,7 @@ https://youtu.be/DL6iQwPx1Yw (8:05-től)
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A lambda kifejezések a C++11 óta részei a nyelvnek.
         </para>
     </section>        
 
@@ -51,8 +51,84 @@ CustomAlloc-os példa, lásd C forrást az UDPROG repóban!
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Egy map érték szerinti rendezése volt a feladat. A mapok kulcs-érték párok. Nézzük is meg, hogyan lehet deklarálni egy mapot c++-ban és, hogyan tudunk értékeket felvenni benne.
         </para>
+        <programlisting language="java"><![CDATA[
+            std::map<std::string, int> planetsMap;
+                planetsMap.insert(std::make_pair("earth", 4));
+                planetsMap.insert(std::make_pair("moon", 2));
+                planetsMap.insert(std::make_pair("jupiter", 10));
+                planetsMap.insert(std::make_pair("mars", 7));
+                planetsMap.insert(std::make_pair("saturnus", 9));
+            ]]>
+          </programlisting>
+          <para>
+            Mint látható az insertel tudunk értékeket felvenni a mapunkba és az értékek ugyebár kulcs érték párok, amiket a make_pairrel vagyunk képesek képezni.
+            Na és most nézzük meg, hogyan tudjuk kiiratni ezeket az értékeket:
+          </para>
+          <programlisting language="java"><![CDATA[
+            std::map<std::string, int>::iterator it = planetsMap.begin();
+            while(it != planetsMap.end())
+            {
+                std::cout<<it->first<<" :: "<<it->second<<std::endl;
+                it++;
+            }
+            ]]>
+          </programlisting>
+          <para>
+              A fenti kódban látható, hogy az it-et ráállítjuk a map első értékére, ezt a .begin el érjük el. Majd egy while ciklussal bejárjuk a mapot.
+              Addig míg az it nem az utolsó elemre fog referálni. És kiiratjuk a first el a kulcsot és a seconddal az értéket.
+          </para>
+          <para>
+              Most nézzük a rendezésünket:
+          </para>
+          <programlisting language="java"><![CDATA[
+            std::vector<std::pair<std::string, int>> rendezMap ( std::map <std::string, int> &rank )
+            {
+                    std::vector<std::pair<std::string, int>> rendezett;
+
+                    for ( auto & i : rank ) {
+                            if ( i.second ) {
+                                    std::pair<std::string, int> p {i.first, i.second};
+                                    rendezett.push_back ( p );
+                            }
+                    };
+
+                    std::sort (
+                            std::begin ( rendezett ), std::end ( rendezett ),
+                    [ = ] ( auto && p1, auto && p2 ) {
+                        std::cout<<p1.second<<std::endl;
+                        std::cout<<p2.second<<std::endl;
+                        std::cout<<"**************"<<std::endl;
+                            return p1.second > p2.second;
+                    }
+                    );
+
+                    return rendezett;
+            }
+            ]]>
+          </programlisting>
+          <para>
+              Na tehát nézzük a függvényünket. Ugyebár a paramétert referenciaként adjuk át ezt jelöli az és jel. Létrehozunk egy új vektort a függvényen belül a neve az lesz, hogy rendezett.
+              Majd egy foreach ciklussal bejárjuk a mapunkat és a rendezetthez adjuk az elemket. Majd jön egy lamdakifejezés, amivel rendezzük érték szerint a mapot. Ugyebár végig megyünk a vektoron és megvizsgáljuk, hogy a p1 nagyobb-e mint p2 ha nem akkor elkezdünk végig menni az értékeken hátulról és a megfelelő helyre beszúrni.
+              Majd a végén vissza térünk a rendezett mappal.
+          </para>
+          <figure>
+                <title>Map rendezés</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/map1.png" scale="35" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+            <figure>
+                    <title>Map rendezés</title>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="img/map2.png" scale="35" />
+                            </imageobject>
+                        </mediaobject>
+                </figure>
     </section>
     <section>
         <title>Alternatív tabella rendezése</title>
