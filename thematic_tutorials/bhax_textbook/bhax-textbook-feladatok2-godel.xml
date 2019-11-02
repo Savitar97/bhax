@@ -232,6 +232,65 @@ Interface Comparable szerepét!
         <para>
             Itt látható a mainben szereplő lényeg ugyebár mint az elején említettem megtudjuk rá hívni a collections.sort-ot.Ez itt látszik is.
         </para>
+        <para>
+            Nézzük meg kicsit a java forrás fájlokat is, ugyebár a sort az utilban van definiálva azon belül is a collectionsba. Itt láthatjuk, hogy a T típusnak implementálnia kell a Comparable interfacet. Itt extends el szerepel a Comparable. Ezt osztályoknál leszármaztatáskor szoktuk alkalmazni.
+            És látható, hogy a list.sort null-t kap meg paraméterül.
+        </para>
+        <figure>
+            <title>Collections</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/javacollection.png" scale="35" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <para>    
+            Majd mivel a rendezett csapatok ugyebár listában vannak. Tehát keressük ki a javában a lista sort metódusát. Itt már kicsit több információt kapunk.
+        </para>
+        <figure>
+            <title>Lista</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/javalist.png" scale="35" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <para>
+            Ez tovább vezet minket az Array.sort-hoz, keressük is ki.
+        </para>
+        <figure>
+            <title>Arrays</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/javaarrays.png" scale="35" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <para>
+            De sajnos kalandozásunk a forrásokban itt még mindig nem ért a végére. Ugyanis itt látható, hogy a ComparableTimSort osztály sort ját fogja felhasználni.
+        </para>
+        <figure>
+            <title>TimSort</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/javatimsort.png" scale="35" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <para>
+            A timsort osztályunkban megtalálva a számunkra szükséges sortot látszik, hogy az osztálynak a binarysort metódusa fog meghívódni.
+        </para>
+        <figure>
+            <title>Binarysort</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/javabinarysort.png" scale="35" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
+        <para>
+            Végére érve látjuk, hogy a binary sortban Comparable típusra kényszerítés történik az objektumunkra.
+        </para>
     </section>
     <section>
         <title>Prolog családfa</title>
