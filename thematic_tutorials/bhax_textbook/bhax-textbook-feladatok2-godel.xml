@@ -19,8 +19,37 @@ https://youtu.be/DL6iQwPx1Yw (8:05-től)
             Megoldás forrása:                
         </para>
         <para>
-            A lambda kifejezések a C++11 óta részei a nyelvnek.
+            A lambda kifejezések a C++11 óta részei a nyelvnek. A lambda kifejezések jellemzője, hogy a visszatérési értékük automatikus. A feladat, hogy vizsgáljuk meg a robotautóban
+            a gangsterek rendezését. Ugyebár a rendezés alpja a távolság a rendőröktől. Tehát minél közelebb van egy Gangster objektum egy rendőr objektumhoz annál előrébb kerül a listán.
+            Ez azért szükséges, hogy a rendőrök mindig a hozzájuk legközelebb eső Gangstert kezdjék el üldözni. Így a lambdába bemenő két Gangster típúsú paraméter az x és y lesz. A paramétereket ()-be tesszük.
+            Ugyebár a lambda kifejezés előnye az, hogy lehetővé teszi olyan 1 soros kódcsipetek írását, amely kis terjedelmű és olvasható. Megkímél minket a hosszú kifejezésektől. Rövid tömör és lényegre törő.
+            A szintaxisa a következő képpen néz ki:
         </para>
+        <programlisting language="java"><![CDATA[
+            [ capture clause ] (parameters) -> return-type  
+            {   
+            definition of method   
+            }
+            ]]>
+          </programlisting>
+          <para>
+              Itt a return type az, ami elhanyagolható és csak valami komplexebb esetben szükséges. A kocka zárójelbe a capture kerül. A capture lehet érték szerinti ezt az egyenlőség jel jelzi vagy esetleg referencia szerinti ilyenkor az és jelzi
+              mint a megszokott referencia szerinti átadásnál. És ezen kívül lehet vegyes. De akár üres is. Ha üres akkor csak a lokális változókhoz fér hozzá. A törzse a lambda kifejezésnek a megszokott kapcsos zárójelek közé kerül. Tehát egy blokkba.
+          </para>
+          <programlisting language="java"><![CDATA[
+            std::sort ( gangsters.begin(), gangsters.end(), [this, cop] ( Gangster x, Gangster y )
+            {
+                return dst ( cop, x.to ) < dst ( cop, y.to );
+            } );
+            ]]>
+          </programlisting>
+          <para>
+              Így néz ki a kész kód. Ugyebár mivel rendezünk ezért a sortot fogjuk használni. Ugye mivel nem egyszerű rendezés kell 
+              ezért a hosszabb speciális alakját használjuk, amelynek 3 argumentumot kell megadni. A tömb kezdetét,végét és a 3. a rendezés alapját. Azaz egy olyan függvényt, amely a rendezést szolgálja és bool a visszatérési értéke.
+              Ugyebár a this szokás szerint magára az adott objektumra vonatkozik. És ezenkívül a cophoz fér még hozzá a capture érték szerint.
+          </para>
+  
+  
     </section>        
 
     <section>
@@ -111,7 +140,22 @@ CustomAlloc-os példa, lásd C forrást az UDPROG repóban!
           <para>
               Na tehát nézzük a függvényünket. Ugyebár a paramétert referenciaként adjuk át ezt jelöli az és jel. Létrehozunk egy új vektort a függvényen belül a neve az lesz, hogy rendezett.
               Majd egy foreach ciklussal bejárjuk a mapunkat és a rendezetthez adjuk az elemket. Majd jön egy lamdakifejezés, amivel rendezzük érték szerint a mapot. Ugyebár végig megyünk a vektoron és megvizsgáljuk, hogy a p1 nagyobb-e mint p2 ha nem akkor elkezdünk végig menni az értékeken hátulról és a megfelelő helyre beszúrni.
-              Majd a végén vissza térünk a rendezett mappal.
+              Majd a végén vissza térünk a rendezett mappal. A dokumentációból látható a következő a sort-ra:
+          </para>
+          <programlisting language="java"><![CDATA[
+            default (1)	
+
+            template <class RandomAccessIterator>
+            void sort (RandomAccessIterator first, RandomAccessIterator last);
+
+            custom (2)	
+
+            template <class RandomAccessIterator, class Compare>
+            void sort (RandomAccessIterator first, RandomAccessIterator last, Compare comp);
+                        ]]>
+          </programlisting>
+          <para>
+              Ugyebár itt a custom fog lefutni és a compare comp lesz a lambda kifejezésünk. Aminek a visszatérési értéke bool típúsú lesz.
           </para>
           <figure>
                 <title>Map rendezés</title>
