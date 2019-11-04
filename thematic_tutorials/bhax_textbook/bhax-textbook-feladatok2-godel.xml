@@ -304,8 +304,77 @@ Interface Comparable szerepét!
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A prolog családfához felkell használnunk a swi prolog kiegészítőt. Ezt úgy tudjuk telepíteni ubuntun, hogy <command>sudo apt-get install swi-prolog</command>
+            és <command>sudo apt-get install swi-prolog-java</command>. A programunkhoz ezen kívül megkell írnunk a prolog pl kiterjesztésű fájlunkat, amely a kifejezéseket és
+            a változóink definiálását végzi. Mivel a prolog elsőrendű logikát használ, ezért a logika tárgyon tanultak nagy segítségünkre van. Tehát itt definiáljuk a családi kapcsolatokat,
+            amelyet majd vizsgálunk. Például felvesszük, hogy kik a férfiak a családban,de például egy kicsivel bonyolultabb apa az, aki férfi és van gyereke ez a következőképp néz ki a kódban: 
         </para>
+        <programlisting language="java"><![CDATA[
+            apa(X) :- férfi(X), gyereke(_Y, X).
+            ]]>
+          </programlisting>
+          <para>
+              Aztán nézzük magát a kódot. Kezdetben bekell importálni magát a könyvtárat, hogy lássa az org.jpl-t. Ez netbeans projektben könnyű. Csak rámegyünk a projektnél, hogy libraries jobb klikk és add library.
+              Aztán Create és megkell adni az elérési útját <command>/usr/lib/swi-prolog/lib/jpl.jar</command>. Aztán be is importálhatjuk a szükséges osztályokat.
+          </para>
+          <programlisting language="java"><![CDATA[
+
+            import java.util.Map;
+
+            import org.jpl7.JPL;
+            import org.jpl7.Query;
+            import org.jpl7.Term;
+            ]]>
+          </programlisting>
+          <para> Ezután jöhet maga a program rész. Mielőtt bármihez is neki kezdenénk bekell húznunk a prolog fájlunkat, ugyanis ez alapján dolgozunk.Ez a következőképpen lehetséges:</para>
+          <programlisting language="java"><![CDATA[
+            String s = "consult('family.pl')";
+            Query q = new Query(s);
+            System.out.println(s + " " + (Query.hasSolution(s) ? "succeeded" : "failed"));
+            ]]>
+          </programlisting>
+          <para>
+              Tehát a forma az h egy stringbe megadjuk a consult függvénybe a fájl nevet. Majd létrehozunk egy query objektumot. Majd rátesztelünk, hogy működik -e vagy nem.
+          </para>
+          <para>
+              Majd jöhetnek a tesztek. Kezdetben nézzük meg, hogy edit apa -e?
+          </para>
+          <programlisting language="java"><![CDATA[
+            String term = "apa(edit)";
+            System.out.println(term + " is " + (Query.hasSolution(term) ? "provable" : "not provable"));
+            ]]>
+          </programlisting>
+          <para>
+              Természetesen a visszakapott érték a not provable lesz ugyanis apa csak az lehet aki férfi és van gyereke. Itt a println nél a ? operátort használtuk, amely az ifhez hasonló.
+              Ha igaz a kifejezés akkor a ?-utáni rész kerül kiértékelésre. Ha hamis akkor a : utáni. Na ezután nézzünk meg egy kicsit nehezebbet.
+          </para>
+          <para>A következőben nézzük meg ki a nagyapám:</para>
+          <programlisting language="java"><![CDATA[
+            String term1 = "nagyapja(X, attila)";
+            System.out.println("A formula megoldásai: " + term1);
+            Query q1 = new Query(term1);
+            while (q1.hasMoreSolutions()) {
+                Map<String, Term> str = q1.nextSolution();
+                System.out.println("X = " + str.get("X"));
+            } 
+            ]]>
+          </programlisting>
+          <para>
+              Ugyebár a nagyapa az a szüleim szülője. És hát mivel az embernek két szülője van ezért itt több érték lesz. Itt jön képbe a hasmoresolution azaz, hogy van még más jó megoldás is.
+              Mivel itt már több érték lesz ezért mapot fogunk használni. A kulcs érték párok itt kapóra jönnek. Mivel érték párokkal dolgozunk. A következő kép szemlélteti a futtatást:
+          </para>
+          <figure>
+                <title>Családfa</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/csaladfa.png" scale="35" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+  
+  
+
+  
     </section>
 	<section>
         <title>GIMP Scheme hack</title>
