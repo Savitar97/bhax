@@ -145,6 +145,54 @@
             implementációt ad. Ahol interface szerepel típusként ott az interface-t implementáló osztály vagy leszármazottjának példánya felhasználható.
             Interfaceknél is létezik öröklődés itt kiterjesztésnek nevezzük.Az osztályokéval ellentétben itt lehetséges a többszörös öröklődés. Egy osztály tetszőleges számú interfacet örökölhet, ez kiváltja a C++-os többszörös öröklődést.
         </para>
+        <para>
+            A kulcsszavak: Azok a szavak amelyből a nyelv építkezik. Tehát ezek lefoglalt karakterek, amit nem adhatunk meg azonosítónak. Az azonosítók például változónevek azok a szavak amelyek betűvel kezdődnek majd folytatódhatnak számmal vagy betűvel.
+            Emellett vannak a literálok, amelyek nevesített konstansok értékeként vagy kezdőérték adáskor használatosak. Emellett lefoglalt karakterekhez tartoznak az operátorok, amelyek lehetnek egy vagy több operandúsúak. Használatukkor valamilyen művelet(matematikai,logika) hajtódik végre.
+        </para>
+        <para>
+            Utasítások:kétféle létezik a deklarációs és a kifejezéses. Deklarációs változók létrehozása, metódusok definiálása például. Kifejezéses a metódusok meghívása vagy ilyen például a prefix és a postfix operátorok használata. De az értékadás és példányosítás is.
+            A deklarációs utasítás a változó létrehozását és kezdőérték adását foglalja magába. Ezeknél jön képbe a blokkok használata és a hatáskör egy változónak az adott blokkon belül van hatásköre. Persze van kivétel is.
+        </para>
+        <para>
+            Konstansok: Javában a final kulcsszóval tudjuk létrehozni őket c++-ban ugyan ezt a const-al érjük el. A konstansoknak mindig nevet adunk és kezdőértéket. A típúsuk lehet bármilyen. A konstansok értéke nem változik a program futása során.
+        </para>
+        <para>
+            Karakterkészlet: a java a c++ 8bites karakterkészletével szemben már 16 bites karakterkészeltet használ, amely már a magyar szavakat is magába foglalja.
+        </para>
+        <para>
+            Metódusok: Az osztályok metódusai ugyebár az objektumok viselkedését írják le nem úgy mint a változók, amelyek a tulajdonságukat az objektumoknak.
+        </para>
+        <para>
+            Konstruktorok: Minden osztálynak van egy konstruktora mind javaban mind C++-ban. De emellett írhatunk újabb konstruktorokat. De lesz mindig egy alapértelmezett, amely nem vár paramétert. Ugyebár itt is él a metódus túlterhelés lehetősége. A konstruktor neve megegyezik az osztály nevével.
+            A konstruktorok minden példányosításkor meghívódnak. Öröklődéskor gyakori, hogy a leszármaztatott osztály meghívja a szülője konstruktorát.
+        </para>
+        <para>
+            Destruktorok: Javaban garbage collector c++-ban magunknak kell definiálni. Lényegében itt szabadítjuk fel az objektum által lefoglalt területet a memóriában,azaz töröljük az objektumot. A destruktor neve szintén megegyezik az osztály nevével csak itt egy ~ a neve előtt jelzi, hogy ő a destruktor. Alapból létrehozódik egy a compiler által
+            akkor kell sajátot írni ha van dinamikusan lefoglalt memóriánk az osztályban.
+        </para>
+        <para>
+            Indexelők: Szögletes zárójelekbe írjuk főként tömböknél használjuk őket.
+        </para>
+        <para>
+            A beágyazott osztályok lényegében osztályok az osztályban ezzel jelezzük a szoros kapcsolatot például,hogy egyik nem létezhet a másik nélkül,mert önmagában nem értelmezhető.
+        </para>
+        <para>
+            Gyűjtemények: olyan adatszerkezetek amely több objektumot tudnak tárolni, akár különböző típúsúakat is. C++-ban tömböt létrehozhatunk mutatók segítségével is maga a tömb egy olyan mutató amely más mutatókra mutat, amelyek a tömbben tárolt elemek címére mutatnak. Javában nincsenek mutatók tehát ilyet nem tehetünk meg.
+        </para>
+        <para>
+            Lambda kifejezések: egysoros utasítások amelyek lerövidítik és egyszerűbbé teszik a kódot általában a visszatérési értékük határozza meg a típúsúkat. Szerepel mind a C++-ban a C++11 től és a javaban is. Lényegében egyszeri felhasználású kódok, ezért is nem nevezzük el őket azaz névtelenek.
+            Viszont más a definiálásuk. Nézzük is meg:
+        </para>
+        <programlisting language="java"><![CDATA[
+            C++-ban a lambda kifejezés:
+            [ captures ] <tparams>(optional)(c++20) ( params ) specifiers exception attr -> ret requires(optional)(c++20) { body }
+            Captures lehet =-jellel érték szerint másolni vagy referenciaként &-el lehetséges. () a paraméterek kerülnek ide amiket átadunk a lambdának. Majd végül a -> operátor után jöhet a body {}- hogy mit csináljon a lambda utasítás.
+            Javaban a lambda kifejezés:
+            lambda operator -> body
+            pl: (p) -> System.out.println("One parameter: " + p);
+            ]]>
+          </programlisting>
+  
     </section>
     <section>
         <title>Python</title>
