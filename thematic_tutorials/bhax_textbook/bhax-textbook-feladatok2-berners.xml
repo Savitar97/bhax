@@ -192,6 +192,23 @@
             pl: (p) -> System.out.println("One parameter: " + p);
             ]]>
           </programlisting>
+          <para>
+              Streamok: Javaban mint minden ez is objektumként van jelen. Tehát osztály felel a streamokért. C++-ban ez byte sorozatokként jelenik meg,tehát adatfolyamatokban(streamokban). A C-ben 3 előredefiniált és megnyitott állomány leírója. Az első az stdin ami a standard input C++-ban a cin.
+              A második az stdout a standard output vagy C++-ban a cout. És az stderr a szabványos hibakimenet.  Ezek magas szintű állományleírók az stdin csak olvasható a másik kettő csak írható. C++-ban leírók helyett már objektumok vannak. Az istream típúsú objektumok csak olvasható bemeneti adatfolyamatokat, míg az ostream csak írható
+              kimeneti adatfolyamatokat takarnak. Ezek az adatfolyamatok a következő operátorokat használják:
+          </para>
+          <programlisting language="java"><![CDATA[
+            beolvasás >> és kiírás << operátorok
+            ]]>
+          </programlisting>
+          <para>
+              A használatához bekell építenünk a az iostream állományt. C++-ban az állománykezelések is adatfolyamokat használnak. A kétirányú adatfolyamot az fstream valósítja meg. Az állományok megnyitását a konstruktorok végzik lezárásukat a destruktorok. Az adatfolyamok mögött létezik egy buffer, amely kezeli a beí¶t adatokat.  Az adatfolyam buffer itt egy olyan objektum, 
+              amely rdbuf tagfüggvényének paraméter nélküli változatával lekérdezhető az adatfolyamba beírt karakterek.
+          </para>
+          <para>
+              Szerializáció: Az objektumokat byte sorozattá alakítja. A használatához egy interface szükséges a Serializable.
+          </para>
+  
   
     </section>
     <section>
