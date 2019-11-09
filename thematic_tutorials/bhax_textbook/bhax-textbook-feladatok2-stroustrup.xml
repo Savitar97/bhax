@@ -16,7 +16,7 @@ osztályát (miután kicsomagoltuk az src.zip állományt, arra ráengedve)!
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Lezerkardosjdk">https://github.com/Savitar97/Prog2/tree/master/Lezerkardosjdk</link>              
         </para>
         <para>
             A feladatban a boost könyvtárakat kellett használnunk és egy olyan programot kellett írnunk, amely végigjárja a könyvtárat és ha java-s fájlt talál akkor kiirja a nevét.
@@ -112,7 +112,7 @@ szemantikáját, a mozgató konstruktort alapozd a mozgató értékadásra!
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/MoveCopy">https://github.com/Savitar97/Prog2/tree/master/MoveCopy</link>              
         </para>
         <para>
             A mozgató és másoló konstruktorral már prog 1-en is találkoztunk a binfánál. Így én ezen keresztül mutatnám be.
@@ -202,23 +202,6 @@ szemantikáját, a mozgató konstruktort alapozd a mozgató értékadásra!
         </figure>
     </section>        
     <section>
-        <title>Hibásan implementált RSA törése</title>
-        <para>
-            Készítsünk betű gyakoriság alapú törést egy hibásan implementált RSA kódoló:
-https://arato.inf.unideb.hu/batfai.norbert/UDPROG/deprecated/Prog2_3.pdf (71-73 fólia) által
-készített titkos szövegen.
-        </para>
-        <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
-    </section>
-    <section>
         <title>Változó argumentumszámú ctor</title>
         <para>
             Készítsünk olyan példát, amely egy képet tesz az alábbi projekt Perceptron osztályának bemenetére
@@ -229,7 +212,7 @@ hét/Perceptron osztály feladatot is.)
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/perceptron">https://github.com/Savitar97/Prog2/tree/master/perceptron</link>                
         </para>
         <para>
             A perceptron osztályt is használtuk már Prog1-en.Ekkor még csak egy értéket számolt. A szigmoid függvénnyel ami 0 és 1 közé lőtt be egy értéket.
@@ -317,12 +300,6 @@ hét/Perceptron osztály feladatot is.)
         <title>Összefoglaló:Másoló-Mozgató konstruktor,értékadás</title>
         <para>
            Az előző 4 feladat egyikéről írj egy 1 oldalas bemutató „”esszé szöveget! 
-        </para>
-        <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
         </para>
         <para>
             A javaval ellentétben a C++-ban nagyobb szabadságunk van a memória kezelésére. A C-hez hasonlóan. Viszont emiatt nekünk kell gondoskodnunk a memória felszabadításért is.

@@ -221,13 +221,7 @@
             Az ábrát bonyolítani lehetne azzal, hogy az háziorvosoknak általában van asszisztensük. Ekkor létrehoztunk volna egy sávot és bele két pool-t. Majd a betegek behívását nem az orvos végezné,hanem az asszisztens.
         </para>
     </section>
-    <section>
-    	<title>BPEL Helló, Világ! - egy visszhang folyamat</title>
-		<para>
-		Egy visszhang folyamat megvalósítása az alábbi teljes „videó tutoriál” alapján:
-		https://youtu.be/0OnlYWX2v_I
-		</para>
-    </section>
+    
     <section>
         <title>TeX UML</title>
         <para>

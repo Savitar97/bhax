@@ -599,40 +599,7 @@ ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
             MediaPlayer player = new MediaPlayer(media);
             ]]>
           </programlisting>
-  
-    </section>      
-    <section>
-
-        <title>Paszigráfia Rapszódia OpenGL full screen vizualizáció</title>
-        <para>
-            Lásd vis_prel_para.pdf! Apró módosításokat eszközölj benne, pl. színvilág, textúrázás, a szintek jobb
-elkülönítése, kézreállóbb irányítás.
-        </para>
-        <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
-    </section>
-    <section>
-        <title>Paszigráfia Rapszódia LuaLaTeX vizualizáció</title>
-        <para>
-            Lásd vis_prel_para.pdf! Apró módosításokat eszközölj benne, pl. színvilág, még erősebb 3D-s hatás.
-        </para>
-        <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
-    </section>
+    </section>        
     <section>
         <title>Perceptron osztály</title>
         <para>
@@ -643,7 +610,7 @@ Lásd https://youtu.be/XpBnR31BRJY
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/perceptron">https://github.com/Savitar97/Prog2/tree/master/perceptron</link>              
         </para>
         <para>
             A perceptron osztályt is használtuk már Prog1-en.Ekkor még csak egy értéket számolt. A szigmoid függvénnyel ami 0 és 1 közé lőtt be egy értéket.

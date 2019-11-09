@@ -50,4 +50,60 @@
             Ábrák felcímzése, ábrajegyzék kész.
         </revremark>
     </revision>
+    <revision>
+        <revnumber>0.0.7</revnumber>
+        <date>2019-09-18</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Olvasónapló leadva.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.8</revnumber>
+        <date>2019-09-25</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Első csokor leadva.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.0.9</revnumber>
+        <date>2019-10-2</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Második csokor leadva.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.1.0</revnumber>
+        <date>2019-10-9</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Harmadik csokor leadva.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.1.1</revnumber>
+        <date>2019-10-16</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Negyedik csokor leadva.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.1.2</revnumber>
+        <date>2019-10-23</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Ötödik csokor leadva.
+        </revremark>
+    </revision>
+    <revision>
+        <revnumber>0.1.3</revnumber>
+        <date>2019-11-6</date>
+        <authorinitials>T.Attila</authorinitials>
+        <revremark>
+            Hatodik csokor leadva.
+        </revremark>
+    </revision>
 </revhistory>

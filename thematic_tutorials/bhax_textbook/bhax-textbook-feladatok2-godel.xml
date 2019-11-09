@@ -16,7 +16,7 @@ https://youtu.be/DL6iQwPx1Yw (8:05-től)
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/robocar-emulator">https://github.com/Savitar97/Prog2/tree/master/robocar-emulator</link>               
         </para>
         <para>
             A lambda kifejezések a C++11 óta részei a nyelvnek. A lambda kifejezések jellemzője, hogy a visszatérési értékük automatikus. A feladat, hogy vizsgáljuk meg a robotautóban
@@ -50,24 +50,7 @@ https://youtu.be/DL6iQwPx1Yw (8:05-től)
           </para>
   
   
-    </section>        
-
-    <section>
-        <title>C++11 Custom Allocator</title>
-        <para>
-            https://prezi.com/jvvbytkwgsxj/high-level-programming-languages-2-c11-allocators/ a
-CustomAlloc-os példa, lásd C forrást az UDPROG repóban!
-        </para>
-        <para>
-            Megoldás videó:
-        </para>
-        <para>
-            Megoldás forrása:                
-        </para>
-        <para>
-            Tanulságok, tapasztalatok, magyarázat...
-        </para>
-    </section>        
+    </section>               
     <section>
         <title>STL map érték szerinti rendezése</title>
         <para>
@@ -77,7 +60,7 @@ CustomAlloc-os példa, lásd C forrást az UDPROG repóban!
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Map">https://github.com/Savitar97/Prog2/tree/master/Map</link>           
         </para>
         <para>
             Egy map érték szerinti rendezése volt a feladat. A mapok kulcs-érték párok. Nézzük is meg, hogyan lehet deklarálni egy mapot c++-ban és, hogyan tudunk értékeket felvenni benne.
@@ -184,7 +167,7 @@ Interface Comparable szerepét!
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Tabella">https://github.com/Savitar97/Prog2/tree/master/Tabella</link>                
         </para>
         <para>
             A Comparable interface szerepére kellett rávilágítanunk ebben a feladatban. Ezt az interface-t meghívó objektumok listáit vagy tömbjeit képesek vagyunk automatikusan rendezni az array.sort-al vagy
@@ -301,7 +284,7 @@ Interface Comparable szerepét!
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Family1">https://github.com/Savitar97/Prog2/tree/master/Family1</link>                
         </para>
         <para>
             A prolog családfához felkell használnunk a swi prolog kiegészítőt. Ezt úgy tudjuk telepíteni ubuntun, hogy <command>sudo apt-get install swi-prolog</command>

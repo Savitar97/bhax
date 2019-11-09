@@ -9,9 +9,9 @@
     <section>
         <title>FUTURE tevékenység editor</title>
         <para>
-Javítsunk valamit a ActivityEditor.java JavaFX programon!
-https://github.com/nbatfai/future/tree/master/cs/F6
-Itt láthatjuk működésben az alapot: https://www.twitch.tv/videos/222879467
+        Javítsunk valamit a ActivityEditor.java JavaFX programon!
+        https://github.com/nbatfai/future/tree/master/cs/F6
+        Itt láthatjuk működésben az alapot: https://www.twitch.tv/videos/222879467
         </para>
         <para>
             Megoldás videó:
@@ -20,8 +20,99 @@ Itt láthatjuk működésben az alapot: https://www.twitch.tv/videos/222879467
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A feladatunk az volt, hogy keressünk bugokat és javítsuk azokat.Kezdjük magával az applikáció beüzemelésével. Én az intellj idea-t használtam a futtatáshoz.
+            A beüzemeléshez szükségünk van arra, hogy letöltsük a javafx-et. Én a 13-ast használom amit innen tölthettek le:<link xlink:href="https://openjfx.io/openjfx-docs/">https://openjfx.io/openjfx-docs/</link>.
+            Majd indítsuk el az intellij-t és file/new/project from existing source. Majd behúzzuk az F6-ot. Ezután könyvtárként behúzzuk a javafx library-t. Amit a file/project structure-ban tudunk megtenni.
         </para>
+        <figure>
+                <title>JavaFx</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/javafxlibrary.png" scale="30" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+        <para>
+            Ezután bekell állítanunk a debug konfigot ezt a kis zöld kalapács mellett tudjuk hozzá adni application-t kell választanunk.
+            Main class-nak az ActivityEditor-t válasszuk. VM options: <command>--module-path /home/user/Asztal/javafx-sdk-13/lib --add-modules javafx.controls,javafx.fxml,javafx.graphics,javafx.media,java.desktop</command>.
+            Majd a program argumentek:<command>--city=Debrecen --props=me.props,gaming.props,programming.props</command>. A feladathoz még kell a tree amit a <command>sudo apt-get install tree</command>-vel tudunk feltelepíteni.
+        </para>
+        <figure>
+                <title>Config</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/configuration.png" scale="30" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+        <para>
+            Az első bug amit találtam azaz volt, hogyha több új tevékenységet hoztunk létre
+            akkor hiába láttunk a programban több file-t valójában csak egy volt. Ezért ha bezártuk a programunkat akkor eltűntek. A létrehozott file-ok.
+        </para>
+        <figure>
+                <title>Bug1</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/bug1.png" scale="30" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+            <figure>
+                    <title>Bug1</title>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="img/bug1_2.png" scale="30" />
+                            </imageobject>
+                        </mediaobject>
+                </figure>
+        <para>
+            Ez azért lehetséges mivel egy mappában nem lehet 2 ugyan olyan kiterjesztésű ugyan olyan nevű file.
+            Erre azt a megoldást próbáltam kigondolni, hogy elkezdtem számolni a létrehozandó file-okat. Ez sem tökéletes
+            mert még bekéne járni a jelenlegi mappát, hogy milyen nevű fileok vannak a mappában. Amúgy alapból nem számít annyira bugnak
+            mivel a create new file csak akkor hozzá létre a file-t ha az még nem létezik.
+        </para>
+        <programlisting language="java"><![CDATA[
+            java.io.File f = new java.io.File(file.getPath() + System.getProperty("file.separator") + "Új altevékenység tulajdonságok"+String.format("%d",counter));
+                counter++;
+            ]]>
+          </programlisting>
+          <para>
+              A másik hiba amit találtam, ha létrehozunk egy fájlt és azt átnevezzük akkor nem tényleges átnevezés történik, hanem létrejön egy újfile az átnevezett névvel.
+          </para>
+          <figure>
+                <title>Bug2</title>
+                    <mediaobject>
+                        <imageobject>
+                            <imagedata fileref="img/bug2_1.png" scale="30" />
+                        </imageobject>
+                    </mediaobject>
+            </figure>
+            <figure>
+                    <title>Bug2</title>
+                        <mediaobject>
+                            <imageobject>
+                                <imagedata fileref="img/bug2_2.png" scale="30" />
+                            </imageobject>
+                        </mediaobject>
+                </figure>
+            <para>
+                Ennek megoldására a rename-to függvényt használtam a new file helyett.
+            </para>
+            <programlisting language="java"><![CDATA[
+                try {
+                    if (oldf.isDirectory()) {
+                        oldf.renameTo(newf);
+                    } else {
+                        oldf.renameTo(newf);
+                    }
+                } catch (Exception e) {
+
+                    System.err.println(e.getMessage());
+
+                }
+                ]]>
+              </programlisting>
+      
     </section>        
 
     <section>
@@ -37,8 +128,36 @@ emulator/blob/master/justine/rcemu/src/carlexer.ll
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Az sscanf szerepe, hogy megadott formájú stringet olvassunk be és itt az a lényeg, hogy a hálózatról megkapott adatokat 
+            a megfelelő változóba táruljuk el. 
         </para>
+        <programlisting language="java"><![CDATA[
+            std::vector<justine::sampleclient::MyShmClient::Gangster> justine::sampleclient::MyShmClient::gangsters ( boost::asio::ip::tcp::socket & socket, int id,
+            osmium::unsigned_object_id_type cop )
+
+
+
+            while ( std::sscanf ( data+nn, "<OK %d %u %u %u>%n", &idd, &f, &t, &s, &n ) == 4 )
+                {
+                  nn += n;
+                  gangsters.push_back ( Gangster {idd, f, t, s} );
+                }
+            
+            ]]>
+          </programlisting>
+          <para>
+              A hálózatról jövő adatok TCP-n keresztül érkeznek, ez látszik az első kódcsipetből. Ugyebár a TCP az a szállítási rétegben helyezkedik el.
+              Főbb jellemzője, hogy megbízható kapcsolatot épít ki az állomások között. Tehát ha egy üzenetet nem sikerül elküldeni akkor annak újraküldése kezdődik meg.
+              A fogadó mindig nyugtázza a küldőnek, hogy megkapta -e az üzenetet.
+          </para>
+          <para>
+              A scanfnél a whilera azért van szükségünk mert nem tudjuk, hogy mennyi adatot fogunk kezelni. De tudjuk, hogy a string alakja kacsacsőr OK és 4 érték.
+              Azért használhatjuk a whileban az sscanf==4 et mivel a scanf értéke a beolvasott adatok számát jelöli. Tehát addig ameddig 4 et sikerül beolvasni nem fog megállni a ciklusunk.
+              A %n nem az inputhoz fog kapcsolódni ugyanis ez tartja számon ,hogy hány adat jött be épp. Az eddig bejövő összes adat számát az nn-ben tároljuk.
+              De mivel a data egy karakter tömb és ugyebár mi minden futáskor olyan adatot szeretnénk olvasni ami még nem volt. Tehát ezért kell eltolnunk a tömböt az összes beolvasott elem számával.
+              Ez a data+nn. 
+          </para>
+  
     </section>        
     <section>
         <title>SamuCam</title>
@@ -53,8 +172,189 @@ https://github.com/nbatfai/SamuCam
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A SamuCam ugyebár Qt-t használ tehát a futtatáshoz telepítenünk kell a Qt-t. Majd kiadnunk a következő parancsot
+            <command>~/Qt/5.12.2/gcc_64/bin/qmake SamuLife.pro</command>. Ezután a <command>make</command>-et és már futtathatjuk is a SamuCamunkat.
         </para>
+        <para>
+            A samucam futtatása a következő paranccsal történik <command>./SamuCam --ip http://127.0.0.1:8081/ 2>out</command> mivel ugyebár argumentumként várja az ipcamunk címét.
+            Ahonnan majd TCP-vel kéri le az adatot. Én az ipcamera dolgot motionnal oldottam meg. Ez egy hasznos progi ugyanis a laptopom webkameráját használhatom vele ip kameraként.
+            Ugyebár linuxban ahhoz, hogy megtaláljuk az elérhető webkamerákat kikell adnunk a <command>ls /dev/|grep video</command> parancsot. Ugyebár nekem mivel a laptopot használok
+            a video0-ra volt szükségem. USB-n csatlakoztatott kameráknál azt hiszem a video1-et kell használnunk. Fontos ezen kívül, hogy bekonfiguráljuk a motionunkat.
+            Ezt a <command>sudo nano /etc/motion/motion.conf</command> -val tehetjük meg. Itt a frameratet érdemes 100-ra állítani. A videodevice-t ha usb-s webkamerát használunk akkor, ahogy már írtam
+            video1-re átírni.Ezen kívül a width és height beállítása is fontos lehet.Ugyanis a samu cam a középen lévő arcot ismeri fel minél nagyobb a kamera felbontása úgy vettem észre annál jobb az eredmény.
+            Ugyebár mivel tcpvel kérjük le az adatokat ezért a tcpt onra kell állítani,de ez elvileg default. A protot a streamport-nál tudjuk beállítani a default a 8081. 
+        </para>
+        <para>
+            Mivel a camera használat érdekel minket ezért a samuCam forrást kell vizsgálnunk. Kezdjük a header file-al.
+            Ennek a tartalma elég rövid tehát lássuk a kódot:
+        </para>
+        <programlisting language="java"><![CDATA[
+            class SamuCam : public QThread
+            {
+                Q_OBJECT
+
+            public:
+                SamuCam ( std::string videoStream, int width, int height );
+                ~SamuCam();
+
+                void openVideoStream();
+                void run();
+
+            private:
+                std::string videoStream;
+                cv::VideoCapture videoCapture;
+                int width;
+                int height;
+                int fps;
+
+            signals:
+                void faceChanged ( QImage * );
+                void webcamChanged ( QImage * );
+            };
+            ]]>
+          </programlisting>
+          <para>
+              Az osztály definíció után kapásból látunk egy Q_Objectet ez egy macro. Ugyebár a meta object compiler az ami kezeli a qt-s c++ kiterjesztéseket.
+              Ez olvassa el a header fileokat és ha több osztály tartalmazza ezt a macrot akkor előállít egy olyan forrást, amely ezeknek tartalmazza a metaobjektum kódját.
+              Egyébként ez a metaobjektum kód szükséges a jel(signal) és a slot mechanizmushoz. Mindemellett a futási időben eldöntött típusinformációkhoz.
+          </para>
+          <para>
+              Ezen kívül láthatjuk, hogy az osztály konstruktora egy stringet vár értékként, amely a kamera ipcíme lesz. Ezen kívül a szélességet és magasságot. Emellett tartalmazza a publik rész a
+              futtatáshoz szükséges metódust és a video stream megnyitásának metódusát. Privateban fontos az ip cím és a cv::VideoCapture, amely inicializálja a kamerát, vagyis meghívja a konstruktorát ennek az osztálynak.
+              Az fps-t is tároljuk a kiiratáshoz. Emellett egy érdekesség a signals láthatóság, ami azt figyeli történt -e változás. Megváltozott -e a kép vagy a másik metódus, amely a kamerát figyeli.
+          </para>
+          <para>
+              Nézzük most a cpp és a main file-t. 
+          </para>
+          <programlisting language="java"><![CDATA[
+            std::string videoStream = parser.value ( webcamipOption ).toStdString();
+
+            SamuLife samulife ( videoStream, 176, 144 ); 
+            ]]>
+          </programlisting>
+          <para>
+              Itt láthatjuk az osztály példányosítását.
+          </para>
+          <programlisting language="java"><![CDATA[
+            SamuCam::SamuCam ( std::string videoStream, int width = 176, int height = 144 )
+            : videoStream ( videoStream ), width ( width ), height ( height )
+            {
+            openVideoStream();
+            }
+
+            ]]>
+          </programlisting>
+          <para>
+              Na akkor kezdjük vizsgálni a cpp-t. Itt látható már az inicializált konstruktor. Láthatjuk, hogy rendelkezik paraméter listával ezt a : után írtak foglalják magukba amit átadunk a headerben lévő private-tagoknak.
+              És látható, hogy egy metódust hívünk a konstruktor törzsében. A nevéből látható, hogy ezzel nyitjuk meg a video streamot.
+          </para>
+          <programlisting language="java"><![CDATA[
+            void SamuCam::openVideoStream()
+            {
+            videoCapture.open ( videoStream );
+
+            videoCapture.set ( CV_CAP_PROP_FRAME_WIDTH, width );
+            videoCapture.set ( CV_CAP_PROP_FRAME_HEIGHT, height );
+            videoCapture.set ( CV_CAP_PROP_FPS, 10 );
+            }
+            ]]>
+          </programlisting>
+          <para>
+              Az itt inicializált .open még a headerben látott videocapturera vonatkozik. Ezzel nyitja meg a megadott kamerát. Majd beállítjuk
+              Az alkalmazás által használt kamera beállításokat szélesség, magasság,fps. Majd nézzük meg a futást.
+          </para>
+          <programlisting language="java"><![CDATA[
+            cv::CascadeClassifier faceClassifier;
+
+            std::string faceXML = "lbpcascade_frontalface.xml"; // https://github.com/Itseez/opencv/tree/master/data/lbpcascades
+
+            if ( !faceClassifier.load ( faceXML ) )
+                {
+                qDebug() << "error: cannot found" << faceXML.c_str();
+                return;
+                }
+            ]]>
+          </programlisting>
+          <para>
+            Mielőtt megkezdenénk a futást egy cascadeclassifiert hívunk meg, amely képes a képeken objektumokat felismerni. Az észlelt objektum téglalpok egy listájával tér vissza.
+            Ennek adjuk át egy arcról készült xml fájlt. Ehhez fogja hasonlítani a mi észlelt arcunkat, hogy képes legyen felismerni.
+          </para>
+          <programlisting language="java"><![CDATA[
+                    while ( videoCapture.isOpened() )
+            {
+
+            QThread::msleep ( 50 );
+            while ( videoCapture.read ( frame ) )
+                {
+
+                if ( !frame.empty() )
+                    {
+
+                    cv::resize ( frame, frame, cv::Size ( 176, 144 ), 0, 0, cv::INTER_CUBIC );
+
+                    std::vector<cv::Rect> faces;
+                    cv::Mat grayFrame;
+
+                    cv::cvtColor ( frame, grayFrame, cv::COLOR_BGR2GRAY );
+                    cv::equalizeHist ( grayFrame, grayFrame );
+
+                    faceClassifier.detectMultiScale ( grayFrame, faces, 1.1, 3, 0, cv::Size ( 60, 60 ) );
+
+                    if ( faces.size() > 0 )
+                        {
+
+                        cv::Mat onlyFace = frame ( faces[0] ).clone();
+
+                        QImage* face = new QImage ( onlyFace.data,
+                                                    onlyFace.cols,
+                                                    onlyFace.rows,
+                                                    onlyFace.step,
+                                                    QImage::Format_RGB888 );
+
+                        cv::Point x ( faces[0].x-1, faces[0].y-1 );
+                        cv::Point y ( faces[0].x + faces[0].width+2, faces[0].y + faces[0].height+2 );
+                        cv::rectangle ( frame, x, y, cv::Scalar ( 240, 230, 200 ) );
+
+
+                        emit  faceChanged ( face );
+                        }
+
+                    QImage*  webcam = new QImage ( frame.data,
+                                                    frame.cols,
+                                                    frame.rows,
+                                                    frame.step,
+                                                    QImage::Format_RGB888 );
+
+                    emit  webcamChanged ( webcam );
+
+                    }
+
+                QThread::msleep ( 80 );
+
+                }
+
+            if ( ! videoCapture.isOpened() )
+                {
+                openVideoStream();
+                }
+
+            }
+            ]]>
+          </programlisting>
+          <para>
+              A következő ciklusunk addig fut ameddig fut a webkamera szerver tehát adatokat tudunk fogadni tőle. Majd jön egy 50 miliseces késleltetés.
+              Majd elkezdjük beolvasni a képkockákat tehát ez addig fut ameddig vannak küldött képkockáink. Ha nem üres képkocka jött be akkor feldolgozzuk.
+              Csak az arcra vagyunk kíváncsi tehát csak azt próbáljuk kiszűrni. És ugye a feldolgozott képkockákból egy új képet alkotunk. És az emittel kezeljük azt, ha
+              a webkameránk változna. És 80 milisecenként dolgozunk fel egy képkockát.
+          </para>
+          <figure>
+            <title>SamuCam</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="img/SamuCam.png" scale="30" />
+                    </imageobject>
+                </mediaobject>
+        </figure>
     </section>
     <section>
         <title>BrainB</title>
@@ -66,11 +366,61 @@ talent-search
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/BrainBbench">https://github.com/Savitar97/Prog1/tree/master/BrainBbench</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A BrainB benchmark egy felmérés. Amely főleg az mmorpgvel játszó játékosokat képes mérni. Mégpedig azt, hogy mennyire képesek követni a karakterüket a tömegbe. A lényeg,hogy az egérmutatót a karakterünkön samun tartsuk a játék pedig egyre több hőst generál a karakterünk köré és 10 percen keresztül nem szabad elveszteni a karakterünk nyomát.Majd a benchmark ad egy eredményt, amely számosítja a teljesítményét a játékosnak. Ez alapján készíthetünk esetleg egy táblázatot, hogy meghatározzuk sávokban is a pontszámokat, így megtudjuk ki a jobb képességű.A moba területen is hasznos lehet a játék ugyanis a teamfightokban a sok effekt között könnyen eveszíthetjük a karakterünket vagy épp a focusolandó enemy játékosét.
+            Ezzel a programmal lehetséges, mérni az egyén teljesítőképességét és kiválogatni azokat akik sokkal jobbak az átlagtól és akár a csapatok meghatározhatnának egy minimális pontszámot, amit elkell érni a jelentkezéshez.Viszont a 10 perc szerintem elég sok idő. Mármint jó a koncentráció képességet próbára tesszük. De akkor is elég unalmas végig ülni, amíg a teszt lefut.
+        </para>            
+        <para>
+            És most beszéljünk kicsit a programról a BrainBThread.cpp-ben hozzuk létre a hős osztályunkat és itt hozzuk létre(deklaráljuk) a hősünket Samut.A hős osztály konstruktorában. A mozgását az ablakban randommal számoljuk. A Qthread-ban határozzuk meg az eventeket.Ilyen  a pause. És magát, hogy a hőst hogyan jelnítse meg, hogy írja ki a nevét stb.A BrainBWin-ben vannak meghatározva a presd eventek vagyis, hogy az egérgomb levan -e nyomva vagy nincs és hogy az S el mentse el az eredményt a P-vel pause-oljon az ESC-el vagy Q-val pedig lépjen ki.Ha az egérgombot lenyomjuk akkor kezdődik a mérés.Az ifben vizsgáljuk, hogy az egér a hősünkön van -e ha igen akkor létrehozunk egy new entropyt ez a incCompban van a BrainBThread.h-ban és növeljük a hősünk agilityjét 2 vel ha nincs rajta akkor kiszedünk a vektorból egy entropyt és csökkentjük a hősünk agilityjét.
         </para>
+        <para>
+            Most pedig jöhet maga a slot signal mechanizmus. A slot-signal mechanizmussal az előző samucamos feladatban is találkoztunk. A signal mechanizmust megint az osztályoknál kell keresni a Q_Objectet, ami egy meta.
+            Ugyebár a meta object compiler az ami kezeli a qt-s c++ kiterjesztéseket.
+            Ez olvassa el a header fileokat és ha több osztály tartalmazza ezt a macrot akkor előállít egy olyan forrást, amely ezeknek tartalmazza a metaobjektum kódját.
+            Egyébként ez a metaobjektum kód szükséges a jel(signal) és a slot mechanizmushoz. Mindemellett a futási időben eldöntött típusinformációkhoz.
+            Most a signaloknál 2 függényt találunk:
+        </para>
+        <programlisting language="java"><![CDATA[
+            void heroesChanged ( const QImage &image, const int &x, const int &y );
+            void endAndStats ( const int &t );
+            ]]>
+          </programlisting>
+          <para>
+              A metódus nevekből már következtethetünk, hogy mikor fognak lefutni ezek a signalok. Az első ugyebár az objektumok mozgásakor azaz amikor az entropyk koordinátája változik.
+              A másodikban pedig az eredmény kiiratására a futás végén. De nézzük meg a cpp-ben ezek hívására. Ha signalt hívunk akkor az emit kulcsszót fogjuk alkalmazni így könnyen kikereshető.
+          </para>
+          <para>
+              A heroesChanged-et a thread headerben találjuk a kirajzolásnál. Míg az end statot a futtatásnál a thread cpp-ben.
+          </para>
+          <programlisting language="java"><![CDATA[
+            emit heroesChanged ( dest, heroes[0].x, heroes[0].y );
+            emit endAndStats ( endTime );
+
+            ]]>
+          </programlisting>
+          <para>
+              A signalok kapcsolása a connect-el történik a slotokhoz. A slotokat akkor kell meghívni ha egy signal bekövetkezik. Ezzel elkerülhetjük, hogy ne kelljen egy másik osztály függvényét meghívni.
+            A connecteket a win.cpp-ben találjuk. A signalok és a slotok felépítésének megkell egyezni, ahogy látszik a következő kódcsipetben:
+          </para>
+          <programlisting language="java"><![CDATA[
+            connect ( brainBThread, SIGNAL ( heroesChanged ( QImage, int, int ) ),
+                  this, SLOT ( updateHeroes ( QImage, int, int ) ) );
+
+        connect ( brainBThread, SIGNAL ( endAndStats ( int ) ),
+                  this, SLOT ( endAndStats ( int ) ) );
+
+            ]]>
+          </programlisting>
+        <figure>
+             <title>BrainB benchmark</title>
+        <mediaobject>
+                <imageobject>
+                    <imagedata fileref="img/BrainB.png" scale="30" />
+                </imageobject>
+        </mediaobject>
+        </figure>
     </section>
     <section>
         <title>OSM térképre rajzolása 6</title>
