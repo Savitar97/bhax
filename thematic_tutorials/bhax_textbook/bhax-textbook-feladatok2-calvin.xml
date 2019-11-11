@@ -75,8 +75,48 @@ https://arato.inf.unideb.hu/batfai.norbert/NEMESPOR/DE/denbatfai2.pdf 8. fóliá
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Kipróbálva:
         </para>
+        <figure>
+            <title>Teszt1</title>
+            <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/teszt1.jpg" scale="30" />
+               </imageobject>
+       </mediaobject>
+       </figure>
+       <figure>
+        <title>Teszt2</title>
+        <mediaobject>
+           <imageobject>
+               <imagedata fileref="img/teszt2.jpg" scale="30" />
+           </imageobject>
+   </mediaobject>
+   </figure>
+   <figure>
+    <title>Teszt3</title>
+    <mediaobject>
+       <imageobject>
+           <imagedata fileref="img/teszt3.jpg" scale="30" />
+       </imageobject>
+</mediaobject>
+</figure>
+<figure>
+    <title>Teszt4</title>
+    <mediaobject>
+       <imageobject>
+           <imagedata fileref="img/teszt4.jpg" scale="30" />
+       </imageobject>
+</mediaobject>
+</figure>
+<figure>
+    <title>Teszt5</title>
+    <mediaobject>
+       <imageobject>
+           <imagedata fileref="img/teszt5.jpg" scale="30" />
+       </imageobject>
+</mediaobject>
+</figure>
     </section>
     <section>
         <title>SMNIST for Machines</title>
