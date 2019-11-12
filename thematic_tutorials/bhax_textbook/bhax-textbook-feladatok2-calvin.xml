@@ -60,8 +60,93 @@ https://arato.inf.unideb.hu/batfai.norbert/NEMESPOR/DE/denbatfai2.pdf 8. fóliá
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            Ez nagyon hasonló az előzőhöz. Csak bonyolódik a számítás és nő az iterációk száma. 1000ről 20000-re.A deep mnist forrása szintén a 
+            tensorflow git repóban található mégpedig <link xlink:href="https://github.com/tensorflow/tensorflow/blob/r1.4/tensorflow/examples/tutorials/mnist/mnist_deep.py">itt</link>. 
         </para>
+        <para>
+            A képfeldolgozást átvesszük a soft mnistből. 
+        </para>
+        <programlisting language="java"><![CDATA[
+            def readimg():
+            file = tf.read_file("sajat8a.png")
+            img = tf.image.decode_png(file, 1)
+            return img
+            ]]>
+          </programlisting>
+          <para>
+              Ugyebár a readfile-al beolvassuk a képünket majd az img-nek átadjuk dekódolva. Az 1 itt azt jelenti ,hogy az output grayscale img-lesz.
+              Majd a függvényünk visszaadja a dekódolt képet.
+          </para>
+          <para>
+              A függvény meghívása a mainben történik.
+          </para>
+          <programlisting language="java"><![CDATA[
+            img = readimg()
+            image = img.eval()
+            image = image.reshape(28*28)
+            matplotlib.pyplot.imshow(image.reshape(28, 28), cmap=matplotlib.pyplot.cm.binary)
+            matplotlib.pyplot.savefig("8.png")
+            matplotlib.pyplot.show()
+            classification = sess.run(tf.argmax(y_conv, 1), feed_dict={x: [image], keep_prob: 1.0})
+            print("-- Ezt a halozat ennek ismeri fel: ", classification[0])
+            ]]>
+          </programlisting>
+          <para>
+              Ugyebár a readimgből kapott grayscalet az eval funkcióval hívjuk meg. Ez kikalkulálja a visszakapott értékből az új képet.
+              Ezt átméretezzük a reshape-el. Majd megmutatjuk a képet. És kimentjük a megadott néven. A classification-el választjuk ki a legjobban passzoló értéket. Vagyis
+              azt a képet amit valószínűleg a miénk ábrázol.
+          </para>
+          <para>
+              De lássuk az eredményt. Mondjuk elfelejtettem kiiratni elsőnek a classification-t. Viszont azon is látszik, hogy a számítások itt már bonyolódnak mivel a tanítási idő kb 30-40 percet vesz igénybe.
+              Talán még többet is. 
+          </para>
+          <figure>
+            <title>Deep mnist</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/deepmnist.png" scale="30" />
+               </imageobject>
+       </mediaobject>
+           </figure>
+        <para>
+            A feladat megértéséhez találtam egy nagyon jó weboldal linket ami vizuálisan jeleníti meg az egészet szerintem nagyon hasznos és látványos.
+            A linket erről <link xlink:href="http://scs.ryerson.ca/~aharley/vis/conv/">Itt</link> találjátok.
+        </para>
+        <figure>
+            <title>Deep mnist viz</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/deepviz.png" scale="150" />
+               </imageobject>
+       </mediaobject>
+           </figure>
+           <figure>
+            <title>Deep mnist viz1</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/deepviz1.png" scale="150" />
+               </imageobject>
+       </mediaobject>
+           </figure>
+           <para>
+               Az oldalon bal oldalt a menüben tudjuk kapcsolgatni a rétegeket.
+           </para>
+           <para>
+               Az első képen legalul található az input réteg. A kép amit megadunk. Amit követ egy CNN Convolutional layer. Ez egy matematikai műveletre a convolution-ra utal.
+               Ez csak annyit jelent,hogy a szimpla mátrix szorzást ez a konvolúció helyettesíti. Ez a konvolúció annyit csinál, hogy 2 függvényből létrehoz egy 3.-at. Így lesz az egy képünkből 6 db.
+               Ugyanis megnézi mitörténik ha egyik függvényt a másik mellé teszi. Mi lesz ha csak érintik egymást vagy a kettő egybe van. Majd ezt követi egy downsampling layer ami lényegében megcsinálja ennek a képnek a kicsinyített változatát.
+               Aztán jön egy újabb konvolúciós réteg. Észrevehető, hogy a 2. konvolúciónál már a 6-ból 16 példány keletkezett.  Ezt újra átméretezzük. Majd ebből megszületik az első teljesen összekapcsolt réteg. Ami már csak egy dimenziós tömb. Aztán ebből csinálunk egy újabb 
+               teljesen összekapcsolt réteget. Ebből a rétegből pedig már képesek vagyunk megmondani az eredményt. Tehát ebből lesz egy tömb ami a lehetséges kimeneteket tartalmazza. Itt például 0-9 ig a számok. Látható, hogy az ábrán is a legnagyobb értékűt kapjuk vissza.
+               A kódunkban ez lesz a classification[0]. Ezen kívül megfigyelhető,hogy a program lényegében azzal dönti el, hogy mi tartozik az elfogadó pixelbe, hogy számítások végeredménye pozitív vagy negatív lett.
+           </para>
+           <figure>
+            <title>Deepmnist eredmény</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/deepout.png" scale="150" />
+               </imageobject>
+       </mediaobject>
+           </figure>
     </section>        
     <section>
         <title>Android telefonra a TF objektum detektálója</title>
@@ -73,6 +158,13 @@ https://arato.inf.unideb.hu/batfai.norbert/NEMESPOR/DE/denbatfai2.pdf 8. fóliá
         </para>
         <para>
             Megoldás forrása:                
+        </para>
+        <para>
+            A feladat az volt, hogy töltsük le a tensorflow-os demo-t telefontra.Ezt a gitubjukon találjuk: <link xlink:href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android">Itt!</link>.
+            Hát látható, hogy sötétben elég pontatlan. Vicces eredmények születtek. Például szinte mindenre rámondta, hogy az bizony egy macska.
+            Még a számítógépes egér perifériára is.Mind a 4 modult kipróbáltam a speech nem ismert fel semmilyen hangot. Az stylizer hát elég érdekes világnézetet ad.
+            A Classify és a detectről pedig lent láthatók a képek. A felélesztés viszont könnyen ment android stúdióba új létező projektként behúztam aztán a telefonomat használtam emulátorként.
+
         </para>
         <para>
             Kipróbálva:

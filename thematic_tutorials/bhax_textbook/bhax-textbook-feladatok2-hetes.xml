@@ -439,8 +439,121 @@ kiindulhatsz, mondjuk az komplexebb, mert ott időfejlődés is van...)
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A feladatnál a GPS trackert próbáltam megvalósítani. Ehhez az android stúdiót használtam. Ahol lehetséges Google Maps Activity project létrehozása.
+            A feladathoz szükségünk van egy Google Maps Api keyre ezt a google_maps_api.xml fileban található link segítségével igényelhetünk a legkönnyebben.
+            Majd az androidmanifest.xml-ben megkell adnunk, a permissionokat. Amik a következők:
         </para>
+        <programlisting language="xml"><![CDATA[
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+            <uses-permission android:name="android.permission.INTERNET"/>
+            ]]>
+          </programlisting>
+          <para>
+              Mielőtt neki kezdenénk az egésznek nézzük meg az ActivityLifeCycle-t.
+          </para>
+          <figure>
+            <title>Activity life cycle</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/activity_lifecycle.png" scale="30" />
+               </imageobject>
+       </mediaobject>
+       </figure>
+       <para><link xlink:href="https://developer.android.com/guide/components/activities/activity-lifecycle#java">Forrás innen</link></para>
+       <para>
+           Innen nekünk az onStop és az onCreate a szükséges. Arról, hogy mit kell ide írnunk a képnél lévő link bővebb információt nyújt azt most nem tárgyalnám.
+           Röviden annyi, hogy az onCreatebe írunk minden olyan kódot ami az activity létrehozásához kell. Indító logika stb. Az onStopba írjuk mi történjen amikor leáll az applikáció
+           vagy befejezi a futását.
+       </para>
+       <para>
+           Kezdjük a permission kéréséhez a jelenlegi helyzetünkhöz.
+       </para>
+       <programlisting language="java"><![CDATA[
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                Toast.makeText(getApplicationContext(),
+                    "Application will not run without location services!", Toast.LENGTH_SHORT).show();
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        REQUEST_LOCATION_PERMISSION);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            // Permission has already been granted
+        }
+        ]]>
+      </programlisting>
+      <para>
+          Ugyebár megvizsgáljuk van -e jogosultságunk, hogy elérjük a locationt. Ha nincs akkor kérjük, hogy adja meg az engedélyt a felhasználó.
+          Ha nem adta meg az elején akkor elmagyarázzuk miért szükséges az engedély és újra kérjük.
+      </para>
+      <para>
+          Ugyebár az elején meghívtuk a location managert, amely hozzáférét biztosít az eszköz pontos helyéhez. A location listenert használjuk, hogy
+          értesítéseket fogadjunk a managertől ha változik a koordináta. Nézzük meg, hogy definiáljuk a location listener.
+      </para>
+      <programlisting language="java"><![CDATA[
+        locationListener = new LocationListener() {
+            
+            public void onLocationChanged(Location location) {
+                LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
+                if (marker != null){
+                    mMap.addPolyline(new PolylineOptions()
+                            .add(marker.getPosition(), latLng)
+                            .width(10)
+                            .color(Color.BLUE));
+
+                    marker.remove();
+
+                    marker = mMap.addMarker(new MarkerOptions().position(latLng).title("MyPosition:" + location.getLatitude() + ":" + location.getLongitude()));
+                    mMap.setMaxZoomPreference(30);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, mMap.getCameraPosition().zoom));
+                }
+                else {
+                    marker = mMap.addMarker(new MarkerOptions().position(latLng).title("MyPosition:" + location.getLatitude() + ":" + location.getLongitude()));
+                    mMap.setMaxZoomPreference(30);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18.0f));
+                }
+            }
+
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+
+            }
+        };
+        ]]>
+      </programlisting>
+      <para>
+          Ugyebár mikor meghívjuk a new location listenert a következő ovverride függvény részeket létrehozza. Nekünk az onLocationChangedre van szükségünk
+          ugyanis GPS trackert hozunk létre. Létrehozunk egy latitude longitude osztályú objektumot. Ami paraméterként 2 értéket kap a lekérdezett szélességi és hosszúsági fok információkat.
+          Majd vizsgáljuk a marker objektumunkat. Ha még nem létezik akkor leteszünk egyet a térképre a jelenlegi szélességi és hosszúsági fokra a térképen.
+          Ha már van markunk akkor az if true ága fut le. Azaz létrehozunk egy vonalat a jelenlegi pontig aztán ledobunk egy új markot a vonal végére végülis és ezzel együtt mindig mozgatjuk a kamerát
+          a jelenlegi pozíciónkra.
+      </para>
+
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                

@@ -19,8 +19,53 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/ch01.html#id52728
             Megoldás forrása:                
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A feladat az volt, mutassunk rá a kivételkezelés szerepére a fenti programban. Ugyebár a kivételkezelés a javaban is try-catch szerkezettel történik.
+
         </para>
+        <programlisting language="java"><![CDATA[
+            public static void main(String[] args) {
+        
+                for(int i=0; i<1024; ++i)
+                    
+                    try {
+                        
+                        java.net.Socket socket = new java.net.Socket(args[0], i);
+                        
+                        System.out.println(i + " figyeli");
+                        
+                        socket.close();
+                        
+                    } catch (Exception e) {
+                        
+                        System.out.println(i + " nem figyeli");
+                        
+                    }
+            }
+            ]]>
+          </programlisting>
+          <para>
+              A program argumentumként egy címet vár. Mi localhosttal fogjuk használni. Mivel ez akár a támadható portok felderítésére is alkalmazható lenne.
+          </para>
+          <figure>
+            <title>Port scan</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/portscan.png" scale="30" />
+               </imageobject>
+       </mediaobject>
+       </figure>
+          <para>
+              Végig zongorázzuk 1024 ig a portokat ha sikerül kapcsolatot létrehozni az adott porton akkor ott van egy szerver folyamat. Ekkor lényegében nem csinálunk semmit
+              csak bezárjuk a socketet. Ha nem sikerül kapcsolatot létesíteni akkor azt a hibakezelő kapja el. 
+          </para>
+          <figure>
+            <title>Scan Exception</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/socket.png" scale="30" />
+               </imageobject>
+       </mediaobject>
+       </figure>
     </section>        
 
     <section>
@@ -40,6 +85,109 @@ feladat volt korábban.)
         </para>
     </section>        
     <section>
+                <title>Android Játék</title>
+                <para>Írjunk egy egyszerű Androidos „játékot”! Építkezzünk például a 2. hét „Helló, Android!” feladatára!</para>
+                <para>
+                    Androidos játéknak egy üvegpörgetős játékot csináltam kicsit átalakítva a vizualizációt.
+                </para>
+                <para>
+                    Elsőként a felhasznált backgroundot és a képet amit majd pörgetek bele kellett másolnom a drawable-ba. Majd az activity_main.xmlben módosítani a backgroundot és felvenni az image-t.
+                </para>
+                <programlisting language="java"><![CDATA[
+                    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/background"
+                    tools:context=".MainActivity">
+
+                    <ImageView
+                        android:id="@+id/yasu"
+                        android:layout_width="800dp"
+                        android:layout_height="800dp"
+                        android:src="@drawable/yas"
+                        android:layout_centerInParent="true"
+                        android:onClick="spinToWin"
+                        />
+                    ]]>
+                  </programlisting>
+                  <para>
+                      Itt ami lényeg nekünk azt a +id amivel hivatkozhatunk majd erre az image-re. És az onClick. Mivel
+                      ez fog hivatkozni a pörgetés függvényre.
+                  </para>
+                  <programlisting language="java"><![CDATA[
+                    private ImageView yasuo;
+                    private Random random = new Random();
+                    private int lastDir;
+                    private boolean spinning;
+
+                    @Override
+                    protected void onCreate(Bundle savedInstanceState) {
+                        super.onCreate(savedInstanceState);
+                        setContentView(R.layout.activity_main);
+
+                        yasuo = findViewById(R.id.yasu);
+                    }
+                    ]]>
+                  </programlisting>
+                  <para>
+                      Kezdetben felvesszük a szükséges változókat. Majd az onCreateben beállítjuk a view-ot. És az imageview-nak a findViewById átadjuk a kép id-ját.
+                      Ezért volt nagyon lényeges nekünk az id.
+                  </para>
+                  <programlisting language="java"><![CDATA[
+                    public void spinToWin(View v) {
+                        if (!spinning) {
+                            int newDir = random.nextInt(3600);
+                            float pivotX = yasuo.getWidth() / 2;
+                            float pivotY = yasuo.getHeight() / 2;
+                
+                            Animation rotate = new RotateAnimation(lastDir, newDir, pivotX, pivotY);
+                            rotate.setDuration(2500);
+                            rotate.setFillAfter(true);
+                            rotate.setAnimationListener(new Animation.AnimationListener() {
+                                @Override
+                                public void onAnimationStart(Animation animation) {
+                                    spinning = true;
+                                }
+                
+                                @Override
+                                public void onAnimationEnd(Animation animation) {
+                                    spinning = false;
+                                }
+                
+                                @Override
+                                public void onAnimationRepeat(Animation animation) {
+                
+                                }
+                            });
+                
+                            lastDir = newDir;
+                            yasuo.startAnimation(rotate);
+                        }
+                    }
+                    ]]>
+                  </programlisting>
+                  <para>
+                      Majd jön a függvény amivel pörgetjük az onClick-re. Ugyebár meghívunk egy rotate animation-t. Mert meg akarjuk forgatni.
+                      Az új irányt randommal adjuk meg 3600 al számolunk mert azt akarjuk, hogy esetleg többször is körbe tudjon fordulni. A duration-el adjuk meg, hogy mennyi ideig tartson az animáció millisecben.
+                      A fill after azt adja meg, hogy az animáció transzformációja az animáció befejeztével történjen. A pivot az az x,y tengely. Majd az animáció listenerben az animáció kezdeténél
+                      a forgást true-ra állítjuk. A végeztével false-oljuk. Aztán ugyebár az előző szögnek átadjuk az új szöget.
+                  </para>
+                  <figure>
+                        <title>PoroSpin</title>
+                   <mediaobject>
+                           <imageobject>
+                               <imagedata fileref="img/porospin.jpg" scale="50" />
+                           </imageobject>
+                   </mediaobject>
+                   </figure>
+                  <para>Képek forrása:</para>
+                  <para>
+                       <link xlink:href="https://en.wikipedia.org/wiki/Thrash_Zone">https://en.wikipedia.org/wiki/Thrash_Zone</link>
+                  </para>
+                  <para><link xlink:href="https://www.pngkit.com/view/u2t4i1o0y3u2t4t4_project-yasuo-png-league-of-legends-yasuo-pixel/">https://www.pngkit.com/view/u2t4i1o0y3u2t4t4_project-yasuo-png-league-of-legends-yasuo-pixel/</link></para>
+        </section>
+        <section>
         <title>Junit teszt</title>
         <para>
             A https://progpater.blog.hu/2011/03/05/labormeres_otthon_avagy_hogyan_dolgozok_fel_egy_pedat
@@ -52,9 +200,82 @@ volt korábban).
         <para>
             Megoldás forrása:                
         </para>
+        
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A feladat az volt, hogy kézzel számoljuk ki a binfának a szórását, mélységét.
         </para>
+        <para>
+            A gép által számított értékek a következők:
+        </para>
+        <figure>
+                <title>Gép által számított értékek</title>
+           <mediaobject>
+                   <imageobject>
+                       <imagedata fileref="img/JunitTeszt.png" scale="30" />
+                   </imageobject>
+           </mediaobject>
+           </figure>
+           <para>
+               Majd az általam számított értékek: 
+           </para>
+           <figure>
+                <title>Kézzel számolt értékek</title>
+           <mediaobject>
+                   <imageobject>
+                       <imagedata fileref="img/Junitkezzel.jpg" scale="30" />
+                   </imageobject>
+           </mediaobject>
+           </figure>
+           <para>
+               És most tesztelés Junittal.
+           </para>
+           <programlisting language="java"><![CDATA[
+            public class LZWBinFaTest {
+                LZWBinFa binfa = new LZWBinFa();
+                
+                String str = "0111100101100";
+                
+                @Test
+                public void atlagTest() {
+                    for(int i = 0; i < str.length(); i++){
+                        binfa.push_back(str.charAt(i));
+                    }
+                    double atlag = binfa.getAtlag();
+                    assertEquals(2.25, atlag, 0.001);
+                }
+                @Test
+                public void szorasTest() {
+                    for(int i = 0; i < str.length(); i++){
+                        binfa.push_back(str.charAt(i));
+                    }
+                    double szoras = binfa.getSzoras();
+                    assertEquals(0.5, szoras, 0.001);
+                }
+                @Test
+                public void melysegTest() {
+                    for(int i = 0; i < str.length(); i++){
+                    binfa.push_back(str.charAt(i));
+                    }
+                    double melyseg = binfa.getMelyseg();
+                    assertEquals(3, melyseg, 0.001);
+                }
+            }
+            ]]>
+          </programlisting>
+          <para>
+              Ugyebár a stringben megadjuk a bitsorozatot amit várunk. Majd ezt bitenként minden tesztben feldolgozzuk.
+              Az assertEqual függvényben megadjuk a várt értéket és átadjuk a program által kiszámolt értéket. Az utolsó érték
+              az eltérést adja meg ez természetesen a kerekítésből fakadhat.
+          </para>
+          <figure>
+            <title>Junittal teszt</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/JunitTESZT.png" scale="30" />
+               </imageobject>
+       </mediaobject>
+       </figure>
+  
     </section>
     
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
