@@ -17,7 +17,7 @@
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:  <link xlink:href="https://github.com/nbatfai/future/tree/master/cs/F6">https://github.com/nbatfai/future/tree/master/cs/F6</link>                
         </para>
         <para>
             A feladatunk az volt, hogy keressünk bugokat és javítsuk azokat.Kezdjük magával az applikáció beüzemelésével. Én az intellj idea-t használtam a futtatáshoz.
@@ -125,7 +125,9 @@ emulator/blob/master/justine/rcemu/src/carlexer.ll
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/nbatfai/robocar-
+            emulator/blob/master/justine/rcemu/src/carlexer.ll">https://github.com/nbatfai/robocar-
+            emulator/blob/master/justine/rcemu/src/carlexer.ll</link>                 
         </para>
         <para>
             Az sscanf szerepe, hogy megadott formájú stringet olvassunk be és itt az a lényeg, hogy a hálózatról megkapott adatokat 
@@ -169,7 +171,7 @@ https://github.com/nbatfai/SamuCam
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/nbatfai/SamuCam">https://github.com/nbatfai/SamuCam</link>                 
         </para>
         <para>
             A SamuCam ugyebár Qt-t használ tehát a futtatáshoz telepítenünk kell a Qt-t. Majd kiadnunk a következő parancsot
@@ -436,7 +438,7 @@ kiindulhatsz, mondjuk az komplexebb, mert ott időfejlődés is van...)
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/GPS">https://github.com/Savitar97/Prog2/tree/master/GPS</link>                
         </para>
         <para>
             A feladatnál a GPS trackert próbáltam megvalósítani. Ehhez az android stúdiót használtam. Ahol lehetséges Google Maps Activity project létrehozása.

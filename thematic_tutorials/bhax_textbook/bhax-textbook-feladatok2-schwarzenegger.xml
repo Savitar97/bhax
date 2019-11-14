@@ -16,7 +16,7 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/ch01.html#id52728
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Portscan">https://github.com/Savitar97/Prog2/tree/master/Portscan</link>                  
         </para>
         <para>
             A feladat az volt, mutassunk rá a kivételkezelés szerepére a fenti programban. Ugyebár a kivételkezelés a javaban is try-catch szerkezettel történik.
@@ -78,14 +78,131 @@ feladat volt korábban.)
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/AspectJ">https://github.com/Savitar97/Prog2/tree/master/AspectJ</link>               
         </para>
         <para>
-            Tanulságok, tapasztalatok, magyarázat...
+            A feladat elkezdéséhez telepítenünk kell az aspect j-t. Ubuntun ezt a következőképpen tudjuk megcsinálni: <command>sudo apt install aspectj</command>.
+            Majd a következő paranccsal kell fordítanunk:<command>ajc LZWBinFa.java Aspect.aj</command>.Az aspect előnye annyi, hogy úgy írhatunk a kódunkba,hogy lényegébe abba nem kell belenyúlnunk.
+            Emellett a nyomkövetést is segíti. Számomra elég bonyolultnak tűnt a használata főleg ha már osztályból kellett adatot kiszedni. Egy másfajta szemléletmódot igényel szerintem. Néhány alap fogalom
+            A csatlakozási pont vagy joint pont egy olyan pont a programban amikor valami történik. Ilyen például amikor egy metódus meghívódik vagy egy kivételt throwolunk,inicializálunk egy objektumot stb.
+            A pointcutnak van egy jobb és bal oldala kettőspont választja el a kettőt.Bal oldalon a pointcut neve és paraméterei állnak. Az paraméterekben az elérhető adatokhoz férhetünk hozzá ha lefut a metódus.
+            A jobboldalt maga a pointcut szerepel. Ez általában a call vagy az execution. Ebben írjuk meg, hogy mire utal a pointcut a valódi osztályunkban.
         </para>
+        <para>
+            Advice-ok lényegében a before, after és around. Tehát, hogy a metódus hívása előtt,után vagy közben esetleg helyett fusson le. A within paranccsal mondhatjuk meg,hogy melyik osztályból akarjuk használni.
+            A target az a java objektum ami a metódust hívja.Argumentumok azok az értékek amiket a metódusban hívunk.
+        </para>
+        <programlisting language="java"><![CDATA[
+            private long egyes = 0;
+            private long nullas = 0;
+            pointcut pushback() : execution(public void push_back(char));
+            before(char ch): pushback() && args(ch){
+            if(ch == '1'){
+            egyes++;
+            } else {
+            nullas++;
+            }
+            }
+            pointcut main() : execution(public static void main(String[]));
+            after() : main(){
+            System.out.println("Egyesek száma: " + egyes);
+            System.out.println("Nullások száma: " + nullas);
+            }
+            ]]>
+          </programlisting>
+          <para>
+              Vegyük elsőnek példának az egyesek és nullások megszámlálását. Ugyebár deklarálunk és inicializálunk 2 változót amibe majd tároljuk
+              a megszámolt értékeket. Aztán jön a pointcutunk aminek a neve pushback lesz. A jobb oldala maga a point cut. Tehát oda tesszük a pointcutot 
+              ahol lefut a fő program push_back(char) függvénye. Aztán mielőtt ez lefut az argumentum karakterjét átadjuk és megnézzük egyes-e vagy nulla.
+              Majd létrehozunk egy új pointcutot a mainre. És megmondjuk, hogy miután lefut a main írjuk ki a megszámol egyesek és nullások számát.
+          </para>
+          <para>
+              Most nézzük meg a kiir függvényre való pointcut-unkat:
+          </para>
+          <programlisting language="java"><![CDATA[
+            public pointcut meghiv(LZWBinFa.Csomopont n, PrintWriter os) 
+            : call(void LZWBinFa.kiir(LZWBinFa.Csomopont, PrintWriter)) && args(n,os);
+            
+            after(LZWBinFa.Csomopont n, PrintWriter os) : meghiv(n, os)
+            {   
+                
+
+                try{
+                os=new PrintWriter("preorder.txt");
+                preOrder(n,os);
+                os.flush();
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                
+                depth = 0;
+                try{
+                os=new PrintWriter("postorder.txt");
+                postOrder(n,os);
+                os.flush();
+                
+                }
+                catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                
+
+            }
+            
+            
+            public void preOrder(LZWBinFa.Csomopont n, PrintWriter p) 
+            {
+
+                if (n != null)
+                {
+
+                    ++depth;
+                    for (int i = 0; i < depth; ++i)
+                    p.print("---");
+                    p.print(n.getBetu () + "(" + depth + ")\n");
+                    preOrder (n.getBalNulla (), p);
+                    preOrder (n.getJobbEgy (), p);
+                    --depth;
+                }
+            }
+            public void postOrder(LZWBinFa.Csomopont n, PrintWriter p) 
+            {
+                if (n != null)
+                {
+                    
+                    ++depth;
+                    postOrder (n.getBalNulla (), p);
+                    postOrder (n.getJobbEgy (), p);
+                    for (int i = 0; i < depth; ++i)
+                        p.print("---");
+                    p.print(n.getBetu () + "(" + depth + ")\n");
+                    --depth;
+                }
+            }
+            ]]>
+          </programlisting>
+          <para>
+              Na itt a pointcutunkat a kiir függvény hívására tesszük.Argumentumként átvesszük a printwriter és a csomópont n-t.
+              Aztán a már megszokott pre és post order bejárásunkat láthatjuk függvényként ez bevprogról már ismerős volt. Ugyebár alapból
+              inorder-ben iratjuk ki. Aztán megmondjuk, hogy minden egyes kiir hívás után hajtódjon végre a másik két kiir függvény is.
+              Fontos a try-catch szerkezet máskülönben errort kapunk, hogy nincs ami elkapja az exceptiont. Emellett nagyon fontos szerepet játszik
+              még az, hogy 2 FileWriter os-t hozok létre. És mind a 2-t flush-ölöm.Ugyebár a flush a bufferben lévő stringet azonnal kiírja.
+          </para>
+          <figure>
+            <title>Pre-post-inorder AspectJ-vel</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/AspectPreInPost.png" scale="30" />
+               </imageobject>
+       </mediaobject>
+       </figure>
     </section>        
     <section>
                 <title>Android Játék</title>
+                <para>
+                    Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/PoroSpin">https://github.com/Savitar97/Prog2/tree/master/PoroSpin</link>  
+                </para>
                 <para>Írjunk egy egyszerű Androidos „játékot”! Építkezzünk például a 2. hét „Helló, Android!” feladatára!</para>
                 <para>
                     Androidos játéknak egy üvegpörgetős játékot csináltam kicsit átalakítva a vizualizációt.
@@ -198,7 +315,7 @@ volt korábban).
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/JavaApplication3">https://github.com/Savitar97/Prog2/tree/master/JavaApplication3</link>              
         </para>
         
         <para>

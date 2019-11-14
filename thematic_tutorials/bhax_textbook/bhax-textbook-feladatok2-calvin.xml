@@ -57,7 +57,7 @@ https://arato.inf.unideb.hu/batfai.norbert/NEMESPOR/DE/denbatfai2.pdf 8. fóliá
             Megoldás videó:
         </para>
         <para>
-            Megoldás forrása:                
+            Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/tensor">https://github.com/Savitar97/Prog2/tree/master/tensor</link>               
         </para>
         <para>
             Ez nagyon hasonló az előzőhöz. Csak bonyolódik a számítás és nő az iterációk száma. 1000ről 20000-re.A deep mnist forrása szintén a 
