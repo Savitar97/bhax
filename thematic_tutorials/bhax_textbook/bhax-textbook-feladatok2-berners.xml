@@ -208,7 +208,19 @@
           <para>
               Szerializáció: Az objektumokat byte sorozattá alakítja. A használatához egy interface szükséges a Serializable.
           </para>
-  
+          <para>
+              Kivételkezelés: lényegében ez a hibakezelés, ha futási időben valamilyen probléma történik, amire számítunk, hogy bekövetkezhet. Például: rossz file név, kevés bemeneti argumentum stb.
+              Akkor ezeket képesek vagyunk kezelni és a futást a hibakezelő ágon folytatni. Ez C++-ban és Javaban is a try catch segítségével történik. De persze nem csak hiba felmerülésekor dobhatunk
+              exceptiont azaz kivételt. Javaban természetesen ez is objektum lesz mivel osztályokon alapszik az egész. És persze kiegészül a try-catch szerkezet egy finally-val.
+          </para>
+          <para>
+              Annotációk: @-al jelöljük őket a kódban. Ez lényegében a fordítónak nyújt segítséget. Nagyon gyakran fordul elő Javaban az @Override. Lényegében ez azt mondja meg, hogy felüldefiniáljuk a függvényét
+              a szülő osztálynak. Tehát a fordítónak ellenőriznie kell, hogy ez megtörténik -e.
+          </para>
+          <para>
+              Multiparadigmás nyelvek: Ahogy a neve is sugallja ezek olyan nyelvek, amelyek több programozási paradigmát támogat. Ezzel nyújt nagyobb szabadságot a programozónak. Tehát több eszközt is nyújt a programozónak
+              egy probléma megoldására. És a programozó feladata a számára leghasznosabb kiválasztása.
+          </para>
   
     </section>
     <section>
