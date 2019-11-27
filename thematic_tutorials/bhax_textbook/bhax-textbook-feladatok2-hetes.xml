@@ -423,6 +423,26 @@ talent-search
                 </imageobject>
         </mediaobject>
         </figure>
+        <para>
+            A fenti slot signal mechanizmus már elavult, de még támogatott. De ehelyett már létezik egy újabb, amelynél már lambda kifejezéseket is alkalmazhatunk.
+        </para>
+        <programlisting language="java"><![CDATA[
+            connect(
+                sender, &Sender::valueChanged,
+                receiver, &Receiver::updateValue
+            );
+            connect(
+                sender, &Sender::valueChanged,
+                [=]( const QString &newValue ) { receiver->updateValue( "senderValue", newValue ); }
+            );
+            ]]>
+          </programlisting>
+          <para>
+              Az új szintaxis előnye, hogy fordítási időben ellenőrzi, hogy létezik -e a slot vagy a signal hozzá. És jelez ha esetleg a QObjectünk hiányzik.
+              Az argumentumok már lehetnek típusdefiníciók vagy különböző névterekben definiáltak. Emellett lehetőséget nyújt automatikus típus kasztolásra. Ha ez implicit konverzió.
+              Ezen kívül lehetőség van kapcsolni bármilyen tag függvényt a Qobjekthez, nem csak slotokat.
+          </para>
+  
     </section>
     <section>
         <title>OSM térképre rajzolása 6</title>
