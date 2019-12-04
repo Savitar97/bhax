@@ -200,10 +200,10 @@ szemantikáját, a mozgató konstruktort alapozd a mozgató értékadásra!
                     </imageobject>
                 </mediaobject>
         </figure>
-        <figure>
+        <para>
             A feladat az elméleti részhez úgy kapcsolódik, hogy beleláthattunk milyen a konstruktorok használata és, hogy ezekből több is lehet.
             Illetve a destruktor implementálását használhattuk. Illetve ezen kívül a binfában találkozhatunk operátor túlterheléssel is.
-        </figure>
+        </para>
     </section>        
     <section>
         <title>Változó argumentumszámú ctor</title>
