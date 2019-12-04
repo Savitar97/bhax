@@ -110,6 +110,10 @@
         }
           ]]>
         </programlisting>
+        <para>
+            A feladat az elmélethez úgy kapcsolódik, hogy egy egyszerű osztály szervezést mutat be. Találunk itt tagváltozókat, metódusokat, példányosítást.
+            Emellett még az egységbe zárás jelenik meg. De ez olyan általános hiszen a sima függvényeknél is tapasztaltuk már. Láthatósági szintekből a public tűnik fel.
+        </para>
     </section>        
 
     <section>
@@ -133,6 +137,7 @@
             <para>Ebben a feladatban tutoráltam Molnár Antal Albertet,Ádám Petrát.</para>
         </caution>
         <para>
+            Az elmélet a feladathoz úgy kapcsolódik, hogy rávilágít két objektum orientált nyelv között elég könnyű az átmenet itt például a pointerek elhagyása szemléltette ezt.Tehát itt a paradigma játszik nagyobb szerepet az elméletből.
             A binfa java a c++-hoz képest nem sokat változik. A különbség annyi, hogy itt nem választhatunk, hogy tagként,referenciaként vagy esetleg pointerként adjuk át a csomópontot.
             Ugyanis a javaban nincsenek pointerek. A létrehozott <classname>Node</classname> osztály azaz a csomópont osztály tartalmaz egy érték változót és egy jobb és egy bal oldali objektumát a csomópontnak.
             Ezen kívül tartalmazza a jobb és baloldali csomópontok értékének lekérdezéséhez szükséges get függvényeket és az értékek beállításához szükséges set függvényeket, ezen kívül a csomópont értékének lekérdezéséhez szükséges get függvény.
@@ -416,6 +421,9 @@
                 </imageobject>
         </mediaobject>
         </figure>
+        <para>
+            Itt szintén az osztály definícióit használtuk. Javaba ugyebár minden is objektum. Emellett a beépített Integer osztályjal ismerkedtünk.
+        </para>
     </section>
     <section>
         <title>Yoda</title>
@@ -579,6 +587,7 @@
         </programlisting>
         <para>
             A végeredmény nem lett teljesen jó sajnos.6C65E52CB459350050E4BB1 helyett 6C65E5308 jött ki. A d=1000001 értéknél.
+            Az elméletből itt szintén az osztályhasználatot figyelhetjük meg.
         </para>
         <figure>
              <title>Scratch</title>

@@ -24,6 +24,10 @@
             A beüzemeléshez szükségünk van arra, hogy letöltsük a javafx-et. Én a 13-ast használom amit innen tölthettek le:<link xlink:href="https://openjfx.io/openjfx-docs/">https://openjfx.io/openjfx-docs/</link>.
             Majd indítsuk el az intellij-t és file/new/project from existing source. Majd behúzzuk az F6-ot. Ezután könyvtárként behúzzuk a javafx library-t. Amit a file/project structure-ban tudunk megtenni.
         </para>
+        <para>
+            A feladat az elmélethez úgy kapcsolódik, hogy maga a program a funkcionalitását az IO-val nyeri el. Ugyanis tevékenységeket veszünk fel adatokat írunk és mentünk le.
+            Ez mind-mind adatfolyamokkal lehetséges.
+        </para>
         <figure>
                 <title>JavaFx</title>
                     <mediaobject>
@@ -133,6 +137,10 @@ emulator/blob/master/justine/rcemu/src/carlexer.ll
             Az sscanf szerepe, hogy megadott formájú stringet olvassunk be és itt az a lényeg, hogy a hálózatról megkapott adatokat 
             a megfelelő változóba táruljuk el. 
         </para>
+        <para>
+            Az elmélethez az IO adat feldolgozása és az sscanf szerepe ebben szerepel.És a lexer adatfeldolgozása jelenik még meg. Mindemellett 
+            nagyon jól láthatjuk, hogy hogyan képes a program feldolgozni a saját maga által standard input-ra generált adatot.
+        </para>
         <programlisting language="java"><![CDATA[
             std::vector<justine::sampleclient::MyShmClient::Gangster> justine::sampleclient::MyShmClient::gangsters ( boost::asio::ip::tcp::socket & socket, int id,
             osmium::unsigned_object_id_type cop )
@@ -176,6 +184,10 @@ https://github.com/nbatfai/SamuCam
         <para>
             A SamuCam ugyebár Qt-t használ tehát a futtatáshoz telepítenünk kell a Qt-t. Majd kiadnunk a következő parancsot
             <command>~/Qt/5.12.2/gcc_64/bin/qmake SamuLife.pro</command>. Ezután a <command>make</command>-et és már futtathatjuk is a SamuCamunkat.
+        </para>
+        <para>
+            A program az elmélethez most is az IO és a streammel kapcsolódik csak most a bemeneti adatunk nem egy szöveg vagy egy fájl hanem real life adatokkal dolgozunk. Mégpedig folyamatosan változó adatokkal.
+
         </para>
         <para>
             A samucam futtatása a következő paranccsal történik <command>./SamuCam --ip http://127.0.0.1:8081/ 2>out</command> mivel ugyebár argumentumként várja az ipcamunk címét.
@@ -371,6 +383,9 @@ talent-search
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog1/tree/master/BrainBbench">https://github.com/Savitar97/Prog1/tree/master/BrainBbench</link>               
         </para>
         <para>
+            Elméleti téren a BrainB a fájlba írásával kapcsolódik az anyaghoz. Ugyanis amikor letelik az idő a save függvény lefutásával kimenti az eredményünket illetve egy képet.
+        </para>
+        <para>
             A BrainB benchmark egy felmérés. Amely főleg az mmorpgvel játszó játékosokat képes mérni. Mégpedig azt, hogy mennyire képesek követni a karakterüket a tömegbe. A lényeg,hogy az egérmutatót a karakterünkön samun tartsuk a játék pedig egyre több hőst generál a karakterünk köré és 10 percen keresztül nem szabad elveszteni a karakterünk nyomát.Majd a benchmark ad egy eredményt, amely számosítja a teljesítményét a játékosnak. Ez alapján készíthetünk esetleg egy táblázatot, hogy meghatározzuk sávokban is a pontszámokat, így megtudjuk ki a jobb képességű.A moba területen is hasznos lehet a játék ugyanis a teamfightokban a sok effekt között könnyen eveszíthetjük a karakterünket vagy épp a focusolandó enemy játékosét.
             Ezzel a programmal lehetséges, mérni az egyén teljesítőképességét és kiválogatni azokat akik sokkal jobbak az átlagtól és akár a csapatok meghatározhatnának egy minimális pontszámot, amit elkell érni a jelentkezéshez.Viszont a 10 perc szerintem elég sok idő. Mármint jó a koncentráció képességet próbára tesszük. De akkor is elég unalmas végig ülni, amíg a teszt lefut.
         </para>            
@@ -459,6 +474,10 @@ kiindulhatsz, mondjuk az komplexebb, mert ott időfejlődés is van...)
         </para>
         <para>
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/GPS">https://github.com/Savitar97/Prog2/tree/master/GPS</link>                
+        </para>
+        <para>
+            Megint a streameké a főszerep. Most a gps koordinátákat kell kezelnünk. Bár az android stúdió rengeteg segítő kezet ad hozzá. A samu camhez hasonlóan szintén real life változó adatokkal kell dolgoznunk.
+            Csak annyi a különbség, hogy míg ott webkamera képpel dolgoztunk itt csak számokkal.
         </para>
         <para>
             A feladatnál a GPS trackert próbáltam megvalósítani. Ehhez az android stúdiót használtam. Ahol lehetséges Google Maps Activity project létrehozása.

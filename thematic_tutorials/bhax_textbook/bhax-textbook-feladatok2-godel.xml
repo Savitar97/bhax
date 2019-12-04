@@ -19,6 +19,7 @@ https://youtu.be/DL6iQwPx1Yw (8:05-től)
             Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/robocar-emulator">https://github.com/Savitar97/Prog2/tree/master/robocar-emulator</link>               
         </para>
         <para>
+            Az elmélethez ugyebár a lambda kifejezéssel kapcsolódik, de ezt a feladat leírásából is tudhattuk előre.
             A lambda kifejezések a C++11 óta részei a nyelvnek. A lambda kifejezések jellemzője, hogy a visszatérési értékük automatikus. A feladat, hogy vizsgáljuk meg a robotautóban
             a gangsterek rendezését. Ugyebár a rendezés alpja a távolság a rendőröktől. Tehát minél közelebb van egy Gangster objektum egy rendőr objektumhoz annál előrébb kerül a listán.
             Ez azért szükséges, hogy a rendőrök mindig a hozzájuk legközelebb eső Gangstert kezdjék el üldözni. Így a lambdába bemenő két Gangster típúsú paraméter az x és y lesz. A paramétereket ()-be tesszük.
@@ -63,6 +64,7 @@ https://youtu.be/DL6iQwPx1Yw (8:05-től)
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Map">https://github.com/Savitar97/Prog2/tree/master/Map</link>           
         </para>
         <para>
+            A feladat az elmélethez a Map miatt kapcsolódik ugyebár ez egy kollekció vagyis egy olyan adatszerkezet amely képes különböző típúsú adatokat letárolni.
             Egy map érték szerinti rendezése volt a feladat. A mapok kulcs-érték párok. Nézzük is meg, hogyan lehet deklarálni egy mapot c++-ban és, hogyan tudunk értékeket felvenni benne.
         </para>
         <programlisting language="java"><![CDATA[
@@ -168,6 +170,9 @@ Interface Comparable szerepét!
         </para>
         <para>
             Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/Tabella">https://github.com/Savitar97/Prog2/tree/master/Tabella</link>                
+        </para>
+        <para>
+            Itt az elmélet az interfacek használatára világít rá ezen kívül szintén ismerkedhettünk a Java-s source kódokokkal.Ezen kívül az absztrakt fogalom is megjelenik. És láthatjuk ennek felhasználási módját.
         </para>
         <para>
             A Comparable interface szerepére kellett rávilágítanunk ebben a feladatban. Ezt az interface-t meghívó objektumok listáit vagy tömbjeit képesek vagyunk automatikusan rendezni az array.sort-al vagy

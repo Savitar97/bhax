@@ -200,6 +200,10 @@ szemantikáját, a mozgató konstruktort alapozd a mozgató értékadásra!
                     </imageobject>
                 </mediaobject>
         </figure>
+        <figure>
+            A feladat az elméleti részhez úgy kapcsolódik, hogy beleláthattunk milyen a konstruktorok használata és, hogy ezekből több is lehet.
+            Illetve a destruktor implementálását használhattuk. Illetve ezen kívül a binfában találkozhatunk operátor túlterheléssel is.
+        </figure>
     </section>        
     <section>
         <title>Változó argumentumszámú ctor</title>
@@ -215,6 +219,8 @@ hét/Perceptron osztály feladatot is.)
             Megoldás forrása: <link xlink:href="https://github.com/Savitar97/Prog2/tree/master/perceptron">https://github.com/Savitar97/Prog2/tree/master/perceptron</link>                
         </para>
         <para>
+            Az elmélethez a feladat szintén az osztályok implementálásával kapcsolódik. Találkozhatunk konstruktorral,destruktorral, emellett a láthatósági szinteket is jól szemlélteti a példa, ami egy előző
+            elméleti rész volt.
             A perceptron osztályt is használtuk már Prog1-en.Ekkor még csak egy értéket számolt. A szigmoid függvénnyel ami 0 és 1 közé lőtt be egy értéket.
         </para>
         <programlisting language="java"><![CDATA[
@@ -291,7 +297,7 @@ hét/Perceptron osztály feladatot is.)
                     <title>A visszadott kép</title>
                         <mediaobject>
                             <imageobject>
-                                <imagedata fileref="img/visszakep.png" scale="70" />
+                                <imagedata fileref="img/visszakep1.png" scale="70" />
                             </imageobject>
                         </mediaobject>
             </figure>

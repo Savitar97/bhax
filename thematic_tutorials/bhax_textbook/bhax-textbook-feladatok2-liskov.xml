@@ -111,6 +111,13 @@ Barki/madarak/)
               Emellett a futás közbeni polimorfizmusra is találunk példát(amelynek része a metódus túlterhelés) még pedig a virtual kulcsszóval jelzett metódust a C++-ban és a Java-s kódban is, amikor Override-ot látunk. Szintúgy megjelenik az öröklődés mindkét esetben.
               Javaban ez az extends kulcsszóval történik míg C++-ban a class gyerekosztály:szülőosztály formában történik. 
           </para>
+          <para>
+              Ebben a részben az öröklődés témakörét boncolgattuk elméleten emellett az interfaceket. Ezek ebben a feladatban is megjelennek.
+              Ugyebár az osztályok végülis a hasonló tulajdonságú és funkciókkal rendelkező objektumok gyűjteménye. Javaban nem létezik a többszörös öröklődés fogalma.
+              De valami hasonlót hozhatunk létre az interfacek használatával, tehát ha vannak osztályaink hasonló funkciókkal és tulajdonságokkal például, itt például a sas és a pingvin.
+              Mind a kettő madár. Viszont a pingvin nem tud repülni. De a legtöbb madár tud repülni ezért ezt egy interface-el tudjuk megoldani. Hogy a repülés tulajdonságot kitesszük egy interfacebe itt RepülőMadárként.
+              És ha az a madár tud repülni akkor implementálja ezt az interface-t.
+          </para>
     </section>        
 
     <section>
@@ -194,6 +201,7 @@ https://arato.inf.unideb.hu/batfai.norbert/UDPROG/deprecated/Prog2_1.pdf (98. f�
                 </imageobject>
             </mediaobject>
         </figure>
+    <para>Itt az elméletből szintén az öröklődés témáját tárgyaltuk és annak menetének szabályait.Amely már belecsúszik a láthatósági szintekbe is.</para>
     </section>        
     <section>
         <title>Anti OO</title>
@@ -354,6 +362,7 @@ Apró módosításokat eszközölj benne, pl. színvilág.
                         </imageobject>
                     </mediaobject>
         </figure>
+        <para>A feladat az elmélethez a metódus túlterhelésben,öröklődésben nyilvánul meg.</para>
     </section>
     <section>
         <title>Ciklomatikus komplexitás</title>

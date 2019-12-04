@@ -20,7 +20,7 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/ch01.html#id52728
         </para>
         <para>
             A feladat az volt, mutassunk rá a kivételkezelés szerepére a fenti programban. Ugyebár a kivételkezelés a javaban is try-catch szerkezettel történik.
-
+            Így kapcsolódik az elmélethez is a feladat. A kivételkezelés egy egyedi felhasználási módját láthatjuk.
         </para>
         <programlisting language="java"><![CDATA[
             public static void main(String[] args) {
@@ -79,6 +79,10 @@ feladat volt korábban.)
         </para>
         <para>
             Megoldás forrása:<link xlink:href="https://github.com/Savitar97/Prog2/tree/master/AspectJ">https://github.com/Savitar97/Prog2/tree/master/AspectJ</link>               
+        </para>
+        <para>
+            A feladat az elmélethez a kódgenerálást támogató nyelvi elemmel kapcsolódik. Az aspectj egy aspektus orientált programozási nyelv. Segítségével a programban töréspontokat hozhatunk létre.
+            És beszúrhatunk egy adott elem lefutása elé mögé más utasítást,de akár egy függvény tartalmát is kicserélhetjük.
         </para>
         <para>
             A feladat elkezdéséhez telepítenünk kell az aspect j-t. Ubuntun ezt a következőképpen tudjuk megcsinálni: <command>sudo apt install aspectj</command>.
@@ -319,7 +323,7 @@ volt korábban).
         </para>
         
         <para>
-            A feladat az volt, hogy kézzel számoljuk ki a binfának a szórását, mélységét.
+            A feladat az volt, hogy kézzel számoljuk ki a binfának a szórását, mélységét. Az elmélethez a hibakezelés révén kapcsolódik. Megadhatjuk a várt értékeinket és teszt értékekkel futtathatunk függvényeket a kódunkból. Ezáltal ellenőrizve annak helyes működését.
         </para>
         <para>
             A gép által számított értékek a következők:

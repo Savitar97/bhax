@@ -121,6 +121,11 @@ https://www.tankonyvtar.hu/hu/tartalom/tkt/javat-tanitok-javat/adatok.html
                         </imageobject>
                     </mediaobject>
             </figure>
+        <para>
+            Ez a feladat szorosan kapcsolódik az elmélethez. Főleg a karakterkészlet szerepe játsza a kulcsszerepet ebben a feladatban.
+            De ugyanúgy a java nyelv lexikális elemei is megjelennek benne természetesen. És a kifejezések és utasításokat is használjuk.
+            De logikusan nem tudunk úgy programot írni, hogy ezeket ne használnánk.
+        </para>
     </section>        
 
     <section>
@@ -306,6 +311,10 @@ DISP	"<disp>"
                         </imageobject>
                     </mediaobject>
             </figure>
+    <para>
+        A lexer mint ahogy már a neve is sejti a lexikális egységekre van kihegyezve főleg. Ugyanis ez képes stringeket feldolgozni.
+        Csak itt a lexer saját lexikális egységeiről és nem a C++ vagy Javajéról van szó.
+    </para>
     </section>
     <section>         
         <title>l334d1c4 5</title>
@@ -510,7 +519,9 @@ ki és magyarázd meg a használt struktúratömb memóriafoglalását!)
             lex.lexer.put("c",new String[] {"©", "€", "¢", "{"});
             ]]>
           </programlisting>
-  
+          <para>
+              Ugye mivel itt saját lexert írunk ezért itt is a lexikális egységeké a kulcsszerep az elméleti részből.
+          </para>
     </section>
     <section>
         <title>Full screen</title>
