@@ -594,7 +594,14 @@ kiindulhatsz, mondjuk az komplexebb, mert ott időfejlődés is van...)
           Ha már van markunk akkor az if true ága fut le. Azaz létrehozunk egy vonalat a jelenlegi pontig aztán ledobunk egy új markot a vonal végére végülis és ezzel együtt mindig mozgatjuk a kamerát
           a jelenlegi pozíciónkra.
       </para>
-
+      <figure>
+            <title>GPS Tracker</title>
+       <mediaobject>
+               <imageobject>
+                   <imagedata fileref="img/gps.jpg" scale="30" />
+               </imageobject>
+       </mediaobject>
+       </figure>
     </section>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 </chapter>                
