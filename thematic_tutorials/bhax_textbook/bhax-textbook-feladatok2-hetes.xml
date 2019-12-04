@@ -181,6 +181,12 @@ https://github.com/nbatfai/SamuCam
         <para>
             Megoldás forrása: <link xlink:href="https://github.com/nbatfai/SamuCam">https://github.com/nbatfai/SamuCam</link>                 
         </para>
+        <caution>
+            <title>
+                Tutoráltás
+            </title>
+            <para>Ebben a feladatban tutoráltam Füleky Lászlót.</para>
+        </caution>
         <para>
             A SamuCam ugyebár Qt-t használ tehát a futtatáshoz telepítenünk kell a Qt-t. Majd kiadnunk a következő parancsot
             <command>~/Qt/5.12.2/gcc_64/bin/qmake SamuLife.pro</command>. Ezután a <command>make</command>-et és már futtathatjuk is a SamuCamunkat.
